@@ -88,6 +88,7 @@ lines += ["", f"Rows outside the eleven combinations: {other}.", ""]
 if train:
     gen = Counter(r.meta.get("generator", "teacher") for r in train)
     teachers = Counter(r.meta.get("teacher") for r in train if r.meta.get("teacher"))
+    authoring = Counter(r.meta.get("authoring") for r in train if r.meta.get("generator") != "procedural")
     scen = Counter(r.meta.get("scenario") for r in train)
     pairs = Counter(r.meta.get("pair") for r in train if r.meta.get("pair"))
     complete_pairs = sum(1 for v in pairs.values() if v == 2)
@@ -95,6 +96,9 @@ if train:
     lines += ["## Training set composition", "",
               f"* sources: {gen.get('teacher', 0)} teacher rows ({', '.join(f'{k} {v}' for k, v in teachers.most_common())}), "
               f"{gen.get('procedural', 0)} procedural rows",
+              f"* teacher rows by authoring: {authoring.get('hand', 0)} hand-authored (the agent chose every value), "
+              f"{authoring.get('script', 0)} produced by a seeded generator script the agent wrote "
+              "(valid and blind-verified, but less varied - `meta.authoring` lets you down-weight them)",
               f"* hard pairs with both rows kept: {complete_pairs}",
               f"* text length: median {statistics.median(lens):.0f} chars, min {min(lens)}, max {max(lens)}",
               f"* distinct customers named in master data: "

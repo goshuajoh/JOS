@@ -1,0 +1,150 @@
+{"id": "bee9343a7af", "row_action": "pack_qty_issue", "needs_human": "yes", "severity": "2", "confidence": "high", "note": "qty 1200 not a multiple of SPQ 500"}
+{"id": "b79264a4571", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "country lower case, price currency-first with decimal comma"}
+{"id": "b72652cb1c6", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "qty 6k=6000 passes SPQ/MOQ; price currency-first"}
+{"id": "b73a50c5161", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "period June 2026, country lower case, price currency-first"}
+{"id": "bbeaf8f65cf", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "master customer=unknown (lookup failed)"}
+{"id": "b6f90d6feca", "row_action": "pack_qty_issue", "needs_human": "yes", "severity": "2", "confidence": "high", "note": "qty 4500 not a multiple of SPQ 3000"}
+{"id": "b2c035bb53e", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "period 2026/06, country lower case, part mixed case"}
+{"id": "bf492640dd8", "row_action": "compliance_review", "needs_human": "yes", "severity": "4", "confidence": "high", "note": "master restricted=yes"}
+{"id": "bfbbe73e0cf", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "period dd.mm.yyyy, part mixed case, decimal comma; ref not exact match"}
+{"id": "b0728db6b36", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "period Feb-26, qty with pcs; ref differs by one digit from seen"}
+{"id": "bd2879c4b4e", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "period dd.mm.yyyy, country full name, part lower case without hyphens"}
+{"id": "bb715e352c7", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "period 2026/08, part lower case, currency lower case"}
+{"id": "b72a9f6134f", "row_action": "compliance_review", "needs_human": "yes", "severity": "4", "confidence": "high", "note": "master restricted=yes"}
+{"id": "b0c7f62ed8a", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "ref empty (missing)"}
+{"id": "b7d9aabe0a9", "row_action": "compliance_review", "needs_human": "yes", "severity": "4", "confidence": "high", "note": "master restricted=yes"}
+{"id": "b7651e1173c", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "period dd.mm.yyyy, qty 12.00 trailing zero decimals"}
+{"id": "b14a8cdc971", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "period May-26, qty with EA, decimal comma price"}
+{"id": "bf863260817", "row_action": "no_op", "needs_human": "no", "severity": "1", "confidence": "high", "note": "repeated header row"}
+{"id": "bc2bc555646", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "period 2026/08, currency lower case; ref not exact match"}
+{"id": "b8a0b5aca21", "row_action": "duplicate", "needs_human": "no", "severity": "3", "confidence": "high", "note": "ref SRS/MTY/42273 in seen_refs"}
+{"id": "b3ac1cdbc61", "row_action": "pack_qty_issue", "needs_human": "yes", "severity": "2", "confidence": "high", "note": "qty 5000 below MOQ 10000"}
+{"id": "b7ea6dbd573", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "period July 2026, part mixed case, price currency-first"}
+{"id": "b1063f86cab", "row_action": "duplicate", "needs_human": "no", "severity": "3", "confidence": "high", "note": "ref MAK/INV/01/6252 in seen_refs"}
+{"id": "b0810b56bba", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "period 2026-4, qty with pcs; ref not exact match"}
+{"id": "bedaff64822", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "country full name, price currency-first with decimal comma"}
+{"id": "b0fdf6ff1a1", "row_action": "pack_qty_issue", "needs_human": "yes", "severity": "2", "confidence": "high", "note": "qty 4000 below MOQ 5000"}
+{"id": "b15ce843260", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "part lower case with spaces, Indian-grouped qty 466000, double space in price"}
+{"id": "bcd5d577177", "row_action": "duplicate", "needs_human": "no", "severity": "3", "confidence": "high", "note": "ref KBS/HK/28498 in seen_refs"}
+{"id": "b82f94efc72", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "period full date 2026/10/31, price currency-first; ref not exact match"}
+{"id": "b5e02e0a0c1", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean; qty at MOQ and multiple of SPQ"}
+{"id": "b7fef9a3e10", "row_action": "duplicate", "needs_human": "no", "severity": "3", "confidence": "high", "note": "ref 36768-HKT in seen_refs"}
+{"id": "bcb3a2fa529", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "customer differs only by double space; decimal comma price"}
+{"id": "b4cadb7f771", "row_action": "pack_qty_issue", "needs_human": "yes", "severity": "2", "confidence": "high", "note": "qty 2500 below MOQ 5000"}
+{"id": "b5134666236", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean; qty at MOQ"}
+{"id": "bf9324e4c18", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "part lower case, qty with pcs; ref not exact match"}
+{"id": "bf38f5635be", "row_action": "compliance_review", "needs_human": "yes", "severity": "4", "confidence": "high", "note": "master restricted=yes"}
+{"id": "b4cbb0c4b0a", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "country full name, qty thousands separator"}
+{"id": "be737fe1964", "row_action": "pack_qty_issue", "needs_human": "yes", "severity": "2", "confidence": "high", "note": "qty 5000 below MOQ 10000"}
+{"id": "b98b13eca73", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean; seen ref PK-906-70386 is transposed, not a match"}
+{"id": "b3ae0bedb42", "row_action": "pack_qty_issue", "needs_human": "yes", "severity": "2", "confidence": "high", "note": "qty 1200 not a multiple of SPQ 500 (beats clear rename Est.->Establishment)"}
+{"id": "b2e642b72a5", "row_action": "compliance_review", "needs_human": "yes", "severity": "4", "confidence": "high", "note": "master restricted=yes"}
+{"id": "b0b008d07fd", "row_action": "pack_qty_issue", "needs_human": "yes", "severity": "2", "confidence": "high", "note": "qty 38000 not a multiple of SPQ 4000"}
+{"id": "b13c16b86b2", "row_action": "compliance_review", "needs_human": "yes", "severity": "4", "confidence": "high", "note": "master restricted=yes (also duplicate ref, compliance wins)"}
+{"id": "b3e32766feb", "row_action": "no_op", "needs_human": "no", "severity": "3", "confidence": "medium", "note": "part=SUBTOTAL with empty price reads as a subtotal line; but it carries a real-looking invoice ref (guide: subtotal ref empty or SUBTOTAL), so ask_human/broken sales line is the alternative"}
+{"id": "b9f08020cc6", "row_action": "no_op", "needs_human": "no", "severity": "1", "confidence": "high", "note": "repeated header row"}
+{"id": "bb433564910", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean"}
+{"id": "b875f8fe910", "row_action": "duplicate", "needs_human": "no", "severity": "3", "confidence": "high", "note": "ref 'ord- 54911-63' equals seen ORD-54911-63 ignoring case and extra space"}
+{"id": "beb214395e8", "row_action": "duplicate", "needs_human": "no", "severity": "3", "confidence": "high", "note": "ref Cmc/bc/609324 equals seen CMC/BC/609324 ignoring case"}
+{"id": "bc17eb1c94c", "row_action": "no_op", "needs_human": "no", "severity": "1", "confidence": "high", "note": "repeated header row"}
+{"id": "b7e24c4505d", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "period 05/2026; ref not exact match of seen refs"}
+{"id": "b34573488ec", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "customer double space, part lower case, qty 120000.00"}
+{"id": "ba705601c2c", "row_action": "pack_qty_issue", "needs_human": "yes", "severity": "2", "confidence": "high", "note": "qty 1000 below MOQ 2000"}
+{"id": "b8b57026e50", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "country empty (missing)"}
+{"id": "bcfe9ae7949", "row_action": "compliance_review", "needs_human": "yes", "severity": "4", "confidence": "high", "note": "master restricted=yes"}
+{"id": "b88e68c2ccc", "row_action": "compliance_review", "needs_human": "yes", "severity": "4", "confidence": "high", "note": "master restricted=yes"}
+{"id": "b3378d7a5ee", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "master customer=unknown, spq/moq ? (lookup failed)"}
+{"id": "b6164d74d99", "row_action": "pack_qty_issue", "needs_human": "yes", "severity": "2", "confidence": "high", "note": "qty 5000 below MOQ 10000"}
+{"id": "b8bef2a5d42", "row_action": "pack_qty_issue", "needs_human": "yes", "severity": "2", "confidence": "high", "note": "qty 2600 not a multiple of SPQ 500 (beats clear rename Elec.->Electronics)"}
+{"id": "b0117dddcc3", "row_action": "duplicate", "needs_human": "no", "severity": "3", "confidence": "high", "note": "ref ihl-5393 equals seen IHL-5393 ignoring case"}
+{"id": "bb7303346d5", "row_action": "duplicate", "needs_human": "no", "severity": "3", "confidence": "high", "note": "ref IHL-8545 in seen_refs"}
+{"id": "b78886abfb1", "row_action": "duplicate", "needs_human": "no", "severity": "3", "confidence": "high", "note": "ref ANM-319837-CL in seen_refs"}
+{"id": "bb55b5ded9a", "row_action": "compliance_review", "needs_human": "yes", "severity": "4", "confidence": "high", "note": "master restricted=yes"}
+{"id": "baadba6c21a", "row_action": "compliance_review", "needs_human": "yes", "severity": "4", "confidence": "high", "note": "master restricted=yes"}
+{"id": "bfb12722010", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "country lower case, part lower case without hyphens, decimal comma price"}
+{"id": "b88433d8cb7", "row_action": "pack_qty_issue", "needs_human": "yes", "severity": "2", "confidence": "high", "note": "qty 2625 not a multiple of SPQ 500"}
+{"id": "bcc9b47608c", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "period Oct-26, qty with pcs; ref differs by one digit from seen"}
+{"id": "b358db94de3", "row_action": "no_op", "needs_human": "no", "severity": "1", "confidence": "high", "note": "repeated header row"}
+{"id": "bda5c18afb8", "row_action": "no_op", "needs_human": "no", "severity": "1", "confidence": "high", "note": "repeated header row (Indonesian titles)"}
+{"id": "b0c3a1cd31c", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "period '2026 YTD' is not a month (impossible)"}
+{"id": "b1c51d808e2", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "period Apr-26, currency lower case"}
+{"id": "b68f9ae16e2", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "period November 2025, part lower case, currency lower case"}
+{"id": "b5daa65192f", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "master customer=unknown (lookup failed)"}
+{"id": "bce1ef788ee", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "country lower case, part missing hyphens, qty 129k=129000"}
+{"id": "bbabfd220b0", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "master customer=unknown, spq/moq ? (lookup failed)"}
+{"id": "bf1477d97e3", "row_action": "duplicate", "needs_human": "no", "severity": "3", "confidence": "high", "note": "ref IEV-FE-19990 in seen_refs"}
+{"id": "b32a33164bc", "row_action": "compliance_review", "needs_human": "yes", "severity": "4", "confidence": "high", "note": "master restricted=yes"}
+{"id": "b6453dc5752", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean; qty at MOQ"}
+{"id": "b8395af6f75", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "qty thousands separator 67,500"}
+{"id": "b391a4bd6a8", "row_action": "compliance_review", "needs_human": "yes", "severity": "4", "confidence": "high", "note": "master restricted=yes"}
+{"id": "b4e559c4bc4", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "qty '1 250' space separator, price currency-first"}
+{"id": "bc21ebad21e", "row_action": "compliance_review", "needs_human": "yes", "severity": "4", "confidence": "high", "note": "master restricted=yes"}
+{"id": "bea481a8700", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "period Nov-25, country lower case, currency lower case"}
+{"id": "bea76831c35", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean"}
+{"id": "b4957e1dc46", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "period Q1/2026 is not a month (impossible)"}
+{"id": "b8319cd13fe", "row_action": "pack_qty_issue", "needs_human": "yes", "severity": "2", "confidence": "high", "note": "qty 250 below MOQ 500 (beats part format)"}
+{"id": "b6ce8f0da69", "row_action": "compliance_review", "needs_human": "yes", "severity": "4", "confidence": "high", "note": "master restricted=yes"}
+{"id": "b3355abb12a", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "period 2026-8, part missing hyphen; seen FAK-35313 is transposed, not a match"}
+{"id": "b1dcec0c7d0", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean"}
+{"id": "b761b7ad041", "row_action": "pack_qty_issue", "needs_human": "yes", "severity": "2", "confidence": "high", "note": "qty 2500 below MOQ 5000"}
+{"id": "b9ffeffbec9", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "period 2026-7, qty 9k=9000; ref differs by one digit from seen"}
+{"id": "baec0518c11", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "master customer=unknown (lookup failed)"}
+{"id": "b49700ce61e", "row_action": "pack_qty_issue", "needs_human": "yes", "severity": "2", "confidence": "high", "note": "qty 6000 not a multiple of SPQ 5000 (beats clear rename Oy->Oyj)"}
+{"id": "b6382a21d75", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "period dd.mm.yyyy, part lower case, currency lower case; ref not exact match"}
+{"id": "be8c1b9ff6a", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "period October 2026, part mixed case, price $ symbol"}
+{"id": "b24337a2ddd", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "period 2026-7, qty 0.75k=750 passes SPQ/MOQ"}
+{"id": "b9ccefb7d96", "row_action": "duplicate", "needs_human": "no", "severity": "3", "confidence": "high", "note": "ref SC45700642 in seen_refs"}
+{"id": "b3576df42be", "row_action": "pack_qty_issue", "needs_human": "yes", "severity": "2", "confidence": "high", "note": "qty 75 not a multiple of SPQ 10"}
+{"id": "b5788317b0d", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean; qty at MOQ"}
+{"id": "b31879c7acd", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "period full date, qty 22,5k=22500 passes SPQ/MOQ"}
+{"id": "b6a7e574418", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean; seen refs differ by one digit"}
+{"id": "b3e56b825e5", "row_action": "pack_qty_issue", "needs_human": "yes", "severity": "2", "confidence": "high", "note": "qty 2500 below MOQ 5000"}
+{"id": "b83076e6b7b", "row_action": "duplicate", "needs_human": "no", "severity": "3", "confidence": "high", "note": "ref Tb-hd-1532314 equals seen TB-HD-1532314 ignoring case"}
+{"id": "b9e56551707", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "clear rename: legal form AB written out as Aktiebolag; part mixed case is lower severity"}
+{"id": "b718bda27bf", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "period dd.mm.yyyy, qty 0.25k=250 at MOQ; seen ref is transposed, not a match"}
+{"id": "b1e4a80878c", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean; qty at MOQ"}
+{"id": "b51169f49a2", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "qty 10.000,00 = 10000"}
+{"id": "b55e75247d4", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "master customer=unknown (lookup failed)"}
+{"id": "bb575846c42", "row_action": "pack_qty_issue", "needs_human": "yes", "severity": "2", "confidence": "high", "note": "qty 4401 not a multiple of SPQ 100"}
+{"id": "b19bda0e290", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "qty 82.500 = 82500 (thousands separator)"}
+{"id": "b153609fb09", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "qty thousands separator 9,500"}
+{"id": "b2bddef84c6", "row_action": "pack_qty_issue", "needs_human": "yes", "severity": "2", "confidence": "high", "note": "qty 3000 below MOQ 6000"}
+{"id": "b07937c1b31", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "unit_price empty (missing)"}
+{"id": "b3be68ca373", "row_action": "duplicate", "needs_human": "no", "severity": "3", "confidence": "high", "note": "ref Vh.5935.868 equals seen VH.5935.868 ignoring case"}
+{"id": "b00df78773c", "row_action": "pack_qty_issue", "needs_human": "yes", "severity": "2", "confidence": "high", "note": "qty 200 not a multiple of SPQ 250 and below MOQ 250"}
+{"id": "b88d2722d35", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "qty '3 000' space separator"}
+{"id": "b3dcd961ab5", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "unit_price empty (missing)"}
+{"id": "b451244d8cc", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "ref empty (missing)"}
+{"id": "b84788050d3", "row_action": "compliance_review", "needs_human": "yes", "severity": "4", "confidence": "high", "note": "master restricted=yes"}
+{"id": "bbd0e945290", "row_action": "compliance_review", "needs_human": "yes", "severity": "4", "confidence": "high", "note": "master restricted=yes"}
+{"id": "b1addaf1a92", "row_action": "pack_qty_issue", "needs_human": "yes", "severity": "2", "confidence": "high", "note": "qty 3000 below MOQ 6000"}
+{"id": "bec2fe588a2", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "part lower case, qty with EA; ref differs by one digit from seen"}
+{"id": "ba316e2f61a", "row_action": "compliance_review", "needs_human": "yes", "severity": "4", "confidence": "high", "note": "master restricted=yes"}
+{"id": "b4de119c7cf", "row_action": "duplicate", "needs_human": "no", "severity": "3", "confidence": "high", "note": "ref 'FV- A/125856' equals seen FV-A/125856 ignoring extra space"}
+{"id": "b6a68fac0df", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "qty 5k=5000 at MOQ, price $ symbol"}
+{"id": "bb9905a3695", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "period January 2026, part lower case, currency lower case"}
+{"id": "b5e9670a8f8", "row_action": "no_op", "needs_human": "no", "severity": "3", "confidence": "medium", "note": "part=SUBTOTAL with empty price reads as a subtotal line; but it carries a real-looking invoice ref (guide: subtotal ref empty or SUBTOTAL), so ask_human/broken sales line is the alternative"}
+{"id": "bd7ad0249f2", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "qty separator 2,310, price currency-first; ref differs by one digit from seen"}
+{"id": "b0c574bb39f", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean; seen TVA-SZ-53560 is transposed, not a match"}
+{"id": "b3de0331632", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean"}
+{"id": "b2305a64b34", "row_action": "no_op", "needs_human": "no", "severity": "3", "confidence": "low", "note": "part=SUBTOTAL marks a subtotal (rule 2 beats the empty country); but it has a unit price and a real-looking invoice ref, so it could be a broken sales line missing country -> ask_human/yes/3"}
+{"id": "b28601db78c", "row_action": "duplicate", "needs_human": "no", "severity": "3", "confidence": "high", "note": "ref fv-a/601556 equals seen FV-A/601556 ignoring case"}
+{"id": "b26b8ea7d03", "row_action": "vendor_rename", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "uncertain rename: Hjalmare Energi AB vs Hjalmare Matsystem AB share only one distinctive word"}
+{"id": "b8a84ae8f4b", "row_action": "compliance_review", "needs_human": "yes", "severity": "4", "confidence": "high", "note": "master restricted=yes"}
+{"id": "b26ebc75665", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean; seen ref differs by one digit"}
+{"id": "b9873e16390", "row_action": "duplicate", "needs_human": "no", "severity": "3", "confidence": "high", "note": "ref 'fak -27977' equals seen FAK-27977 ignoring case and extra space"}
+{"id": "b1135a5ace5", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "qty 3.000=3000 at MOQ, price currency-first"}
+{"id": "ba756c0f6aa", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean"}
+{"id": "b91b46d829c", "row_action": "compliance_review", "needs_human": "yes", "severity": "4", "confidence": "high", "note": "master restricted=yes (also duplicate ref, compliance wins)"}
+{"id": "ba4a3f784fc", "row_action": "pack_qty_issue", "needs_human": "yes", "severity": "2", "confidence": "high", "note": "qty 1000 below MOQ 3000"}
+{"id": "bd550ba3730", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean; qty at MOQ"}
+{"id": "b903b77f618", "row_action": "pack_qty_issue", "needs_human": "yes", "severity": "2", "confidence": "high", "note": "qty 1750 not a multiple of SPQ 500 (beats clear rename Co.->Company)"}
+{"id": "b03f6881562", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "customer double space, country lower case"}
+{"id": "b9636d007e3", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "period FY26 is not a month (impossible)"}
+{"id": "bb657d4db06", "row_action": "duplicate", "needs_human": "no", "severity": "3", "confidence": "high", "note": "ref SRS/MTY/20099 in seen_refs"}
+{"id": "b7b8c335b5d", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "period May-26, part lower case with spaces, qty stray whitespace (500 at MOQ)"}
+{"id": "bea906a6240", "row_action": "compliance_review", "needs_human": "yes", "severity": "4", "confidence": "high", "note": "master restricted=yes"}
+{"id": "b5629c0aa1b", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean; seen refs differ by one digit"}
+{"id": "b0a5d59a4ed", "row_action": "compliance_review", "needs_human": "yes", "severity": "4", "confidence": "high", "note": "master restricted=yes (also duplicate ref, compliance wins)"}
+{"id": "b22a85bf6a2", "row_action": "duplicate", "needs_human": "no", "severity": "3", "confidence": "high", "note": "ref 'cre- so-513043' equals seen CRE-SO-513043 ignoring case and extra space"}
+{"id": "be7141133c9", "row_action": "duplicate", "needs_human": "no", "severity": "3", "confidence": "high", "note": "ref SUD/FS/724933 in seen_refs"}

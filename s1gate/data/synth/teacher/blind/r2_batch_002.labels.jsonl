@@ -1,0 +1,150 @@
+{"id": "b9dabc5f9bc", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "Ltd vs master Limited: legal suffix changed, clear rename; qty 70000 passes SPQ/MOQ 5000; ref not seen"}
+{"id": "b0529f7956c", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "period 2026/03/31 and price $14.21 non-canonical; otherwise clean"}
+{"id": "b0b3acd4ad6", "row_action": "pack_qty_issue", "needs_human": "yes", "severity": "2", "confidence": "high", "note": "5375 not a multiple of SPQ 500"}
+{"id": "bb1bb1bc9a9", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean; ref TI/AQ/21252 differs from seen 21282/12252"}
+{"id": "b73c7f0041d", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean; 81000 = 27 x SPQ 3000, >= MOQ 6000"}
+{"id": "b97bf7e5e5f", "row_action": "compliance_review", "needs_human": "yes", "severity": "4", "confidence": "high", "note": "restricted=yes"}
+{"id": "b86019a9f2e", "row_action": "pack_qty_issue", "needs_human": "yes", "severity": "2", "confidence": "high", "note": "qty 2500.00 = 2500, not a multiple of SPQ 1000"}
+{"id": "b0894a64440", "row_action": "compliance_review", "needs_human": "yes", "severity": "4", "confidence": "high", "note": "restricted=yes"}
+{"id": "b5ebbb0f22e", "row_action": "compliance_review", "needs_human": "yes", "severity": "4", "confidence": "high", "note": "restricted=yes"}
+{"id": "b4cc63580b0", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean"}
+{"id": "ba39e38c347", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "period August 2026, lower-case part, decimal-comma price; qty 42000 passes"}
+{"id": "b932e60ec8e", "row_action": "pack_qty_issue", "needs_human": "yes", "severity": "2", "confidence": "high", "note": "qty 500 below MOQ 1000"}
+{"id": "b89ebf9da68", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean"}
+{"id": "b237e07257f", "row_action": "vendor_rename", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "Iberdata Metering S.A. vs master Contadores Inteligentes del Ebro S.A.: completely different name, uncertain link; ref 502073 differs from seen 503073"}
+{"id": "b822ebae86a", "row_action": "pack_qty_issue", "needs_human": "yes", "severity": "2", "confidence": "high", "note": "qty 2000 below MOQ 5000; ref 215408 not in seen (215480/215409 differ)"}
+{"id": "bd3ea46f41e", "row_action": "duplicate", "needs_human": "no", "severity": "3", "confidence": "high", "note": "ref 'ft- 24681/eu' matches seen FT-24681/EU ignoring case and spaces"}
+{"id": "bc3928b90fa", "row_action": "duplicate", "needs_human": "no", "severity": "3", "confidence": "high", "note": "ref IEV-FE-08079 in seen_refs"}
+{"id": "b063ac2fe5f", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "period 'Quarter 3 2026' is not a month"}
+{"id": "bab5dc8c69c", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "qty 10k = 10000 passes SPQ/MOQ 2500; lower-case currency usd"}
+{"id": "b4eeaeefe03", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "medium", "note": "customer 'og' vs master '&' is a word not just punctuation, so a clear rename (obviously same entity); also Oct-26 and country 'no' need normalizing; could be argued formatting-only (normalize)"}
+{"id": "bc9b2214b3c", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "period 'Mai 2026' (May) and qty 48k = 48000 non-canonical; 48000 passes SPQ/MOQ 4000"}
+{"id": "b7cda05cea6", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "qty 67,5 is fractional (impossible)"}
+{"id": "bc1c5f153fc", "row_action": "pack_qty_issue", "needs_human": "yes", "severity": "2", "confidence": "high", "note": "qty 100 below MOQ 200 (part also missing hyphens)"}
+{"id": "b648fb6c831", "row_action": "duplicate", "needs_human": "no", "severity": "3", "confidence": "high", "note": "ref QT26-78170 in seen_refs"}
+{"id": "bb3ad84e90b", "row_action": "duplicate", "needs_human": "no", "severity": "3", "confidence": "high", "note": "ref F296-92896422 in seen_refs (third entry)"}
+{"id": "bc364cabae8", "row_action": "duplicate", "needs_human": "no", "severity": "3", "confidence": "high", "note": "ref KMP-SG-698255 in seen_refs"}
+{"id": "b8593cfd075", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "period H2-2025 is not a month"}
+{"id": "b7f662226a5", "row_action": "compliance_review", "needs_human": "yes", "severity": "4", "confidence": "high", "note": "restricted=yes"}
+{"id": "bc83c97bbc5", "row_action": "pack_qty_issue", "needs_human": "yes", "severity": "2", "confidence": "high", "note": "2000 not a multiple of SPQ 650"}
+{"id": "bae627b1286", "row_action": "pack_qty_issue", "needs_human": "yes", "severity": "2", "confidence": "high", "note": "2400 not a multiple of SPQ 1000; beats clear rename Ctrls/Controls and format issues; ref not in seen (6852 vs 6582/6882)"}
+{"id": "bcc4690f16d", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "period '########' is garbled"}
+{"id": "bd4f211af85", "row_action": "duplicate", "needs_human": "no", "severity": "3", "confidence": "high", "note": "ref CPD-26-64368 in seen_refs"}
+{"id": "b94f5eaddf9", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean; qty 20 = MOQ, multiple of SPQ 10"}
+{"id": "bc69a601019", "row_action": "no_op", "needs_human": "no", "severity": "3", "confidence": "medium", "note": "part=SUBTOTAL with empty price and qty 9,000 a sum: subtotal line; but it carries a real-looking ref and a successful lookup, so ask_human (broken sales line) is possible"}
+{"id": "b6c3d045510", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean; ref NMK0057954 differs from seen 57945/57974"}
+{"id": "bfa84a0b946", "row_action": "compliance_review", "needs_human": "yes", "severity": "4", "confidence": "high", "note": "restricted=yes"}
+{"id": "bda3a69ad30", "row_action": "compliance_review", "needs_human": "yes", "severity": "4", "confidence": "high", "note": "restricted=yes"}
+{"id": "be30bda10b4", "row_action": "pack_qty_issue", "needs_human": "yes", "severity": "2", "confidence": "high", "note": "52000 not a multiple of SPQ 3000"}
+{"id": "b185702777c", "row_action": "duplicate", "needs_human": "no", "severity": "3", "confidence": "high", "note": "ref 'mak/ inv/00/1735' matches seen MAK/INV/00/1735 ignoring case and spaces"}
+{"id": "b494cbcabe7", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "period 2026-7 and qty 9500pcs non-canonical; 9500 passes SPQ 100/MOQ 200; ref 01287 not in seen"}
+{"id": "b055d720e31", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "country 'Turkey', part WA2G4PCB without hyphens, qty 59000.00; 59000 passes SPQ 1000/MOQ 5000"}
+{"id": "b4944416311", "row_action": "pack_qty_issue", "needs_human": "yes", "severity": "2", "confidence": "high", "note": "31000 not a multiple of SPQ 2500"}
+{"id": "bdf54d6a7a9", "row_action": "duplicate", "needs_human": "no", "severity": "3", "confidence": "high", "note": "ref F589-12251979 in seen_refs"}
+{"id": "b74057de244", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "country 'Turkey', part WM32UEN8 without hyphens, qty 92000.00; passes SPQ/MOQ 1000"}
+{"id": "b740e5ec009", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "period Aug-26, qty 21000pcs; 21000 = 7 x SPQ 3000 >= MOQ 6000; ref 552914 differs from seen 552904"}
+{"id": "b00932a2ed0", "row_action": "compliance_review", "needs_human": "yes", "severity": "4", "confidence": "high", "note": "restricted=yes"}
+{"id": "bcfafc01c7c", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "country 'cn', part WA2G4FPC without hyphens, qty 21000pcs; passes SPQ 500/MOQ 1000"}
+{"id": "bd041314620", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "country 'tr', price 'USD 1,64' currency-first with decimal comma; qty 171000 passes"}
+{"id": "be73ee00d63", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean"}
+{"id": "b8e8e11b500", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean; ref ANM-035135-CL differs from seen 035178/305135"}
+{"id": "b325d78ffd2", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "period 'Q1 2026' is not a month"}
+{"id": "bee03572908", "row_action": "no_op", "needs_human": "no", "severity": "3", "confidence": "high", "note": "part=SUBTOTAL with empty ref: subtotal line"}
+{"id": "b0ada56ad04", "row_action": "duplicate", "needs_human": "no", "severity": "3", "confidence": "high", "note": "ref SEP-06167/26 in seen_refs"}
+{"id": "bc90282fb2e", "row_action": "pack_qty_issue", "needs_human": "yes", "severity": "2", "confidence": "high", "note": "81333 not a multiple of SPQ 4000"}
+{"id": "b2219b24fef", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "qty 138pcs and price 'AED 38.42' currency-first"}
+{"id": "bece36ffa8f", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "master spq=? and moq=?: lookup failed"}
+{"id": "bfc4af1d2bb", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "qty 9k = 9000 passes SPQ/MOQ 3000; lower-case currency usd"}
+{"id": "bb6281217f8", "row_action": "vendor_rename", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "Mittaus Pohjola Group Oy vs master Pohjoisen Mittaustekniikka Oy: no shared distinctive word, possible parent group, uncertain link; qty 5500 passes"}
+{"id": "bb49c6ddb3b", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "qty 54,25 is fractional (impossible)"}
+{"id": "b0e80742535", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "qty 185.5k = 185500 passes SPQ 500/MOQ 1000; mixed-case part Wm-C5-N4; price currency-first"}
+{"id": "becb0baf242", "row_action": "compliance_review", "needs_human": "yes", "severity": "4", "confidence": "high", "note": "restricted=yes"}
+{"id": "bf4a471c948", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "period 2026-2, qty 0.2K = 200 = MOQ and multiple of SPQ 100"}
+{"id": "b10408a3a8c", "row_action": "pack_qty_issue", "needs_human": "yes", "severity": "2", "confidence": "high", "note": "50000 not a multiple of SPQ 3000 (also date-style period, currency-first price)"}
+{"id": "bea62ce797d", "row_action": "compliance_review", "needs_human": "yes", "severity": "4", "confidence": "high", "note": "restricted=yes"}
+{"id": "b4adc9bf98e", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "period 07/2026, qty '4 000', price 'SEK 19.14'; 4000 passes; ref 515415 differs from seen 515405"}
+{"id": "bcc7197aa6f", "row_action": "compliance_review", "needs_human": "yes", "severity": "4", "confidence": "high", "note": "restricted=yes"}
+{"id": "b10f7cfd688", "row_action": "pack_qty_issue", "needs_human": "yes", "severity": "2", "confidence": "high", "note": "qty 4000 below MOQ 8000"}
+{"id": "b64602587f1", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "qty 1,75 is fractional (impossible)"}
+{"id": "bc16e2ffff7", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "period Apr-26, price '0.280  usd' double space and lower case; qty 6000 = MOQ passes"}
+{"id": "b212e28dfd6", "row_action": "no_op", "needs_human": "no", "severity": "1", "confidence": "high", "note": "repeated column header row"}
+{"id": "b12eca612ab", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "period 2026-02-28, price 'US$ 0.21'; qty 200 = MOQ passes"}
+{"id": "bb7615587d3", "row_action": "duplicate", "needs_human": "no", "severity": "3", "confidence": "high", "note": "ref SRS/MTY/84388 in seen_refs"}
+{"id": "b069959c98c", "row_action": "compliance_review", "needs_human": "yes", "severity": "4", "confidence": "high", "note": "restricted=yes"}
+{"id": "b0abfdc28a1", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "period 31.05.2026, country 'Portugal', part WMC6N4 without hyphens; qty 500 passes"}
+{"id": "b17ebf9914c", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "period 2026-4, qty 0.4k = 400 passes SPQ 100/MOQ 200"}
+{"id": "bd5f6e5c9df", "row_action": "no_op", "needs_human": "no", "severity": "1", "confidence": "high", "note": "column header row (DATE, SOLD TO, QTY...)"}
+{"id": "b9928c4888b", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean; qty 3000 exactly at MOQ, multiple of SPQ 1000"}
+{"id": "bfc5c35f096", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "period 2026-6, qty '0.5 k' = 500 = MOQ, multiple of SPQ 250"}
+{"id": "bd963c35376", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "Hosp. vs master Hospitalar: abbreviation, clear rename"}
+{"id": "b88a7aa9ae4", "row_action": "duplicate", "needs_human": "no", "severity": "3", "confidence": "high", "note": "ref ihl-7156 matches seen IHL-7156 ignoring case"}
+{"id": "b593c7dc7a4", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "qty '9 000' = 9000 passes SPQ/MOQ 3000"}
+{"id": "b4cd5c6da54", "row_action": "pack_qty_issue", "needs_human": "yes", "severity": "2", "confidence": "high", "note": "800 not a multiple of SPQ 500; ref SIP-641093 differs from seen 641039/640193"}
+{"id": "b4b9797101d", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "period 30.06.2026, qty '40 k' = 40000 passes SPQ 5000/MOQ 10000"}
+{"id": "b98c2c5e979", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "country 'tr', part wfqs8msop8 lower case without hyphens, qty 57000.00; passes SPQ/MOQ 3000"}
+{"id": "baf589b41c5", "row_action": "no_op", "needs_human": "no", "severity": "3", "confidence": "high", "note": "part=SUBTOTAL with empty ref: subtotal line"}
+{"id": "bad27a61e69", "row_action": "no_op", "needs_human": "no", "severity": "3", "confidence": "medium", "note": "part=SUBTOTAL, qty 5,000 a sum, country empty: subtotal line; but carries a real-looking ref, so ask_human (broken sales line) is possible"}
+{"id": "bd7f391fc23", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "master spq=? and moq=?: lookup failed"}
+{"id": "be0fcda7dfd", "row_action": "pack_qty_issue", "needs_human": "yes", "severity": "2", "confidence": "high", "note": "qty 5000 below MOQ 10000; ref 5830417 differs from seen 5830471"}
+{"id": "b43c91443a8", "row_action": "pack_qty_issue", "needs_human": "yes", "severity": "2", "confidence": "high", "note": "72500 not a multiple of SPQ 5000"}
+{"id": "b5ab7395a50", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "period 10/2026, qty '7 600', price 'NOK 2.43'; 7600 passes; ref -83 differs from seen -86/-85"}
+{"id": "ba5f6696a4d", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "period FY26/27 is not a month"}
+{"id": "bbbc0995d5f", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "part WMS3N16R8 without hyphens, qty '2 000'; passes SPQ 500/MOQ 1000; ref 1758 differs from seen 1058/1753"}
+{"id": "b2909f6d709", "row_action": "compliance_review", "needs_human": "yes", "severity": "4", "confidence": "high", "note": "restricted=yes"}
+{"id": "b638470e92e", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "master customer=unknown, spq/moq '?': lookup failed"}
+{"id": "b1fb67962a4", "row_action": "duplicate", "needs_human": "no", "severity": "3", "confidence": "high", "note": "ref F293-04686010 in seen_refs (second entry)"}
+{"id": "b57c09a553b", "row_action": "duplicate", "needs_human": "no", "severity": "3", "confidence": "high", "note": "ref SEP-92471/26 in seen_refs"}
+{"id": "b059ecfe469", "row_action": "pack_qty_issue", "needs_human": "yes", "severity": "2", "confidence": "high", "note": "2000 not a multiple of SPQ 650"}
+{"id": "bf595fd219e", "row_action": "pack_qty_issue", "needs_human": "yes", "severity": "2", "confidence": "high", "note": "8000 not a multiple of SPQ 2500"}
+{"id": "b70a940e2a3", "row_action": "pack_qty_issue", "needs_human": "yes", "severity": "2", "confidence": "high", "note": "31250 not a multiple of SPQ 2500"}
+{"id": "b653566da4f", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "master spq=? and moq=?: lookup failed"}
+{"id": "bdbe8ad51c5", "row_action": "no_op", "needs_human": "no", "severity": "1", "confidence": "high", "note": "column header row (PERIOD:, CUSTOMER NAME: ...)"}
+{"id": "be78ebaa349", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "period Q2-2026 is not a month"}
+{"id": "b71c5541bc0", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "country 'tr', qty 40,000, price 'USD 1.92'; 40000 passes SPQ/MOQ 2500"}
+{"id": "bf51bb628a9", "row_action": "pack_qty_issue", "needs_human": "yes", "severity": "2", "confidence": "high", "note": "qty 5000 below MOQ 10000"}
+{"id": "bcc6e453056", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "period 2025-12-31, qty 0.3k = 300 passes; ref 743350 differs from seen 473350"}
+{"id": "b10db27ab29", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "part WRBUCK1AQFN without hyphens, qty ' 57k ' with stray spaces; 57000 passes SPQ 3000/MOQ 6000"}
+{"id": "b9deb2107a7", "row_action": "pack_qty_issue", "needs_human": "yes", "severity": "2", "confidence": "high", "note": "2700 not a multiple of SPQ 500; beats clear rename Pvt Ltd/Private Limited; ref not in seen (7204072 has extra digit)"}
+{"id": "b30ef362dad", "row_action": "compliance_review", "needs_human": "yes", "severity": "4", "confidence": "high", "note": "restricted=yes"}
+{"id": "b076feb0d54", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "Vindmølle Sensorik ApS vs master A/S: legal suffix changed, clear rename; also lower-case part"}
+{"id": "b2f7058a756", "row_action": "no_op", "needs_human": "no", "severity": "3", "confidence": "high", "note": "part=SUBTOTAL with empty ref: subtotal line"}
+{"id": "b443843cdd9", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "period 10/2025, lower-case currency usd; qty 800 passes"}
+{"id": "bb9b4faf5fc", "row_action": "pack_qty_issue", "needs_human": "yes", "severity": "2", "confidence": "high", "note": "qty 500 below MOQ 1000"}
+{"id": "b4ecd230d4f", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "period 31.08.2026, country 'Netherlands', part wxuflcbl100; qty 600 passes SPQ 100/MOQ 500"}
+{"id": "bf4aae148df", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean; qty 500 = MOQ, multiple of SPQ 250"}
+{"id": "b40a918f23f", "row_action": "pack_qty_issue", "needs_human": "yes", "severity": "2", "confidence": "high", "note": "qty 250 below MOQ 500"}
+{"id": "b70aee19708", "row_action": "no_op", "needs_human": "no", "severity": "3", "confidence": "high", "note": "part=SUBTOTAL with empty ref: subtotal line"}
+{"id": "b2f4368cc47", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean"}
+{"id": "ba6453c91a1", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "period 31.12.2025, customer double space only, qty 3,51,000 (Indian grouping) = 351000 passes SPQ/MOQ 3000"}
+{"id": "b42523a5294", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean"}
+{"id": "b90f2180b3d", "row_action": "pack_qty_issue", "needs_human": "yes", "severity": "2", "confidence": "high", "note": "56 not a multiple of SPQ 10"}
+{"id": "bc0379e3f96", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "period Jul-26, qty 27k = 27000 passes SPQ/MOQ 3000"}
+{"id": "bc044934f85", "row_action": "compliance_review", "needs_human": "yes", "severity": "4", "confidence": "high", "note": "restricted=yes"}
+{"id": "ba053a2cbbf", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "period 2025/26 is a fiscal year (or month 26), not a valid month"}
+{"id": "bb60ef0ae54", "row_action": "compliance_review", "needs_human": "yes", "severity": "4", "confidence": "high", "note": "restricted=yes (also a duplicate ref)"}
+{"id": "b0280ef3115", "row_action": "pack_qty_issue", "needs_human": "yes", "severity": "2", "confidence": "high", "note": "9999 not a multiple of SPQ 2500"}
+{"id": "b4677373876", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "period 'Q2 2026' is not a month"}
+{"id": "bd115047221", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "ref is empty on a real sales line (part, qty, price present)"}
+{"id": "bc8858feb6c", "row_action": "pack_qty_issue", "needs_human": "yes", "severity": "2", "confidence": "high", "note": "qty 5000 below MOQ 10000"}
+{"id": "b05629916f0", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "period 2025-9, qty 3,000; 3000 = SPQ/MOQ; ref 68798 differs from seen 68758"}
+{"id": "ba8f1d8a1a9", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "qty '5 000' = 5000 = MOQ, multiple of SPQ 2500"}
+{"id": "bf240223b3d", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean; qty 10000 exactly at MOQ, multiple of SPQ 5000"}
+{"id": "b643e5519d2", "row_action": "pack_qty_issue", "needs_human": "yes", "severity": "2", "confidence": "high", "note": "qty 4000 below MOQ 5000"}
+{"id": "ba71b23fc2e", "row_action": "pack_qty_issue", "needs_human": "yes", "severity": "2", "confidence": "high", "note": "qty 10 below MOQ 20"}
+{"id": "b5bd97610d0", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "period Dec-25, lower-case part, decimal-comma price; qty 500 passes"}
+{"id": "bd24304260d", "row_action": "compliance_review", "needs_human": "yes", "severity": "4", "confidence": "high", "note": "restricted=yes"}
+{"id": "bf350893282", "row_action": "pack_qty_issue", "needs_human": "yes", "severity": "2", "confidence": "high", "note": "76500 not a multiple of SPQ 3000"}
+{"id": "b05e5e12171", "row_action": "compliance_review", "needs_human": "yes", "severity": "4", "confidence": "high", "note": "restricted=yes (also a duplicate ref)"}
+{"id": "b885da762da", "row_action": "pack_qty_issue", "needs_human": "yes", "severity": "2", "confidence": "high", "note": "qty 3000 below MOQ 6000; ref 5869325 differs from seen 5869352"}
+{"id": "bbde398ba51", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean; ref PK-708-26192 differs from seen 26172/780-26192/26196"}
+{"id": "bc3dc44263c", "row_action": "duplicate", "needs_human": "no", "severity": "3", "confidence": "high", "note": "ref TB-HD-9945930 in seen_refs (third entry)"}
+{"id": "b1d4b3309af", "row_action": "pack_qty_issue", "needs_human": "yes", "severity": "2", "confidence": "high", "note": "87750 not a multiple of SPQ 3000"}
+{"id": "b9b95c34121", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "period 09/2026, qty 10,000, price 'DKK 7.73'; 10000 = MOQ passes; ref -95 differs from seen -05/-93"}
+{"id": "b771c6d4ab7", "row_action": "duplicate", "needs_human": "no", "severity": "3", "confidence": "high", "note": "ref 14820-HKT in seen_refs"}
+{"id": "b56629412b9", "row_action": "compliance_review", "needs_human": "yes", "severity": "4", "confidence": "high", "note": "restricted=yes"}
+{"id": "b35f1207dfe", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "master customer=unknown: lookup failed"}
+{"id": "bbfea5ea597", "row_action": "pack_qty_issue", "needs_human": "yes", "severity": "2", "confidence": "high", "note": "qty 2500 below MOQ 5000; ref 741582 differs from seen 741528"}
+{"id": "bc0c30fd346", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "period 2025/10/31, qty 183000.00, price '0.65  USD' double space; 183000 passes"}
+{"id": "bd37c9d9f2a", "row_action": "compliance_review", "needs_human": "yes", "severity": "4", "confidence": "high", "note": "restricted=yes"}
+{"id": "b6289ac0bd3", "row_action": "duplicate", "needs_human": "no", "severity": "3", "confidence": "high", "note": "ref SEP-21450/26 in seen_refs"}
+{"id": "b52d621fecf", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean; qty 4000 = SPQ = MOQ"}

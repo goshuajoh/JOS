@@ -1,0 +1,150 @@
+{"id": "b805059322c", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": ""}
+{"id": "b0de54e73e3", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": ""}
+{"id": "b7b3154030d", "row_action": "compliance_review", "needs_human": "yes", "severity": "4", "confidence": "high", "note": ""}
+{"id": "b699efec6cf", "row_action": "compliance_review", "needs_human": "yes", "severity": "4", "confidence": "high", "note": ""}
+{"id": "bb9ef985f3e", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": ""}
+{"id": "b8c0799c811", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "qty 0.05k read as 50, spq 1"}
+{"id": "bf6810b1cb3", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": ""}
+{"id": "b71d6702f43", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": ""}
+{"id": "b41ffc00df8", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "AB -> Aktiebolag legal suffix expanded"}
+{"id": "bd7604240b9", "row_action": "compliance_review", "needs_human": "yes", "severity": "4", "confidence": "high", "note": ""}
+{"id": "b1b1aa98bf0", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": ""}
+{"id": "b9f24d1f15c", "row_action": "no_op", "needs_human": "no", "severity": "1", "confidence": "high", "note": "header"}
+{"id": "be7c619a4eb", "row_action": "pack_qty_issue", "needs_human": "yes", "severity": "2", "confidence": "high", "note": "42000 not multiple of spq 5000"}
+{"id": "bcfb8546a14", "row_action": "duplicate", "needs_human": "no", "severity": "3", "confidence": "high", "note": ""}
+{"id": "b2439566270", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": ""}
+{"id": "ba979b2ef2e", "row_action": "no_op", "needs_human": "no", "severity": "1", "confidence": "high", "note": "header"}
+{"id": "b4a46360031", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": ""}
+{"id": "b9731884264", "row_action": "pack_qty_issue", "needs_human": "yes", "severity": "2", "confidence": "high", "note": "2000 below moq 5000; ref not in seen_refs"}
+{"id": "b7b3aaf3eca", "row_action": "duplicate", "needs_human": "no", "severity": "3", "confidence": "high", "note": ""}
+{"id": "b496ec52455", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "country empty"}
+{"id": "b7a58d85c25", "row_action": "duplicate", "needs_human": "no", "severity": "3", "confidence": "high", "note": ""}
+{"id": "bf76b78ec38", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "seen refs only similar (transposed digits)"}
+{"id": "be14b69afc9", "row_action": "pack_qty_issue", "needs_human": "yes", "severity": "2", "confidence": "high", "note": "4000 below moq 8000"}
+{"id": "b85ffa509cc", "row_action": "pack_qty_issue", "needs_human": "yes", "severity": "2", "confidence": "high", "note": "1000.00 = 1000 below moq 2000"}
+{"id": "b20204000d8", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "master spq/moq ?"}
+{"id": "b1da8649777", "row_action": "pack_qty_issue", "needs_human": "yes", "severity": "2", "confidence": "high", "note": "27500 not multiple of spq 5000"}
+{"id": "ba39e9b5a9b", "row_action": "pack_qty_issue", "needs_human": "yes", "severity": "2", "confidence": "high", "note": "25000 not multiple of spq 3000"}
+{"id": "b22ab6020d1", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "ref empty"}
+{"id": "bf3ee22686f", "row_action": "pack_qty_issue", "needs_human": "yes", "severity": "2", "confidence": "high", "note": "64000 not multiple of spq 3000"}
+{"id": "b98ef7f908d", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": ""}
+{"id": "b6538c69184", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": ""}
+{"id": "b852722bbf9", "row_action": "vendor_rename", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "shares only 'Sentinella'; Group Italia vs Antifurti"}
+{"id": "bc52d705db6", "row_action": "pack_qty_issue", "needs_human": "yes", "severity": "2", "confidence": "high", "note": "25500 not multiple of spq 3000"}
+{"id": "b99b3814c28", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": ""}
+{"id": "b6e3b08c8c1", "row_action": "duplicate", "needs_human": "no", "severity": "3", "confidence": "high", "note": "'sip- 521798' matches SIP-521798 ignoring case/space"}
+{"id": "bcc226f18d3", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": ""}
+{"id": "bff28bc2121", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "master customer unknown"}
+{"id": "bea25570de6", "row_action": "duplicate", "needs_human": "no", "severity": "3", "confidence": "high", "note": ""}
+{"id": "b5a66e5f220", "row_action": "no_op", "needs_human": "no", "severity": "1", "confidence": "high", "note": "header"}
+{"id": "b2f82a2bd16", "row_action": "compliance_review", "needs_human": "yes", "severity": "4", "confidence": "high", "note": ""}
+{"id": "bd72955c5e0", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": ""}
+{"id": "b98d209f117", "row_action": "duplicate", "needs_human": "no", "severity": "3", "confidence": "high", "note": ""}
+{"id": "bda9c6c9845", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "part WMC6N4 missing hyphens; seen ref only transposed"}
+{"id": "b7d6377b16a", "row_action": "pack_qty_issue", "needs_human": "yes", "severity": "2", "confidence": "high", "note": "1500 not multiple of spq 1000 (beats clear rename A/S dropped)"}
+{"id": "b6eab999fff", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": ""}
+{"id": "b7b97dfb44e", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": ""}
+{"id": "b4afae14030", "row_action": "no_op", "needs_human": "no", "severity": "3", "confidence": "medium", "note": "part=SUBTOTAL, price empty: subtotal line, though ref looks like a real invoice ref"}
+{"id": "ba958d517d9", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": ""}
+{"id": "b000c843f5e", "row_action": "duplicate", "needs_human": "no", "severity": "3", "confidence": "high", "note": ""}
+{"id": "be26e538b35", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "qty exactly at moq, multiple of spq"}
+{"id": "b2a791b5af4", "row_action": "pack_qty_issue", "needs_human": "yes", "severity": "2", "confidence": "high", "note": "2500 not multiple of spq 650 (beats clear rename)"}
+{"id": "b9380e775b7", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": ""}
+{"id": "b518e7e511e", "row_action": "pack_qty_issue", "needs_human": "yes", "severity": "2", "confidence": "high", "note": "20000 not multiple of spq 3000"}
+{"id": "bdd6ffb6fb2", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": ""}
+{"id": "bace82f1704", "row_action": "pack_qty_issue", "needs_human": "yes", "severity": "2", "confidence": "high", "note": "10 below moq 20"}
+{"id": "b87732a471a", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": ""}
+{"id": "bc29147f4ac", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": ""}
+{"id": "bdb3760dce0", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "qty 0.15k = 150"}
+{"id": "b25da827e1b", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": ""}
+{"id": "b0ca19bf23c", "row_action": "pack_qty_issue", "needs_human": "yes", "severity": "2", "confidence": "high", "note": "5000 below moq 10000"}
+{"id": "bb2fd74917a", "row_action": "no_op", "needs_human": "no", "severity": "1", "confidence": "high", "note": "header"}
+{"id": "bbe32a455d5", "row_action": "pack_qty_issue", "needs_human": "yes", "severity": "2", "confidence": "high", "note": "20000 not multiple of spq 3000"}
+{"id": "bbef62eca01", "row_action": "pack_qty_issue", "needs_human": "yes", "severity": "2", "confidence": "high", "note": "75 not multiple of spq 10"}
+{"id": "b4656fe7e3d", "row_action": "pack_qty_issue", "needs_human": "yes", "severity": "2", "confidence": "high", "note": "250 below moq 500"}
+{"id": "bc147ebd310", "row_action": "duplicate", "needs_human": "no", "severity": "3", "confidence": "high", "note": "'VH. 1441.223' matches VH.1441.223 ignoring extra space"}
+{"id": "bb76a2afef6", "row_action": "duplicate", "needs_human": "no", "severity": "3", "confidence": "high", "note": ""}
+{"id": "b4b31abe3bb", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "qty exactly at moq"}
+{"id": "be8fafcc708", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "unit_price empty"}
+{"id": "b51c8286cd9", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "qty exactly at moq"}
+{"id": "b70bdf74b4d", "row_action": "compliance_review", "needs_human": "yes", "severity": "4", "confidence": "high", "note": ""}
+{"id": "b0f93ccf750", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "unit_price empty"}
+{"id": "b1897274de4", "row_action": "pack_qty_issue", "needs_human": "yes", "severity": "2", "confidence": "high", "note": "600 not multiple of spq 500"}
+{"id": "bb45f03c6be", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": ""}
+{"id": "b4399332b0f", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "master lookup failed"}
+{"id": "ba58ee8b8c8", "row_action": "compliance_review", "needs_human": "yes", "severity": "4", "confidence": "high", "note": ""}
+{"id": "be3a8dfc8e8", "row_action": "compliance_review", "needs_human": "yes", "severity": "4", "confidence": "high", "note": ""}
+{"id": "b791c8f97e4", "row_action": "pack_qty_issue", "needs_human": "yes", "severity": "2", "confidence": "high", "note": "6007 not multiple of spq 3000"}
+{"id": "ba9624075c8", "row_action": "pack_qty_issue", "needs_human": "yes", "severity": "2", "confidence": "high", "note": "500 below moq 1000"}
+{"id": "b9500df1280", "row_action": "pack_qty_issue", "needs_human": "yes", "severity": "2", "confidence": "high", "note": "500 below moq 1000 (beats clear rename W.L.L. dropped)"}
+{"id": "bd53a41d652", "row_action": "duplicate", "needs_human": "no", "severity": "3", "confidence": "high", "note": "case-insensitive ref match"}
+{"id": "bcdd2634b2a", "row_action": "pack_qty_issue", "needs_human": "yes", "severity": "2", "confidence": "high", "note": "21000 not multiple of spq 2500"}
+{"id": "ba75076e16a", "row_action": "pack_qty_issue", "needs_human": "yes", "severity": "2", "confidence": "high", "note": "6000 not multiple of spq 4000 (beats clear rename AB dropped)"}
+{"id": "bb44b497cb5", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "master customer unknown"}
+{"id": "b060f286231", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "master customer unknown"}
+{"id": "b62d7d996d1", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "qty 10.000 = 10000 (thousands separator)"}
+{"id": "bcbc99df4a0", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "qty exactly at moq"}
+{"id": "b7f0e245caa", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "qty 4,24,500 Indian grouping = 424500"}
+{"id": "bbf0e6c5274", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "qty 0.5k = 500; seen ref only transposed"}
+{"id": "bbb037f8344", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": ""}
+{"id": "b1ad85d234e", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": ""}
+{"id": "b887c74dd72", "row_action": "no_op", "needs_human": "no", "severity": "1", "confidence": "high", "note": "header"}
+{"id": "bb5ebc0b1d6", "row_action": "pack_qty_issue", "needs_human": "yes", "severity": "2", "confidence": "high", "note": "34000 not multiple of spq 4000"}
+{"id": "bcbbe82e8ab", "row_action": "pack_qty_issue", "needs_human": "yes", "severity": "2", "confidence": "high", "note": "1250 not multiple of spq 500"}
+{"id": "b295519a6ec", "row_action": "pack_qty_issue", "needs_human": "yes", "severity": "2", "confidence": "high", "note": "500 below moq 1000 (beats clear rename)"}
+{"id": "b11fe1e3767", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "qty 0.6k = 600"}
+{"id": "be41f330788", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": ""}
+{"id": "bc4a2357178", "row_action": "no_op", "needs_human": "no", "severity": "3", "confidence": "high", "note": "part=SUBTOTAL, ref empty: subtotal"}
+{"id": "b223f8c1952", "row_action": "compliance_review", "needs_human": "yes", "severity": "4", "confidence": "high", "note": ""}
+{"id": "b80bed134e9", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": ""}
+{"id": "b52928e2b6f", "row_action": "compliance_review", "needs_human": "yes", "severity": "4", "confidence": "high", "note": ""}
+{"id": "b5225dcbf33", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": ""}
+{"id": "bc395cfc711", "row_action": "pack_qty_issue", "needs_human": "yes", "severity": "2", "confidence": "high", "note": "3250 not multiple of spq 500 (beats clear rename Tech/Technologies)"}
+{"id": "b3e7c014687", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "period H1/2026 is not a month"}
+{"id": "b84d453d54f", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "qty 42,25 fractional"}
+{"id": "badb4f31eda", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "qty 1,25 fractional"}
+{"id": "b7355d3bb0c", "row_action": "duplicate", "needs_human": "no", "severity": "3", "confidence": "high", "note": "'MAK/ INV/64/4083' matches ignoring extra space"}
+{"id": "b364e1d25ba", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "seen refs only similar"}
+{"id": "bf32eec4fb5", "row_action": "compliance_review", "needs_human": "yes", "severity": "4", "confidence": "high", "note": ""}
+{"id": "bbfb4a3d8d9", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "qty 12,5k = 12500"}
+{"id": "b62f43d5756", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "seen ref only transposed"}
+{"id": "b49db79a64a", "row_action": "compliance_review", "needs_human": "yes", "severity": "4", "confidence": "high", "note": ""}
+{"id": "b82dd4ae549", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": ""}
+{"id": "bf5f87f91c3", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "qty 8k = 8000 at moq"}
+{"id": "b57929c9b36", "row_action": "pack_qty_issue", "needs_human": "yes", "severity": "2", "confidence": "high", "note": "22500 not multiple of spq 5000"}
+{"id": "ba7d3c627bb", "row_action": "pack_qty_issue", "needs_human": "yes", "severity": "2", "confidence": "high", "note": "10 below moq 20"}
+{"id": "b814c9e9ac3", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": ""}
+{"id": "b75435ee85e", "row_action": "pack_qty_issue", "needs_human": "yes", "severity": "2", "confidence": "high", "note": "750 breaks spq 500 and moq 1000"}
+{"id": "bb13ff8eef4", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "qty 0.2k = 200"}
+{"id": "b0bf5acd6d7", "row_action": "compliance_review", "needs_human": "yes", "severity": "4", "confidence": "high", "note": ""}
+{"id": "b91198d5f91", "row_action": "compliance_review", "needs_human": "yes", "severity": "4", "confidence": "high", "note": ""}
+{"id": "b7a866302d7", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "qty 2.75 fractional"}
+{"id": "bbd8a3d13f9", "row_action": "compliance_review", "needs_human": "yes", "severity": "4", "confidence": "high", "note": ""}
+{"id": "ba6f065afca", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "unit_price empty"}
+{"id": "bcab85e3a84", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "legal suffix 'EPP' dropped (Ltda vs Ltda. EPP)"}
+{"id": "b0d2aa7f0f2", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "qty 41.000 = 41000"}
+{"id": "ba78cdcdc44", "row_action": "pack_qty_issue", "needs_human": "yes", "severity": "2", "confidence": "high", "note": "66002 not multiple of spq 3000"}
+{"id": "b66cf71fc6e", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "Pvt Ltd -> Private Limited"}
+{"id": "b582f65b1da", "row_action": "no_op", "needs_human": "no", "severity": "1", "confidence": "high", "note": "header"}
+{"id": "baa36a87d34", "row_action": "pack_qty_issue", "needs_human": "yes", "severity": "2", "confidence": "high", "note": "65 not multiple of spq 10"}
+{"id": "b8db1592c44", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": ""}
+{"id": "b268da36485", "row_action": "no_op", "needs_human": "no", "severity": "1", "confidence": "high", "note": "header"}
+{"id": "b64fb8c0fda", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": ""}
+{"id": "b2d1fc00224", "row_action": "duplicate", "needs_human": "no", "severity": "3", "confidence": "high", "note": ""}
+{"id": "bcc9a900ce4", "row_action": "pack_qty_issue", "needs_human": "yes", "severity": "2", "confidence": "high", "note": "520 not multiple of spq 100"}
+{"id": "b6c8792b163", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "qty ' 198000.00 ' = 198000"}
+{"id": "b9ea8985ef6", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "country 'no' = NO lower case; qty 8.000 = 8000"}
+{"id": "bd54fd5e111", "row_action": "pack_qty_issue", "needs_human": "yes", "severity": "2", "confidence": "high", "note": "5000 below moq 10000"}
+{"id": "b8640894531", "row_action": "vendor_rename", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "completely different name, only legal form shared"}
+{"id": "b7e848fe9b8", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "period YTD 2026 is not a month"}
+{"id": "b736ca85ea3", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": ""}
+{"id": "b0f361f398d", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "qty ' 197500.00 ' = 197500"}
+{"id": "bd1ba815cd8", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": ""}
+{"id": "b2f5165aa48", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": ""}
+{"id": "b6ee80317c0", "row_action": "pack_qty_issue", "needs_human": "yes", "severity": "2", "confidence": "high", "note": "250 below moq 500"}
+{"id": "b8831396bae", "row_action": "pack_qty_issue", "needs_human": "yes", "severity": "2", "confidence": "high", "note": "250 below moq 500"}
+{"id": "b0b62bd5027", "row_action": "no_op", "needs_human": "no", "severity": "3", "confidence": "medium", "note": "part=SUBTOTAL, price empty: subtotal line, though ref looks like a real invoice ref"}
+{"id": "b1c12c1fe67", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "qty exactly at moq"}
+{"id": "b37e341d06c", "row_action": "vendor_rename", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "shares only 'Kothari'; Home Appliances vs Fan Works"}
+{"id": "b500a16bc9c", "row_action": "pack_qty_issue", "needs_human": "yes", "severity": "2", "confidence": "high", "note": "500 below moq 1000"}
+{"id": "b1ba9fbd42d", "row_action": "duplicate", "needs_human": "no", "severity": "3", "confidence": "high", "note": ""}

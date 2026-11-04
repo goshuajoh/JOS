@@ -21,6 +21,7 @@ s1gate blind-merge --schema "$S" --data data/synth/teacher/raw/*.jsonl \
     --extra-keys $(echo $keys | cut -d' ' -f2-) --domain pos \
     --out data/synth/teacher.verified.jsonl --rejected-out data/synth/teacher.rejected.jsonl \
     --stats-out data/synth/teacher/blind/merge_stats.json
+python -I scripts/tag_authoring.py data/synth/teacher.verified.jsonl data/synth/teacher.rejected.jsonl
 
 # --- procedural rows (labels by construction; seeded)
 s1gate procgen --pools data/pools/train/companies.json --out data/synth/procedural.jsonl \
