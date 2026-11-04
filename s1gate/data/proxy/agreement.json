@@ -1,0 +1,81 @@
+{
+ "rows": 400,
+ "unanimous": 398,
+ "disputed": 2,
+ "missing_a": 0,
+ "missing_b": 0,
+ "a_vs_b": {
+  "row_action": {
+   "n": 400,
+   "agreement": 0.995,
+   "kappa": 0.9939,
+   "top_disagreements": [
+    "pack_qty_issue->normalize x1",
+    "pack_qty_issue->vendor_rename x1"
+   ]
+  },
+  "needs_human": {
+   "n": 400,
+   "agreement": 0.995,
+   "kappa": 0.9868,
+   "top_disagreements": [
+    "yes->no x2"
+   ]
+  },
+  "severity": {
+   "n": 400,
+   "agreement": 0.9975,
+   "kappa": 0.9967,
+   "top_disagreements": [
+    "2->1 x1"
+   ]
+  }
+ },
+ "author_vs_a": {
+  "row_action": {
+   "n": 400,
+   "agreement": 1.0,
+   "kappa": 1.0,
+   "top_disagreements": []
+  },
+  "needs_human": {
+   "n": 400,
+   "agreement": 1.0,
+   "kappa": 1.0,
+   "top_disagreements": []
+  },
+  "severity": {
+   "n": 400,
+   "agreement": 1.0,
+   "kappa": 1.0,
+   "top_disagreements": []
+  }
+ },
+ "author_vs_b": {
+  "row_action": {
+   "n": 400,
+   "agreement": 0.995,
+   "kappa": 0.9939,
+   "top_disagreements": [
+    "pack_qty_issue->normalize x1",
+    "pack_qty_issue->vendor_rename x1"
+   ]
+  },
+  "needs_human": {
+   "n": 400,
+   "agreement": 0.995,
+   "kappa": 0.9868,
+   "top_disagreements": [
+    "yes->no x2"
+   ]
+  },
+  "severity": {
+   "n": 400,
+   "agreement": 0.9975,
+   "kappa": 0.9967,
+   "top_disagreements": [
+    "2->1 x1"
+   ]
+  }
+ }
+}

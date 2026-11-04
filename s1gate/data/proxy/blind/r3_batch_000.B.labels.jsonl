@@ -1,0 +1,40 @@
+{"id": "b9f51103d2d", "row_action": "vendor_rename", "needs_human": "yes", "severity": "3", "confidence": "medium", "note": "shares only Haoxiang with master; HK entity"}
+{"id": "bee89f516b4", "row_action": "pack_qty_issue", "needs_human": "yes", "severity": "2", "confidence": "high", "note": "2000 not multiple of 650"}
+{"id": "b9efe2e2858", "row_action": "no_op", "needs_human": "no", "severity": "4", "confidence": "high", "note": "grand total"}
+{"id": "b521695527c", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": ""}
+{"id": "bf2b024a6a7", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": ""}
+{"id": "b843cd732a8", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "master lookup failed"}
+{"id": "be4c28086eb", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": ""}
+{"id": "bfe737d0f6e", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "word order/reordered location"}
+{"id": "b36111f4638", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": ""}
+{"id": "bf4a0a5a7c9", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "Co.,Ltd. spacing only"}
+{"id": "b86a2c7f3aa", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": ""}
+{"id": "b0c01d90c6a", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "Ltd -> Limited"}
+{"id": "bcec5603b7c", "row_action": "vendor_rename", "needs_human": "yes", "severity": "3", "confidence": "medium", "note": "branch of master customer"}
+{"id": "be0e7e4b9c3", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "hyphen only"}
+{"id": "b447e81c4bb", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": ""}
+{"id": "bc5ab507c52", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "Ltd -> Limited"}
+{"id": "bb33ff388c9", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": ""}
+{"id": "b9db95ff16c", "row_action": "compliance_review", "needs_human": "yes", "severity": "4", "confidence": "high", "note": "restricted"}
+{"id": "b244958efea", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": ""}
+{"id": "b210df52d94", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "reordered name"}
+{"id": "b944ea80af9", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "Co.,Ltd. spacing"}
+{"id": "b3a1ec5de7e", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": ""}
+{"id": "b3b3b826782", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": ""}
+{"id": "b2e564684d3", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": ""}
+{"id": "b862bb8f107", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "2600=4x650"}
+{"id": "b7b1cd2ea1e", "row_action": "no_op", "needs_human": "no", "severity": "1", "confidence": "high", "note": "note line"}
+{"id": "b9fee66cb54", "row_action": "duplicate", "needs_human": "no", "severity": "3", "confidence": "high", "note": "ref in seen_refs"}
+{"id": "b31d1326ee6", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": ""}
+{"id": "bec54b5f92f", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "negative qty"}
+{"id": "b9a6450b571", "row_action": "pack_qty_issue", "needs_human": "yes", "severity": "2", "confidence": "high", "note": "4200 not multiple of 500 (beats rename)"}
+{"id": "b3ab6a308a6", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "price zero"}
+{"id": "bca17281867", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "hyphen only"}
+{"id": "ba85f88f46b", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": ""}
+{"id": "bde26d5395b", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": ""}
+{"id": "bb5f81cd8c3", "row_action": "pack_qty_issue", "needs_human": "yes", "severity": "2", "confidence": "high", "note": "5000 below MOQ 10000"}
+{"id": "b191da7d7fa", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": ""}
+{"id": "bec0d0ed9bb", "row_action": "compliance_review", "needs_human": "yes", "severity": "4", "confidence": "high", "note": "restricted"}
+{"id": "bfe1473d875", "row_action": "duplicate", "needs_human": "no", "severity": "3", "confidence": "high", "note": "ref in seen_refs"}
+{"id": "b02f5976f68", "row_action": "pack_qty_issue", "needs_human": "yes", "severity": "2", "confidence": "high", "note": "12500 not multiple of 5000"}
+{"id": "b8fb0a554fc", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": ""}

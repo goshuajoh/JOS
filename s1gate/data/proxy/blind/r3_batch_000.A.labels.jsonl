@@ -1,0 +1,40 @@
+{"id": "b9f51103d2d", "row_action": "vendor_rename", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "HK entity vs Ningbo master; shares only 'Haoxiang' -> subsidiary, uncertain"}
+{"id": "bee89f516b4", "row_action": "pack_qty_issue", "needs_human": "yes", "severity": "2", "confidence": "high", "note": "2000 % 650 = 50, breaks SPQ"}
+{"id": "b9efe2e2858", "row_action": "no_op", "needs_human": "no", "severity": "4", "confidence": "high", "note": "grand total line"}
+{"id": "b521695527c", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean; ref 418858 != seen 418585"}
+{"id": "bf2b024a6a7", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean; ref 418712 != seen 418172"}
+{"id": "b843cd732a8", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "master customer=unknown (lookup failed)"}
+{"id": "be4c28086eb", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean; qty exactly at MOQ, multiple of SPQ"}
+{"id": "bfe737d0f6e", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "medium", "note": "'Chongqing Ruixiang' vs 'Ruixiang (Chongqing)': same words reordered, beyond formatting but obviously same entity -> clear"}
+{"id": "b36111f4638", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean"}
+{"id": "bf4a0a5a7c9", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "customer differs only in spacing ('Co.,Ltd.' vs 'Co., Ltd.')"}
+{"id": "b86a2c7f3aa", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean"}
+{"id": "b0c01d90c6a", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "legal suffix Ltd -> Limited, clear"}
+{"id": "bcec5603b7c", "row_action": "vendor_rename", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "reported name is a Suzhou Branch of master customer -> uncertain"}
+{"id": "be0e7e4b9c3", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "customer differs only in punctuation ('Pao Shan' vs 'Pao-Shan')"}
+{"id": "b447e81c4bb", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean"}
+{"id": "bc5ab507c52", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "legal suffix Ltd -> Limited, clear"}
+{"id": "bb33ff388c9", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean"}
+{"id": "b9db95ff16c", "row_action": "compliance_review", "needs_human": "yes", "severity": "4", "confidence": "high", "note": "master restricted=yes"}
+{"id": "b244958efea", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean"}
+{"id": "b210df52d94", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "medium", "note": "'Chongqing Ruixiang' vs 'Ruixiang (Chongqing)': same words reordered, beyond formatting but obviously same entity -> clear"}
+{"id": "b944ea80af9", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "customer differs only in spacing ('Co.,Ltd.' vs 'Co., Ltd.')"}
+{"id": "b3a1ec5de7e", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean"}
+{"id": "b3b3b826782", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean"}
+{"id": "b2e564684d3", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean"}
+{"id": "b862bb8f107", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean; 2600 = 4 x SPQ 650, >= MOQ 1300"}
+{"id": "b7b1cd2ea1e", "row_action": "no_op", "needs_human": "no", "severity": "1", "confidence": "high", "note": "note line '*** Export sales - USD ***', no qty or ref"}
+{"id": "b9fee66cb54", "row_action": "duplicate", "needs_human": "no", "severity": "3", "confidence": "high", "note": "ref PX/SH/418657 already in seen_refs"}
+{"id": "b31d1326ee6", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean; dev kit, SPQ=MOQ=1"}
+{"id": "bec54b5f92f", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "negative qty -2500 (return/credit)"}
+{"id": "b9a6450b571", "row_action": "pack_qty_issue", "needs_human": "yes", "severity": "2", "confidence": "high", "note": "4200 % 500 = 200 breaks SPQ; beats the clear reorder rename (also sev 2)"}
+{"id": "b3ab6a308a6", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "unit_price 0.0000 CNY is zero (impossible)"}
+{"id": "bca17281867", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "customer differs only in punctuation ('Pao Shan' vs 'Pao-Shan')"}
+{"id": "ba85f88f46b", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean"}
+{"id": "bde26d5395b", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean"}
+{"id": "bb5f81cd8c3", "row_action": "pack_qty_issue", "needs_human": "yes", "severity": "2", "confidence": "high", "note": "qty 5000 below MOQ 10000"}
+{"id": "b191da7d7fa", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean"}
+{"id": "bec0d0ed9bb", "row_action": "compliance_review", "needs_human": "yes", "severity": "4", "confidence": "high", "note": "master restricted=yes"}
+{"id": "bfe1473d875", "row_action": "duplicate", "needs_human": "no", "severity": "3", "confidence": "high", "note": "ref PX/SH/418663 already in seen_refs"}
+{"id": "b02f5976f68", "row_action": "pack_qty_issue", "needs_human": "yes", "severity": "2", "confidence": "high", "note": "12500 % 5000 = 2500 breaks SPQ"}
+{"id": "b8fb0a554fc", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean"}
