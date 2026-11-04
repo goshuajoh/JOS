@@ -1,0 +1,125 @@
+{"id": "b2adba2791d", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "customer differs from master only by accent (l vs ł); part missing hyphens"}
+{"id": "b6617ae9062", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "medium", "note": "only the distributor name has a double space, which the guide says not to flag; refs in seen_refs are similar, not matches"}
+{"id": "b47e0c237f4", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "period 2026/08, trailing space in qty, L.L.C. vs LLC punctuation only"}
+{"id": "b0893d27e2a", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "INSTR. is an abbreviation of Instruments: clear rename"}
+{"id": "bde59f6c3d8", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "period October 2025; Hai Yang vs Hai-Yang punctuation only"}
+{"id": "b70c37275f8", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean; seen ref differs by one digit"}
+{"id": "bfb81304d5b", "row_action": "compliance_review", "needs_human": "yes", "severity": "4", "confidence": "high", "note": "master restricted=yes"}
+{"id": "b6f1a5764ab", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "part with spaces; qty 36.000 = 36000 passes SPQ 3000/MOQ 6000"}
+{"id": "beb0d4e2578", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "period 31.03.2026; part lower case"}
+{"id": "b1c4d87da5c", "row_action": "duplicate", "needs_human": "no", "severity": "3", "confidence": "high", "note": "ref ORD-32649-07 in seen_refs"}
+{"id": "bac192c0392", "row_action": "duplicate", "needs_human": "no", "severity": "3", "confidence": "high", "note": "ref TI/AQ/63407 in seen_refs"}
+{"id": "bcdff908256", "row_action": "compliance_review", "needs_human": "yes", "severity": "4", "confidence": "high", "note": "master restricted=yes"}
+{"id": "b2c0e00abcc", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean; 3250 = 5 x 650; seen ref differs by one digit"}
+{"id": "bea09446cef", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "period February 2026; Lu Kang vs Lu-Kang punctuation only; part missing hyphens"}
+{"id": "bcfe0d95f32", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "Ltd. vs Ltd punctuation only; part WCC6QFN40 missing hyphens"}
+{"id": "bc89999f1db", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "period Sep-26; part lower case"}
+{"id": "b94d19ad4d3", "row_action": "duplicate", "needs_human": "no", "severity": "3", "confidence": "high", "note": "ref TRD-418203 in seen_refs"}
+{"id": "b1dde318e17", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "medium", "note": "only the distributor name has a double space, which the guide says not to flag; seen refs are similar, not matches"}
+{"id": "bbee59a883d", "row_action": "duplicate", "needs_human": "no", "severity": "3", "confidence": "high", "note": "ref SMT/26-27/03271 in seen_refs"}
+{"id": "b4c1a086931", "row_action": "compliance_review", "needs_human": "yes", "severity": "4", "confidence": "high", "note": "master restricted=yes"}
+{"id": "b5a284877f6", "row_action": "duplicate", "needs_human": "no", "severity": "3", "confidence": "high", "note": "ref IEV-FE-72115 in seen_refs"}
+{"id": "b87ddea436d", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "period 2026/09/30; leading space in country; Mile41 vs Mile 41 spacing only"}
+{"id": "b3ef391465d", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean; 2750 = 11 x 250; seen refs only similar"}
+{"id": "bc86a928f77", "row_action": "duplicate", "needs_human": "no", "severity": "3", "confidence": "high", "note": "ref FAK-62417 in seen_refs"}
+{"id": "b94263a9fdd", "row_action": "duplicate", "needs_human": "no", "severity": "3", "confidence": "high", "note": "ref DCD5092-01 in seen_refs"}
+{"id": "ba27d1900aa", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "customer differs from master only by accents"}
+{"id": "b0a1c4cf24e", "row_action": "compliance_review", "needs_human": "yes", "severity": "4", "confidence": "high", "note": "master restricted=yes"}
+{"id": "b5fff21e57c", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "period 2026/01; curly vs straight apostrophe in customer; leading space in ref"}
+{"id": "b86bdca62bc", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean; seen ref differs by one digit"}
+{"id": "bbb36bdeb1b", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "customer differs from master only by case"}
+{"id": "bd3c839011f", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "Pte. Ltd. vs Pte Ltd punctuation only"}
+{"id": "b18495b899c", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "period Oct-25; part mixed case"}
+{"id": "bcfc1ecf5ce", "row_action": "duplicate", "needs_human": "no", "severity": "3", "confidence": "high", "note": "ref CEB-QC-38152 in seen_refs"}
+{"id": "b729ae321a2", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "customer differs from master only by accents; part missing hyphens"}
+{"id": "b554c5b515a", "row_action": "duplicate", "needs_human": "no", "severity": "3", "confidence": "high", "note": "ref SRS/MTY/41736 in seen_refs"}
+{"id": "bba767548e6", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "SpA vs S.p.A. punctuation only"}
+{"id": "ba233d3a7e9", "row_action": "compliance_review", "needs_human": "yes", "severity": "4", "confidence": "high", "note": "master restricted=yes"}
+{"id": "b98190da986", "row_action": "compliance_review", "needs_human": "yes", "severity": "4", "confidence": "high", "note": "master restricted=yes"}
+{"id": "bc3c0e0a9a1", "row_action": "duplicate", "needs_human": "no", "severity": "3", "confidence": "high", "note": "ref F002-00087316 in seen_refs"}
+{"id": "b179e52da56", "row_action": "compliance_review", "needs_human": "yes", "severity": "4", "confidence": "high", "note": "master restricted=yes"}
+{"id": "bbb4a1618ad", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "period March 2026; customer differs only by case; part missing hyphens"}
+{"id": "b24bf927575", "row_action": "compliance_review", "needs_human": "yes", "severity": "4", "confidence": "high", "note": "master restricted=yes"}
+{"id": "b2eea013e34", "row_action": "compliance_review", "needs_human": "yes", "severity": "4", "confidence": "high", "note": "master restricted=yes"}
+{"id": "bf30fad9639", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "period Jun-26; Bac vs Bắc accents only; price currency first"}
+{"id": "b4e967825dc", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "period 2026/07; customer differs only by accents and double space; trailing space in price"}
+{"id": "bd78c6af9d9", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "period JUN-26; part lower case"}
+{"id": "be7eb2f37d2", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "customer differs from master only by case; seen refs only similar"}
+{"id": "b9b1830e77d", "row_action": "duplicate", "needs_human": "no", "severity": "3", "confidence": "high", "note": "ref AST/GGN/26/0417 in seen_refs"}
+{"id": "b52c3a35c5e", "row_action": "compliance_review", "needs_human": "yes", "severity": "4", "confidence": "high", "note": "master restricted=yes"}
+{"id": "bd9556dcde2", "row_action": "duplicate", "needs_human": "no", "severity": "3", "confidence": "high", "note": "ref 73015-HKT in seen_refs"}
+{"id": "baa3049c377", "row_action": "compliance_review", "needs_human": "yes", "severity": "4", "confidence": "high", "note": "master restricted=yes"}
+{"id": "bbf6864d65a", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "Mak. is an abbreviation of Makine: clear rename (beats period/part format)"}
+{"id": "b9c8c6173eb", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "Co.,Ltd. vs Co., Ltd. spacing only"}
+{"id": "ba78e48b9d8", "row_action": "compliance_review", "needs_human": "yes", "severity": "4", "confidence": "high", "note": "master restricted=yes"}
+{"id": "b1a391e6187", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "part lower case; qty 96,000 = 96000 passes SPQ 3000"}
+{"id": "b48d24603f8", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "part lower case with spaces; qty 40.000 = 40000 passes SPQ 5000/MOQ 10000"}
+{"id": "bc284dfe35b", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "period 01/2026; part missing hyphens"}
+{"id": "ba386abbbde", "row_action": "compliance_review", "needs_human": "yes", "severity": "4", "confidence": "high", "note": "master restricted=yes"}
+{"id": "b54fdbe2263", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "period jul-26; part lower case; qty exactly at MOQ"}
+{"id": "b89a0821c00", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "medium", "note": "only the distributor name has a double space, which the guide says not to flag; seen ref differs by one digit"}
+{"id": "b0dd6350e67", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "medium", "note": "only the distributor name has a leading space, which the guide says not to flag; seen refs only similar"}
+{"id": "b3f4085edb7", "row_action": "duplicate", "needs_human": "no", "severity": "3", "confidence": "high", "note": "ref VH.6381.214 in seen_refs"}
+{"id": "bac597ee139", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean; 1750 = 7 x 250; seen ref differs by one digit"}
+{"id": "b5072c3f1f2", "row_action": "compliance_review", "needs_human": "yes", "severity": "4", "confidence": "high", "note": "master restricted=yes"}
+{"id": "bd46299b96b", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "country Thailand full name; part mixed case; qty 3.9k = 3900 = 6 x 650"}
+{"id": "baf8ddd645e", "row_action": "duplicate", "needs_human": "no", "severity": "3", "confidence": "high", "note": "ref IEV-FE-71655 in seen_refs"}
+{"id": "b4ebe2c715d", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "period 2026/04; customer differs only by case; leading space in qty"}
+{"id": "b68745bb65e", "row_action": "duplicate", "needs_human": "no", "severity": "3", "confidence": "high", "note": "ref VKE/INV/2026/0975 in seen_refs"}
+{"id": "bc361d4f793", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "period Feb-26; Khoi vs Khôi accent only; price currency first"}
+{"id": "bebd5942dcb", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "ACUIC. is an abbreviation of Acuicultura: clear rename (beats country full name)"}
+{"id": "b41cd4ff3c2", "row_action": "duplicate", "needs_human": "no", "severity": "3", "confidence": "high", "note": "ref 71542-HKT in seen_refs"}
+{"id": "bba47b023f6", "row_action": "compliance_review", "needs_human": "yes", "severity": "4", "confidence": "high", "note": "master restricted=yes"}
+{"id": "b9aae240bd1", "row_action": "compliance_review", "needs_human": "yes", "severity": "4", "confidence": "high", "note": "master restricted=yes"}
+{"id": "b7a1cbab3c3", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "A.D. vs AD punctuation only; part missing hyphens"}
+{"id": "b2db30b760d", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "part with space and missing hyphens; qty 62,500 = 62500 passes SPQ 2500"}
+{"id": "b1257708481", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "period September 2026; Sheung-Shui vs Sheung Shui punctuation only; part missing hyphens"}
+{"id": "bd61db91a94", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "country lower case; part missing hyphens; qty 4.5 k = 4500 passes SPQ 500"}
+{"id": "b0ab017dec1", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "N.V. vs NV punctuation only; 1950 = 3 x 650 >= MOQ 1300"}
+{"id": "b68b488e433", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "part lower case; qty 48,000 = 48000 passes SPQ 4000"}
+{"id": "b18ece48130", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "country lower case; part missing hyphen; qty 8K = 8000 passes SPQ 4000"}
+{"id": "bd5622ba3ef", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean; restricted=no; seen_refs none"}
+{"id": "b91e58a5499", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean; seen refs only similar (transposed / one digit)"}
+{"id": "b5fd02d9d48", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean; 56000 = 14 x 4000"}
+{"id": "b160a602e64", "row_action": "compliance_review", "needs_human": "yes", "severity": "4", "confidence": "high", "note": "master restricted=yes"}
+{"id": "b017bb368d5", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "Otom. is an abbreviation of Otomasyon: clear rename"}
+{"id": "bb6ad649870", "row_action": "duplicate", "needs_human": "no", "severity": "3", "confidence": "high", "note": "ref FT-27063/EU in seen_refs"}
+{"id": "b45d0b710d8", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "MED. is an abbreviation of Medición: clear rename (beats country full name)"}
+{"id": "b2875ae334b", "row_action": "duplicate", "needs_human": "no", "severity": "3", "confidence": "high", "note": "ref IEV-FE-70486 in seen_refs"}
+{"id": "b62bcee7de5", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean; 45000 = 9 x 5000 >= MOQ 10000"}
+{"id": "b4c99144ae3", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "part mixed case; qty 30,000 = 30000 passes SPQ 2500"}
+{"id": "b74d7c498c1", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "part USBC missing hyphen; qty 22 500 = 22500 passes SPQ 2500"}
+{"id": "bd9a2b19285", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "period 2026-7; qty 1,05,000 = 105000 passes SPQ 3000; (Group) parentheses only"}
+{"id": "b3bbc7d565c", "row_action": "duplicate", "needs_human": "no", "severity": "3", "confidence": "high", "note": "ref CMC/BC/316420 in seen_refs"}
+{"id": "bff431a0ecd", "row_action": "duplicate", "needs_human": "no", "severity": "3", "confidence": "high", "note": "ref TB-HD-2093817 in seen_refs"}
+{"id": "ba0d7253d0f", "row_action": "duplicate", "needs_human": "no", "severity": "3", "confidence": "high", "note": "ref DEQ-A205962 in seen_refs"}
+{"id": "b5d92b3698b", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "period June 2026; (Holdings) parentheses only; part missing hyphens"}
+{"id": "bee9117a29f", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "Elek. is an abbreviation of Elektrikli: clear rename (beats period/part format)"}
+{"id": "b65aabf3cfc", "row_action": "duplicate", "needs_human": "no", "severity": "3", "confidence": "high", "note": "ref DEQ-A204715 in seen_refs"}
+{"id": "b378e477dfb", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "Ltda vs Ltda. punctuation only; country Brasil full name"}
+{"id": "b5e6ae5d644", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "period Apr-26; Co. Inc. vs Co., Inc. punctuation only; price currency first"}
+{"id": "b10f3ea49af", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "country Viet Nam full name; part lower case without hyphens; qty 3k = 3000 passes SPQ 500"}
+{"id": "b4f16e0b1cb", "row_action": "compliance_review", "needs_human": "yes", "severity": "4", "confidence": "high", "note": "master restricted=yes"}
+{"id": "bb0016f91b8", "row_action": "duplicate", "needs_human": "no", "severity": "3", "confidence": "high", "note": "ref EK-207734-EG in seen_refs"}
+{"id": "b83e47d41a5", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "Lazerines vs Lazerinės accent only; part missing hyphens"}
+{"id": "bdfb267f53d", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "period 2026-3; E-bike vs E-Bike case only; qty 1,10,000 = 110000 passes SPQ 5000"}
+{"id": "b67ee2fd141", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "period December 2025; Co Ltd vs Co., Ltd. punctuation only; part missing hyphens"}
+{"id": "b965ff048b5", "row_action": "compliance_review", "needs_human": "yes", "severity": "4", "confidence": "high", "note": "master restricted=yes"}
+{"id": "b89a38c3a78", "row_action": "duplicate", "needs_human": "no", "severity": "3", "confidence": "high", "note": "ref HCD-INV-305718 in seen_refs"}
+{"id": "b50e833cceb", "row_action": "duplicate", "needs_human": "no", "severity": "3", "confidence": "high", "note": "ref ORD-33318-02 in seen_refs"}
+{"id": "b08b5180606", "row_action": "compliance_review", "needs_human": "yes", "severity": "4", "confidence": "high", "note": "master restricted=yes"}
+{"id": "b25ba027a1b", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "period 2026/05/31; Corp vs Corp. punctuation only; leading space in price"}
+{"id": "b93c6fcd5b5", "row_action": "duplicate", "needs_human": "no", "severity": "3", "confidence": "high", "note": "ref DEQ-A206480 in seen_refs"}
+{"id": "bda6bf17d42", "row_action": "duplicate", "needs_human": "no", "severity": "3", "confidence": "high", "note": "ref PGC-418207-2 in seen_refs"}
+{"id": "bee166d310a", "row_action": "compliance_review", "needs_human": "yes", "severity": "4", "confidence": "high", "note": "master restricted=yes"}
+{"id": "bc0190449ce", "row_action": "duplicate", "needs_human": "no", "severity": "3", "confidence": "high", "note": "ref MAK/INV/06/4417 in seen_refs"}
+{"id": "b5240dd5d4e", "row_action": "duplicate", "needs_human": "no", "severity": "3", "confidence": "high", "note": "ref KEC-TI-208513 in seen_refs"}
+{"id": "b7b8889b015", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "period 2026-5; Co Ltd vs Co., Ltd. punctuation only; qty 1,00,000 = 100000 passes SPQ 4000"}
+{"id": "b4c2659da19", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "period Oct-26; Pt vs PT case only; price currency first"}
+{"id": "b02c6822c5f", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "country United States full name; part missing hyphens"}
+{"id": "b6aaf36fd57", "row_action": "duplicate", "needs_human": "no", "severity": "3", "confidence": "high", "note": "ref 69731-HKT in seen_refs"}
+{"id": "b97a6cdadd4", "row_action": "compliance_review", "needs_human": "yes", "severity": "4", "confidence": "high", "note": "master restricted=yes"}
+{"id": "bd169895af9", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean; 1950 = 3 x 650 >= MOQ 1300; F001- seen ref is a different ref"}
+{"id": "bab1f7f5aba", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "medium", "note": "seen ref FAK-62419 differs by one digit, not a match; only the distributor name has a double space, which the guide says not to flag"}
+{"id": "b481cacbf1f", "row_action": "compliance_review", "needs_human": "yes", "severity": "4", "confidence": "high", "note": "master restricted=yes"}
+{"id": "bbc884cc05c", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "country Indonesia full name; part lower case; qty 6k = 6000 passes SPQ 3000"}

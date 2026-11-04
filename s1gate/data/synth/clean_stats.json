@@ -1,0 +1,14 @@
+{
+  "in": 7323,
+  "duplicates": 11,
+  "held_out": 0,
+  "out": 7312,
+  "dup_threshold": 0.9,
+  "contam_threshold": 0.8,
+  "label_aware": true,
+  "held_out_files": [
+    "data/dev.jsonl",
+    "data/eval/eval.jsonl",
+    "data/eval/eval.sample.jsonl"
+  ]
+}

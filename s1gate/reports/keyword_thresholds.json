@@ -1,0 +1,164 @@
+{
+  "schema": "pos_row_gate",
+  "schema_fingerprint": "19f942aef48c",
+  "fitted": "2026-11-04",
+  "min_support": 20,
+  "thresholds": {
+    "row_action": {
+      "n": 201,
+      "target": 0.99,
+      "tau": 1.01,
+      "coverage": 0.0,
+      "accuracy_at_tau": null,
+      "note": "no cut-off reaches 0.99 with >= 20 rows",
+      "tradeoff": [
+        {
+          "target": 0.8,
+          "tau": 1.01,
+          "coverage": 0.0,
+          "accuracy_at_tau": null
+        },
+        {
+          "target": 0.85,
+          "tau": 1.01,
+          "coverage": 0.0,
+          "accuracy_at_tau": null
+        },
+        {
+          "target": 0.9,
+          "tau": 1.01,
+          "coverage": 0.0,
+          "accuracy_at_tau": null
+        },
+        {
+          "target": 0.95,
+          "tau": 1.01,
+          "coverage": 0.0,
+          "accuracy_at_tau": null
+        },
+        {
+          "target": 0.97,
+          "tau": 1.01,
+          "coverage": 0.0,
+          "accuracy_at_tau": null
+        },
+        {
+          "target": 0.98,
+          "tau": 1.01,
+          "coverage": 0.0,
+          "accuracy_at_tau": null
+        },
+        {
+          "target": 0.99,
+          "tau": 1.01,
+          "coverage": 0.0,
+          "accuracy_at_tau": null
+        }
+      ]
+    },
+    "needs_human": {
+      "n": 201,
+      "target": 0.98,
+      "tau": 1.01,
+      "coverage": 0.0,
+      "accuracy_at_tau": null,
+      "note": "no cut-off reaches 0.98 with >= 20 rows",
+      "tradeoff": [
+        {
+          "target": 0.8,
+          "tau": 1.01,
+          "coverage": 0.0,
+          "accuracy_at_tau": null
+        },
+        {
+          "target": 0.85,
+          "tau": 1.01,
+          "coverage": 0.0,
+          "accuracy_at_tau": null
+        },
+        {
+          "target": 0.9,
+          "tau": 1.01,
+          "coverage": 0.0,
+          "accuracy_at_tau": null
+        },
+        {
+          "target": 0.95,
+          "tau": 1.01,
+          "coverage": 0.0,
+          "accuracy_at_tau": null
+        },
+        {
+          "target": 0.97,
+          "tau": 1.01,
+          "coverage": 0.0,
+          "accuracy_at_tau": null
+        },
+        {
+          "target": 0.98,
+          "tau": 1.01,
+          "coverage": 0.0,
+          "accuracy_at_tau": null
+        },
+        {
+          "target": 0.99,
+          "tau": 1.01,
+          "coverage": 0.0,
+          "accuracy_at_tau": null
+        }
+      ]
+    },
+    "severity": {
+      "n": 201,
+      "target": 0.9,
+      "tau": 1.01,
+      "coverage": 0.0,
+      "accuracy_at_tau": null,
+      "note": "no cut-off reaches 0.9 with >= 20 rows",
+      "tradeoff": [
+        {
+          "target": 0.8,
+          "tau": 1.01,
+          "coverage": 0.0,
+          "accuracy_at_tau": null
+        },
+        {
+          "target": 0.85,
+          "tau": 1.01,
+          "coverage": 0.0,
+          "accuracy_at_tau": null
+        },
+        {
+          "target": 0.9,
+          "tau": 1.01,
+          "coverage": 0.0,
+          "accuracy_at_tau": null
+        },
+        {
+          "target": 0.95,
+          "tau": 1.01,
+          "coverage": 0.0,
+          "accuracy_at_tau": null
+        },
+        {
+          "target": 0.97,
+          "tau": 1.01,
+          "coverage": 0.0,
+          "accuracy_at_tau": null
+        },
+        {
+          "target": 0.98,
+          "tau": 1.01,
+          "coverage": 0.0,
+          "accuracy_at_tau": null
+        },
+        {
+          "target": 0.99,
+          "tau": 1.01,
+          "coverage": 0.0,
+          "accuracy_at_tau": null
+        }
+      ]
+    }
+  }
+}

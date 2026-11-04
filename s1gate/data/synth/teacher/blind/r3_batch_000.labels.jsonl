@@ -1,0 +1,125 @@
+{"id": "bcdb0f7189e", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "customer WKS abbreviates Works: clear rename"}
+{"id": "b98c3551b89", "row_action": "duplicate", "needs_human": "no", "severity": "3", "confidence": "high", "note": "ref CTD2041863 in seen_refs"}
+{"id": "ba2738d9773", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "period 06/2026, lower-case part, customer case only; qty 27000 ok"}
+{"id": "b6dd01882fa", "row_action": "compliance_review", "needs_human": "yes", "severity": "4", "confidence": "high", "note": "restricted=yes"}
+{"id": "b69be81f5a2", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "ctrls. abbreviates Controles (clear); country mx lower"}
+{"id": "be2c87d4129", "row_action": "duplicate", "needs_human": "no", "severity": "3", "confidence": "high", "note": "ref HCD-INV-310582 in seen_refs"}
+{"id": "b9cbf793625", "row_action": "duplicate", "needs_human": "no", "severity": "3", "confidence": "high", "note": "ref BDE.6120.0417 in seen_refs"}
+{"id": "be185ff5c6f", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "customer case only; country mx lower"}
+{"id": "b8e3dc12ae4", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "customer upper case only; ref only similar to seen"}
+{"id": "b49ed9e7138", "row_action": "compliance_review", "needs_human": "yes", "severity": "4", "confidence": "high", "note": "restricted=yes"}
+{"id": "b03d5b212db", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "customer case only; part missing hyphens WXHDR2X20"}
+{"id": "bf1bbd7923c", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean; seen refs only similar"}
+{"id": "bbc45a281a0", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "customer differs only by missing dots (Ltd Şti)"}
+{"id": "ba47544f48e", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean"}
+{"id": "b4dc5b027c8", "row_action": "compliance_review", "needs_human": "yes", "severity": "4", "confidence": "high", "note": "restricted=yes"}
+{"id": "b6bc924491e", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "SİST. abbreviates Sistemleri: clear rename; plus format issues"}
+{"id": "b4916ce1b66", "row_action": "compliance_review", "needs_human": "yes", "severity": "4", "confidence": "high", "note": "restricted=yes"}
+{"id": "ba41c647406", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean; seen refs only similar"}
+{"id": "bd6b6cd41d0", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "country id lower, part spaces, qty 7.5k=7500 passes"}
+{"id": "b0b0d92efa0", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean"}
+{"id": "bdf5eae7c0c", "row_action": "compliance_review", "needs_human": "yes", "severity": "4", "confidence": "high", "note": "restricted=yes"}
+{"id": "b1927fb5372", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "period May 2026; customer missing comma only; part missing hyphens"}
+{"id": "b87181c63e2", "row_action": "duplicate", "needs_human": "no", "severity": "3", "confidence": "high", "note": "ref CPD-26-30417 in seen_refs"}
+{"id": "b4172bb276c", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "country us lower; part lower case with spaces"}
+{"id": "b00e85ce1dc", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean; seen ref differs by one digit"}
+{"id": "bfea3f0b05f", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "period 31.08.2026; part mixed case"}
+{"id": "b0b72ab86d1", "row_action": "duplicate", "needs_human": "no", "severity": "3", "confidence": "high", "note": "ref SINV-2079520 in seen_refs"}
+{"id": "b910c256057", "row_action": "compliance_review", "needs_human": "yes", "severity": "4", "confidence": "high", "note": "restricted=yes"}
+{"id": "b3c14e37ccf", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "customer differs only in accents (Song Han vs Sông Hàn)"}
+{"id": "bfacc3f8a9c", "row_action": "duplicate", "needs_human": "no", "severity": "3", "confidence": "high", "note": "ref SINV-0418273 in seen_refs"}
+{"id": "b8cc5fbd439", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean; seen refs only similar"}
+{"id": "b76d85891c9", "row_action": "compliance_review", "needs_human": "yes", "severity": "4", "confidence": "high", "note": "restricted=yes"}
+{"id": "b2ad212ecee", "row_action": "compliance_review", "needs_human": "yes", "severity": "4", "confidence": "high", "note": "restricted=yes"}
+{"id": "b9e7c120758", "row_action": "compliance_review", "needs_human": "yes", "severity": "4", "confidence": "high", "note": "restricted=yes"}
+{"id": "b3aa628c8c2", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean; seen ref differs by one digit"}
+{"id": "bb57fb2dbf7", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "period 2026-1; qty 1,20,000=120000 passes; customer case only"}
+{"id": "b5767948296", "row_action": "duplicate", "needs_human": "no", "severity": "3", "confidence": "high", "note": "ref FAK-55418 in seen_refs"}
+{"id": "b3cf865660e", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "period 11/2025; part missing hyphens"}
+{"id": "b361dcc09c8", "row_action": "duplicate", "needs_human": "no", "severity": "3", "confidence": "high", "note": "ref TVC508716 in seen_refs"}
+{"id": "ba93edf9a55", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean"}
+{"id": "bd7a5e3fa16", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "period 09/2026; part missing hyphens"}
+{"id": "b9891956821", "row_action": "duplicate", "needs_human": "no", "severity": "3", "confidence": "high", "note": "ref ANM-118472-CL in seen_refs"}
+{"id": "b8464c3063e", "row_action": "duplicate", "needs_human": "no", "severity": "3", "confidence": "high", "note": "ref CEB-QC-39406 in seen_refs"}
+{"id": "ba53f2d26f0", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean; seen refs only similar"}
+{"id": "b93c321a15b", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "period July 2026; customer spacing only; part missing hyphens"}
+{"id": "be54cdbff1b", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean; seen ref differs by one digit"}
+{"id": "bd5cd2a0e92", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "medium", "note": "only oddity is a double space in the distributor's own name, which the guide exempts; seen refs only similar"}
+{"id": "b0cf2d7a14d", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "period 11/2025; customer lower case only; part mixed case"}
+{"id": "b4e9b11948f", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean"}
+{"id": "b4062eacaf1", "row_action": "compliance_review", "needs_human": "yes", "severity": "4", "confidence": "high", "note": "restricted=yes"}
+{"id": "b1cca61d7fe", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "tekn. abbreviates Teknolojileri: clear rename; plus format issues"}
+{"id": "b918c4612c7", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "period 28.02.2026; part lower case"}
+{"id": "bdf8e2d4385", "row_action": "duplicate", "needs_human": "no", "severity": "3", "confidence": "high", "note": "ref ORD-30871-03 in seen_refs"}
+{"id": "b22ccabb31a", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "customer differs only in dots (PT. / Tbk.)"}
+{"id": "b1e10fabb24", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "customer differs only in accents (Phuong vs Phương)"}
+{"id": "b3881b1d9cd", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "period Jan-26; price currency first; customer case/punctuation only"}
+{"id": "b37e079680f", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "customer case only; part missing hyphens"}
+{"id": "bb9d86ede67", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "period Apr-26; part lower case"}
+{"id": "b0729e9db44", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "period 05/2026; part missing hyphens"}
+{"id": "bf8252ea86a", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "period May-26; part mixed case"}
+{"id": "b1b93162877", "row_action": "compliance_review", "needs_human": "yes", "severity": "4", "confidence": "high", "note": "restricted=yes"}
+{"id": "b1e79381263", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "country Singapore full name; part mixed case; qty 1.5k=1500 passes"}
+{"id": "bd1e29cfec1", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "customer missing final dot only (A.Ş vs A.Ş.)"}
+{"id": "b4b194785ef", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "period 2026-2; qty 2,40,000=240000 passes; customer upper case only"}
+{"id": "bdc9be1d95c", "row_action": "compliance_review", "needs_human": "yes", "severity": "4", "confidence": "high", "note": "restricted=yes"}
+{"id": "ba9be57657d", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "country vn lower; part lower; qty 2.5k=2500 passes"}
+{"id": "b158d9ece97", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "country Canada full name; part spaces; qty 250 = MOQ ok"}
+{"id": "b4dd7039086", "row_action": "duplicate", "needs_human": "no", "severity": "3", "confidence": "high", "note": "ref TRD-416082 in seen_refs"}
+{"id": "b5069110627", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "ltg abbreviates Lighting: clear rename; part missing hyphens"}
+{"id": "be58bf187eb", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "medium", "note": "only oddity is a leading space in the distributor's own name, which the guide exempts; seen ref differs by one digit"}
+{"id": "b7fd5572d57", "row_action": "duplicate", "needs_human": "no", "severity": "3", "confidence": "high", "note": "ref CRE-SO-607935 in seen_refs"}
+{"id": "b5f32d44448", "row_action": "compliance_review", "needs_human": "yes", "severity": "4", "confidence": "high", "note": "restricted=yes"}
+{"id": "b8e640d910d", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "customer upper case only; seen refs only similar"}
+{"id": "bba17007e68", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "period Feb-26; part mixed case"}
+{"id": "bedbe22866f", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "period 2026/02/28; part leading space; customer case/punctuation only"}
+{"id": "b939976204f", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "customer missing dot only; part missing hyphens"}
+{"id": "b9de9163883", "row_action": "duplicate", "needs_human": "no", "severity": "3", "confidence": "high", "note": "ref TI/AQ/61842 in seen_refs"}
+{"id": "b181e949224", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "period 03/2026; part lower; customer upper case only"}
+{"id": "b49545c95d2", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "period Mar-26; price currency first; customer upper case only"}
+{"id": "b4b4e85ffc1", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "qty 75 000=75000 passes; part missing hyphens"}
+{"id": "b5a51dd3b07", "row_action": "duplicate", "needs_human": "no", "severity": "3", "confidence": "high", "note": "ref SRS/MTY/40962 in seen_refs"}
+{"id": "bf621a5c547", "row_action": "compliance_review", "needs_human": "yes", "severity": "4", "confidence": "high", "note": "restricted=yes"}
+{"id": "bfe41fee0fc", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "period May-26; price currency first; customer dot only (PT.)"}
+{"id": "b42f6bec9e2", "row_action": "compliance_review", "needs_human": "yes", "severity": "4", "confidence": "high", "note": "restricted=yes"}
+{"id": "b0d90cc82fe", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "period 08/2026; part lower; customer missing final dot only"}
+{"id": "bd8bef2fba5", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "customer upper case only; part missing hyphens"}
+{"id": "bf099783681", "row_action": "compliance_review", "needs_human": "yes", "severity": "4", "confidence": "high", "note": "restricted=yes"}
+{"id": "b7648528a9d", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "customer upper case only; seen refs only similar"}
+{"id": "bf4b2a82cf2", "row_action": "duplicate", "needs_human": "no", "severity": "3", "confidence": "high", "note": "ref ORD-55120-02 in seen_refs"}
+{"id": "b7278463ad4", "row_action": "duplicate", "needs_human": "no", "severity": "3", "confidence": "high", "note": "ref 9031846275 in seen_refs"}
+{"id": "bf0f5eb7546", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "country Vietnam full name; part spaces; qty 1.75k=1750 passes"}
+{"id": "b2439329b54", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "period 31.12.2025; part missing hyphens"}
+{"id": "bfd292f2c13", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean; seen ref differs by one digit"}
+{"id": "b68ed14961c", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "ind. abbreviates Industrial: clear rename; qty 500 = MOQ ok"}
+{"id": "bf8b5a09a27", "row_action": "compliance_review", "needs_human": "yes", "severity": "4", "confidence": "high", "note": "restricted=yes"}
+{"id": "be11a9a2f36", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "period Aug-26; price currency first; customer accent only (Binan vs Biñan)"}
+{"id": "b18578f1087", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "KONT. abbreviates Kontrol: clear rename"}
+{"id": "b7b54536422", "row_action": "duplicate", "needs_human": "no", "severity": "3", "confidence": "high", "note": "ref AWTS/DO/58214 in seen_refs"}
+{"id": "bc7a9502103", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "period AUGUST 2026; customer lower case only; part missing hyphens"}
+{"id": "bdf91f5a792", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "Pymt abbreviates Payment: clear rename; part missing hyphen"}
+{"id": "b58148487af", "row_action": "duplicate", "needs_human": "no", "severity": "3", "confidence": "high", "note": "ref FV-A/107915 in seen_refs"}
+{"id": "ba02abc79e0", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "customer upper case only"}
+{"id": "b959504be3b", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean; seen refs only similar"}
+{"id": "b4d473fef5c", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "Elektr. abbreviates Elektroniği: clear rename"}
+{"id": "b967c6f01ec", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "customer dots only (P.T. vs PT)"}
+{"id": "b788fc2d0b8", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean; seen refs only similar"}
+{"id": "bd3d604a5ad", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "Intelig. abbreviates Inteligente: clear rename; country br lower"}
+{"id": "b52bdfc69b0", "row_action": "duplicate", "needs_human": "no", "severity": "3", "confidence": "high", "note": "ref DCD4817-03 in seen_refs"}
+{"id": "beee5505c09", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean; seen refs only similar"}
+{"id": "b9fe510c713", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "period Mar-26; part lower case"}
+{"id": "b63ed204093", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "customer upper case only"}
+{"id": "b83410a687e", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean; seen ref differs by one digit"}
+{"id": "b48e0f1adeb", "row_action": "duplicate", "needs_human": "no", "severity": "3", "confidence": "high", "note": "ref SRS/MTY/42291 in seen_refs"}
+{"id": "b986f07b789", "row_action": "compliance_review", "needs_human": "yes", "severity": "4", "confidence": "high", "note": "restricted=yes"}
+{"id": "b450790077f", "row_action": "duplicate", "needs_human": "no", "severity": "3", "confidence": "high", "note": "ref FV-A/104382 in seen_refs"}
+{"id": "bd64450e60e", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean"}
+{"id": "b8b7a29a2b1", "row_action": "compliance_review", "needs_human": "yes", "severity": "4", "confidence": "high", "note": "restricted=yes"}
+{"id": "be1a58c7de2", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean; seen ref differs by one digit"}
+{"id": "bfb39c1efd6", "row_action": "duplicate", "needs_human": "no", "severity": "3", "confidence": "high", "note": "ref FAK-57655 in seen_refs"}
+{"id": "bc56298a174", "row_action": "duplicate", "needs_human": "no", "severity": "3", "confidence": "high", "note": "ref F004-00032705 in seen_refs"}
+{"id": "bcb01da9c1e", "row_action": "compliance_review", "needs_human": "yes", "severity": "4", "confidence": "high", "note": "restricted=yes"}
+{"id": "bfda5e9c9af", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "customer dots only (BV vs B.V.)"}
+{"id": "ba1e0262530", "row_action": "compliance_review", "needs_human": "yes", "severity": "4", "confidence": "high", "note": "restricted=yes"}
+{"id": "b37358afd78", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "ASANS. abbreviates Asansör: clear rename"}
+{"id": "b7279acd88e", "row_action": "compliance_review", "needs_human": "yes", "severity": "4", "confidence": "high", "note": "restricted=yes"}

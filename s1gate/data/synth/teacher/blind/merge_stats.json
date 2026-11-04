@@ -1,0 +1,18 @@
+{
+  "rows": 2991,
+  "kept": 2361,
+  "rejected": 630,
+  "no_blind_label": 630,
+  "agreement": {
+    "row_action": 1.0,
+    "needs_human": 1.0,
+    "severity": 1.0
+  },
+  "top_disagreements": {
+    "row_action": [],
+    "needs_human": [],
+    "severity": []
+  },
+  "rule_rejected": 0,
+  "kept_after_rules": 2361
+}

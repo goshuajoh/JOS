@@ -9,7 +9,7 @@
  "sources": {
   "proxy": 199
  },
- "note": "PROXY eval: 10 simulated distributor files (held-out company pool), each row labelled by its author + 2 blind annotators (Opus, Sonnet) + rule audit, 2 disputes adjudicated. A stand-in until 200-500 real rows are labelled.",
+ "note": "PROXY eval: 10 simulated distributor files, held-out companies, author + 2 blind annotators + adjudication. Replace with real rows.",
  "label_counts": {
   "row_action": {
    "no_op": 14,
