@@ -1,0 +1,125 @@
+{"id": "b1799e3c492", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": ""}
+{"id": "be49259ff78", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "word order swapped (Tarım Akıllı vs Akıllı Tarım), same entity: clear rename"}
+{"id": "b735886e561", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "period and country empty"}
+{"id": "b0dab1e85fe", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "legal suffix A.Ş. written out as Anonim Şirketi: clear rename"}
+{"id": "b4839df3cfe", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "integer HUF price read as canonical"}
+{"id": "b3b548cdee3", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "legal suffix S. de R.L. de C.V. replaced by Co.: clear rename"}
+{"id": "bc68252252a", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "abbreviated name (INSTR, CTRLS): clear rename"}
+{"id": "b9e627c65f5", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "period and country empty"}
+{"id": "b7773cdb3f5", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "abbreviation Säkerhetstekn.: clear rename"}
+{"id": "b491f8df784", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "period May-26"}
+{"id": "bc1ec7fdadf", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "TECH abbreviation of Technology: clear rename"}
+{"id": "b906061fc51", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "MTRS abbreviation of Meters: clear rename"}
+{"id": "b778a4d10c4", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "legal suffix Inc. dropped: clear rename"}
+{"id": "bbfae956315", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "period 'marzo 2026'"}
+{"id": "b3666ce10d2", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "typo Digitla vs Digital: clear rename"}
+{"id": "b4497d44be6", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "IND. abbreviation of Industrial: clear rename"}
+{"id": "b10e99d1bab", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "ELEC and PVT LTD abbreviations: clear rename"}
+{"id": "b27cc2ad6eb", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": ""}
+{"id": "bb1f005d1af", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "period month 13"}
+{"id": "b4b240989ba", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "DISP abbreviation of Display: clear rename"}
+{"id": "b106416b64e", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": ""}
+{"id": "ba0bed7cf15", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": ""}
+{"id": "b878fdc4b7f", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "DISP abbreviation of Display: clear rename"}
+{"id": "b464a205fe3", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "qty empty"}
+{"id": "b29ca2d7ad1", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "legal suffix Inc. written out as Incorporated: clear rename"}
+{"id": "b93c5731aa6", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "typo Cycletornics vs Cycletronics: clear rename; ref 1946 not in seen_refs (1976, 2626/1944)"}
+{"id": "b3237879640", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "SENS. abbreviation of Sensoren: clear rename; ref VH.7186.085 differs from seen VH.7168.085"}
+{"id": "b18c83f79cb", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "typo Chraging vs Charging: clear rename"}
+{"id": "b031f149788", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "master lookup failed (customer=unknown, spq/moq ?)"}
+{"id": "b2a60646e21", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": ""}
+{"id": "ba8f309133f", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": ""}
+{"id": "b39ff100091", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": ""}
+{"id": "b3084aea04a", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "typo Instrments vs Instruments: clear rename"}
+{"id": "bb5c22861e2", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "legal suffix Sp. z o.o. dropped: clear rename"}
+{"id": "b825aff004b", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "master lookup failed (customer=unknown, spq/moq ?)"}
+{"id": "b0ce8210904", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "period empty"}
+{"id": "b0a0af2d5c6", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "typo Nusanatra vs Nusantara: clear rename"}
+{"id": "b6bf76c196d", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "period month 13"}
+{"id": "b493dd054dd", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "period and customer empty on a sales line"}
+{"id": "bf025f1b422", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "GRP abbreviation of Group: clear rename"}
+{"id": "b6627f19d65", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": ""}
+{"id": "b75342c98f3", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "typo Inteligenet vs Inteligente: clear rename"}
+{"id": "b37887fa7c5", "row_action": "duplicate", "needs_human": "no", "severity": "3", "confidence": "high", "note": "ref CPD-26-40391 in seen_refs (duplicate beats the SPQ break 34990)"}
+{"id": "ba198e0b742", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "typo Leuchtn vs Leuchten: clear rename"}
+{"id": "bff5702c21e", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "legal suffix Co., Ltd. written out as Company Limited: clear rename"}
+{"id": "bf0bebcc1e8", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "MÄTSYST. abbreviation of Mätsystem: clear rename; ref 82770-60 differs from seen 28770-60"}
+{"id": "bffdec7232c", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "legal suffix K.K. dropped: clear rename"}
+{"id": "b3cf62b5b32", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "period Nov-25"}
+{"id": "b768bc67038", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "period 2026/10"}
+{"id": "b05c96d82aa", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "master lookup failed (customer=unknown, spq/moq ?)"}
+{"id": "b81a3f7e25b", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "CONTAD. abbreviation of Contadores: clear rename; ref 113239 differs from seen 113439"}
+{"id": "b8889433b86", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "period month 00"}
+{"id": "b018e502a14", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "master lookup failed (customer=unknown, spq/moq ?)"}
+{"id": "bcf3e17695a", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "legal suffix Kft. written out in full: clear rename"}
+{"id": "ba20f25928c", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "MON. abbreviation of Monitoring: clear rename"}
+{"id": "b5049fa4c87", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "part empty"}
+{"id": "b17eb3a53ad", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "legal form A.Ş. translated to Inc.: clear rename"}
+{"id": "b7b8335e06f", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "typo Rastreamneto vs Rastreamento: clear rename"}
+{"id": "b2486b709ff", "row_action": "duplicate", "needs_human": "no", "severity": "3", "confidence": "high", "note": "ref MOJ-6114-028 in seen_refs"}
+{"id": "bfea6826259", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "period empty"}
+{"id": "bb2e8dcdd9e", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": ""}
+{"id": "b4974a9deea", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "legal suffix Inc. dropped: clear rename"}
+{"id": "bc2ae5630ce", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "qty empty"}
+{"id": "ba6ac0b497a", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "medium", "note": "generic word 'Technologies' added to Hermon Vision Ltd; read as clear rename, not a separate subsidiary"}
+{"id": "b6811b73009", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "master lookup failed (customer=unknown, spq/moq ?)"}
+{"id": "b4268e546fa", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "typo Medidors vs Medidores: clear rename"}
+{"id": "b40156f95d2", "row_action": "duplicate", "needs_human": "no", "severity": "3", "confidence": "high", "note": "ref MOJ-5602-003 in seen_refs"}
+{"id": "ba53355d6c2", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "period 'September 2026'"}
+{"id": "b89de46a2e8", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": ""}
+{"id": "b97d3c806aa", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "typo Biomedcial vs Biomedical: clear rename; ref 26-27/71070 not in seen_refs"}
+{"id": "b99039d5f04", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "typo Contorls vs Controls: clear rename"}
+{"id": "bc26a042692", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "master lookup failed (customer=unknown, spq/moq ?)"}
+{"id": "b891ddd24a7", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "Svc. abbreviation of Service: clear rename"}
+{"id": "bc8e89be73b", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": ""}
+{"id": "b9dccc4496f", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "part empty"}
+{"id": "bb58bb7fbc0", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "typo Lightnig vs Lighting: clear rename"}
+{"id": "b6135f79eb8", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "3-decimal price 0.068 USD is still dot-decimal canonical"}
+{"id": "b84f5d0f0b1", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "ref 07/3318 differs from seen 07/3381, 06/3318, 07/3218"}
+{"id": "bfae0a3ffc8", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "medium", "note": "generic word 'Trading' added to Basira Security Cameras L.L.C.; read as clear rename, not a separate entity"}
+{"id": "b23cb9293c7", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "word order swapped (Vigilancia y Cámaras vs Cámaras y Vigilancia), same entity: clear rename"}
+{"id": "bc7493b5516", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "ref 208417 differs from seen 208471, 208416, 218417"}
+{"id": "b6b542c7d7b", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "master lookup failed (customer=unknown, spq/moq ?)"}
+{"id": "bc246724662", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": ""}
+{"id": "b3e1dc1a3e0", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "legal suffix S.A.S. written out in full: clear rename; ref 13118 differs from seen 17118"}
+{"id": "ba294d94633", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "period month 13"}
+{"id": "b82958e0830", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "typo Inversroes vs Inversores: clear rename"}
+{"id": "bc697cfc389", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "word order swapped (Lighting Solar vs Solar Lighting), same entity: clear rename"}
+{"id": "ba1003c6258", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "MTRS abbreviation of Meters: clear rename"}
+{"id": "bbebaaeb923", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "legal suffix LLC written out in full: clear rename"}
+{"id": "bb60068a408", "row_action": "duplicate", "needs_human": "no", "severity": "3", "confidence": "high", "note": "ref FT-31055/EU in seen_refs (beats period/part format issues)"}
+{"id": "b83bba3774c", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": ""}
+{"id": "b6319249630", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "LADDSYS abbreviation of Laddsystem: clear rename; ref 32164-78 not in seen_refs"}
+{"id": "b1fc56dc53b", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "qty exactly at MOQ and SPQ multiple"}
+{"id": "b06ee3d0e41", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "period month 13"}
+{"id": "bfebaa97ccf", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "typo Monitroing vs Monitoring: clear rename"}
+{"id": "bc6c9371731", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "master lookup failed (customer=unknown, spq/moq ?)"}
+{"id": "b98b4955abc", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "qty empty"}
+{"id": "b3fa5c7aef2", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "typo Lantnig vs Lanting: clear rename; ref 37572739 not in seen_refs"}
+{"id": "bfd7fc967b6", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "legal suffix Inc. written out as Incorporated: clear rename"}
+{"id": "bd0202577fd", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "word order swapped (Elektronik Medikal vs Medikal Elektronik), same entity: clear rename"}
+{"id": "bcd3fe5b9fe", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "ELEC IND abbreviations: clear rename"}
+{"id": "b86ef4b9986", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "ENGG abbreviation of Engineering: clear rename"}
+{"id": "b21d8bb3534", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "generic word Sistemleri dropped: clear rename"}
+{"id": "bd3d6361ecd", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "ref 228406 differs from seen 228460, 228405"}
+{"id": "b16f0508e8f", "row_action": "duplicate", "needs_human": "no", "severity": "3", "confidence": "high", "note": "ref SINV-4105532 in seen_refs (beats SPQ break 53750)"}
+{"id": "b73346f761f", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": ""}
+{"id": "b8afe05cd22", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "period 'January 2026'"}
+{"id": "b29aebcc62b", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": ""}
+{"id": "b6eb6f1624a", "row_action": "duplicate", "needs_human": "no", "severity": "3", "confidence": "high", "note": "ref TI/AQ/62740 in seen_refs"}
+{"id": "b27f483762e", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "legal suffix Co., Ltd. dropped: clear rename"}
+{"id": "b8c3eb17c5a", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "typo Eléctircos vs Eléctricos: clear rename"}
+{"id": "bc61e351e41", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": ""}
+{"id": "b3a5108e1c4", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "typo Lightign vs Lighting: clear rename"}
+{"id": "b9834da85fe", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "LAADP. abbreviation of Laadpalen: clear rename; ref 2848.845 not in seen_refs"}
+{"id": "b65af4df003", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "customer and country empty"}
+{"id": "bb7fb40e79a", "row_action": "duplicate", "needs_human": "no", "severity": "3", "confidence": "high", "note": "ref SEP-30641/26 in seen_refs (beats qty 300 below MOQ 500)"}
+{"id": "b168e4a08b4", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": ""}
+{"id": "beae9e7f6ed", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "generic word Sistemleri dropped: clear rename"}
+{"id": "b8858f737de", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "typo Conectée vs Connectée: clear rename"}
+{"id": "b016dbb5b10", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "ref CTD5547312 differs from seen CTD5547321, CTD5574312"}
+{"id": "bd17c8e8293", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "TECH abbreviation of Technologies: clear rename; ref 33732 not in seen_refs"}
+{"id": "bcc3dc9ecca", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "MITTAUSTEKN. abbreviation of Mittaustekniikka: clear rename; ref 80762 not in seen_refs"}
+{"id": "b8996b3bf22", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "legal suffix Inc. written out as Incorporated: clear rename"}
+{"id": "be7a01b72ef", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "typo Visoin vs Vision: clear rename"}
+{"id": "b1921181540", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "typo Hospitlar vs Hospitalar: clear rename"}

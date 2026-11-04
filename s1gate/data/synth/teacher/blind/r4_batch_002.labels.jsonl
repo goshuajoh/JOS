@@ -1,0 +1,125 @@
+{"id": "b73ac6d28d0", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "customer empty on a sales line"}
+{"id": "bdd8d0905bd", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "generic word Intl added to customer name; clear rename"}
+{"id": "b76e849ba48", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "STEUERUNGSSYS abbreviates Steuerungssysteme; clear rename"}
+{"id": "bc2d737f07c", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "typo Technolgy; clear rename; ref differs from seen"}
+{"id": "ba452000e40", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "transposed letters Dispaly; clear rename"}
+{"id": "b950767ef77", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "Inc. -> Incorporated; clear rename"}
+{"id": "b1e51278b9e", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "MECHATRON. abbreviation; clear rename"}
+{"id": "b1be5e95610", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "period 2026-4 not YYYY-MM"}
+{"id": "ba8ae30d7fc", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean row"}
+{"id": "b3edb8fb359", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "period empty"}
+{"id": "be1c9b18adc", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "legal suffix Co., Ltd. dropped; clear rename"}
+{"id": "bf005b10398", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "month 00 impossible"}
+{"id": "bc3eebab579", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "typo Medcial; clear rename"}
+{"id": "be101b0db44", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "master lookup failed (unknown, spq/moq ?)"}
+{"id": "bef7de236d2", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "legal suffix SpA dropped; clear rename; ref only similar to seen"}
+{"id": "b7b684b74f0", "row_action": "duplicate", "needs_human": "no", "severity": "3", "confidence": "high", "note": "ref KCT-62815-A already in seen_refs"}
+{"id": "b91bb6ba4f8", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "month 13 impossible"}
+{"id": "bac433c759c", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "typo Dhanvantri; clear rename"}
+{"id": "b3eb653948e", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "S.A.C. expanded to Sociedad Anonima Cerrada; clear rename"}
+{"id": "b25523683c2", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "Ltd. -> Limited; clear rename"}
+{"id": "b63a5e30c6c", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "typo Sensorido vs Sensorindo; clear rename"}
+{"id": "b918db5ec12", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "CYCLETRNCS abbreviation of Cycletronics; clear rename"}
+{"id": "b97341d16b5", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "S.p.A. expanded to Societa per Azioni; clear rename"}
+{"id": "b4f633b7cea", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "transposed letters Industira; clear rename"}
+{"id": "b97f0977aab", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "legal suffix Co., Ltd. dropped; clear rename"}
+{"id": "b5dbbd0e1e8", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "legal suffix Inc. dropped; clear rename"}
+{"id": "be34b8d53a2", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "Zrt. expanded to full legal form; clear rename"}
+{"id": "bbfb38fe235", "row_action": "duplicate", "needs_human": "no", "severity": "3", "confidence": "high", "note": "ref VH.5127.034 already in seen_refs"}
+{"id": "ba69a8447b3", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "ref empty"}
+{"id": "b9d4d610039", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "S.A.S. expanded to full legal form; clear rename"}
+{"id": "bcf3f71ae4a", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean row"}
+{"id": "bd2d87c6064", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "typo Logistcs; clear rename"}
+{"id": "b02d9ae6c0b", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean row"}
+{"id": "b27830bc927", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean row"}
+{"id": "bfd45ee60f2", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "typo Steuerungsysteme; clear rename"}
+{"id": "b917c8297a4", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "SYS abbreviation of Systems; clear rename"}
+{"id": "b068a668433", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "S. de R.L. de C.V. expanded; clear rename; ref only similar to seen"}
+{"id": "b64e42d6b40", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean row; qty at MOQ multiple"}
+{"id": "b4efdc9d4a0", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "Sys. abbreviation of Systems; clear rename; ref only similar to seen"}
+{"id": "b9005b0224c", "row_action": "duplicate", "needs_human": "no", "severity": "3", "confidence": "high", "note": "ref 80457-HKT already in seen_refs"}
+{"id": "b7945ff238e", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "qty empty"}
+{"id": "b46865b054c", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "S.A. de C.V. expanded; clear rename; ref only similar to seen"}
+{"id": "bca7a883e32", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "master lookup failed (unknown, spq/moq ?)"}
+{"id": "bcd982cf106", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "master lookup failed (unknown, spq/moq ?)"}
+{"id": "bf33655571d", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "generic word Intl added; clear rename"}
+{"id": "b239e82bc7d", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "SEC. abbreviation of Security; clear rename"}
+{"id": "b8c913efece", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean row; seen refs only similar"}
+{"id": "b4b41d61144", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean row"}
+{"id": "b8ace0cf250", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean row"}
+{"id": "b6ed8fe7e44", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "typo Acces; clear rename"}
+{"id": "bff59480f3f", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean row"}
+{"id": "bec007daf0e", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "period and customer empty on a sales line"}
+{"id": "b1f3931b0b6", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean row"}
+{"id": "bdc824d1755", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "S.L. expanded to Sociedad Limitada; clear rename"}
+{"id": "b2782f0f3a4", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean row"}
+{"id": "b5e9bd87c3d", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean row"}
+{"id": "be4359e6060", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "A.S. expanded to Anonim Sirketi; clear rename"}
+{"id": "b88996158bb", "row_action": "duplicate", "needs_human": "no", "severity": "3", "confidence": "high", "note": "ref KDB-2641359 already in seen_refs"}
+{"id": "b99a917b021", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "transposed letters Tapaita vs Tapatia; clear rename"}
+{"id": "bc503d04569", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "K.K. expanded to Kabushiki Kaisha; clear rename"}
+{"id": "b96edf4452c", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "APPLNCS abbreviation of Appliances; clear rename"}
+{"id": "b47585bf551", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "Ltda. expanded to Limitada; clear rename"}
+{"id": "b77438341c7", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "legal suffix Inc. dropped; clear rename"}
+{"id": "b30023e42b3", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean row"}
+{"id": "bf620812c53", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "legal suffix S.r.l. dropped; clear rename"}
+{"id": "bc72b6cac79", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean row"}
+{"id": "b06cd6fa82a", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "generic word Teknolojileri dropped, both distinctive words kept; clear rename"}
+{"id": "b32ec258c72", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "legal suffix GmbH dropped; clear rename"}
+{"id": "b37d83a128e", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "period 07/2026 not YYYY-MM"}
+{"id": "bf007b5a91d", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "month 00 impossible"}
+{"id": "b5b898dab0c", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "typo Refrigeraton; clear rename; ref only similar to seen"}
+{"id": "bd13d310a2d", "row_action": "duplicate", "needs_human": "no", "severity": "3", "confidence": "high", "note": "ref TVC604217 already in seen_refs"}
+{"id": "bdc62ac5576", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "LAB abbreviation of Laboratory; clear rename"}
+{"id": "b728ec53bab", "row_action": "duplicate", "needs_human": "no", "severity": "3", "confidence": "high", "note": "ref TVC605981 already in seen_refs (beats MOQ break)"}
+{"id": "bd1baa094a2", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "period Feb-26 not YYYY-MM"}
+{"id": "ba3926b3bb8", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "transposed letters Laadplaen; clear rename"}
+{"id": "b96bcce2c84", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean row"}
+{"id": "bc7a2c435a5", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "country and unit_price empty"}
+{"id": "b41fae746cd", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "period 30/04/2026 is a date, normalizes to 2026-04"}
+{"id": "bda5b783e29", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "typo Electronca; clear rename"}
+{"id": "b500fbdb334", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "legal suffix Inc. dropped; clear rename"}
+{"id": "b6ebf7b099e", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "legal form EOOD replaced by translated Ltd; clear rename"}
+{"id": "bc7907cef0a", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "MACH abbreviation of Machine; clear rename"}
+{"id": "b6bec72ca5d", "row_action": "duplicate", "needs_human": "no", "severity": "3", "confidence": "high", "note": "ref IHL-7316 already in seen_refs"}
+{"id": "b25a7c86d97", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean row"}
+{"id": "bce1d9d7de8", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "ref empty"}
+{"id": "bf95c431706", "row_action": "duplicate", "needs_human": "no", "severity": "3", "confidence": "high", "note": "ref CPD-26-41762 already in seen_refs"}
+{"id": "bcbddfa9335", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "LLC expanded to Limited Liability Company; clear rename"}
+{"id": "be571978b2e", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean row; seen refs only similar"}
+{"id": "b33dacb5573", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean row"}
+{"id": "b454939cb4a", "row_action": "duplicate", "needs_human": "no", "severity": "3", "confidence": "high", "note": "ref SEP-40872/26 already in seen_refs"}
+{"id": "bd5265a8ded", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "transposed letters Antifurit; clear rename"}
+{"id": "b3ba434c402", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean row"}
+{"id": "b870459e5a7", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "CHRG abbreviation and Ltd vs Limited; clear rename"}
+{"id": "bec103535f9", "row_action": "duplicate", "needs_human": "no", "severity": "3", "confidence": "high", "note": "ref ORD-52906-11 already in seen_refs (beats SPQ break)"}
+{"id": "b7f9387d88a", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "Kft. expanded to full legal form; clear rename"}
+{"id": "b898f1fdda7", "row_action": "duplicate", "needs_human": "no", "severity": "3", "confidence": "high", "note": "ref ORD-41873-02 already in seen_refs (beats SPQ break)"}
+{"id": "b3c0a304ce4", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "legal suffix S.A. de C.V. dropped; clear rename"}
+{"id": "bb02b805661", "row_action": "duplicate", "needs_human": "no", "severity": "3", "confidence": "high", "note": "ref GDC/7520/11 already in seen_refs (beats MOQ break)"}
+{"id": "b22d9643682", "row_action": "duplicate", "needs_human": "no", "severity": "3", "confidence": "high", "note": "ref 9041260417 already in seen_refs"}
+{"id": "b8f3c401fe4", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "unit_price and ref empty"}
+{"id": "b1abb086a50", "row_action": "duplicate", "needs_human": "no", "severity": "3", "confidence": "high", "note": "ref FV-A/207731 already in seen_refs (beats SPQ break and part format)"}
+{"id": "bb38ed4add3", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "AS expanded to Aktsiaselts; clear rename"}
+{"id": "b6fb1e89ac3", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "MED abbreviation, CO LTD vs Company Limited; clear rename"}
+{"id": "b46749bfd67", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "period and unit_price empty"}
+{"id": "beb9cdf44df", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "month 13 impossible"}
+{"id": "b34f2b5e6a3", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "AUTOMAATIOT. abbreviation of Automaatiotalo; clear rename"}
+{"id": "b75f3127a2f", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "ref empty"}
+{"id": "bb2e185cbea", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "period 2026/06 not YYYY-MM"}
+{"id": "bb0ce49bb5e", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "de C.V. part of legal suffix dropped; clear rename; ref only similar to seen"}
+{"id": "b026532fa1c", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "legal suffix Inc. dropped; clear rename"}
+{"id": "bf978ced4c1", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean row"}
+{"id": "b343b288190", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "legal suffix Inc. dropped; clear rename"}
+{"id": "b18cdd2c50f", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "month 00 impossible"}
+{"id": "b9cccd1be13", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "SpA expanded to Sociedad por Acciones; clear rename; ref only similar to seen"}
+{"id": "bc5a2d0166b", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "month 13 impossible"}
+{"id": "b7be2afb298", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean row; seen refs only similar"}
+{"id": "bd11d8299a7", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "transposed letters Wroks; clear rename"}
+{"id": "b4815a0a510", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "Sp. z o.o. expanded to full legal form; clear rename"}
+{"id": "b3a14b4aa6c", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean row"}
+{"id": "bd5ca29efd2", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean row"}
+{"id": "b59f4082f6d", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "country empty"}
+{"id": "b81c20474c0", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean row"}
+{"id": "b6e031e2ac5", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "month 13 impossible"}
+{"id": "b207a6a4669", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "master lookup failed (unknown, spq/moq ?)"}
