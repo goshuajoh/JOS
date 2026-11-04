@@ -1,0 +1,100 @@
+{"id": "b33ab7cfc6f", "row_action": "no_op", "needs_human": "no", "severity": "4", "confidence": "high", "note": "GENEL TOPLAM = Turkish grand total line"}
+{"id": "b9c0d2960dc", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": ""}
+{"id": "b780c2d0e9b", "row_action": "no_op", "needs_human": "no", "severity": "1", "confidence": "high", "note": "note line: continued on next page"}
+{"id": "b3540e7d0be", "row_action": "vendor_rename", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "reported name points to a Vietnam subsidiary of the master Pte Ltd entity: uncertain link"}
+{"id": "b530e2a671d", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "abbreviation (PREC ASSY) plus accents/case: clear rename"}
+{"id": "b09170b4f78", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": ""}
+{"id": "b0afd31b404", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": ""}
+{"id": "b6ced40f02f", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": ""}
+{"id": "b3f4192a256", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "Turkish month name period, qty 3.000=3000 ok, decimal-comma price, A.S. accent only"}
+{"id": "b162e3c86ea", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "dd.mm.yyyy period, country full name, qty 1.000=1000 ok, decimal-comma price, accents only"}
+{"id": "bc89d317fee", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "abbreviation of master name: clear rename"}
+{"id": "b7de6263740", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "typo Irrigtion: clear rename; 1300 at MOQ and multiple of 650"}
+{"id": "bc7a3f4b5bf", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": ""}
+{"id": "bb61081d568", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": ""}
+{"id": "b73fe686645", "row_action": "pack_qty_issue", "needs_human": "yes", "severity": "2", "confidence": "high", "note": "qty 25 Nos = 25, not a multiple of SPQ 10"}
+{"id": "b395df49d6c", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": ""}
+{"id": "bde6130b441", "row_action": "pack_qty_issue", "needs_human": "yes", "severity": "2", "confidence": "high", "note": "qty 25 not a multiple of SPQ 10"}
+{"id": "b5d65c7bd72", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": ""}
+{"id": "be832c79b15", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": ""}
+{"id": "b1c111f3aea", "row_action": "no_op", "needs_human": "no", "severity": "4", "confidence": "high", "note": "grand total line"}
+{"id": "b83d0f87ec8", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "abbreviation KIDLAT PWR ELEC CORP: clear rename"}
+{"id": "b0626574703", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": ""}
+{"id": "b787c507f67", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "note in ref field (ver nota: pago pendiente), no usable ref"}
+{"id": "bb69e507e81", "row_action": "pack_qty_issue", "needs_human": "yes", "severity": "2", "confidence": "high", "note": "1250 not a multiple of SPQ 500"}
+{"id": "be0464a8859", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "price uses Rs. symbol instead of 77.10 INR"}
+{"id": "b9f82fd1854", "row_action": "pack_qty_issue", "needs_human": "yes", "severity": "2", "confidence": "high", "note": "4500 not a multiple of SPQ 3000"}
+{"id": "b3ea664333f", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": ""}
+{"id": "b2597b0a8cf", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": ""}
+{"id": "b9469d4dfdc", "row_action": "no_op", "needs_human": "no", "severity": "1", "confidence": "high", "note": "note line: end of report"}
+{"id": "b0d39a2fd9a", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": ""}
+{"id": "bd3ed6df0d9", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": ""}
+{"id": "b14eae511ca", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "master spq/moq '?' lookup failed"}
+{"id": "b55238ec0a8", "row_action": "no_op", "needs_human": "no", "severity": "4", "confidence": "high", "note": "TOTAL GENERAL = grand total line"}
+{"id": "bd89fb4404c", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "abbreviation ELEC APPL: clear rename"}
+{"id": "b6f328ef5f0", "row_action": "no_op", "needs_human": "no", "severity": "1", "confidence": "high", "note": "separator line"}
+{"id": "bfa12dd99ac", "row_action": "pack_qty_issue", "needs_human": "yes", "severity": "2", "confidence": "high", "note": "400 below MOQ 500 and not multiple of SPQ 250; beats clear rename"}
+{"id": "be8d17a7b3c", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "unit_price TBD non-numeric"}
+{"id": "ba4e12c096c", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "Pvt Ltd -> Private Limited legal suffix: clear rename"}
+{"id": "b77d218cc5a", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "country India, qty 500 pcs, price Rs. symbol; 500 passes SPQ/MOQ"}
+{"id": "b5365228e19", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": ""}
+{"id": "b6d740ae92e", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": ""}
+{"id": "b9d807f155c", "row_action": "pack_qty_issue", "needs_human": "yes", "severity": "2", "confidence": "high", "note": "2000 not a multiple of SPQ 650"}
+{"id": "b155e8e52d8", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "10000 exactly at MOQ and multiple of SPQ 5000"}
+{"id": "bee3cd902a3", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": ""}
+{"id": "bed711c8284", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "Spanish month name period; customer differs only in accent and trailing dot"}
+{"id": "bb19e506659", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": ""}
+{"id": "bd33f8b79ae", "row_action": "pack_qty_issue", "needs_human": "yes", "severity": "2", "confidence": "high", "note": "3000 below MOQ 5000"}
+{"id": "b74c638877e", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "Co. -> Company legal suffix spelled out: clear rename"}
+{"id": "b89da21731e", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "SA de CV vs S.A. de C.V. punctuation only"}
+{"id": "b8a87453a12", "row_action": "pack_qty_issue", "needs_human": "yes", "severity": "2", "confidence": "high", "note": "6000 not a multiple of SPQ 4000"}
+{"id": "b545c693abe", "row_action": "vendor_rename", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "Demirag Holding vs Demirag Sinyalizasyon: shares one word, possible parent: uncertain"}
+{"id": "b7480b6ac66", "row_action": "vendor_rename", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "completely different name from master (possible rebrand/acquirer): uncertain"}
+{"id": "b8963b0ea37", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": ""}
+{"id": "b55f4e11cfd", "row_action": "no_op", "needs_human": "no", "severity": "1", "confidence": "high", "note": "note line: end of report"}
+{"id": "bb5d2fd1f39", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": ""}
+{"id": "b2e8ada3108", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": ""}
+{"id": "b022b25c0af", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "Pvt. vs Pvt punctuation, country India, qty 1,000 pcs = 1000 passes"}
+{"id": "b440cfa5cbf", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": ""}
+{"id": "b757d14acba", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "Turkish month name, upper-case customer, qty 1.500=1500 passes, decimal-comma price"}
+{"id": "b18e7bccb2a", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": ""}
+{"id": "bb717c8be87", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": ""}
+{"id": "b15b5b67bd1", "row_action": "compliance_review", "needs_human": "yes", "severity": "4", "confidence": "high", "note": "master restricted=yes"}
+{"id": "b02caafda63", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": ""}
+{"id": "b36a959cd0d", "row_action": "compliance_review", "needs_human": "yes", "severity": "4", "confidence": "high", "note": "master restricted=yes (also a pack break, compliance wins)"}
+{"id": "bf33e3a8ef3", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "Private Limited -> Pvt Ltd legal suffix: clear rename"}
+{"id": "b9ec57a067c", "row_action": "duplicate", "needs_human": "no", "severity": "3", "confidence": "high", "note": "ref SCT-SO-40977 already in seen_refs"}
+{"id": "b442bbf206f", "row_action": "pack_qty_issue", "needs_human": "yes", "severity": "2", "confidence": "high", "note": "800 below MOQ 1000 and not a multiple of SPQ 500"}
+{"id": "b5e0c4f53a5", "row_action": "no_op", "needs_human": "no", "severity": "3", "confidence": "high", "note": "customer subtotal line (part=SUBTOTAL)"}
+{"id": "bb50340b130", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": ""}
+{"id": "b89ce3918fe", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "abbreviation Prof. for Profesional plus accent: clear rename"}
+{"id": "bd9ff4daf02", "row_action": "no_op", "needs_human": "no", "severity": "1", "confidence": "high", "note": "note line: rates exclusive of GST"}
+{"id": "b245750650e", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "Indian grouping qty 1,20,000 = 120000 passes SPQ/MOQ"}
+{"id": "bc0d17db47a", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "Turkish month name, upper-case/accent-only customer, qty 5.000=5000 passes, decimal-comma price"}
+{"id": "b654068e7a6", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "abbreviation ELEC for Electric: clear rename"}
+{"id": "b4779943cf5", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "master customer=unknown, spq/moq '?' on a sales line"}
+{"id": "b4a539079bc", "row_action": "compliance_review", "needs_human": "yes", "severity": "4", "confidence": "high", "note": "master restricted=yes"}
+{"id": "b2ce2e572ae", "row_action": "duplicate", "needs_human": "no", "severity": "3", "confidence": "high", "note": "ref SCT-SO-40912 already in seen_refs"}
+{"id": "bc467df25ce", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": ""}
+{"id": "b90f855f122", "row_action": "pack_qty_issue", "needs_human": "yes", "severity": "2", "confidence": "high", "note": "1100 not a multiple of SPQ 250"}
+{"id": "b73319367ee", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "abbreviation ELEC for Electric: clear rename"}
+{"id": "b8acc9b318e", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": ""}
+{"id": "b067085db64", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "abbreviation PREC ASSY plus accents/case: clear rename"}
+{"id": "bd29a3195a0", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": ""}
+{"id": "b2a4870750c", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "L.L.C. vs LLC punctuation only; 1950 passes SPQ 650/MOQ 1300"}
+{"id": "bc8bfe209e3", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "country India, qty 40 Nos, price Rs. symbol with separator; 40 passes SPQ 1"}
+{"id": "b0796ec9de2", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "abbreviation SBY SIS for Surabaya Sistem: clear rename"}
+{"id": "b7712f42147", "row_action": "pack_qty_issue", "needs_human": "yes", "severity": "2", "confidence": "high", "note": "22000 not a multiple of SPQ 5000 (customer differs only in case)"}
+{"id": "bcac65a55b0", "row_action": "pack_qty_issue", "needs_human": "yes", "severity": "2", "confidence": "high", "note": "2000 not a multiple of SPQ 650; beats clear rename"}
+{"id": "bfb94a4b1e6", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "Private Limited -> Pvt Ltd: clear rename; 3900 passes SPQ 650"}
+{"id": "bc1150eda73", "row_action": "vendor_rename", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "shares only Prakashdeep with master, different business/legal form: uncertain"}
+{"id": "b0d8aca3a18", "row_action": "compliance_review", "needs_human": "yes", "severity": "4", "confidence": "high", "note": "master restricted=yes"}
+{"id": "bcfa3993f7f", "row_action": "compliance_review", "needs_human": "yes", "severity": "4", "confidence": "high", "note": "master restricted=yes"}
+{"id": "b1d2f5c6cfc", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": ""}
+{"id": "bdc8d533d96", "row_action": "pack_qty_issue", "needs_human": "yes", "severity": "2", "confidence": "high", "note": "15 below MOQ 20 and not a multiple of SPQ 10"}
+{"id": "b0e49418b1c", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": ""}
+{"id": "b60f0470972", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "negative qty (return/credit line); rule 3 precedes duplicate even though ref is in seen_refs"}
+{"id": "b88ec9f79c2", "row_action": "no_op", "needs_human": "no", "severity": "1", "confidence": "high", "note": "repeated header row"}
+{"id": "b8ea0a29908", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "lower-case part, qty 2.500=2500 passes"}
+{"id": "b901db625e3", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": ""}
+{"id": "b0d607758a9", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "decimal-comma price 942,50 ARS"}
