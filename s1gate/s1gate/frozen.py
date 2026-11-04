@@ -117,10 +117,14 @@ def guard_training(records: list[Record], manifests: list[Path], what: str = "tr
 
 
 def guard_preds(preds: list[dict], manifests: list[Path], what: str = "fitting") -> None:
+    """Refuse predictions on frozen rows, matched by id or (when the row carries one) text hash."""
     frozen_ids: set[str] = set()
+    frozen_text: set[str] = set()
     for m in manifests:
-        frozen_ids |= set(load(m).get("ids", []))
-    hits = [p["id"] for p in preds if p.get("id") in frozen_ids]
+        man = load(m)
+        frozen_ids |= set(man.get("ids", []))
+        frozen_text |= set(man.get("text_hashes", []))
+    hits = [p.get("id", "?") for p in preds if p.get("id") in frozen_ids or p.get("text_hash") in frozen_text]
     if hits:
         raise FrozenOverlapError(f"{len(hits)} predictions are on frozen eval rows ({', '.join(hits[:5])}...); "
                                  f"{what} must use dev predictions, never eval")

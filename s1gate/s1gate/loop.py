@@ -85,10 +85,11 @@ def loop_report(log_rows: list[dict], corrections: list[Record], by: str = "week
         for q, d in row["decisions"].items():
             c = periods[p][q]
             c["rows"] += 1
-            c[d.get("decided_by", "fallback" if d["escalated"] else "gate")] += 1
+            how = d.get("decided_by") or ("fallback" if d["escalated"] else "gate")  # logs before decided_by
+            c[how] += 1
             if fix and q in fix.labels:
                 c["reviewed"] += 1
-                if d.get("decided_by", "gate") == "gate" and fix.labels[q] != d["option"]:
+                if how == "gate" and fix.labels[q] != d["option"]:
                     c["overturned"] += 1
                     overturned_conf[(p, q)].append(float(d["confidence"]))
     out = {"by": by, "periods": {}}
@@ -154,9 +155,11 @@ def bundle(name: str, schema: DecisionSchema, backend: str, model: str | None, c
 
 
 def promote(candidate: dict, current: dict | None, nll_slack: float = 0.0,
-            coverage_slack: float = 0.0) -> tuple[bool, list[str]]:
+            coverage_slack: float = 0.0, accuracy_slack: float = 0.0) -> tuple[bool, list[str]]:
     """Compare two eval reports (frozen eval, calibrated, with thresholds). Lower NLL and
-    higher coverage at the deployed targets win; the candidate must not lose on either."""
+    higher coverage at the deployed targets win; the candidate must not lose on either, and
+    coverage bought with accuracy does not count: its auto-accepted rows must stay at or above
+    the target (or at least as accurate as the current model's)."""
     if current is None:
         return True, ["no current model: candidate becomes the first version"]
     ok, notes = True, []
@@ -180,6 +183,16 @@ def promote(candidate: dict, current: dict | None, nll_slack: float = 0.0,
                 notes.append(f"{name}: coverage {cq['coverage']:.3f} below {cc['coverage']:.3f}")
             else:
                 notes.append(f"{name}: coverage {cq['coverage']:.3f} vs {cc['coverage']:.3f} ok")
+            acc, cur_acc, tgt = cq.get("accuracy"), cc.get("accuracy"), cq.get("target")
+            if acc is not None:
+                meets_target = tgt is not None and acc >= tgt
+                not_worse = cur_acc is None or acc >= cur_acc - accuracy_slack
+                if meets_target or not_worse:
+                    notes.append(f"{name}: auto-accept accuracy {acc:.3f} ok")
+                else:
+                    ok = False
+                    notes.append(f"{name}: auto-accept accuracy {acc:.3f} under target {tgt} and below "
+                                 f"the current {cur_acc:.3f} ({cq.get('auto_errors')} auto errors)")
         else:
             notes.append(f"{name}: no thresholds in one report; coverage not compared")
     return ok, notes

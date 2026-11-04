@@ -6,6 +6,7 @@ labelled on. A record may leave a question unlabelled; metrics and training skip
 from __future__ import annotations
 
 import hashlib
+import json
 import math
 import random
 import re
@@ -131,7 +132,7 @@ def _token_order(sets: list[frozenset]) -> dict:
 def _prefix(sh: frozenset, order: dict, threshold: float) -> list:
     """The shortest prefix (in global order) two sets must share to reach `threshold` Jaccard."""
     toks = sorted(sh, key=order.__getitem__)
-    keep = len(toks) - math.ceil(threshold * len(toks)) + 1
+    keep = len(toks) - math.ceil(threshold * len(toks) - 1e-9) + 1  # 0.55 * 100 is 55.000000000000007
     return toks[:max(1, keep)]
 
 
@@ -147,19 +148,21 @@ def dedupe(records: list[Record], threshold: float = 0.9,
     Exact, and fast: a prefix-filter similarity join (rare shingles first) means a row is only
     compared with rows that share one of its rarest shingles.
     """
+    # exact copies (byte-identical text) that disagree on labels cannot all be right: drop every
+    # copy, whatever order they come in. Case or spacing differences are NOT copies: a lower-case
+    # part number is the very thing that separates commit from normalize.
+    by_text: dict[str, set] = {}
+    for r in records:
+        by_text.setdefault(r.text, set()).add(json.dumps(r.labels, sort_keys=True))
+    conflicted_texts = {t for t, ls in by_text.items() if label_aware and len(ls) > 1}
     sets = [shingles(r.text) for r in records]
     order = _token_order(sets)
     index: dict[str, list[int]] = {}
     kept_idx: list[int] = []
     dropped: list[Record] = []
-    exact: dict[str, int] = {}
-    conflicted: set[int] = set()
+    exact: set[str] = set()
     for i, r in enumerate(records):
-        key = normalize(r.text)
-        if key in exact:
-            j = exact[key]
-            if label_aware and records[j].labels != r.labels:
-                conflicted.add(j)
+        if r.text in conflicted_texts or r.text in exact:
             dropped.append(r)
             continue
         sh = sets[i]
@@ -175,13 +178,11 @@ def dedupe(records: list[Record], threshold: float = 0.9,
         if dup:
             dropped.append(r)
             continue
-        exact[key] = i
+        exact.add(r.text)
         kept_idx.append(i)
         for t in pre:
             index.setdefault(t, []).append(i)
-    kept = [records[i] for i in kept_idx if i not in conflicted]
-    dropped.extend(records[i] for i in kept_idx if i in conflicted)
-    return kept, dropped
+    return [records[i] for i in kept_idx], dropped
 
 
 def decontaminate(train: list[Record], held_out: list[Record],

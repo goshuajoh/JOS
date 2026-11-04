@@ -36,7 +36,9 @@ SCHEMA_FINGERPRINT = {fingerprint!r}
 
 
 def _doc(text: str, indent: str = "    ") -> str:
-    text = " ".join(text.split()).replace('"""', "'''")
+    text = " ".join(text.split()).replace("\\", "\\\\").replace('"""', "'''")
+    if text.endswith('"'):
+        text += " "  # a closing quote right before the delimiter would end the string early
     lines = textwrap.wrap(text, width=92 - len(indent))
     if len(lines) <= 1:
         return f'{indent}"""{text}"""'
@@ -106,4 +108,10 @@ def check_generated(schema: DecisionSchema, module_path: str | Path) -> str | No
     if m.group(1) != schema.fingerprint():
         return (f"{path} was generated for fingerprint {m.group(1)}, schema is now "
                 f"{schema.fingerprint()}; run s1gate export-enums")
+    text = path.read_text(encoding="utf-8")
+    src = re.search(r"from (\S+) - do not edit", text)
+    out = re.search(r"--out (\S+)", text)
+    if text != render(schema, src.group(1) if src else "configs/schema.pos.yaml",
+                      out.group(1) if out else str(path)):
+        return f"{path} differs from what export-enums writes (edited by hand?); regenerate it"
     return None

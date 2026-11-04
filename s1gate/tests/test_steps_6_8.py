@@ -323,3 +323,103 @@ def test_report_caption_applies_rules():
     preds = _preds_rows([({"commit": 0.9, "normalize": 0.1}, "commit")] * 30)
     page = build_report(s, preds, taus={"row_action": 0.5}, rules={"row_action": {"always_escalate": ["commit"]}})
     assert "0% automated" in page and "+ rules" in page
+
+
+# ---------------------------------------------------------------- regressions from the CLI review
+
+def test_calibrate_refuses_frozen_rows_under_new_ids(tmp_path):
+    from s1gate.records import write_jsonl
+    ev = tmp_path / "eval.jsonl"
+    ev.write_text(EVAL.read_text())
+    assert main(["freeze", "--schema", str(SCHEMA), "--data", str(ev)]) == 0
+    dev = tmp_path / "dev.jsonl"
+    write_jsonl(dev, [r.model_copy(update={"id": f"dev-{i}"}) for i, r in enumerate(read_jsonl(ev))])
+    preds = tmp_path / "p.jsonl"
+    assert main(["eval", "--schema", str(SCHEMA), "--data", str(dev), "--backend", "keyword", "--preds-out", str(preds)]) == 0
+    man = str(ev).replace(".jsonl", ".frozen.json")
+    assert main(["calibrate", "--schema", str(SCHEMA), "--preds", str(preds), "--out", str(tmp_path / "c.json"),
+                 "--frozen", man]) == 2
+
+
+def test_dedupe_keeps_case_only_hard_pairs_and_catches_every_conflict():
+    t = ("distributor=X; period=2026-09; customer=Acme Controls Ltd; country=PL; part={}; qty=1000; unit_price=2.31 USD; "
+         "ref=INV-1/1 || master: customer=Acme Controls Ltd; spq=250; moq=500; restricted=no; seen_refs=none")
+    a = Record(id="a", text=t.format("WM-S3-N8R8"), labels={"row_action": "commit"})
+    b = Record(id="b", text=t.format("wm-s3-n8r8"), labels={"row_action": "normalize"})
+    assert [r.id for r in dedupe([a, b])[0]] == ["a", "b"]
+    near = Record(id="n", text=t.format("WM-S3-N8R8") + " ", labels={"row_action": "commit"})
+    clash = Record(id="c", text=near.text, labels={"row_action": "normalize"})
+    kept, _ = dedupe([a, near, clash])
+    assert [r.id for r in kept] == ["a"]           # the conflicting exact copy never sneaks in
+    a2 = Record(id="a2", text=a.text, labels={"row_action": "duplicate"})
+    kept, _ = dedupe([a, near, a2])
+    assert [r.id for r in kept] == ["n"]           # a and its conflicting copy go; n survives
+
+
+def test_promote_refuses_coverage_bought_with_accuracy():
+    cur = {"questions": [{"question": "row_action", "nll": 0.21,
+                          "at_threshold": {"coverage": 0.60, "accuracy": 0.995, "auto_errors": 1, "target": 0.99}}]}
+    cand = {"questions": [{"question": "row_action", "nll": 0.205,
+                           "at_threshold": {"coverage": 0.92, "accuracy": 0.81, "auto_errors": 35, "target": 0.99}}]}
+    ok, notes = promote(cand, cur)
+    assert not ok and any("auto-accept accuracy" in n for n in notes)
+
+
+def test_loop_report_old_logs_without_decided_by():
+    log = [{"id": f"r{i}", "ts": 1793000000.0, "decisions": {"row_action": {
+        "option": "ask_human" if i < 4 else "commit", "model_option": "commit", "confidence": 0.6,
+        "escalated": i < 4}}} for i in range(10)]
+    corr = [Record(id=f"r{i}", text="t", labels={"row_action": "commit"}, source="correction") for i in range(4)]
+    week = next(iter(loop_report(log, corr)["periods"].values()))["row_action"]
+    assert week["overturned"] == 0 and week["by"] == {"gate": 6, "fallback": 4}
+
+
+def test_agreement_fails_when_nothing_was_compared(tmp_path):
+    from s1gate.records import write_jsonl
+    rows = read_jsonl(EVAL)
+    write_jsonl(tmp_path / "a.jsonl", rows)
+    write_jsonl(tmp_path / "b.jsonl", [r.model_copy(update={"id": "x" + r.id}) for r in rows])
+    assert main(["agreement", "--schema", str(SCHEMA), "--a", str(tmp_path / "a.jsonl"), "--b", str(tmp_path / "b.jsonl")]) == 1
+
+
+def test_compare_targets_off_grid_and_nan(tmp_path, capsys):
+    def rep(name, nll, cov):
+        p = tmp_path / f"{name}.json"
+        p.write_text(json.dumps({"backend": name, "questions": [{"question": "row_action", "n": 100, "accuracy": 0.9,
+                                 "macro_f1": 0.9, "nll": nll, "ece": 0.01, "coverage_at_in_sample": {"0.97": cov, "0.99": cov}}]}))
+        return str(p)
+    good, broken = rep("good", 0.1, 1.0), rep("broken", float("nan"), 0.0)
+    main(["compare", "--reports", broken, good, "--target", "0.96"])
+    out = capsys.readouterr().out
+    assert "lowest NLL: good" in out and "zero-shot is enough" in out and "stricter 0.97" in out
+
+
+def test_codegen_escapes_and_check_detects_edits(tmp_path):
+    import yaml
+    from s1gate.codegen import check_generated, write
+    data = yaml.safe_load(SCHEMA.read_text())
+    data["questions"][0]["options"]["no_op"] = 'Not a sales line, e.g. a note "continued on next page"'
+    data["questions"][0]["options"]["normalize"] = "Formatting only, e.g. C:\\New paths or a trailing \\"
+    sp = tmp_path / "s.yaml"
+    sp.write_text(yaml.safe_dump(data))
+    out = tmp_path / "gen" / "m.py"
+    write(str(sp), str(out))
+    compile(out.read_text(), str(out), "exec")
+    s2 = DecisionSchema.load(sp)
+    assert check_generated(s2, out) is None
+    out.write_text(out.read_text().replace("    NO_OP = 'no_op'\n", ""))
+    assert "differs" in check_generated(s2, out)
+
+
+def test_prefix_filter_exact_at_threshold():
+    import random as _r
+    rng = _r.Random(0)
+    rand = lambda n: "".join(rng.choice("abcdefghijklmnopqrstuvwxyz") for _ in range(n))  # noqa: E731
+    y = rand(59)
+    x = y + rand(45)
+    sx, sy = shingles(x), shingles(y)
+    j = jaccard(sx, sy)
+    kept, _ = dedupe([Record(id="x", text=x), Record(id="y", text=y)], j, label_aware=False)
+    assert [r.id for r in kept] == ["x"]
+    k2, _ = decontaminate([Record(id="y", text=y)], [Record(id="x", text=x)], j)
+    assert k2 == []

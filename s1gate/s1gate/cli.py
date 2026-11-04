@@ -50,6 +50,9 @@ def _backend(args):
                         device=getattr(args, "device", None), **kw)
 
 
+COVERAGE_TARGETS = (0.8, 0.85, 0.9, 0.95, 0.96, 0.97, 0.975, 0.98, 0.985, 0.99, 0.995, 0.999)
+
+
 def _percentile(values: list[float], q: float) -> float:
     if not values:
         return float("nan")
@@ -167,10 +170,11 @@ def cmd_agreement(args) -> int:
     schema = _schema(args)
     report = agreement(read_jsonl(args.a), read_jsonl(args.b), schema, args.min)
     print(f"{report['shared_rows']} rows labelled by both; target agreement {args.min:.0%}")
-    ok = True
+    ok = report["shared_rows"] > 0
     for q, r in report["questions"].items():
         if not r["n"]:
-            print(f"  {q:<14} no shared labels")
+            print(f"  {q:<14} no shared labels - not measured, so not passed")
+            ok = False
             continue
         ok &= r["passes"]
         tops = ", ".join(f"{d['a']}->{d['b']} x{d['count']}" for d in r["top_disagreements"])
@@ -234,7 +238,7 @@ def cmd_eval(args) -> int:
     if errors:
         print("\n".join(errors[:20]), file=sys.stderr)
         return 1
-    from .frozen import verify_file
+    from .frozen import text_hash, verify_file
 
     manifest, problem = verify_file(args.data)
     if problem:
@@ -246,6 +250,8 @@ def cmd_eval(args) -> int:
     biases = load_biases(args.calibration, schema)
     taus = load_thresholds(args.thresholds, schema)
     rules = load_rules(args.thresholds, schema)
+    targets_fit = ({q: v.get("target") for q, v in json.loads(Path(args.thresholds).read_text())["thresholds"].items()}
+                   if args.thresholds else {})
 
     preds, latencies = [], []
     bs = args.batch_size or 16
@@ -256,7 +262,8 @@ def cmd_eval(args) -> int:
         per = (time.perf_counter() - t0) * 1000 / len(chunk)
         for r, probs in zip(chunk, out):
             latencies.append(per)
-            preds.append({"id": r.id, "probs": probs, "gold": r.labels, "latency_ms": round(per, 2)})
+            preds.append({"id": r.id, "text_hash": text_hash(r.text), "probs": probs, "gold": r.labels,
+                          "latency_ms": round(per, 2)})
 
     if args.preds_out:
         Path(args.preds_out).parent.mkdir(parents=True, exist_ok=True)
@@ -275,12 +282,12 @@ def cmd_eval(args) -> int:
         conf, tops, correct = gate_view(probs, golds)
         support = max(1, min(20, len(rows) // 4))
         extras[q.name] = {"coverage_at_in_sample": {  # tau fitted on these same rows: optimistic
-            str(t): pick_threshold(conf, correct, t, support)["coverage"] for t in (0.9, 0.95, 0.97, 0.98, 0.99)}}
+            str(t): pick_threshold(conf, correct, t, support)["coverage"] for t in COVERAGE_TARGETS}}
         if q.name in taus:
             auto = auto_mask(conf, tops, taus[q.name], rules.get(q.name))  # exactly the gate's test
             n_auto = int(auto.sum())
             extras[q.name]["at_threshold"] = {
-                "tau": taus[q.name], "coverage": round(n_auto / len(rows), 4),
+                "tau": taus[q.name], "target": targets_fit.get(q.name), "coverage": round(n_auto / len(rows), 4),
                 "accuracy": round(float(correct[auto].mean()), 4) if n_auto else None,
                 "auto_errors": int((1 - correct[auto]).sum())}
 
@@ -330,12 +337,17 @@ def cmd_compare(args) -> int:
             q = next((x for x in rep["questions"] if x["question"] == qn), None)
             if not q:
                 continue
-            cov = (q.get("coverage_at_in_sample") or {}).get(str(tgt))
+            stored = {float(k): v for k, v in (q.get("coverage_at_in_sample") or {}).items()}
+            at = min((t for t in stored if t >= tgt - 1e-12), default=None)  # nearest stored target, not lower
+            cov = stored.get(at) if at is not None else None
+            if at is not None and abs(at - tgt) > 1e-12:
+                print(f"  (no stored coverage at {tgt}; using the stricter {at})")
             print(f"  {name[:21]:<22}{rep['backend']:<10}{q['n']:>5}{_fmt(q['accuracy']):>7}{_fmt(q['macro_f1']):>7}"
                   f"{_fmt(q['nll']):>7}{_fmt(q['ece']):>7}{_fmt(rep.get('latency_p50_ms'), 1):>8}"
                   f"{_fmt(rep.get('latency_p95_ms'), 1):>8}{_fmt(cov, 2):>7}")
-            if best is None or (q["nll"] == q["nll"] and q["nll"] < best[1]["nll"]):
-                best = (name, q, cov)
+            nll = q["nll"] if q["nll"] is not None and q["nll"] == q["nll"] else float("inf")  # NaN never wins
+            if best is None or nll < best[3]:
+                best = (name, q, cov, nll)
         if best:
             good = (best[2] or 0) >= args.min_coverage
             verdict_ok &= good
@@ -677,7 +689,7 @@ def cmd_promote(args) -> int:
 
     cand = json.loads(Path(args.candidate).read_text())
     cur = json.loads(Path(args.current).read_text()) if args.current else None
-    ok, notes = promote(cand, cur, args.nll_slack, args.coverage_slack)
+    ok, notes = promote(cand, cur, args.nll_slack, args.coverage_slack, args.accuracy_slack)
     print("\n".join(notes))
     print("PROMOTE" if ok else "KEEP CURRENT")
     return 0 if ok else 1
@@ -967,6 +979,8 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("--current", help="the deployed model's report on the same eval file")
     p.add_argument("--nll-slack", type=float, default=0.0)
     p.add_argument("--coverage-slack", type=float, default=0.0)
+    p.add_argument("--accuracy-slack", type=float, default=0.0,
+                   help="how much auto-accept accuracy may drop when it is still under target")
     p.set_defaults(fn=cmd_promote)
     return ap
 
