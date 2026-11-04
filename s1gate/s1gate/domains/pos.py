@@ -85,7 +85,7 @@ HEADER_WORDS = {
     "invoice no.", "inv no", "doc no", "period", "month", "date", "country", "ctry",
 }
 FILLER = re.compile(r"^[\s\-=_*.~#/]*$|^(n/?a|none|null|nil|-+|tbd)$", re.IGNORECASE)
-GRAND = re.compile(r"\b(grand[\s-]*total|report[\s-]*total|total[\s-]*(all|report|for report)|overall[\s-]*total|genel[\s-]*toplam|gesamtsumme)\b", re.IGNORECASE)
+GRAND = re.compile(r"\b(grand[\s-]*total|report[\s-]*total|total[\s-]*(all|report|for report)|overall[\s-]*total|genel[\s-]*toplam|gesamtsumme|gesamttotal|total[\s-]*general|total[\s-]*geral|totale[\s-]*(generale|complessivo)|totaal[\s-]*generaal|summa[\s-]*totalt)\b", re.IGNORECASE)
 SUBTOTAL = re.compile(r"^\s*(sub[\s-]*total|subtotal|total\b|totals\b|ara[\s-]*toplam|zwischensumme)", re.IGNORECASE)
 TRUNCATED = re.compile(r"…|\.\.\.")
 NOTE_IN_VALUE = re.compile(r"\?\?|\(see\b|\bsee (email|attachment|mail|note)|\bplease check\b|\bcheck\b|"
