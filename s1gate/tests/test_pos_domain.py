@@ -128,3 +128,85 @@ def test_procedural_generator_is_deterministic():
     a = [r.text for r in pos_gen.generate(*args, **kw)]
     b = [r.text for r in pos_gen.generate(*args, **kw)]
     assert a == b
+
+
+# ---------------------------------------------------------------- regressions from the review
+
+@pytest.mark.parametrize("raw,value", [
+    ("16.1k", 16100), ("64.35k", 64350), ("1,00,000.00", 100000), ("1.000 Stk.", 1000),
+    ("1000 Nos.", 1000), ("4,000 EA.", 4000),
+])
+def test_qty_formats_from_review(raw, value):
+    assert pos.read_qty(raw) == (value, "formatted")
+
+
+@pytest.mark.parametrize("raw,status", [
+    ("5 220,00 HUF", "formatted"), ("2,31 Euro", "formatted"), ("41,90 TL", "formatted"),
+    ("$2.31 USD", "formatted"), ("2,31€", "formatted"), ("2.31/2.40 USD", "invalid"),
+    ("-2.31 USD", "impossible"), ("2.31 kr", "unknown"), ("2.31 USD EUR", "unknown"),
+])
+def test_price_formats_from_review(raw, status):
+    assert pos.read_price(raw)[1] == status
+
+
+@pytest.mark.parametrize("customer,country,lab", [
+    ("Total Power Solutions Ltd", "GB", labels("commit", "no", "0")),     # not a subtotal
+    ("Check Point Software Ltd.", "IL", labels("commit", "no", "0")),     # not a note
+    ("Acme Controls Ltd", "NA", labels("commit", "no", "0")),             # Namibia, not n/a
+    ("Acme Controls Ltd", "Korea, Republic of", labels("normalize", "no", "1")),
+])
+def test_correct_rows_from_review_pass(customer, country, lab):
+    text = ROW.format(qty="1000", ref="INV-1/1", restricted="no", seen="none").replace(
+        "customer=Acme Controls Ltd; country=PL", f"customer={customer}; country={country}").replace(
+        "master: customer=Acme Controls Ltd", f"master: customer={customer}")
+    assert [f.message for f in pos.check_labels(text, lab, CATALOGUE) if f.level == "violation"] == []
+
+
+def test_review_misses_are_now_violations():
+    unread = row(country="Korea Rep")
+    assert "normalize" in {f.rule for f in pos.check_labels(unread, labels("commit", "no", "0"), CATALOGUE)}
+    sales = row(unit_price="")
+    assert "no_op" in {f.rule for f in pos.check_labels(sales, labels("no_op", "no", "3"), CATALOGUE)
+                       if f.level == "violation"}
+    accents = row(customer="Dong Son Audio Company Limited").replace(
+        "master: customer=Acme Controls Ltd", "master: customer=Đông Sơn Audio Company Limited")
+    assert not [f for f in pos.check_labels(accents, labels("normalize", "no", "1"), CATALOGUE) if f.level == "violation"]
+    odd_digits = row().replace("spq=250", "spq=²50")
+    pos.check_labels(odd_digits, labels("commit", "no", "0"), CATALOGUE)  # must not raise
+
+
+def _gen(seed, n=6, pairs=6, recipe=None):
+    return pos_gen.generate(str(POOLS), str(ROOT / "configs/pools/parts.yaml"),
+                            recipe or str(ROOT / "configs/synth.pos.yaml"), str(ROOT / "configs/pools/regions.yaml"),
+                            n_per_scenario=n, pairs_per_type=pairs, seed=seed, log=lambda *_: None)
+
+
+@pytest.mark.parametrize("seed", [1, 2, 3, 4])
+def test_procgen_pairs_are_never_orphaned(seed):
+    recs = _gen(seed)
+    sides = Counter(r.meta["pair"] for r in recs if "pair" in r.meta)
+    assert set(sides.values()) == {2}
+    assert len({r.text for r in recs}) == len(recs)
+
+
+def test_procgen_skips_unknown_recipe_ids(tmp_path):
+    import yaml
+    recipe = yaml.safe_load((ROOT / "configs/synth.pos.yaml").read_text())
+    recipe["scenarios"].append({"id": "C99", "target": {"row_action": "commit"}, "hint": "new"})
+    recipe["pairs"].append({"id": "M01", "change": "x", "a": {"row_action": "commit"}, "b": {"row_action": "duplicate"}})
+    path = tmp_path / "r.yaml"
+    path.write_text(yaml.safe_dump(recipe))
+    recs = _gen(1, n=2, pairs=1, recipe=str(path))
+    assert recs and not {r.meta["scenario"] for r in recs} & {"C99", "M01"}
+
+
+def test_procgen_scenario_kinds_mean_what_they_say():
+    g = pos_gen.Generator(__import__("json").loads(POOLS.read_text()),
+                          pos_gen.load_parts(ROOT / "configs/pools/parts.yaml"), seed=3)
+    for _ in range(20):
+        r, _ = g.scenario("V2")   # suffix change or drop: the name core survives
+        core = g.split_suffix(r.m_customer)[0]
+        assert r.customer.startswith(core) and r.customer != r.m_customer
+        r, _ = g.scenario("D3")   # a real case/space variant, never the ref verbatim
+        seen = r.seen_refs.split(", ")
+        assert r.ref not in seen and pos.norm_ref(r.ref) in {pos.norm_ref(x) for x in seen}

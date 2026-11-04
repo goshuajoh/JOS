@@ -5520,5 +5520,1800 @@
    "H12"
   ],
   "teacher": "opus"
+ },
+ {
+  "chunk": "h01",
+  "kind": "scenario",
+  "units": [
+   {
+    "kind": "scenario",
+    "id": "C3",
+    "rows": 56,
+    "target": {
+     "row_action": "commit",
+     "needs_human": "no",
+     "severity": "0"
+    },
+    "hint": "Clean row where seen_refs lists earlier refs that look similar to this ref but differ (another line number, one digit changed, a longer number with the same prefix) - not a duplicate.",
+    "noise": "none"
+   },
+   {
+    "kind": "scenario",
+    "id": "C4",
+    "rows": 35,
+    "target": {
+     "row_action": "commit",
+     "needs_human": "no",
+     "severity": "0"
+    },
+    "hint": "Clean row for a part with SPQ 1 or 10 (dev kits, displays) and an unusual but valid qty (e.g. 7, 37, 130, 1013 with SPQ 1).",
+    "noise": "none"
+   },
+   {
+    "kind": "scenario",
+    "id": "C5",
+    "rows": 42,
+    "target": {
+     "row_action": "commit",
+     "needs_human": "no",
+     "severity": "0"
+    },
+    "hint": "Clean row whose customer has a long or complex legal name (local-language legal form, diacritics, ampersands) written exactly as in master.",
+    "noise": "none"
+   }
+  ],
+  "batches": [
+   {
+    "kind": "scenario",
+    "id": "C3",
+    "rows": 10,
+    "style": {
+     "region": "Western Europe",
+     "quantity_scale": "small orders (tens to a few hundred pieces, small SPQ parts or dev kits)",
+     "history": "several unrelated earlier refs in seen_refs, some similar-looking",
+     "currency": "the region's local currency",
+     "noise": [
+      "none - canonical formats only"
+     ]
+    }
+   },
+   {
+    "kind": "scenario",
+    "id": "C3",
+    "rows": 10,
+    "style": {
+     "region": "Nordics",
+     "quantity_scale": "small orders (tens to a few hundred pieces, small SPQ parts or dev kits)",
+     "history": "seen_refs=none",
+     "currency": "USD",
+     "noise": [
+      "none - canonical formats only"
+     ]
+    }
+   },
+   {
+    "kind": "scenario",
+    "id": "C3",
+    "rows": 10,
+    "style": {
+     "region": "India",
+     "quantity_scale": "typical orders (one to ten thousand pieces)",
+     "history": "several unrelated earlier refs in seen_refs, some similar-looking",
+     "currency": "the region's local currency",
+     "noise": [
+      "none - canonical formats only"
+     ]
+    }
+   },
+   {
+    "kind": "scenario",
+    "id": "C3",
+    "rows": 10,
+    "style": {
+     "region": "Western Europe",
+     "quantity_scale": "large orders (tens of thousands of pieces, reel parts)",
+     "history": "seen_refs=none",
+     "currency": "the region's local currency",
+     "noise": [
+      "none - canonical formats only"
+     ]
+    }
+   },
+   {
+    "kind": "scenario",
+    "id": "C3",
+    "rows": 10,
+    "style": {
+     "region": "Turkey",
+     "quantity_scale": "large orders (tens of thousands of pieces, reel parts)",
+     "history": "seen_refs=none",
+     "currency": "USD",
+     "noise": [
+      "none - canonical formats only"
+     ]
+    }
+   },
+   {
+    "kind": "scenario",
+    "id": "C3",
+    "rows": 6,
+    "style": {
+     "region": "Central and Eastern Europe",
+     "quantity_scale": "typical orders (one to ten thousand pieces)",
+     "history": "several unrelated earlier refs in seen_refs, some similar-looking",
+     "currency": "the region's local currency",
+     "noise": [
+      "none - canonical formats only"
+     ]
+    }
+   },
+   {
+    "kind": "scenario",
+    "id": "C4",
+    "rows": 10,
+    "style": {
+     "region": "Turkey",
+     "quantity_scale": "small orders (tens to a few hundred pieces, small SPQ parts or dev kits)",
+     "history": "one unrelated earlier ref in seen_refs",
+     "currency": "USD",
+     "noise": [
+      "none - canonical formats only"
+     ]
+    }
+   },
+   {
+    "kind": "scenario",
+    "id": "C4",
+    "rows": 10,
+    "style": {
+     "region": "Greater China",
+     "quantity_scale": "small orders (tens to a few hundred pieces, small SPQ parts or dev kits)",
+     "history": "one unrelated earlier ref in seen_refs",
+     "currency": "the region's local currency",
+     "noise": [
+      "none - canonical formats only"
+     ]
+    }
+   },
+   {
+    "kind": "scenario",
+    "id": "C4",
+    "rows": 10,
+    "style": {
+     "region": "India",
+     "quantity_scale": "small orders (tens to a few hundred pieces, small SPQ parts or dev kits)",
+     "history": "several unrelated earlier refs in seen_refs, some similar-looking",
+     "currency": "the region's local currency",
+     "noise": [
+      "none - canonical formats only"
+     ]
+    }
+   },
+   {
+    "kind": "scenario",
+    "id": "C4",
+    "rows": 5,
+    "style": {
+     "region": "India",
+     "quantity_scale": "small orders (tens to a few hundred pieces, small SPQ parts or dev kits)",
+     "history": "seen_refs=none",
+     "currency": "USD",
+     "noise": [
+      "none - canonical formats only"
+     ]
+    }
+   },
+   {
+    "kind": "scenario",
+    "id": "C5",
+    "rows": 10,
+    "style": {
+     "region": "Western Europe",
+     "quantity_scale": "large orders (tens of thousands of pieces, reel parts)",
+     "history": "several unrelated earlier refs in seen_refs, some similar-looking",
+     "currency": "the region's local currency",
+     "noise": [
+      "none - canonical formats only"
+     ]
+    }
+   },
+   {
+    "kind": "scenario",
+    "id": "C5",
+    "rows": 10,
+    "style": {
+     "region": "Western Europe",
+     "quantity_scale": "large orders (tens of thousands of pieces, reel parts)",
+     "history": "one unrelated earlier ref in seen_refs",
+     "currency": "the region's local currency",
+     "noise": [
+      "none - canonical formats only"
+     ]
+    }
+   },
+   {
+    "kind": "scenario",
+    "id": "C5",
+    "rows": 10,
+    "style": {
+     "region": "North America",
+     "quantity_scale": "small orders (tens to a few hundred pieces, small SPQ parts or dev kits)",
+     "history": "one unrelated earlier ref in seen_refs",
+     "currency": "USD",
+     "noise": [
+      "none - canonical formats only"
+     ]
+    }
+   },
+   {
+    "kind": "scenario",
+    "id": "C5",
+    "rows": 10,
+    "style": {
+     "region": "India",
+     "quantity_scale": "large orders (tens of thousands of pieces, reel parts)",
+     "history": "one unrelated earlier ref in seen_refs",
+     "currency": "the region's local currency",
+     "noise": [
+      "none - canonical formats only"
+     ]
+    }
+   },
+   {
+    "kind": "scenario",
+    "id": "C5",
+    "rows": 2,
+    "style": {
+     "region": "Latin America",
+     "quantity_scale": "small orders (tens to a few hundred pieces, small SPQ parts or dev kits)",
+     "history": "several unrelated earlier refs in seen_refs, some similar-looking",
+     "currency": "the region's local currency",
+     "noise": [
+      "none - canonical formats only"
+     ]
+    }
+   }
+  ],
+  "rows": 133,
+  "ids": [
+   "C3",
+   "C4",
+   "C5"
+  ],
+  "teacher": "opus",
+  "authoring": "hand"
+ },
+ {
+  "chunk": "h03",
+  "kind": "scenario",
+  "units": [
+   {
+    "kind": "scenario",
+    "id": "N2",
+    "rows": 70,
+    "target": {
+     "row_action": "normalize",
+     "needs_human": "no",
+     "severity": "1"
+    },
+    "hint": "Qty written with thousands separators, units, trailing decimals or a k suffix; once normalized it is a valid SPQ multiple at or above MOQ.",
+    "noise": "required"
+   },
+   {
+    "kind": "scenario",
+    "id": "N3",
+    "rows": 56,
+    "target": {
+     "row_action": "normalize",
+     "needs_human": "no",
+     "severity": "1"
+    },
+    "hint": "Price written with a decimal comma, a lower-case currency, a symbol, or the currency first; everything else canonical and valid.",
+    "noise": "required"
+   }
+  ],
+  "batches": [
+   {
+    "kind": "scenario",
+    "id": "N2",
+    "rows": 10,
+    "style": {
+     "region": "India",
+     "quantity_scale": "small orders (tens to a few hundred pieces, small SPQ parts or dev kits)",
+     "history": "one unrelated earlier ref in seen_refs",
+     "currency": "the region's local currency",
+     "noise": [
+      "hyphens missing from the part number",
+      "k suffix in qty (2.5k)"
+     ]
+    }
+   },
+   {
+    "kind": "scenario",
+    "id": "N2",
+    "rows": 10,
+    "style": {
+     "region": "India",
+     "quantity_scale": "small orders (tens to a few hundred pieces, small SPQ parts or dev kits)",
+     "history": "several unrelated earlier refs in seen_refs, some similar-looking",
+     "currency": "the region's local currency",
+     "noise": [
+      "thousands separators in qty (1,000 / 1.000 / 1 000)",
+      "DD.MM.YYYY (30.09.2026)"
+     ]
+    }
+   },
+   {
+    "kind": "scenario",
+    "id": "N2",
+    "rows": 10,
+    "style": {
+     "region": "Japan and Korea",
+     "quantity_scale": "typical orders (one to ten thousand pieces)",
+     "history": "one unrelated earlier ref in seen_refs",
+     "currency": "USD",
+     "noise": [
+      "lower or mixed case part number"
+     ]
+    }
+   },
+   {
+    "kind": "scenario",
+    "id": "N2",
+    "rows": 10,
+    "style": {
+     "region": "Latin America",
+     "quantity_scale": "typical orders (one to ten thousand pieces)",
+     "history": "several unrelated earlier refs in seen_refs, some similar-looking",
+     "currency": "USD",
+     "noise": [
+      "month name and year (September 2026)",
+      "country as lower-case code or full country name"
+     ]
+    }
+   },
+   {
+    "kind": "scenario",
+    "id": "N2",
+    "rows": 10,
+    "style": {
+     "region": "Southeast Asia",
+     "quantity_scale": "typical orders (one to ten thousand pieces)",
+     "history": "several unrelated earlier refs in seen_refs, some similar-looking",
+     "currency": "USD",
+     "noise": [
+      "lower or mixed case part number"
+     ]
+    }
+   },
+   {
+    "kind": "scenario",
+    "id": "N2",
+    "rows": 10,
+    "style": {
+     "region": "North America",
+     "quantity_scale": "small orders (tens to a few hundred pieces, small SPQ parts or dev kits)",
+     "history": "one unrelated earlier ref in seen_refs",
+     "currency": "the region's local currency",
+     "noise": [
+      "hyphens missing from the part number",
+      "European decimal comma in price (2,31)"
+     ]
+    }
+   },
+   {
+    "kind": "scenario",
+    "id": "N2",
+    "rows": 10,
+    "style": {
+     "region": "Central and Eastern Europe",
+     "quantity_scale": "large orders (tens of thousands of pieces, reel parts)",
+     "history": "several unrelated earlier refs in seen_refs, some similar-looking",
+     "currency": "USD",
+     "noise": [
+      "thousands separators in qty (1,000 / 1.000 / 1 000)"
+     ]
+    }
+   },
+   {
+    "kind": "scenario",
+    "id": "N3",
+    "rows": 10,
+    "style": {
+     "region": "Latin America",
+     "quantity_scale": "large orders (tens of thousands of pieces, reel parts)",
+     "history": "one unrelated earlier ref in seen_refs",
+     "currency": "USD",
+     "noise": [
+      "thousands separators in qty (1,000 / 1.000 / 1 000)"
+     ]
+    }
+   },
+   {
+    "kind": "scenario",
+    "id": "N3",
+    "rows": 10,
+    "style": {
+     "region": "Japan and Korea",
+     "quantity_scale": "typical orders (one to ten thousand pieces)",
+     "history": "several unrelated earlier refs in seen_refs, some similar-looking",
+     "currency": "USD",
+     "noise": [
+      "lower or mixed case part number"
+     ]
+    }
+   },
+   {
+    "kind": "scenario",
+    "id": "N3",
+    "rows": 10,
+    "style": {
+     "region": "Middle East",
+     "quantity_scale": "small orders (tens to a few hundred pieces, small SPQ parts or dev kits)",
+     "history": "one unrelated earlier ref in seen_refs",
+     "currency": "USD",
+     "noise": [
+      "k suffix in qty (2.5k)"
+     ]
+    }
+   },
+   {
+    "kind": "scenario",
+    "id": "N3",
+    "rows": 10,
+    "style": {
+     "region": "North America",
+     "quantity_scale": "large orders (tens of thousands of pieces, reel parts)",
+     "history": "several unrelated earlier refs in seen_refs, some similar-looking",
+     "currency": "the region's local currency",
+     "noise": [
+      "hyphens missing from the part number",
+      "MM/YYYY"
+     ]
+    }
+   },
+   {
+    "kind": "scenario",
+    "id": "N3",
+    "rows": 10,
+    "style": {
+     "region": "Central and Eastern Europe",
+     "quantity_scale": "typical orders (one to ten thousand pieces)",
+     "history": "seen_refs=none",
+     "currency": "the region's local currency",
+     "noise": [
+      "stray spaces inside values"
+     ]
+    }
+   },
+   {
+    "kind": "scenario",
+    "id": "N3",
+    "rows": 6,
+    "style": {
+     "region": "Central and Eastern Europe",
+     "quantity_scale": "typical orders (one to ten thousand pieces)",
+     "history": "several unrelated earlier refs in seen_refs, some similar-looking",
+     "currency": "USD",
+     "noise": [
+      "stray spaces inside values",
+      "lower or mixed case part number"
+     ]
+    }
+   }
+  ],
+  "rows": 126,
+  "ids": [
+   "N2",
+   "N3"
+  ],
+  "teacher": "opus",
+  "authoring": "hand"
+ },
+ {
+  "chunk": "h05",
+  "kind": "scenario",
+  "units": [
+   {
+    "kind": "scenario",
+    "id": "N6",
+    "rows": 70,
+    "target": {
+     "row_action": "normalize",
+     "needs_human": "no",
+     "severity": "1"
+    },
+    "hint": "Hand-edited spreadsheet row with several format problems at once (stray whitespace, mixed case, separators, odd date) while every value is right.",
+    "noise": "required"
+   },
+   {
+    "kind": "scenario",
+    "id": "N7",
+    "rows": 28,
+    "target": {
+     "row_action": "normalize",
+     "needs_human": "no",
+     "severity": "1"
+    },
+    "hint": "Country written as a lower-case code or the full country name, possibly with one more format issue; values right.",
+    "noise": "required"
+   }
+  ],
+  "batches": [
+   {
+    "kind": "scenario",
+    "id": "N6",
+    "rows": 10,
+    "style": {
+     "region": "Turkey",
+     "quantity_scale": "typical orders (one to ten thousand pieces)",
+     "history": "several unrelated earlier refs in seen_refs, some similar-looking",
+     "currency": "USD",
+     "noise": [
+      "hyphens missing from the part number"
+     ]
+    }
+   },
+   {
+    "kind": "scenario",
+    "id": "N6",
+    "rows": 10,
+    "style": {
+     "region": "Southeast Asia",
+     "quantity_scale": "typical orders (one to ten thousand pieces)",
+     "history": "several unrelated earlier refs in seen_refs, some similar-looking",
+     "currency": "the region's local currency",
+     "noise": [
+      "lower or mixed case part number",
+      "MM/YYYY"
+     ]
+    }
+   },
+   {
+    "kind": "scenario",
+    "id": "N6",
+    "rows": 10,
+    "style": {
+     "region": "Japan and Korea",
+     "quantity_scale": "small orders (tens to a few hundred pieces, small SPQ parts or dev kits)",
+     "history": "several unrelated earlier refs in seen_refs, some similar-looking",
+     "currency": "USD",
+     "noise": [
+      "currency before the price",
+      "lower or mixed case part number"
+     ]
+    }
+   },
+   {
+    "kind": "scenario",
+    "id": "N6",
+    "rows": 10,
+    "style": {
+     "region": "Japan and Korea",
+     "quantity_scale": "small orders (tens to a few hundred pieces, small SPQ parts or dev kits)",
+     "history": "one unrelated earlier ref in seen_refs",
+     "currency": "the region's local currency",
+     "noise": [
+      "stray spaces inside values"
+     ]
+    }
+   },
+   {
+    "kind": "scenario",
+    "id": "N6",
+    "rows": 10,
+    "style": {
+     "region": "Latin America",
+     "quantity_scale": "small orders (tens to a few hundred pieces, small SPQ parts or dev kits)",
+     "history": "seen_refs=none",
+     "currency": "the region's local currency",
+     "noise": [
+      "month name and year (September 2026)"
+     ]
+    }
+   },
+   {
+    "kind": "scenario",
+    "id": "N6",
+    "rows": 10,
+    "style": {
+     "region": "Middle East",
+     "quantity_scale": "small orders (tens to a few hundred pieces, small SPQ parts or dev kits)",
+     "history": "seen_refs=none",
+     "currency": "the region's local currency",
+     "noise": [
+      "spaces instead of hyphens in the part number"
+     ]
+    }
+   },
+   {
+    "kind": "scenario",
+    "id": "N6",
+    "rows": 10,
+    "style": {
+     "region": "Turkey",
+     "quantity_scale": "typical orders (one to ten thousand pieces)",
+     "history": "several unrelated earlier refs in seen_refs, some similar-looking",
+     "currency": "the region's local currency",
+     "noise": [
+      "YYYY-M without zero padding"
+     ]
+    }
+   },
+   {
+    "kind": "scenario",
+    "id": "N7",
+    "rows": 10,
+    "style": {
+     "region": "India",
+     "quantity_scale": "typical orders (one to ten thousand pieces)",
+     "history": "seen_refs=none",
+     "currency": "USD",
+     "noise": [
+      "lower or mixed case part number"
+     ]
+    }
+   },
+   {
+    "kind": "scenario",
+    "id": "N7",
+    "rows": 10,
+    "style": {
+     "region": "Southeast Asia",
+     "quantity_scale": "small orders (tens to a few hundred pieces, small SPQ parts or dev kits)",
+     "history": "several unrelated earlier refs in seen_refs, some similar-looking",
+     "currency": "USD",
+     "noise": [
+      "European decimal comma in price (2,31)"
+     ]
+    }
+   },
+   {
+    "kind": "scenario",
+    "id": "N7",
+    "rows": 8,
+    "style": {
+     "region": "Turkey",
+     "quantity_scale": "small orders (tens to a few hundred pieces, small SPQ parts or dev kits)",
+     "history": "several unrelated earlier refs in seen_refs, some similar-looking",
+     "currency": "USD",
+     "noise": [
+      "spaces instead of hyphens in the part number"
+     ]
+    }
+   }
+  ],
+  "rows": 98,
+  "ids": [
+   "N6",
+   "N7"
+  ],
+  "teacher": "opus",
+  "authoring": "hand"
+ },
+ {
+  "chunk": "h07",
+  "kind": "scenario",
+  "units": [
+   {
+    "kind": "scenario",
+    "id": "V3",
+    "rows": 56,
+    "target": {
+     "row_action": "vendor_rename",
+     "needs_human": "no",
+     "severity": "2"
+    },
+    "hint": "Customer name with a typo, transposed letters or a missing letter that still clearly refers to the master customer.",
+    "noise": "none"
+   },
+   {
+    "kind": "scenario",
+    "id": "V4",
+    "rows": 49,
+    "target": {
+     "row_action": "vendor_rename",
+     "needs_human": "no",
+     "severity": "2"
+    },
+    "hint": "Same company written with a dropped or added generic word (Co., Intl, Technologies), a translated legal form, or words in a different order.",
+    "noise": "none"
+   }
+  ],
+  "batches": [
+   {
+    "kind": "scenario",
+    "id": "V3",
+    "rows": 10,
+    "style": {
+     "region": "Japan and Korea",
+     "quantity_scale": "small orders (tens to a few hundred pieces, small SPQ parts or dev kits)",
+     "history": "seen_refs=none",
+     "currency": "USD",
+     "noise": [
+      "none - canonical formats only"
+     ]
+    }
+   },
+   {
+    "kind": "scenario",
+    "id": "V3",
+    "rows": 10,
+    "style": {
+     "region": "Southeast Asia",
+     "quantity_scale": "large orders (tens of thousands of pieces, reel parts)",
+     "history": "one unrelated earlier ref in seen_refs",
+     "currency": "the region's local currency",
+     "noise": [
+      "none - canonical formats only"
+     ]
+    }
+   },
+   {
+    "kind": "scenario",
+    "id": "V3",
+    "rows": 10,
+    "style": {
+     "region": "Japan and Korea",
+     "quantity_scale": "small orders (tens to a few hundred pieces, small SPQ parts or dev kits)",
+     "history": "several unrelated earlier refs in seen_refs, some similar-looking",
+     "currency": "USD",
+     "noise": [
+      "none - canonical formats only"
+     ]
+    }
+   },
+   {
+    "kind": "scenario",
+    "id": "V3",
+    "rows": 10,
+    "style": {
+     "region": "Turkey",
+     "quantity_scale": "small orders (tens to a few hundred pieces, small SPQ parts or dev kits)",
+     "history": "one unrelated earlier ref in seen_refs",
+     "currency": "USD",
+     "noise": [
+      "none - canonical formats only"
+     ]
+    }
+   },
+   {
+    "kind": "scenario",
+    "id": "V3",
+    "rows": 10,
+    "style": {
+     "region": "Southeast Asia",
+     "quantity_scale": "typical orders (one to ten thousand pieces)",
+     "history": "seen_refs=none",
+     "currency": "USD",
+     "noise": [
+      "none - canonical formats only"
+     ]
+    }
+   },
+   {
+    "kind": "scenario",
+    "id": "V3",
+    "rows": 6,
+    "style": {
+     "region": "Japan and Korea",
+     "quantity_scale": "small orders (tens to a few hundred pieces, small SPQ parts or dev kits)",
+     "history": "several unrelated earlier refs in seen_refs, some similar-looking",
+     "currency": "the region's local currency",
+     "noise": [
+      "none - canonical formats only"
+     ]
+    }
+   },
+   {
+    "kind": "scenario",
+    "id": "V4",
+    "rows": 10,
+    "style": {
+     "region": "Central and Eastern Europe",
+     "quantity_scale": "small orders (tens to a few hundred pieces, small SPQ parts or dev kits)",
+     "history": "seen_refs=none",
+     "currency": "the region's local currency",
+     "noise": [
+      "none - canonical formats only"
+     ]
+    }
+   },
+   {
+    "kind": "scenario",
+    "id": "V4",
+    "rows": 10,
+    "style": {
+     "region": "Nordics",
+     "quantity_scale": "small orders (tens to a few hundred pieces, small SPQ parts or dev kits)",
+     "history": "several unrelated earlier refs in seen_refs, some similar-looking",
+     "currency": "the region's local currency",
+     "noise": [
+      "none - canonical formats only"
+     ]
+    }
+   },
+   {
+    "kind": "scenario",
+    "id": "V4",
+    "rows": 10,
+    "style": {
+     "region": "Nordics",
+     "quantity_scale": "small orders (tens to a few hundred pieces, small SPQ parts or dev kits)",
+     "history": "seen_refs=none",
+     "currency": "USD",
+     "noise": [
+      "none - canonical formats only"
+     ]
+    }
+   },
+   {
+    "kind": "scenario",
+    "id": "V4",
+    "rows": 10,
+    "style": {
+     "region": "North America",
+     "quantity_scale": "small orders (tens to a few hundred pieces, small SPQ parts or dev kits)",
+     "history": "several unrelated earlier refs in seen_refs, some similar-looking",
+     "currency": "USD",
+     "noise": [
+      "none - canonical formats only"
+     ]
+    }
+   },
+   {
+    "kind": "scenario",
+    "id": "V4",
+    "rows": 9,
+    "style": {
+     "region": "Greater China",
+     "quantity_scale": "typical orders (one to ten thousand pieces)",
+     "history": "one unrelated earlier ref in seen_refs",
+     "currency": "USD",
+     "noise": [
+      "none - canonical formats only"
+     ]
+    }
+   }
+  ],
+  "rows": 105,
+  "ids": [
+   "V3",
+   "V4"
+  ],
+  "teacher": "opus",
+  "authoring": "hand"
+ },
+ {
+  "chunk": "h09",
+  "kind": "scenario",
+  "units": [
+   {
+    "kind": "scenario",
+    "id": "VU2",
+    "rows": 49,
+    "target": {
+     "row_action": "vendor_rename",
+     "needs_human": "yes",
+     "severity": "3"
+    },
+    "hint": "Reported name is completely different from the master name the lookup returned (possible rebrand, parent holding or acquirer).",
+    "noise": "none"
+   },
+   {
+    "kind": "scenario",
+    "id": "VU3",
+    "rows": 42,
+    "target": {
+     "row_action": "vendor_rename",
+     "needs_human": "yes",
+     "severity": "3"
+    },
+    "hint": "Reported name points to a branch, regional subsidiary or holding of the master customer (Acme Controls Asia Pte Ltd vs Acme Controls Ltd).",
+    "noise": "optional"
+   }
+  ],
+  "batches": [
+   {
+    "kind": "scenario",
+    "id": "VU2",
+    "rows": 10,
+    "style": {
+     "region": "Western Europe",
+     "quantity_scale": "large orders (tens of thousands of pieces, reel parts)",
+     "history": "several unrelated earlier refs in seen_refs, some similar-looking",
+     "currency": "the region's local currency",
+     "noise": [
+      "none - canonical formats only"
+     ]
+    }
+   },
+   {
+    "kind": "scenario",
+    "id": "VU2",
+    "rows": 10,
+    "style": {
+     "region": "Southeast Asia",
+     "quantity_scale": "typical orders (one to ten thousand pieces)",
+     "history": "several unrelated earlier refs in seen_refs, some similar-looking",
+     "currency": "USD",
+     "noise": [
+      "none - canonical formats only"
+     ]
+    }
+   },
+   {
+    "kind": "scenario",
+    "id": "VU2",
+    "rows": 10,
+    "style": {
+     "region": "Latin America",
+     "quantity_scale": "small orders (tens to a few hundred pieces, small SPQ parts or dev kits)",
+     "history": "several unrelated earlier refs in seen_refs, some similar-looking",
+     "currency": "USD",
+     "noise": [
+      "none - canonical formats only"
+     ]
+    }
+   },
+   {
+    "kind": "scenario",
+    "id": "VU2",
+    "rows": 10,
+    "style": {
+     "region": "North America",
+     "quantity_scale": "typical orders (one to ten thousand pieces)",
+     "history": "several unrelated earlier refs in seen_refs, some similar-looking",
+     "currency": "USD",
+     "noise": [
+      "none - canonical formats only"
+     ]
+    }
+   },
+   {
+    "kind": "scenario",
+    "id": "VU2",
+    "rows": 9,
+    "style": {
+     "region": "Japan and Korea",
+     "quantity_scale": "typical orders (one to ten thousand pieces)",
+     "history": "seen_refs=none",
+     "currency": "USD",
+     "noise": [
+      "none - canonical formats only"
+     ]
+    }
+   },
+   {
+    "kind": "scenario",
+    "id": "VU3",
+    "rows": 10,
+    "style": {
+     "region": "Turkey",
+     "quantity_scale": "small orders (tens to a few hundred pieces, small SPQ parts or dev kits)",
+     "history": "one unrelated earlier ref in seen_refs",
+     "currency": "USD",
+     "noise": [
+      "stray spaces inside values"
+     ]
+    }
+   },
+   {
+    "kind": "scenario",
+    "id": "VU3",
+    "rows": 10,
+    "style": {
+     "region": "Nordics",
+     "quantity_scale": "small orders (tens to a few hundred pieces, small SPQ parts or dev kits)",
+     "history": "several unrelated earlier refs in seen_refs, some similar-looking",
+     "currency": "USD",
+     "noise": [
+      "spaces instead of hyphens in the part number"
+     ]
+    }
+   },
+   {
+    "kind": "scenario",
+    "id": "VU3",
+    "rows": 10,
+    "style": {
+     "region": "Southeast Asia",
+     "quantity_scale": "typical orders (one to ten thousand pieces)",
+     "history": "one unrelated earlier ref in seen_refs",
+     "currency": "the region's local currency",
+     "noise": [
+      "none"
+     ]
+    }
+   },
+   {
+    "kind": "scenario",
+    "id": "VU3",
+    "rows": 10,
+    "style": {
+     "region": "North America",
+     "quantity_scale": "small orders (tens to a few hundred pieces, small SPQ parts or dev kits)",
+     "history": "several unrelated earlier refs in seen_refs, some similar-looking",
+     "currency": "the region's local currency",
+     "noise": [
+      "none"
+     ]
+    }
+   },
+   {
+    "kind": "scenario",
+    "id": "VU3",
+    "rows": 2,
+    "style": {
+     "region": "Japan and Korea",
+     "quantity_scale": "small orders (tens to a few hundred pieces, small SPQ parts or dev kits)",
+     "history": "several unrelated earlier refs in seen_refs, some similar-looking",
+     "currency": "the region's local currency",
+     "noise": [
+      "Indian digit grouping (1,00,000)"
+     ]
+    }
+   }
+  ],
+  "rows": 91,
+  "ids": [
+   "VU2",
+   "VU3"
+  ],
+  "teacher": "opus",
+  "authoring": "hand"
+ },
+ {
+  "chunk": "h17",
+  "kind": "scenario",
+  "units": [
+   {
+    "kind": "scenario",
+    "id": "A2",
+    "rows": 70,
+    "target": {
+     "row_action": "ask_human",
+     "needs_human": "yes",
+     "severity": "3"
+    },
+    "hint": "Impossible value - qty zero, negative or fractional (1.5), price zero, negative or non-numeric (TBD), or month 13/00.",
+    "noise": "optional"
+   },
+   {
+    "kind": "scenario",
+    "id": "A3",
+    "rows": 70,
+    "target": {
+     "row_action": "ask_human",
+     "needs_human": "yes",
+     "severity": "3"
+    },
+    "hint": "Contradictory or garbled content - two part numbers, two quantities (1000/1200), a note inside a value field (qty=see attachment), a value cut off mid-way.",
+    "noise": "optional"
+   }
+  ],
+  "batches": [
+   {
+    "kind": "scenario",
+    "id": "A2",
+    "rows": 10,
+    "style": {
+     "region": "Southeast Asia",
+     "quantity_scale": "large orders (tens of thousands of pieces, reel parts)",
+     "history": "seen_refs=none",
+     "currency": "the region's local currency",
+     "noise": [
+      "none"
+     ]
+    }
+   },
+   {
+    "kind": "scenario",
+    "id": "A2",
+    "rows": 10,
+    "style": {
+     "region": "India",
+     "quantity_scale": "large orders (tens of thousands of pieces, reel parts)",
+     "history": "one unrelated earlier ref in seen_refs",
+     "currency": "USD",
+     "noise": [
+      "none"
+     ]
+    }
+   },
+   {
+    "kind": "scenario",
+    "id": "A2",
+    "rows": 10,
+    "style": {
+     "region": "Greater China",
+     "quantity_scale": "large orders (tens of thousands of pieces, reel parts)",
+     "history": "several unrelated earlier refs in seen_refs, some similar-looking",
+     "currency": "USD",
+     "noise": [
+      "Indian digit grouping (1,00,000)",
+      "lower or mixed case part number"
+     ]
+    }
+   },
+   {
+    "kind": "scenario",
+    "id": "A2",
+    "rows": 10,
+    "style": {
+     "region": "Western Europe",
+     "quantity_scale": "typical orders (one to ten thousand pieces)",
+     "history": "several unrelated earlier refs in seen_refs, some similar-looking",
+     "currency": "the region's local currency",
+     "noise": [
+      "none"
+     ]
+    }
+   },
+   {
+    "kind": "scenario",
+    "id": "A2",
+    "rows": 10,
+    "style": {
+     "region": "India",
+     "quantity_scale": "typical orders (one to ten thousand pieces)",
+     "history": "several unrelated earlier refs in seen_refs, some similar-looking",
+     "currency": "the region's local currency",
+     "noise": [
+      "none"
+     ]
+    }
+   },
+   {
+    "kind": "scenario",
+    "id": "A2",
+    "rows": 10,
+    "style": {
+     "region": "Western Europe",
+     "quantity_scale": "small orders (tens to a few hundred pieces, small SPQ parts or dev kits)",
+     "history": "several unrelated earlier refs in seen_refs, some similar-looking",
+     "currency": "the region's local currency",
+     "noise": [
+      "none"
+     ]
+    }
+   },
+   {
+    "kind": "scenario",
+    "id": "A2",
+    "rows": 10,
+    "style": {
+     "region": "Central and Eastern Europe",
+     "quantity_scale": "typical orders (one to ten thousand pieces)",
+     "history": "seen_refs=none",
+     "currency": "USD",
+     "noise": [
+      "month name and year (September 2026)"
+     ]
+    }
+   },
+   {
+    "kind": "scenario",
+    "id": "A3",
+    "rows": 10,
+    "style": {
+     "region": "Central and Eastern Europe",
+     "quantity_scale": "typical orders (one to ten thousand pieces)",
+     "history": "seen_refs=none",
+     "currency": "USD",
+     "noise": [
+      "Mon-YY (Sep-26)",
+      "lower or mixed case part number"
+     ]
+    }
+   },
+   {
+    "kind": "scenario",
+    "id": "A3",
+    "rows": 10,
+    "style": {
+     "region": "Turkey",
+     "quantity_scale": "typical orders (one to ten thousand pieces)",
+     "history": "one unrelated earlier ref in seen_refs",
+     "currency": "the region's local currency",
+     "noise": [
+      "lower or mixed case part number"
+     ]
+    }
+   },
+   {
+    "kind": "scenario",
+    "id": "A3",
+    "rows": 10,
+    "style": {
+     "region": "India",
+     "quantity_scale": "typical orders (one to ten thousand pieces)",
+     "history": "one unrelated earlier ref in seen_refs",
+     "currency": "USD",
+     "noise": [
+      "none"
+     ]
+    }
+   },
+   {
+    "kind": "scenario",
+    "id": "A3",
+    "rows": 10,
+    "style": {
+     "region": "Southeast Asia",
+     "quantity_scale": "large orders (tens of thousands of pieces, reel parts)",
+     "history": "several unrelated earlier refs in seen_refs, some similar-looking",
+     "currency": "the region's local currency",
+     "noise": [
+      "lower or mixed case part number"
+     ]
+    }
+   },
+   {
+    "kind": "scenario",
+    "id": "A3",
+    "rows": 10,
+    "style": {
+     "region": "North America",
+     "quantity_scale": "small orders (tens to a few hundred pieces, small SPQ parts or dev kits)",
+     "history": "seen_refs=none",
+     "currency": "USD",
+     "noise": [
+      "YYYY/MM or YYYY/MM/DD",
+      "lower or mixed case part number"
+     ]
+    }
+   },
+   {
+    "kind": "scenario",
+    "id": "A3",
+    "rows": 10,
+    "style": {
+     "region": "North America",
+     "quantity_scale": "typical orders (one to ten thousand pieces)",
+     "history": "several unrelated earlier refs in seen_refs, some similar-looking",
+     "currency": "USD",
+     "noise": [
+      "Indian digit grouping (1,00,000)",
+      "YYYY/MM or YYYY/MM/DD"
+     ]
+    }
+   },
+   {
+    "kind": "scenario",
+    "id": "A3",
+    "rows": 10,
+    "style": {
+     "region": "Nordics",
+     "quantity_scale": "typical orders (one to ten thousand pieces)",
+     "history": "one unrelated earlier ref in seen_refs",
+     "currency": "the region's local currency",
+     "noise": [
+      "spaces instead of hyphens in the part number",
+      "European decimal comma in price (2,31)"
+     ]
+    }
+   }
+  ],
+  "rows": 140,
+  "ids": [
+   "A2",
+   "A3"
+  ],
+  "teacher": "opus",
+  "authoring": "hand"
+ },
+ {
+  "chunk": "h19",
+  "kind": "scenario",
+  "units": [
+   {
+    "kind": "scenario",
+    "id": "O2",
+    "rows": 35,
+    "target": {
+     "row_action": "no_op",
+     "needs_human": "no",
+     "severity": "1"
+    },
+    "hint": "Blank or separator row - reported values empty or filler (-----, =====, n/a), no qty and no ref; master lookup failed.",
+    "noise": "none"
+   },
+   {
+    "kind": "scenario",
+    "id": "O3",
+    "rows": 35,
+    "target": {
+     "row_action": "no_op",
+     "needs_human": "no",
+     "severity": "1"
+    },
+    "hint": "Note or comment line carried into the fields (*** end of report ***, continued on next page, prices exclude VAT), no quantity to report.",
+    "noise": "none"
+   },
+   {
+    "kind": "scenario",
+    "id": "O4",
+    "rows": 49,
+    "target": {
+     "row_action": "no_op",
+     "needs_human": "no",
+     "severity": "3"
+    },
+    "hint": "Subtotal line for one customer or one part (part=SUBTOTAL, customer=Total <name>), qty is a sum, ref empty or SUBTOTAL; restricted=no.",
+    "noise": "optional"
+   }
+  ],
+  "batches": [
+   {
+    "kind": "scenario",
+    "id": "O2",
+    "rows": 10,
+    "style": {
+     "region": "Middle East",
+     "quantity_scale": "large orders (tens of thousands of pieces, reel parts)",
+     "history": "seen_refs=none",
+     "currency": "the region's local currency",
+     "noise": [
+      "none - canonical formats only"
+     ]
+    }
+   },
+   {
+    "kind": "scenario",
+    "id": "O2",
+    "rows": 10,
+    "style": {
+     "region": "Turkey",
+     "quantity_scale": "typical orders (one to ten thousand pieces)",
+     "history": "seen_refs=none",
+     "currency": "USD",
+     "noise": [
+      "none - canonical formats only"
+     ]
+    }
+   },
+   {
+    "kind": "scenario",
+    "id": "O2",
+    "rows": 10,
+    "style": {
+     "region": "Southeast Asia",
+     "quantity_scale": "small orders (tens to a few hundred pieces, small SPQ parts or dev kits)",
+     "history": "one unrelated earlier ref in seen_refs",
+     "currency": "the region's local currency",
+     "noise": [
+      "none - canonical formats only"
+     ]
+    }
+   },
+   {
+    "kind": "scenario",
+    "id": "O2",
+    "rows": 5,
+    "style": {
+     "region": "Southeast Asia",
+     "quantity_scale": "typical orders (one to ten thousand pieces)",
+     "history": "one unrelated earlier ref in seen_refs",
+     "currency": "USD",
+     "noise": [
+      "none - canonical formats only"
+     ]
+    }
+   },
+   {
+    "kind": "scenario",
+    "id": "O3",
+    "rows": 10,
+    "style": {
+     "region": "Western Europe",
+     "quantity_scale": "typical orders (one to ten thousand pieces)",
+     "history": "one unrelated earlier ref in seen_refs",
+     "currency": "USD",
+     "noise": [
+      "none - canonical formats only"
+     ]
+    }
+   },
+   {
+    "kind": "scenario",
+    "id": "O3",
+    "rows": 10,
+    "style": {
+     "region": "Central and Eastern Europe",
+     "quantity_scale": "large orders (tens of thousands of pieces, reel parts)",
+     "history": "seen_refs=none",
+     "currency": "USD",
+     "noise": [
+      "none - canonical formats only"
+     ]
+    }
+   },
+   {
+    "kind": "scenario",
+    "id": "O3",
+    "rows": 10,
+    "style": {
+     "region": "North America",
+     "quantity_scale": "typical orders (one to ten thousand pieces)",
+     "history": "seen_refs=none",
+     "currency": "USD",
+     "noise": [
+      "none - canonical formats only"
+     ]
+    }
+   },
+   {
+    "kind": "scenario",
+    "id": "O3",
+    "rows": 5,
+    "style": {
+     "region": "Nordics",
+     "quantity_scale": "large orders (tens of thousands of pieces, reel parts)",
+     "history": "seen_refs=none",
+     "currency": "USD",
+     "noise": [
+      "none - canonical formats only"
+     ]
+    }
+   },
+   {
+    "kind": "scenario",
+    "id": "O4",
+    "rows": 10,
+    "style": {
+     "region": "Japan and Korea",
+     "quantity_scale": "small orders (tens to a few hundred pieces, small SPQ parts or dev kits)",
+     "history": "one unrelated earlier ref in seen_refs",
+     "currency": "USD",
+     "noise": [
+      "month name and year (September 2026)",
+      "trailing zero decimals in qty (1000.00)"
+     ]
+    }
+   },
+   {
+    "kind": "scenario",
+    "id": "O4",
+    "rows": 10,
+    "style": {
+     "region": "Western Europe",
+     "quantity_scale": "small orders (tens to a few hundred pieces, small SPQ parts or dev kits)",
+     "history": "seen_refs=none",
+     "currency": "USD",
+     "noise": [
+      "none"
+     ]
+    }
+   },
+   {
+    "kind": "scenario",
+    "id": "O4",
+    "rows": 10,
+    "style": {
+     "region": "Turkey",
+     "quantity_scale": "large orders (tens of thousands of pieces, reel parts)",
+     "history": "several unrelated earlier refs in seen_refs, some similar-looking",
+     "currency": "USD",
+     "noise": [
+      "none"
+     ]
+    }
+   },
+   {
+    "kind": "scenario",
+    "id": "O4",
+    "rows": 10,
+    "style": {
+     "region": "Nordics",
+     "quantity_scale": "small orders (tens to a few hundred pieces, small SPQ parts or dev kits)",
+     "history": "seen_refs=none",
+     "currency": "the region's local currency",
+     "noise": [
+      "none"
+     ]
+    }
+   },
+   {
+    "kind": "scenario",
+    "id": "O4",
+    "rows": 9,
+    "style": {
+     "region": "Western Europe",
+     "quantity_scale": "typical orders (one to ten thousand pieces)",
+     "history": "seen_refs=none",
+     "currency": "USD",
+     "noise": [
+      "Mon-YY (Sep-26)",
+      "country as lower-case code or full country name"
+     ]
+    }
+   }
+  ],
+  "rows": 119,
+  "ids": [
+   "O2",
+   "O3",
+   "O4"
+  ],
+  "teacher": "opus",
+  "authoring": "hand"
+ },
+ {
+  "chunk": "h23",
+  "kind": "pair",
+  "units": [
+   {
+    "kind": "pair",
+    "id": "H07",
+    "rows": 50,
+    "change": "customer is a clear abbreviation or suffix change (row a) vs a name that only loosely resembles master (row b)",
+    "a": {
+     "row_action": "vendor_rename",
+     "needs_human": "no",
+     "severity": "2"
+    },
+    "b": {
+     "row_action": "vendor_rename",
+     "needs_human": "yes",
+     "severity": "3"
+    }
+   },
+   {
+    "kind": "pair",
+    "id": "H08",
+    "rows": 50,
+    "change": "a subtotal line (row a) vs a real sales line for the same customer with one required field empty (row b)",
+    "a": {
+     "row_action": "no_op",
+     "needs_human": "no",
+     "severity": "3"
+    },
+    "b": {
+     "row_action": "ask_human",
+     "needs_human": "yes",
+     "severity": "3"
+    }
+   },
+   {
+    "kind": "pair",
+    "id": "H09",
+    "rows": 50,
+    "change": "qty with a thousands separator like 1.000 (row a) vs a fractional qty like 1.5 (row b)",
+    "a": {
+     "row_action": "normalize",
+     "needs_human": "no",
+     "severity": "1"
+    },
+    "b": {
+     "row_action": "ask_human",
+     "needs_human": "yes",
+     "severity": "3"
+    }
+   }
+  ],
+  "batches": [
+   {
+    "kind": "pair",
+    "id": "H07",
+    "rows": 10,
+    "style": {
+     "region": "Greater China",
+     "quantity_scale": "small orders (tens to a few hundred pieces, small SPQ parts or dev kits)",
+     "history": "one unrelated earlier ref in seen_refs",
+     "currency": "the region's local currency",
+     "noise": [
+      "hyphens missing from the part number"
+     ]
+    }
+   },
+   {
+    "kind": "pair",
+    "id": "H07",
+    "rows": 10,
+    "style": {
+     "region": "North America",
+     "quantity_scale": "large orders (tens of thousands of pieces, reel parts)",
+     "history": "seen_refs=none",
+     "currency": "USD",
+     "noise": [
+      "none"
+     ]
+    }
+   },
+   {
+    "kind": "pair",
+    "id": "H07",
+    "rows": 10,
+    "style": {
+     "region": "Latin America",
+     "quantity_scale": "typical orders (one to ten thousand pieces)",
+     "history": "seen_refs=none",
+     "currency": "the region's local currency",
+     "noise": [
+      "YYYY-M without zero padding",
+      "stray spaces inside values"
+     ]
+    }
+   },
+   {
+    "kind": "pair",
+    "id": "H07",
+    "rows": 10,
+    "style": {
+     "region": "India",
+     "quantity_scale": "small orders (tens to a few hundred pieces, small SPQ parts or dev kits)",
+     "history": "seen_refs=none",
+     "currency": "USD",
+     "noise": [
+      "spaces instead of hyphens in the part number"
+     ]
+    }
+   },
+   {
+    "kind": "pair",
+    "id": "H07",
+    "rows": 10,
+    "style": {
+     "region": "Turkey",
+     "quantity_scale": "typical orders (one to ten thousand pieces)",
+     "history": "seen_refs=none",
+     "currency": "USD",
+     "noise": [
+      "none"
+     ]
+    }
+   },
+   {
+    "kind": "pair",
+    "id": "H08",
+    "rows": 10,
+    "style": {
+     "region": "North America",
+     "quantity_scale": "typical orders (one to ten thousand pieces)",
+     "history": "one unrelated earlier ref in seen_refs",
+     "currency": "the region's local currency",
+     "noise": [
+      "none"
+     ]
+    }
+   },
+   {
+    "kind": "pair",
+    "id": "H08",
+    "rows": 10,
+    "style": {
+     "region": "Latin America",
+     "quantity_scale": "small orders (tens to a few hundred pieces, small SPQ parts or dev kits)",
+     "history": "several unrelated earlier refs in seen_refs, some similar-looking",
+     "currency": "USD",
+     "noise": [
+      "Mon-YY (Sep-26)",
+      "trailing zero decimals in qty (1000.00)"
+     ]
+    }
+   },
+   {
+    "kind": "pair",
+    "id": "H08",
+    "rows": 10,
+    "style": {
+     "region": "Central and Eastern Europe",
+     "quantity_scale": "small orders (tens to a few hundred pieces, small SPQ parts or dev kits)",
+     "history": "one unrelated earlier ref in seen_refs",
+     "currency": "USD",
+     "noise": [
+      "none"
+     ]
+    }
+   },
+   {
+    "kind": "pair",
+    "id": "H08",
+    "rows": 10,
+    "style": {
+     "region": "Turkey",
+     "quantity_scale": "large orders (tens of thousands of pieces, reel parts)",
+     "history": "seen_refs=none",
+     "currency": "the region's local currency",
+     "noise": [
+      "none"
+     ]
+    }
+   },
+   {
+    "kind": "pair",
+    "id": "H08",
+    "rows": 10,
+    "style": {
+     "region": "Japan and Korea",
+     "quantity_scale": "small orders (tens to a few hundred pieces, small SPQ parts or dev kits)",
+     "history": "seen_refs=none",
+     "currency": "USD",
+     "noise": [
+      "none"
+     ]
+    }
+   },
+   {
+    "kind": "pair",
+    "id": "H09",
+    "rows": 10,
+    "style": {
+     "region": "Nordics",
+     "quantity_scale": "large orders (tens of thousands of pieces, reel parts)",
+     "history": "several unrelated earlier refs in seen_refs, some similar-looking",
+     "currency": "the region's local currency",
+     "noise": [
+      "hyphens missing from the part number"
+     ]
+    }
+   },
+   {
+    "kind": "pair",
+    "id": "H09",
+    "rows": 10,
+    "style": {
+     "region": "Southeast Asia",
+     "quantity_scale": "typical orders (one to ten thousand pieces)",
+     "history": "several unrelated earlier refs in seen_refs, some similar-looking",
+     "currency": "USD",
+     "noise": [
+      "YYYY-M without zero padding",
+      "thousands separators in qty (1,000 / 1.000 / 1 000)"
+     ]
+    }
+   },
+   {
+    "kind": "pair",
+    "id": "H09",
+    "rows": 10,
+    "style": {
+     "region": "India",
+     "quantity_scale": "large orders (tens of thousands of pieces, reel parts)",
+     "history": "one unrelated earlier ref in seen_refs",
+     "currency": "USD",
+     "noise": [
+      "hyphens missing from the part number"
+     ]
+    }
+   },
+   {
+    "kind": "pair",
+    "id": "H09",
+    "rows": 10,
+    "style": {
+     "region": "Middle East",
+     "quantity_scale": "large orders (tens of thousands of pieces, reel parts)",
+     "history": "several unrelated earlier refs in seen_refs, some similar-looking",
+     "currency": "the region's local currency",
+     "noise": [
+      "none"
+     ]
+    }
+   },
+   {
+    "kind": "pair",
+    "id": "H09",
+    "rows": 10,
+    "style": {
+     "region": "India",
+     "quantity_scale": "large orders (tens of thousands of pieces, reel parts)",
+     "history": "seen_refs=none",
+     "currency": "the region's local currency",
+     "noise": [
+      "none"
+     ]
+    }
+   }
+  ],
+  "rows": 150,
+  "ids": [
+   "H07",
+   "H08",
+   "H09"
+  ],
+  "teacher": "opus",
+  "authoring": "hand"
  }
 ]

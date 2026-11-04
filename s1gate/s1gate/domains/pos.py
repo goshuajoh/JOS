@@ -68,11 +68,16 @@ COUNTRY_NAMES = {
     "japan": "JP", "south korea": "KR", "korea": "KR", "brazil": "BR", "brasil": "BR",
     "mexico": "MX", "argentina": "AR", "chile": "CL", "colombia": "CO", "peru": "PE",
     "united states": "US", "usa": "US", "united states of america": "US", "canada": "CA",
-    "russia": "RU", "denmark (dk)": "DK",
+    "russia": "RU", "denmark (dk)": "DK", "korea, republic of": "KR", "republic of korea": "KR",
+    "korea (south)": "KR", "the uk": "GB", "england": "GB", "u.s.a.": "US", "u.s.": "US",
+    "czech rep.": "CZ", "the philippines": "PH", "hongkong": "HK", "prc": "CN", "uae (dubai)": "AE",
 }
 SYMBOLS = {"$": "USD", "us$": "USD", "€": "EUR", "£": "GBP", "₹": "INR", "₺": "TRY", "¥": "JPY",
-           "rs": "INR", "rs.": "INR", "s$": "SGD", "r$": "BRL", "zl": "PLN", "zł": "PLN"}
-UNITS = r"(?:pcs|pc|pce|pieces|piece|ea|each|units|unit|stk|stück|adet|nos|no\.?|qty|u)"
+           "rs": "INR", "rs.": "INR", "s$": "SGD", "r$": "BRL", "zl": "PLN", "zł": "PLN",
+           "euro": "EUR", "euros": "EUR", "tl": "TRY", "dollar": "USD", "dollars": "USD", "yen": "JPY",
+           "yuan": "CNY", "rmb": "CNY", "kc": "CZK", "kč": "CZK", "ft": "HUF", "lei": "RON",
+           "rupee": "INR", "rupees": "INR", "inr.": "INR", "sar.": "SAR", "aed.": "AED"}
+UNITS = r"(?:pcs|pc|pce|pieces|piece|ea|each|units|unit|stk|stück|adet|nos|no|qty|u)\.?"
 HEADER_WORDS = {
     "customer", "customer name", "end customer", "end-customer", "client", "sold to", "part",
     "part no", "part no.", "part number", "p/n", "pn", "material", "item", "qty", "quantity",
@@ -151,8 +156,9 @@ def read_qty(raw: str) -> tuple[int | None, str]:
         return None, "impossible"  # negative / credit
     m = re.fullmatch(r"(\d+(?:[.,]\d+)?)\s*k", t)
     if m:
-        v = float(m.group(1).replace(",", ".")) * 1000
-        return (int(v), "formatted") if v == int(v) and v > 0 else (None, "impossible")
+        from decimal import Decimal
+        v = Decimal(m.group(1).replace(",", ".")) * 1000  # exact: 16.1k is 16100, not 16100.000000000002
+        return (int(v), "formatted") if v == v.to_integral_value() and v > 0 else (None, "impossible")
     t = t.replace(" ", "").replace("'", "").replace("’", "")
     if not re.fullmatch(r"[\d.,]+", t) or not re.search(r"\d", t):
         return None, "invalid"
@@ -172,7 +178,9 @@ def _read_integer(t: str) -> int | None:
         dec_sep = "." if t.rfind(".") > t.rfind(",") else ","
         thou_sep = "," if dec_sep == "." else "."
         whole, dec = t.rsplit(dec_sep, 1)
-        if dec.strip("0") or not re.fullmatch(rf"\d{{1,3}}(\{thou_sep}\d{{3}})*", whole):
+        western = re.fullmatch(rf"\d{{1,3}}(\{thou_sep}\d{{3}})*", whole)
+        indian = thou_sep == "," and re.fullmatch(r"\d{1,2}(,\d{2})+,\d{3}", whole)
+        if dec.strip("0") or not (western or indian):
             return None
         return int(whole.replace(thou_sep, ""))
     sep = "." if "." in t else ","
@@ -195,29 +203,36 @@ def read_price(raw: str) -> tuple[float | None, str]:
     if m:
         v = float(m.group(1))
         return (v, "canonical") if v > 0 else (v, "impossible")
-    t = s.replace(" ", " ")
-    cur = None
-    num = None
-    m = re.fullmatch(r"([A-Za-z]{3}|[^\d\s\-.,]{1,3}\.?)\s*(-?[\d.,]+)", t)
-    if m:
-        cur, num = m.group(1), m.group(2)
-    else:
-        m = re.fullmatch(r"(-?[\d.,]+)\s*([A-Za-z]{3}|[^\d\s\-.,]{1,3})?", t)
-        if m:
-            num, cur = m.group(1), m.group(2)
-    if num is None:
-        return None, "invalid"
-    if cur is None:
-        return None, "unknown"  # a bare number: no rule for a missing currency, abstain
-    if cur.lower() in SYMBOLS:
-        cur = SYMBOLS[cur.lower()]
-    if not re.fullmatch(r"[A-Za-z]{3}", cur):
-        return None, "unknown"
+    t = s.replace("\u00a0", " ").replace("\u202f", " ")
+    if not re.search(r"\d", t):
+        return None, "invalid"  # TBD, n/a, see contract: no number at all
+    if re.search(r"\d\s*/\s*\d|\?", t):
+        return None, "invalid"  # two prices, or a question inside the value
+    if re.search(r"(^|[^\w])-\s*\d", t):
+        return None, "impossible"  # negative
+    t = re.sub(r"([^\w\s.,'-])(?=\d)|(?<=\d)([^\w\s.,'-])", lambda m: f" {m.group(0)} ", t)
+    num_m = re.search(r"\d[\d.,' ]*\d|\d", t)
+    num = re.sub(r"[ ']", "", num_m.group(0))
+    rest = (t[:num_m.start()] + " " + t[num_m.end():]).strip()
+    tokens = [x for x in re.split(r"\s+", rest) if x]
+    codes = []
+    for tok in tokens:
+        key = tok.lower()
+        if key in SYMBOLS:
+            codes.append(SYMBOLS[key])
+        elif re.fullmatch(r"[A-Za-z]{3}", tok):
+            codes.append(tok.upper())
+        elif re.fullmatch(r"[^\w\s]{1,2}", tok) and tok in SYMBOLS:
+            codes.append(SYMBOLS[tok])
+        else:
+            return None, "unknown"  # words we cannot read as a currency: abstain
     value = _read_decimal(num)
     if value is None:
-        return None, "invalid"
+        return None, "unknown"
     if value <= 0:
         return value, "impossible"
+    if not codes or len(set(codes)) > 1:
+        return None, "unknown"  # no currency, or two different ones: no rule, abstain
     return value, "formatted"
 
 
@@ -323,7 +338,10 @@ def read_country(raw: str) -> tuple[str | None, str]:
 def _strip_accents(s: str) -> str:
     s = unicodedata.normalize("NFKD", s)
     s = "".join(c for c in s if not unicodedata.combining(c))
-    return s.replace("ı", "i").replace("ł", "l").replace("ø", "o").replace("æ", "ae").replace("ß", "ss")
+    for a, b in (("ı", "i"), ("ł", "l"), ("ø", "o"), ("æ", "ae"), ("ß", "ss"), ("đ", "d"), ("ð", "d"),
+                 ("þ", "th"), ("œ", "oe"), ("ħ", "h")):
+        s = s.replace(a, b)
+    return s
 
 
 def _fold_keep(s: str) -> str:
@@ -346,7 +364,7 @@ def name_relation(reported: str, master: str) -> str:
     """identical | format_only (case, spacing, punctuation, accents) | different | missing."""
     if not reported.strip():
         return "missing"
-    if reported == master:
+    if unicodedata.normalize("NFC", reported) == unicodedata.normalize("NFC", master):
         return "identical"
     if name_key(reported) == name_key(master) and name_key(master):
         return "format_only"
@@ -364,7 +382,7 @@ def seen_list(raw: str) -> list[str]:
     return [x.strip() for x in s.split(",") if x.strip()]
 
 
-def nonsales_kind(rec: PosRecord) -> str | None:
+def nonsales_kind(rec: PosRecord, catalogue: set[str] | None = None) -> str | None:
     """header | blank | note | subtotal | grand_total | None (looks like a sales line)."""
     r = {k: rec.reported.get(k, "").strip() for k in REPORTED_KEYS}
     content = [r[k] for k in ("customer", "part", "qty", "unit_price", "ref", "period", "country")]
@@ -373,11 +391,18 @@ def nonsales_kind(rec: PosRecord) -> str | None:
         return "header"
     if all(FILLER.match(v) for v in (r["customer"], r["part"], r["qty"], r["unit_price"], r["ref"])):
         return "blank"
-    if any(GRAND.search(r[k]) for k in ("customer", "part", "ref")):
+    # A total or note marker in the customer field is vetoed by sales-line evidence: a real ref
+    # plus a catalogue-style part means a customer that happens to be called "Total ..." .
+    ref_real = bool(r["ref"]) and not FILLER.match(r["ref"]) and not (GRAND.search(r["ref"]) or SUBTOTAL.match(r["ref"]))
+    part_real = bool(r["part"]) and read_part(r["part"], catalogue)[1] in ("canonical", "formatted") \
+        and not (GRAND.search(r["part"]) or SUBTOTAL.match(r["part"]))
+    sales = ref_real and part_real
+    if GRAND.search(r["part"]) or GRAND.search(r["ref"]) or (GRAND.search(r["customer"]) and not sales):
         return "grand_total"
-    if any(SUBTOTAL.match(r[k]) for k in ("customer", "part", "ref")):
+    if SUBTOTAL.match(r["part"]) or SUBTOTAL.match(r["ref"]) or (SUBTOTAL.match(r["customer"]) and not sales):
         return "subtotal"
-    if (not r["qty"] or FILLER.match(r["qty"])) and any(NOTE.search(r[k]) for k in ("customer", "part", "ref", "period")):
+    if (not r["qty"] or FILLER.match(r["qty"])) and not sales and \
+            any(NOTE.search(r[k]) for k in ("customer", "part", "ref", "period")):
         return "note"
     return None
 
@@ -397,6 +422,8 @@ class Facts:
     nonc: list[str]                 # fields that are right but not canonical
     customer: str                   # identical | format_only | different | missing | unknown
     problems: list[str]
+    unread: list[str] = field(default_factory=list)   # not canonical, and the reader abstains
+    sales_evidence: bool = False    # catalogue part + readable qty + a ref + master lookup ok
 
 
 def facts(text: str, catalogue: set[str] | None = None) -> Facts:
@@ -410,8 +437,12 @@ def facts(text: str, catalogue: set[str] | None = None) -> Facts:
     nonc: list[str] = []
 
     for k in REQUIRED:
-        if not rep[k].strip() or FILLER.match(rep[k].strip()):  # '-', 'n/a', 'none' are empty too
+        v = rep[k].strip()
+        if k == "country" and re.fullmatch(r"[A-Z]{2}", v):
+            continue  # NA is Namibia, not "n/a"
+        if not v or FILLER.match(v):  # '-', 'n/a', 'none' are empty too
             defects.append(f"{k} missing")
+    unread: list[str] = []
     qty, qs = read_qty(rep["qty"])
     if qs in ("impossible", "invalid"):
         defects.append(f"qty {qs}: {rep['qty'].strip()!r}")
@@ -422,33 +453,41 @@ def facts(text: str, catalogue: set[str] | None = None) -> Facts:
         defects.append(f"unit_price {ps}: {rep['unit_price'].strip()!r}")
     elif ps == "formatted":
         nonc.append("unit_price")
+    elif ps == "unknown":
+        unread.append("unit_price")
     _, pe = read_period(rep["period"])
     if pe in ("impossible", "not_month"):
         defects.append(f"period {pe}: {rep['period'].strip()!r}")
     elif pe == "formatted":
         nonc.append("period")
+    elif pe == "unknown":
+        unread.append("period")
     _, pa = read_part(rep["part"], catalogue)
     if pa == "invalid":
         defects.append(f"part unreadable: {rep['part'].strip()!r}")
     elif pa == "formatted":
         nonc.append("part")
+    elif pa == "unknown":
+        unread.append("part")
     _, co = read_country(rep["country"])
     if co == "formatted":
         nonc.append("country")
+    elif co == "unknown":
+        unread.append("country")
     if lookup_failed:
         defects.append("master lookup failed")
+    customer = "unknown" if lookup_failed else name_relation(rep["customer"], mas["customer"])
     for k in ("period", "customer", "country", "part", "qty", "unit_price", "ref"):
         v = rep[k].strip()
+        if k == "customer" and customer in ("identical", "format_only"):
+            continue  # the master name itself ("Check Point ...", "TBC Corp") is not a note
         if TRUNCATED.search(v):
             defects.append(f"{k} truncated: {v!r}")
         elif NOTE_IN_VALUE.search(v):
             defects.append(f"note inside {k}: {v!r}")
-    for k in ("customer", "ref"):  # the distributor's own name is never an issue
-        v = rep[k]
-        if v.strip() and (v != v.strip() or "  " in v):
-            nonc.append(f"{k} whitespace")
-
-    customer = "unknown" if lookup_failed else name_relation(rep["customer"], mas["customer"])
+    v = rep["ref"]
+    if v.strip() and (v != v.strip() or "  " in v):
+        nonc.append("ref whitespace")  # the distributor's own name is never an issue
     if customer == "format_only":
         nonc.append("customer")
 
@@ -456,13 +495,16 @@ def facts(text: str, catalogue: set[str] | None = None) -> Facts:
     ref_seen = bool(ref) and norm_ref(ref) in {norm_ref(x) for x in seen_list(mas["seen_refs"])}
 
     pack_ok = None
-    if qty and qs in ("canonical", "formatted") and mas["spq"].isdigit() and mas["moq"].isdigit():
+    if qty and qs in ("canonical", "formatted") and re.fullmatch(r"[0-9]+", mas["spq"]) \
+            and re.fullmatch(r"[0-9]+", mas["moq"]):
         spq, moq = int(mas["spq"]), int(mas["moq"])
         if spq > 0:
             pack_ok = qty % spq == 0 and qty >= moq
+    sales_evidence = (pa in ("canonical", "formatted") and qs in ("canonical", "formatted")
+                      and bool(ref) and not FILLER.match(ref) and not lookup_failed)
 
-    return Facts(rec.ok, restricted, nonsales_kind(rec), lookup_failed, defects, ref_seen,
-                 pack_ok, qty, nonc, customer, rec.problems)
+    return Facts(rec.ok, restricted, nonsales_kind(rec, catalogue), lookup_failed, defects, ref_seen,
+                 pack_ok, qty, nonc, customer, rec.problems, unread, sales_evidence)
 
 
 @dataclass
@@ -503,7 +545,9 @@ def check_labels(text: str, labels: dict[str, str], catalogue: set[str] | None =
     if f.nonsales and act != "no_op":
         v("no_op", f"row looks like a {f.nonsales} line but row_action={act}")
     if act == "no_op":
-        if not f.nonsales:
+        if not f.nonsales and f.sales_evidence:
+            v("no_op", "row_action=no_op but the row is a sales line (catalogue part, quantity, ref, master entry)")
+        elif not f.nonsales:
             w("no_op", "row_action=no_op but no header/blank/note/subtotal/total marker found")
         expected = {"header": "1", "blank": "1", "note": "1", "subtotal": "3", "grand_total": "4"}
         if f.nonsales in expected and sev and sev != expected[f.nonsales]:
@@ -539,9 +583,9 @@ def check_labels(text: str, labels: dict[str, str], catalogue: set[str] | None =
         v("vendor_rename", f"row_action=vendor_rename but the customer name is {f.customer.replace('_', ' ')}")
     if act in ("commit", "normalize") and f.customer == "different":
         v("vendor_rename", f"customer name differs from master beyond formatting but row_action={act}")
-    if act == "commit" and f.nonc:
-        v("normalize", f"row_action=commit but non-canonical: {', '.join(f.nonc)}")
-    if act == "normalize" and not f.nonc:
+    if act == "commit" and (f.nonc or f.unread):
+        v("normalize", f"row_action=commit but not canonical: {', '.join(f.nonc + f.unread)}")
+    if act == "normalize" and not f.nonc and not f.unread:
         v("normalize", "row_action=normalize but every value is canonical")
     return out
 

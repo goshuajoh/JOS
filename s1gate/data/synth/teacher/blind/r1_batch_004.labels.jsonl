@@ -1,0 +1,147 @@
+{"id": "bb1924d1829", "row_action": "no_op", "needs_human": "no", "severity": "3", "confidence": "high", "note": "subtotal line (part=SUBTOTAL, customer '... - Total', ref Subtotal)"}
+{"id": "bd9fc236536", "row_action": "no_op", "needs_human": "no", "severity": "4", "confidence": "high", "note": "grand total line"}
+{"id": "bef2127fbc9", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean; 47500 multiple of 500; ref not seen (559315 differs)"}
+{"id": "bbc21622a32", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean; ref VH.2603.207 not in seen (270/2512 differ)"}
+{"id": "baf8070c3df", "row_action": "pack_qty_issue", "needs_human": "yes", "severity": "2", "confidence": "high", "note": "9200 not multiple of SPQ 5000 and below MOQ 10000"}
+{"id": "b8f351fdcb4", "row_action": "vendor_rename", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "'Polderwacht Sensoren Belgium NV' points to a subsidiary of master B.V. -> uncertain rename (also lowercase eur)"}
+{"id": "b398dc66e5c", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "two quantities in qty: '60000 (revised 63000)'"}
+{"id": "b790303ca08", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "note inside ref value ('?? check')"}
+{"id": "bc4331e3c6e", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean; 3270 multiple of SPQ 10"}
+{"id": "b3d8494ef04", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "negative qty -500"}
+{"id": "b5ad76fee30", "row_action": "vendor_rename", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "completely different name vs master (Heartland Farm Automation vs Cumberland Poultry Systems) -> uncertain"}
+{"id": "b4cf01574be", "row_action": "no_op", "needs_human": "no", "severity": "4", "confidence": "high", "note": "grand total line"}
+{"id": "b1fc71b813f", "row_action": "pack_qty_issue", "needs_human": "yes", "severity": "2", "confidence": "high", "note": "7300 not multiple of SPQ 4000 and below MOQ 8000"}
+{"id": "bf0cd8c9ef2", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean"}
+{"id": "be55123206c", "row_action": "no_op", "needs_human": "no", "severity": "1", "confidence": "high", "note": "separator line of dashes, no qty or ref"}
+{"id": "b9e4e5716b8", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "negative qty -1036 (return/credit)"}
+{"id": "be035254444", "row_action": "no_op", "needs_human": "no", "severity": "3", "confidence": "high", "note": "subtotal line"}
+{"id": "b2a38ecfff2", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean; TVC604417 not in seen (TVC604471 is a different ref)"}
+{"id": "b07eb7671df", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean; FV-A/310582 not in seen (310528/301582 differ)"}
+{"id": "b0681baa0fb", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean"}
+{"id": "bb9cb762789", "row_action": "vendor_rename", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "completely different name vs master (Helios Brasil Energia vs Sertao Solar Inversores) -> uncertain"}
+{"id": "bd9cae289c7", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean; 5000 exactly at MOQ, multiple of SPQ 1000"}
+{"id": "be4b0a3a259", "row_action": "vendor_rename", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "completely different name (Yesil Vadi Tarim Holding vs Akdeniz Sera Otomasyon) -> possible parent, uncertain"}
+{"id": "b8ccea2e291", "row_action": "vendor_rename", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "'Caxias Automotiva Argentina S.A.' points to a branch/subsidiary of master -> uncertain"}
+{"id": "b8c57abef0a", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "part value truncated ('WK-LC...')"}
+{"id": "b62fb0103c1", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean; ref 55690 not in seen (55697)"}
+{"id": "bef782be490", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "negative qty -10090.00"}
+{"id": "bdafc390f3c", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean; FAK-27429 not in seen (FAK-27423)"}
+{"id": "bfad9085d79", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "fractional qty 0.5"}
+{"id": "b4cbd29bc0a", "row_action": "vendor_rename", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "completely different name (Velotech Polska vs Elektrorower Beskidy) -> uncertain"}
+{"id": "b23954311d9", "row_action": "no_op", "needs_human": "no", "severity": "3", "confidence": "high", "note": "subtotal line"}
+{"id": "b270292524c", "row_action": "vendor_rename", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "completely different name (Azteca Utilities Holding vs Cuauhtemoc Medidores) -> uncertain"}
+{"id": "bc11cf7a3d6", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean; 8000 at MOQ, multiple of SPQ"}
+{"id": "b84720adcaf", "row_action": "vendor_rename", "needs_human": "yes", "severity": "3", "confidence": "medium", "note": "'Holding' added to master name points to a parent entity -> read as uncertain; could be argued clear since distinctive words all match (also country lowercase)"}
+{"id": "b201c27ab42", "row_action": "vendor_rename", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "completely different name (Grupo Andino de Energia vs Antioquia Medicion y Control) -> uncertain"}
+{"id": "bfececac929", "row_action": "no_op", "needs_human": "no", "severity": "4", "confidence": "high", "note": "report total line (grand total)"}
+{"id": "b78218e99d8", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean; ref 0004403318 not in seen (0004403381 transposed)"}
+{"id": "babd674d718", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "impossible month 2026-13"}
+{"id": "bc2881b9f5d", "row_action": "pack_qty_issue", "needs_human": "yes", "severity": "2", "confidence": "high", "note": "130 not multiple of SPQ 100 and below MOQ 200"}
+{"id": "bf8e476b9b5", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "two quantities '300/500'"}
+{"id": "b31bfc43e14", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "note inside part value '(Check With Buyer)'"}
+{"id": "b3f1277d5b7", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean; SMT/26-27/00418 not in seen (00481 differs)"}
+{"id": "bf1a3651d2d", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean; ref 0655 not in seen (0565/0605)"}
+{"id": "b69fbc6bb64", "row_action": "pack_qty_issue", "needs_human": "yes", "severity": "2", "confidence": "high", "note": "24950 not a multiple of SPQ 5000"}
+{"id": "b349fadd9e2", "row_action": "pack_qty_issue", "needs_human": "yes", "severity": "2", "confidence": "high", "note": "6200 not multiple of SPQ 5000 and below MOQ 10000"}
+{"id": "bc7211760e7", "row_action": "vendor_rename", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "'Odenwald E-Bike Antriebe Schweiz AG' points to a subsidiary of master GmbH -> uncertain (also part/price format)"}
+{"id": "b3272db1356", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean; DCD1744-67 not in seen (DCD1744-60)"}
+{"id": "bd23d98f36f", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean; 322904 not in seen (322940/232904 differ)"}
+{"id": "b373692eb60", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean; seen ref SZXL-XS-370601009 has an extra digit, not a match"}
+{"id": "b818b696712", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "non-numeric price TBC"}
+{"id": "b29071e2eb0", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "two quantities '60 (revised 62)'"}
+{"id": "bf6a80d7731", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean; TRD-384157 not in seen (384156 / 3841577 differ)"}
+{"id": "b03bbad8228", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean"}
+{"id": "b4dfd5c9839", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean; SC14794806 not in seen (SC14794826)"}
+{"id": "b6b16b59aac", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "zero qty"}
+{"id": "b653d9a76aa", "row_action": "no_op", "needs_human": "no", "severity": "1", "confidence": "high", "note": "note line (page intentionally left blank), no qty or ref"}
+{"id": "b786e8b78cd", "row_action": "no_op", "needs_human": "no", "severity": "1", "confidence": "high", "note": "note line (prepared by sales administration), no qty or ref"}
+{"id": "b3373b24eb8", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean; DEQ-A311008 not in seen (A311001)"}
+{"id": "b4f2f47cf8e", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "zero qty 0.00"}
+{"id": "b064cea99a5", "row_action": "no_op", "needs_human": "no", "severity": "4", "confidence": "high", "note": "grand total line (all branches)"}
+{"id": "b986014be5a", "row_action": "pack_qty_issue", "needs_human": "yes", "severity": "2", "confidence": "high", "note": "850 not multiple of SPQ 500 and below MOQ 1000"}
+{"id": "b211640be55", "row_action": "no_op", "needs_human": "no", "severity": "1", "confidence": "high", "note": "separator line of dashes"}
+{"id": "bcd845a189c", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean"}
+{"id": "bba20c2d1c3", "row_action": "no_op", "needs_human": "no", "severity": "3", "confidence": "high", "note": "subtotal line (Total <customer>, part=SUBTOTAL)"}
+{"id": "ba2b4a0fb5a", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean; VH.2608.205 not in seen (250/025 transposed)"}
+{"id": "be5c2bbdfc8", "row_action": "no_op", "needs_human": "no", "severity": "3", "confidence": "high", "note": "subtotal over one part"}
+{"id": "b9391f27f08", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "two part numbers ('WM-C6-N8 or WM-P4-N16R8')"}
+{"id": "bfe58b63a11", "row_action": "no_op", "needs_human": "no", "severity": "4", "confidence": "high", "note": "grand total line"}
+{"id": "baf18f59078", "row_action": "vendor_rename", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "'Vinicapt Group Holding SAS' vs 'Vinicapt SARL': shares only one distinctive word and points to a parent -> uncertain"}
+{"id": "b90f2974b20", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "two quantities '40 & 70'"}
+{"id": "b7da90c8271", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "two quantities '500/600'"}
+{"id": "b1242afa69a", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean"}
+{"id": "b654db98696", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "zero qty 0.00"}
+{"id": "b2ee93b9704", "row_action": "no_op", "needs_human": "no", "severity": "1", "confidence": "high", "note": "blank/filler line (all n/a), no ref"}
+{"id": "b70fbfb44fd", "row_action": "pack_qty_issue", "needs_human": "yes", "severity": "2", "confidence": "high", "note": "2500 not multiple of SPQ 4000 and below MOQ 4000"}
+{"id": "b120de4c10a", "row_action": "no_op", "needs_human": "no", "severity": "3", "confidence": "high", "note": "subtotal line"}
+{"id": "b958cce1f6b", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean; DCD0839-75 not in seen (DCD0831-75)"}
+{"id": "bab369226e1", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean; KEC-TI-211093 not in seen (211039/201093 differ)"}
+{"id": "b71115e2150", "row_action": "vendor_rename", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "completely different name (Trackwise Logistics vs Pinyon Asset Intelligence) -> uncertain"}
+{"id": "b99164626a4", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean"}
+{"id": "b061655fb07", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "zero qty 0.00"}
+{"id": "be88c2a21f5", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean"}
+{"id": "b5c4a9fed6a", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean; AST/GGN/34/7762 not in seen (38/7762 differs)"}
+{"id": "b489bf420da", "row_action": "no_op", "needs_human": "no", "severity": "1", "confidence": "high", "note": "blank line: only the period is filled; customer, part, qty, price and ref empty or '-'"}
+{"id": "b9be0a8290e", "row_action": "vendor_rename", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "completely different name (Vividscreen Electronics vs Guangzhou Tianhe Display) -> uncertain"}
+{"id": "b2b16136dc7", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean"}
+{"id": "b472c915e56", "row_action": "pack_qty_issue", "needs_human": "yes", "severity": "2", "confidence": "high", "note": "600 not multiple of SPQ 1000 and below MOQ 1000"}
+{"id": "b98e9aa6994", "row_action": "pack_qty_issue", "needs_human": "yes", "severity": "2", "confidence": "high", "note": "24990 not a multiple of SPQ 2500"}
+{"id": "b733e076ba3", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean"}
+{"id": "b772b92f039", "row_action": "pack_qty_issue", "needs_human": "yes", "severity": "2", "confidence": "high", "note": "650 not multiple of SPQ 500 and below MOQ 1000"}
+{"id": "bb6fcc86c50", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean"}
+{"id": "b59ed845b78", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "unit_price truncated ('10.3...')"}
+{"id": "b53e2b95f55", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean; EKD-292339 not in seen (292369)"}
+{"id": "bd6c40b2f52", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "non-numeric price 'tbd'"}
+{"id": "b52e3ca217c", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean"}
+{"id": "b08f1d0e550", "row_action": "pack_qty_issue", "needs_human": "yes", "severity": "2", "confidence": "high", "note": "1490 not a multiple of SPQ 500"}
+{"id": "be060eb8250", "row_action": "no_op", "needs_human": "no", "severity": "3", "confidence": "high", "note": "subtotal line"}
+{"id": "b604fb37e21", "row_action": "pack_qty_issue", "needs_human": "yes", "severity": "2", "confidence": "high", "note": "51 not a multiple of SPQ 10"}
+{"id": "b8147894f89", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean; CMC/BC/124019 not in seen (124091 transposed)"}
+{"id": "b3f360364a3", "row_action": "pack_qty_issue", "needs_human": "yes", "severity": "2", "confidence": "high", "note": "2490 not a multiple of SPQ 250"}
+{"id": "bd0b6b77c41", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean; 4758 not in seen (4788/4752 differ)"}
+{"id": "bd468e28124", "row_action": "pack_qty_issue", "needs_human": "yes", "severity": "2", "confidence": "high", "note": "1010 not a multiple of SPQ 250"}
+{"id": "bb026348210", "row_action": "pack_qty_issue", "needs_human": "yes", "severity": "2", "confidence": "high", "note": "90030 not a multiple of SPQ 3000"}
+{"id": "b31e1d8d879", "row_action": "vendor_rename", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "completely different name (Zhiyun Connected Home vs Hangzhou Lanting IoT) -> uncertain"}
+{"id": "b655396189a", "row_action": "no_op", "needs_human": "no", "severity": "3", "confidence": "high", "note": "subtotal line (Customer total, part=SUBTOTAL, ref Subtotal)"}
+{"id": "b5600eeb011", "row_action": "no_op", "needs_human": "no", "severity": "4", "confidence": "high", "note": "report total line (grand total)"}
+{"id": "b6f746cf3e5", "row_action": "no_op", "needs_human": "no", "severity": "1", "confidence": "high", "note": "note line (end of report)"}
+{"id": "bbeb4183775", "row_action": "no_op", "needs_human": "no", "severity": "3", "confidence": "high", "note": "subtotal line"}
+{"id": "b93265d219d", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean; SRS/MTY/98502 not in seen (98532)"}
+{"id": "b2148a6b661", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean; SIP-211598 not in seen (2115983/211594 differ)"}
+{"id": "bddeb6b45f4", "row_action": "vendor_rename", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "'Suryavolt Inverters Singapore Pte Ltd' points to a subsidiary of master Pvt Ltd -> uncertain (qty 15k = 15000 passes)"}
+{"id": "bb9d72374f7", "row_action": "no_op", "needs_human": "no", "severity": "4", "confidence": "high", "note": "grand total line"}
+{"id": "b90243ef8d2", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "non-numeric price TBC"}
+{"id": "b8b34bd3e62", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean; 0712 not in seen (0721/0172 transposed)"}
+{"id": "bd58596d405", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean; MY-77-14467-5 not in seen (14167-5/14467-1 differ)"}
+{"id": "beb44773309", "row_action": "pack_qty_issue", "needs_human": "yes", "severity": "2", "confidence": "high", "note": "2005 not a multiple of SPQ 500"}
+{"id": "b200352ebd0", "row_action": "pack_qty_issue", "needs_human": "yes", "severity": "2", "confidence": "high", "note": "199 not a multiple of SPQ 10"}
+{"id": "bd1c1c85b37", "row_action": "no_op", "needs_human": "no", "severity": "3", "confidence": "high", "note": "subtotal over one part (Total qty <part>, ref Subtotal)"}
+{"id": "b59279cd905", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean; 5000 at MOQ"}
+{"id": "b5ab3080784", "row_action": "vendor_rename", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "'Puebla Cargadores Electricos Centroamerica S.A.' points to a regional subsidiary of master -> uncertain"}
+{"id": "b7facc2de6d", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "zero qty"}
+{"id": "ba288c9b32d", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean; SINV-8920718 not in seen (8920719/8920618 differ)"}
+{"id": "bdc56872545", "row_action": "pack_qty_issue", "needs_human": "yes", "severity": "2", "confidence": "high", "note": "800 not multiple of SPQ 500 and below MOQ 1000"}
+{"id": "b0c201e7ca4", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "ref truncated ('SIP-386...')"}
+{"id": "bf66932347c", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "zero price '0 USD'"}
+{"id": "b571d28b119", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean; 10000 at MOQ"}
+{"id": "b1d27101e71", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean; CEB-QC-59432 not in seen (59482)"}
+{"id": "b3d7b58b429", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean; SINV-7613747 not in seen (7613547)"}
+{"id": "bf9d778603b", "row_action": "vendor_rename", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "completely different name (ChargeWave Central Europe vs Nabijecky Valassko) -> uncertain"}
+{"id": "be8565a7664", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean; PGC-562870-3 not in seen (562870-2)"}
+{"id": "bfb7cae8b1c", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "impossible month 2026-13"}
+{"id": "bf0dec39c27", "row_action": "pack_qty_issue", "needs_human": "yes", "severity": "2", "confidence": "high", "note": "7600 not multiple of SPQ 5000 and below MOQ 10000"}
+{"id": "ba833bcad8a", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean; BDE.1414.4423 not in seen (BDE.1411.4423)"}
+{"id": "b003caf6c41", "row_action": "no_op", "needs_human": "no", "severity": "4", "confidence": "high", "note": "grand total line (Genel toplam, all customers)"}
+{"id": "bfd3b0ca184", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "zero price '0 TRY'"}
+{"id": "bcc2b9ae8cc", "row_action": "vendor_rename", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "'Minh Khoi Electronics Holdings Pte Ltd' vs 'Minh Khoi Electronics JSC': points to a holding/parent entity elsewhere -> uncertain"}
+{"id": "bc0b3517ebc", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean; SEP-79640/26 not in seen (79640/22, 79610/26)"}
+{"id": "b5bdba38ee4", "row_action": "no_op", "needs_human": "no", "severity": "1", "confidence": "high", "note": "note line ('continued below'), no qty or ref"}
+{"id": "ba325d59e61", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean; MY-53-09200-9 not in seen (09200-8)"}
+{"id": "b7378ef504e", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "note inside unit_price ('confirm w/ Jenny')"}
+{"id": "b33a189c787", "row_action": "no_op", "needs_human": "no", "severity": "3", "confidence": "high", "note": "subtotal line (Customer total)"}
+{"id": "b4c86e3cef9", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean"}
+{"id": "bd4c786b305", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "negative qty -40"}
+{"id": "b7e55610112", "row_action": "pack_qty_issue", "needs_human": "yes", "severity": "2", "confidence": "high", "note": "330 not multiple of SPQ 250 and below MOQ 500"}
+{"id": "bfe3c985f11", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "note inside part value '(replaced by new rev)'"}
+{"id": "b2b1bcba72b", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean"}
+{"id": "b27d5d9bfb7", "row_action": "no_op", "needs_human": "no", "severity": "1", "confidence": "high", "note": "separator line (=======)"}

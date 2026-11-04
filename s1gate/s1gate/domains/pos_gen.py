@@ -154,6 +154,7 @@ class Generator:
         self.catalogue = {p.part for p in parts}
         self.currencies = currencies or {}
         self.used_refs: set[str] = set()
+        self.texts: set[str] = set()
         self.rejected: Counter = Counter()
 
     # ------------------------------------------------------------ building blocks
@@ -320,18 +321,23 @@ class Generator:
                 return name[: -len(suf)].rstrip(" ,"), suf
         return name, ""
 
-    def clear_alias(self, name: str) -> str:
+    def clear_alias(self, name: str, kind: str | None = None) -> str | None:
+        """A clearly-same-entity variant. kind: abbrev | suffix | typo | generic | None (any).
+
+        Returns None when the requested kind is impossible for this name, so the caller can pick
+        another customer instead of labelling a scenario it does not meet.
+        """
         core, suf = self.split_suffix(name)
         words = core.split()
-        options = []
+        options: dict[str, list[str]] = {"abbrev": [], "suffix": [], "typo": [], "generic": []}
         abbr = [ABBREV.get(w.lower().strip(","), None) for w in words]
         if any(abbr):
             short = " ".join(a or w.upper() for a, w in zip(abbr, words))
-            options.append(f"{short} {suf.upper()}".strip())
+            options["abbrev"].append(f"{short} {suf.upper()}".strip())
         if suf in SUFFIX_EXPAND:
-            options.append(f"{core} {SUFFIX_EXPAND[suf]}")
+            options["suffix"].append(f"{core} {SUFFIX_EXPAND[suf]}")
         if suf:
-            options.append(core)  # suffix dropped
+            options["suffix"].append(core)  # suffix dropped
         long_words = [i for i, w in enumerate(words) if len(w) >= 5 and w.isalpha()]
         if long_words:
             i = self.rng.choice(long_words)
@@ -339,22 +345,24 @@ class Generator:
             j = self.rng.randrange(1, len(w) - 2)
             typo = self.rng.choice([w[:j] + w[j + 1] + w[j] + w[j + 2:], w[:j] + w[j + 1:],
                                     w[:j] + w[j] + w[j:]])
-            options.append(" ".join(words[:i] + [typo] + words[i + 1:]) + (f" {suf}" if suf else ""))
+            options["typo"].append(" ".join(words[:i] + [typo] + words[i + 1:]) + (f" {suf}" if suf else ""))
         generic = [i for i, w in enumerate(words) if w in GENERIC]
         if generic and len(words) >= 3:
             i = generic[0]
-            options.append(" ".join(words[:i] + words[i + 1:]) + (f" {suf}" if suf else ""))
-        self.rng.shuffle(options)
-        for o in options:
+            options["generic"].append(" ".join(words[:i] + words[i + 1:]) + (f" {suf}" if suf else ""))
+        pool = options[kind] if kind else [o for v in options.values() for o in v]
+        self.rng.shuffle(pool)
+        for o in pool:
             if pos.name_relation(o, name) == "different":
                 return o
-        return name + " Intl"
+        return None if kind else name + " Intl"
 
-    def unsure_alias(self, name: str, region: str) -> str:
+    def unsure_alias(self, name: str, region: str, kind: str | None = None) -> str:
+        """An only-loosely-linked name. kind: sister | unrelated | branch | holding | None (any)."""
         core, suf = self.split_suffix(name)
         first = core.split()[0] if core.split() else core
         local = self.split_suffix(self.rng.choice(self.pools[region]["customers"])["name"])[1] or "Ltd"
-        kind = self.rng.choice(["sister", "unrelated", "branch", "holding"])
+        kind = kind or self.rng.choice(["sister", "unrelated", "branch", "holding"])
         if kind == "sister" and len(core.split()) >= 2:
             alias = f"{first} {self.rng.choice(INDUSTRY_ALT)}"
         elif kind == "branch":
@@ -403,7 +411,8 @@ class Generator:
         if sid == "C4":
             p = self._part(lambda p: p.spq <= 10)
             r = self.base(part=p)
-            q = rng.choice([7, 13, 37, 61, 130, 217, 1013]) if p.spq == 1 else p.spq * rng.randint(p.moq // p.spq or 1, 40)
+            lo = max(1, math.ceil(p.moq / p.spq))
+            q = rng.choice([7, 13, 37, 61, 130, 217, 1013]) if p.spq == 1 else p.spq * rng.randint(lo, max(lo, 40))
             return replace(r, qty=str(max(q, p.moq))), COMMIT
         if sid == "C5":
             region = rng.choice(self.regions)
@@ -428,13 +437,21 @@ class Generator:
                 r = replace(r, customer=self.format_only_name(r.m_customer))
             return r, NORMALIZE
         if sid in ("V1", "V2", "V3", "V4", "V5"):
-            r = self.base()
-            r = replace(r, customer=self.clear_alias(r.m_customer))
+            kind = {"V1": "abbrev", "V2": "suffix", "V3": "typo", "V4": "generic"}.get(sid)
+            for _ in range(30):  # find a customer whose name admits this kind of rename
+                r = self.base()
+                alias = self.clear_alias(r.m_customer, kind)
+                if alias:
+                    break
+            else:
+                return None
+            r = replace(r, customer=alias)
             return (self.noise(r) if sid == "V5" else r), RENAME
         if sid in ("VU1", "VU2", "VU3"):
             region = rng.choice(self.regions)
             r = self.base(region=region)
-            r = replace(r, customer=self.unsure_alias(r.m_customer, region))
+            kind = {"VU1": "sister", "VU2": rng.choice(["unrelated", "holding"]), "VU3": "branch"}[sid]
+            r = replace(r, customer=self.unsure_alias(r.m_customer, region, kind))
             return (self.noise(r, k=1) if sid == "VU3" and rng.random() < 0.4 else r), RENAME_UNSURE
         if sid in ("P1", "P2", "P3", "P4", "P5", "P6"):
             kind = {"P1": "not_multiple", "P2": "below_moq", "P3": "both", "P4": "near_miss"}.get(
@@ -467,10 +484,10 @@ class Generator:
             r = self.base(history="none")
             ref = r.ref
             if sid == "D3":
-                ref = rng.choice([ref.lower(), " ".join(ref.split("-")) if "-" in ref else ref.lower(),
-                                  ref.replace("/", " / ") if "/" in ref else ref.lower()])
-                if pos.norm_ref(ref) != pos.norm_ref(r.ref):
-                    ref = r.ref.lower()
+                variants = [v for v in (ref.lower(), ref.replace("/", " / "), ref.replace("-", " - "),
+                                        f" {ref}", ref[:len(ref) // 2] + " " + ref[len(ref) // 2:])
+                            if v != ref and pos.norm_ref(v) == pos.norm_ref(ref)]
+                ref = rng.choice(variants)
             others = [self._ref(self._style(r)) for _ in range(rng.randint(1, 4))] if sid in ("D2", "D4") else []
             seen = others + [ref]
             rng.shuffle(seen)
@@ -604,6 +621,8 @@ class Generator:
         rng = self.rng
         if pid == "H01":
             p = self._part(lambda p: p.spq > 1)
+            if p.spq <= 1:
+                return None
             a = self.base(part=p)
             q = int(a.qty) + rng.randrange(1, p.spq)
             return (a, COMMIT), (replace(a, qty=str(q)), PACK)
@@ -675,35 +694,46 @@ class Generator:
         return Record(id=stable_id(text, "proc"), text=text, labels=dict(labels), source="synthetic",
                       meta={"generator": "procedural", "seed": self.seed, **meta})
 
-    def scenarios(self, counts: dict[str, int]) -> list[Record]:
+    def scenarios(self, counts: dict[str, int], log=print) -> list[Record]:
         out = []
         for sid, n in counts.items():
             got, tries = 0, 0
             while got < n and tries < n * 5:
                 tries += 1
-                built = self.scenario(sid)
+                try:
+                    built = self.scenario(sid)
+                except KeyError:
+                    log(f"procgen: no procedural recipe for scenario {sid}; skipped (teacher rows only)")
+                    break
                 if built is None:
                     continue
                 rec = self._keep(*built, {"scenario": sid})
-                if rec:
+                if rec and rec.text not in self.texts:
+                    self.texts.add(rec.text)
                     out.append(rec)
                     got += 1
         return out
 
-    def pairs(self, counts: dict[str, int]) -> list[Record]:
+    def pairs(self, counts: dict[str, int], log=print) -> list[Record]:
         out = []
         for pid, n in counts.items():
             got, tries = 0, 0
             while got < n and tries < n * 5:
                 tries += 1
-                built = self.pair(pid)
+                try:
+                    built = self.pair(pid)
+                except KeyError:
+                    log(f"procgen: no procedural recipe for pair {pid}; skipped (teacher rows only)")
+                    break
                 if built is None:
                     continue
                 k = f"{pid}-{got:04d}"
                 (ra, la), (rb, lb) = built
                 a = self._keep(ra, la, {"scenario": pid, "pair": k, "side": "a"})
                 b = self._keep(rb, lb, {"scenario": pid, "pair": k, "side": "b"})
-                if a and b and a.text != b.text:
+                # a pair is kept whole or not at all, so a duplicate side never orphans its partner
+                if a and b and a.text != b.text and a.text not in self.texts and b.text not in self.texts:
+                    self.texts |= {a.text, b.text}
                     out += [a, b]
                     got += 1
         return out
@@ -729,13 +759,8 @@ def generate(pools_path: str, parts_path: str, recipe_path: str, regions_path: s
     gen = Generator(pools, load_parts(parts_path), load_currencies(regions_path), seed=seed)
     counts = {s["id"]: max(1, round(n_per_scenario * float(s.get("weight", 1.0))))
               for s in recipe["scenarios"]}
-    records = gen.scenarios(counts)
-    records += gen.pairs({p["id"]: pairs_per_type for p in recipe.get("pairs", [])})
+    records = gen.scenarios(counts, log)
+    records += gen.pairs({p["id"]: pairs_per_type for p in recipe.get("pairs", [])}, log)
     if gen.rejected:
         log("rejected by the rule check (rebuilt): " + ", ".join(f"{k}={v}" for k, v in sorted(gen.rejected.items())))
-    seen, unique = set(), []
-    for r in records:  # exact duplicate texts can only come from tiny pools; keep the first
-        if r.text not in seen:
-            seen.add(r.text)
-            unique.append(r)
-    return unique
+    return records

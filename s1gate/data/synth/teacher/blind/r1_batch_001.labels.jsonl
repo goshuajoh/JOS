@@ -1,0 +1,147 @@
+{"id": "bbb4eaeb9da", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "unit_price=TBD is non-numeric"}
+{"id": "b96460e927c", "row_action": "vendor_rename", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "reported Mavi Ufuk Denizcilik A.S. vs master Kaptan Deniz Elektronigi Ltd. Sti.: completely different name, uncertain link"}
+{"id": "b091b6d31f0", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "ref CTD3033476 not in seen_refs (CTD3033467/CTD3033746 differ); 3000 ok"}
+{"id": "bbc4d708446", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "ref AST/GGN/86/5963 only similar to seen refs; 1000 ok vs spq500/moq1000"}
+{"id": "b1e0706e135", "row_action": "pack_qty_issue", "needs_human": "yes", "severity": "2", "confidence": "high", "note": "8200 not multiple of 5000 and below moq 10000"}
+{"id": "b8baa55aeb9", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean; spq1 moq1"}
+{"id": "b4162be44b0", "row_action": "no_op", "needs_human": "no", "severity": "1", "confidence": "high", "note": "blank/separator: all values '-' or empty"}
+{"id": "b5f96196e73", "row_action": "pack_qty_issue", "needs_human": "yes", "severity": "2", "confidence": "high", "note": "305 not multiple of spq 100"}
+{"id": "bc56b02da57", "row_action": "no_op", "needs_human": "no", "severity": "1", "confidence": "high", "note": "note line: remark, no qty"}
+{"id": "bdeeb46c913", "row_action": "no_op", "needs_human": "no", "severity": "3", "confidence": "high", "note": "subtotal for part WM-S3-N4, ref SUBTOTAL"}
+{"id": "bc45f83ebd7", "row_action": "pack_qty_issue", "needs_human": "yes", "severity": "2", "confidence": "high", "note": "1010 not multiple of spq 100"}
+{"id": "b3bdc3564e3", "row_action": "no_op", "needs_human": "no", "severity": "1", "confidence": "high", "note": "blank line: all values empty"}
+{"id": "b10901f6927", "row_action": "no_op", "needs_human": "no", "severity": "1", "confidence": "high", "note": "separator: values *** or empty"}
+{"id": "b4fb07b098a", "row_action": "pack_qty_issue", "needs_human": "yes", "severity": "2", "confidence": "high", "note": "2490 not multiple of spq 500"}
+{"id": "b64948e8e00", "row_action": "no_op", "needs_human": "no", "severity": "3", "confidence": "high", "note": "customer subtotal line, part/ref SUBTOTAL"}
+{"id": "b9fcd611dba", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "ref TVC603174 not in seen (TVC603147 differs); 5000 ok"}
+{"id": "b36cd020488", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "two quantities qty=750/1500"}
+{"id": "b90055d333d", "row_action": "no_op", "needs_human": "no", "severity": "3", "confidence": "high", "note": "customer total subtotal line"}
+{"id": "bc315d42edf", "row_action": "pack_qty_issue", "needs_human": "yes", "severity": "2", "confidence": "high", "note": "qty 4 below moq 10 and not multiple of spq 10"}
+{"id": "bdcc4c6863b", "row_action": "no_op", "needs_human": "no", "severity": "3", "confidence": "high", "note": "customer total subtotal line"}
+{"id": "b80f3cb9856", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean; 5000 at moq, multiple of 1000"}
+{"id": "b2ed8d17945", "row_action": "no_op", "needs_human": "no", "severity": "1", "confidence": "high", "note": "separator line of ===== values; a lone country code is not sales content"}
+{"id": "bafa52fc496", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "ref FT-49352/EU not in seen (FT-49325/EU differs); 8000 ok"}
+{"id": "bf46e53f43b", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "ref F106-02810448 not in seen (F1065-... differs); 10000 ok"}
+{"id": "b18ceb0fe61", "row_action": "vendor_rename", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "Polar Cold Chain Technology vs master Qingdao Bingquan Refrigeration Controls: completely different name"}
+{"id": "bf24e0fdbf3", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "ref DCD4817-02 not in seen; clean"}
+{"id": "b6557f5fba3", "row_action": "vendor_rename", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "Energo Balkan Group AD vs master Trakia Smart Grid EOOD: completely different name, possible parent"}
+{"id": "b4b05ac4e2b", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "ref CEB-QC-65556 vs seen CEB-QC-65557 differs by one digit; 77500 ok"}
+{"id": "bf17c78b202", "row_action": "no_op", "needs_human": "no", "severity": "1", "confidence": "high", "note": "note line: prices include freight, no qty"}
+{"id": "b84cbfdd9be", "row_action": "no_op", "needs_human": "no", "severity": "4", "confidence": "high", "note": "GRAND TOTAL line"}
+{"id": "b6731e0e600", "row_action": "vendor_rename", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "Kinabalu Drone Works Asia Pacific Pte Ltd vs master Kinabalu Drone Works Sdn Bhd: points to a regional subsidiary"}
+{"id": "be9f4b004d6", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "ref TI/AQ/33191 not in seen; clean"}
+{"id": "ba3b065119c", "row_action": "no_op", "needs_human": "no", "severity": "1", "confidence": "high", "note": "note line: page 1 of 3 - continued"}
+{"id": "baf35545401", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "two part numbers in part field"}
+{"id": "bc33ad3a17b", "row_action": "vendor_rename", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "Pacific Wayfinder Marine vs master Kaohsiung Hai-Yang Navigation: completely different name"}
+{"id": "bca32310b7e", "row_action": "vendor_rename", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "AeroDyne Systems vs master Skrzydlo360: completely different name"}
+{"id": "b5971e4fb51", "row_action": "no_op", "needs_human": "no", "severity": "3", "confidence": "high", "note": "customer total subtotal line, ref SUBTOTAL"}
+{"id": "bc27c5ac913", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "ref AST/GGN/27/6750 not in seen (6749 differs); clean"}
+{"id": "b17d2fd78bd", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean; ref not in seen"}
+{"id": "b12254a9d13", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "negative qty -500"}
+{"id": "b4b1d51cfb6", "row_action": "no_op", "needs_human": "no", "severity": "4", "confidence": "high", "note": "GENEL TOPLAM / GRAND TOTAL line"}
+{"id": "bb1f8f63724", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "ref TVC146770 not in seen (TVC146780 differs); 10000 ok"}
+{"id": "ba8c187cab6", "row_action": "pack_qty_issue", "needs_human": "yes", "severity": "2", "confidence": "high", "note": "4990 not multiple of spq 500"}
+{"id": "b271e677ead", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean; 5000 at moq"}
+{"id": "bc8ab9e8677", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "negative qty -750"}
+{"id": "b11c142c004", "row_action": "pack_qty_issue", "needs_human": "yes", "severity": "2", "confidence": "high", "note": "205 not multiple of spq 10"}
+{"id": "bc74b8ca02d", "row_action": "vendor_rename", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "Contadores Inteligentes del Ebro Portugal Lda. vs master ... S.A.: points to a subsidiary; qty 5200 passes; part/price format issues are outranked"}
+{"id": "b382d1cf176", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean; 48000 ok"}
+{"id": "b5d502e7f85", "row_action": "no_op", "needs_human": "no", "severity": "3", "confidence": "high", "note": "customer total subtotal line, ref SUBTOTAL"}
+{"id": "b9cc6035c3c", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean; spq1 moq1"}
+{"id": "b4644919cda", "row_action": "no_op", "needs_human": "no", "severity": "1", "confidence": "high", "note": "note line: payment terms"}
+{"id": "be0fb9732e4", "row_action": "no_op", "needs_human": "no", "severity": "4", "confidence": "high", "note": "TOTAL ALL CUSTOMERS grand total"}
+{"id": "b7b5715a136", "row_action": "no_op", "needs_human": "no", "severity": "1", "confidence": "high", "note": "separator line of dots, no qty/ref"}
+{"id": "b7f95a07f37", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean; spq1 moq1"}
+{"id": "b9acf5ba649", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "qty=per PO is non-numeric"}
+{"id": "bb66ee10800", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "ref 32714-HKT not in seen (327144-HKT differs); 10000 ok"}
+{"id": "b6ae2d66b41", "row_action": "pack_qty_issue", "needs_human": "yes", "severity": "2", "confidence": "high", "note": "2999 not multiple of spq 1000; ref differs from F601-07179462 by one digit"}
+{"id": "b1b2f0d469f", "row_action": "no_op", "needs_human": "no", "severity": "1", "confidence": "high", "note": "note line: end of file"}
+{"id": "bde6aee2f02", "row_action": "pack_qty_issue", "needs_human": "yes", "severity": "2", "confidence": "high", "note": "60030 not multiple of spq 3000"}
+{"id": "b9e81ad7525", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "ref 9025103361 not in seen (9025103316 differs); 70 ok"}
+{"id": "b65ff0bb712", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean; 6000 at moq"}
+{"id": "b5f7fa2198f", "row_action": "no_op", "needs_human": "no", "severity": "1", "confidence": "high", "note": "note line: prices subject to change"}
+{"id": "bf39a566db2", "row_action": "pack_qty_issue", "needs_human": "yes", "severity": "2", "confidence": "high", "note": "270 not multiple of spq 100 and below moq 500"}
+{"id": "b6b08a5cb1d", "row_action": "no_op", "needs_human": "no", "severity": "3", "confidence": "high", "note": "customer total subtotal line"}
+{"id": "b24d523f6a6", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "medium", "note": "integer price '311 JPY' read as canonical (guide says dot-decimal but lists no missing-decimals normalize case); otherwise clean, ref MOJ-0708-580 not in seen, 47500 ok"}
+{"id": "b11f13f42e5", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "ref DCD5873-59 not in seen (DCD5873-596 differs); 7500 ok"}
+{"id": "b2efbb4011a", "row_action": "vendor_rename", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "PT Roda Listrik Nusantara Surabaya Branch vs master PT Roda Listrik Nusantara: points to a branch"}
+{"id": "ba26cf24bf1", "row_action": "vendor_rename", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "Elektra Enerji Hizmetleri vs master Simsek Sarj Teknolojileri: completely different name"}
+{"id": "b9d8da8f7f7", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "ref AST/GGN/77/0151 only similar to seen refs; 1000 ok"}
+{"id": "b3b41a3ea6b", "row_action": "vendor_rename", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "Chiclayo Camaras y Vigilancia Bolivia S.R.L. vs master ... E.I.R.L.: points to a subsidiary; qty 3900 ok; ref not seen"}
+{"id": "b04924521d8", "row_action": "vendor_rename", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "Bogota Senalizacion Digital Grupo Holding S.A.S. vs master ... S.A.S.: points to a parent holding"}
+{"id": "b646a05b43a", "row_action": "no_op", "needs_human": "no", "severity": "4", "confidence": "high", "note": "Grand Total line"}
+{"id": "b43f3c97bea", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean; spq1 moq1"}
+{"id": "bd861d57abb", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean; 5000 at moq"}
+{"id": "baa2a477327", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "two quantities qty=39000 / 40000"}
+{"id": "b01c994ae97", "row_action": "vendor_rename", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "Cuyo AgroTech S.A. vs master Mendoza Riego Inteligente S.A.S.: completely different name"}
+{"id": "b2b85e14605", "row_action": "no_op", "needs_human": "no", "severity": "3", "confidence": "high", "note": "customer total subtotal line"}
+{"id": "ba5834483b0", "row_action": "no_op", "needs_human": "no", "severity": "4", "confidence": "high", "note": "Overall total grand total line"}
+{"id": "b587a9ab9bf", "row_action": "no_op", "needs_human": "no", "severity": "4", "confidence": "high", "note": "GRAND TOTAL line"}
+{"id": "b6cff86552c", "row_action": "vendor_rename", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "Raigad Group Holdings Ltd vs master Raigad E-Mobility Pvt Ltd: one shared word, possible parent; 50k=50000 passes"}
+{"id": "bbd0602826a", "row_action": "pack_qty_issue", "needs_human": "yes", "severity": "2", "confidence": "high", "note": "505 not multiple of spq 250"}
+{"id": "b571605aa07", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "note inside part value: (EOL?)"}
+{"id": "b3b7619b907", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "unit_price truncated: 1.4... with no currency"}
+{"id": "b17e8799ded", "row_action": "pack_qty_issue", "needs_human": "yes", "severity": "2", "confidence": "high", "note": "5001 not multiple of spq 2500"}
+{"id": "bf76b216a09", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "medium", "note": "integer price '832 KRW' read as canonical (guide says dot-decimal but lists no missing-decimals normalize case); otherwise clean, ref GDC/3287/12 not in seen, 84000 ok"}
+{"id": "b0703a230c9", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "period month 00 (2026-00)"}
+{"id": "bd93e4c84f7", "row_action": "no_op", "needs_human": "no", "severity": "4", "confidence": "high", "note": "GRAND TOTAL line"}
+{"id": "b646e2370d5", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "ref ORD-31090-71 not in seen (-75 differs); 9000 ok"}
+{"id": "bfb5851ea0c", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "period truncated: 2026-0..."}
+{"id": "bd5c33f7662", "row_action": "pack_qty_issue", "needs_human": "yes", "severity": "2", "confidence": "high", "note": "2999 below moq 3000 and not multiple of spq 3000"}
+{"id": "b4ae737ec25", "row_action": "vendor_rename", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "VEMATIQ Steuerungssysteme Austria GmbH vs master VEMATIQ Steuerungssysteme GmbH: points to a subsidiary; format issues outranked"}
+{"id": "becf908d00c", "row_action": "vendor_rename", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "Luminar Mexicana vs master Iluminacion Xochitl: completely different name"}
+{"id": "b9bec54394d", "row_action": "pack_qty_issue", "needs_human": "yes", "severity": "2", "confidence": "high", "note": "2600 below moq 5000 and not multiple of spq 1000"}
+{"id": "b709e6ea401", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean; 230 ok"}
+{"id": "bc1c8be1bc0", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean; 9000 ok"}
+{"id": "b28b9690854", "row_action": "pack_qty_issue", "needs_human": "yes", "severity": "2", "confidence": "high", "note": "49990 not multiple of spq 2500"}
+{"id": "ba91512886b", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean; 29940 multiple of 10"}
+{"id": "b41bf7d6fe7", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean; spq1 moq1"}
+{"id": "bb4272fad3b", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean; 1040 multiple of 10"}
+{"id": "b20f9ed114e", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean; 10000 at moq"}
+{"id": "b978d5deb1a", "row_action": "no_op", "needs_human": "no", "severity": "1", "confidence": "high", "note": "note line: prices exclude VAT"}
+{"id": "bdb9eb8c3c1", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "ref DEQ-A195295 not in seen; 72000 ok"}
+{"id": "beb96617952", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "ref CMC/BC/120448 not in seen (120484 differs); 2000 at moq"}
+{"id": "b2d210bac60", "row_action": "pack_qty_issue", "needs_human": "yes", "severity": "2", "confidence": "high", "note": "150 below moq 200 and not multiple of spq 100"}
+{"id": "b43b50061ae", "row_action": "vendor_rename", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "Hydrotech Baltic S.A. vs master Liczniki Pomorze Sp. z o.o.: completely different name"}
+{"id": "b05378afaa5", "row_action": "pack_qty_issue", "needs_human": "yes", "severity": "2", "confidence": "high", "note": "2601 not multiple of spq 650"}
+{"id": "baa9aa593a2", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "unit_price truncated: '2. US...'; ref SEP-80435/26 differs from seen SEP-80435/21"}
+{"id": "b11037a5273", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "ref PK-025-08417 not in seen (08471 differs); spq1"}
+{"id": "bfefff27e6d", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "ref CRE-SO-456048 not in seen (451048 differs); 10000 at moq"}
+{"id": "bc3470a9721", "row_action": "no_op", "needs_human": "no", "severity": "4", "confidence": "high", "note": "Report Total - all customers grand total"}
+{"id": "bc8c8ae3be6", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean; spq1"}
+{"id": "bef43c3d5ac", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean; 44240 multiple of 10"}
+{"id": "b4a19e7fa6a", "row_action": "vendor_rename", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "Kranji Hydroponic Controls (Malaysia) Sdn Bhd vs master ... Pte Ltd: points to a subsidiary"}
+{"id": "bd9efecf474", "row_action": "no_op", "needs_human": "no", "severity": "3", "confidence": "high", "note": "customer subtotal line"}
+{"id": "beed81da6df", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean; 10000 at moq"}
+{"id": "bc3fd581cf3", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "ref TVC904707 not in seen (TVC904709 differs); 8000 ok"}
+{"id": "bd296f9ecaa", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "two part numbers in part field"}
+{"id": "b02b4cf7537", "row_action": "vendor_rename", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "Terraform Autonomy Corp. vs master Halcyon Field Robotics Inc.: completely different name"}
+{"id": "b65c8c7c061", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "ref DEQ-A753719 not in seen (DEQ-A7537191 differs); 54000 ok"}
+{"id": "bfd06081348", "row_action": "no_op", "needs_human": "no", "severity": "1", "confidence": "high", "note": "separator line of dashes"}
+{"id": "b77053c7ee8", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "ref CRE-SO-216095 not in seen (216059/206095 differ); 1000 at moq"}
+{"id": "b8db2b6c9e9", "row_action": "pack_qty_issue", "needs_human": "yes", "severity": "2", "confidence": "high", "note": "495 below moq 500 and not multiple of spq 500"}
+{"id": "bda6375b42c", "row_action": "no_op", "needs_human": "no", "severity": "4", "confidence": "high", "note": "Mindosszesen / Grand total line"}
+{"id": "bd8d90d63f4", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean; 32000 ok"}
+{"id": "b17089d9d2e", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean; 22500 ok"}
+{"id": "b6141cd147b", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean; 5000 at moq"}
+{"id": "b82cb254672", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "ref VH.4360.521 vs seen VH.4363.521 differs by one digit; 1750 ok"}
+{"id": "b31e9297912", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "two part numbers in part field"}
+{"id": "bac0a247e15", "row_action": "no_op", "needs_human": "no", "severity": "1", "confidence": "high", "note": "note line: report generated automatically"}
+{"id": "b609eb82287", "row_action": "vendor_rename", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "Anantam Group Holdings Pvt Ltd vs master Anantam Classroom Technologies Pvt Ltd: one shared word, possible parent; 20k=20000 passes"}
+{"id": "b1c754fabbd", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "unit_price zero (0.00 USD)"}
+{"id": "bfb1f524c56", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "note inside part value: (Eol?)"}
+{"id": "bc68cef0ee2", "row_action": "no_op", "needs_human": "no", "severity": "4", "confidence": "high", "note": "Total all customers grand total"}
+{"id": "b8d95787a11", "row_action": "no_op", "needs_human": "no", "severity": "4", "confidence": "high", "note": "Report Total grand total line"}
+{"id": "b7cae46423e", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "qty=see attachment is non-numeric"}
+{"id": "b65c67b17a1", "row_action": "pack_qty_issue", "needs_human": "yes", "severity": "2", "confidence": "high", "note": "1500 below moq 3000 and not multiple of spq 3000; ref only similar to seen"}
+{"id": "ba06cfe61e2", "row_action": "vendor_rename", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "Song Han Logistics Tech Singapore Pte Ltd vs master ... Co., Ltd.: points to a subsidiary"}
+{"id": "b354715a088", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean; 6000 at moq"}
+{"id": "b74a9156740", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "negative unit_price -1.12 USD"}
+{"id": "bb469490bbe", "row_action": "vendor_rename", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "MedTech Pannonia Holding Zrt. vs master Balatoni Orvostechnikai Kft.: completely different name, possible parent"}
+{"id": "ba59b3cce86", "row_action": "vendor_rename", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "Chiloe Acuicultura Digital Peru S.A.C. vs master ... SpA: points to a subsidiary; integer CLP price canonical"}
+{"id": "bcf21864e8b", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "ref CRE-SO-226381 not in seen (226318 differs); 5000 at moq"}
+{"id": "b0ff1155d2e", "row_action": "no_op", "needs_human": "no", "severity": "1", "confidence": "high", "note": "note line: no sales recorded this month"}
+{"id": "bd829128322", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "ref QT26-90529 not in seen (QT23-90529, QT26-90549 differ); 5000 ok"}
+{"id": "bf19c9784a1", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "two part numbers in part field"}
+{"id": "b8c1d94bf07", "row_action": "no_op", "needs_human": "no", "severity": "1", "confidence": "high", "note": "note line: prices exclude VAT and freight"}
+{"id": "b9093116ec3", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean; 800 ok"}
