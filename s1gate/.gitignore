@@ -1,7 +1,14 @@
 .venv/
 __pycache__/
 *.pyc
+.pytest_cache/
 runs/*
 !runs/.gitkeep
-data/synth/*.jsonl
+# scratch outputs; the curated datasets under data/ ARE committed
+data/synth/tmp/
 data/corrections.jsonl
+data/review_queue.jsonl
+# gliner2 length caches written next to training files
+*.lengths.npy
+*.lengths.json
+*.egg-info/

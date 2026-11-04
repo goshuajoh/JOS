@@ -44,7 +44,10 @@ class OptionScorer:
         self.tok.padding_side = "left"  # so position -1 is the answer slot for every row
         if self.tok.pad_token is None:
             self.tok.pad_token = self.tok.eos_token
-        model = AutoModelForCausalLM.from_pretrained(model_id, torch_dtype=torch_dtype)
+        import transformers
+        major, minor = (int(x) for x in transformers.__version__.split(".")[:2])
+        dtype_kw = "dtype" if (major, minor) >= (4, 56) else "torch_dtype"  # renamed in 4.56
+        model = AutoModelForCausalLM.from_pretrained(model_id, **{dtype_kw: torch_dtype})
         if adapter:
             from peft import PeftModel
             model = PeftModel.from_pretrained(model, adapter, is_trainable=trainable)

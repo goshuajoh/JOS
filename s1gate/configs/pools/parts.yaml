@@ -1,0 +1,51 @@
+# Invented part catalogue shared by every generator (train and eval alike, like a real
+# vendor catalogue). spq = standard pack quantity, moq = minimum order quantity,
+# usd = typical unit price. Master data in a record always repeats spq/moq for its part.
+parts:
+  # wireless modules (trays)
+  - {part: WM-S3-N8R8,   spq: 250,  moq: 500,   usd: 2.31}
+  - {part: WM-S3-N16R8,  spq: 500,  moq: 1000,  usd: 2.95}
+  - {part: WM-S3-N4,     spq: 250,  moq: 500,   usd: 2.10}
+  - {part: WM-C3-N4,     spq: 500,  moq: 1000,  usd: 1.25}
+  - {part: WM-C3-N8,     spq: 500,  moq: 1000,  usd: 1.38}
+  - {part: WM-C5-N4,     spq: 500,  moq: 1000,  usd: 1.82}
+  - {part: WM-C6-N4,     spq: 500,  moq: 500,   usd: 1.55}
+  - {part: WM-C6-N8,     spq: 500,  moq: 500,   usd: 1.68}
+  - {part: WM-H2-N4,     spq: 650,  moq: 1300,  usd: 1.47}
+  - {part: WM-32UE-N8,   spq: 1000, moq: 1000,  usd: 1.40}
+  - {part: WM-32E-N4,    spq: 1000, moq: 2000,  usd: 1.18}
+  - {part: WM-P4-N16R8,  spq: 250,  moq: 250,   usd: 3.40}
+  - {part: WM-S2-N4R2,   spq: 500,  moq: 1000,  usd: 1.66}
+  - {part: WM-C2-N2,     spq: 1000, moq: 3000,  usd: 0.98}
+  # SoCs (reels)
+  - {part: WC-S3-QFN56,     spq: 2500, moq: 2500,  usd: 1.95}
+  - {part: WC-S3R8-QFN56,   spq: 2500, moq: 5000,  usd: 2.25}
+  - {part: WC-C3-QFN32,     spq: 4000, moq: 4000,  usd: 0.78}
+  - {part: WC-C3FH4-QFN32,  spq: 4000, moq: 8000,  usd: 0.92}
+  - {part: WC-C6-QFN40,     spq: 3000, moq: 3000,  usd: 1.10}
+  - {part: WC-C2-QFN24,     spq: 5000, moq: 10000, usd: 0.55}
+  - {part: WC-H2-QFN32,     spq: 4000, moq: 4000,  usd: 0.96}
+  - {part: WC-32D-QFN48,    spq: 2500, moq: 2500,  usd: 1.35}
+  # memory
+  - {part: WF-QS-8M-SOP8,   spq: 3000, moq: 3000,  usd: 0.42}
+  - {part: WF-QS-16M-SOP8,  spq: 3000, moq: 6000,  usd: 0.61}
+  - {part: WP-8M-SOP8,      spq: 3000, moq: 3000,  usd: 0.88}
+  # antennas
+  - {part: WA-2G4-PCB,      spq: 1000, moq: 5000,  usd: 0.12}
+  - {part: WA-2G4-FPC,      spq: 500,  moq: 1000,  usd: 0.35}
+  - {part: WA-5G8-CHIP,     spq: 3000, moq: 3000,  usd: 0.09}
+  # development kits (single units)
+  - {part: WK-S3-DEVKIT-N8R8, spq: 1,  moq: 1,   usd: 14.50}
+  - {part: WK-C6-DEVKIT-N8,   spq: 1,  moq: 1,   usd: 9.80}
+  - {part: WK-H2-DEVKIT,      spq: 1,  moq: 1,   usd: 11.20}
+  - {part: WK-S3-EYE-V2,      spq: 10, moq: 10,  usd: 24.90}
+  - {part: WK-LCD-35,         spq: 10, moq: 20,  usd: 18.60}
+  # power, interface, sensors
+  - {part: WR-LDO-3V3-SOT23,  spq: 3000, moq: 3000,  usd: 0.07}
+  - {part: WR-BUCK-1A-QFN,    spq: 3000, moq: 6000,  usd: 0.28}
+  - {part: WU-USB-C-BRIDGE,   spq: 2500, moq: 2500,  usd: 0.65}
+  - {part: WS-TH-I2C-DFN,     spq: 5000, moq: 5000,  usd: 0.31}
+  - {part: WS-IMU-6AX-LGA,    spq: 5000, moq: 10000, usd: 1.12}
+  # cables and connectors (bags)
+  - {part: WX-UFL-CBL-100,    spq: 100, moq: 500, usd: 0.45}
+  - {part: WX-HDR-2X20,       spq: 100, moq: 200, usd: 0.22}

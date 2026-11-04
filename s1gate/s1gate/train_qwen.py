@@ -123,7 +123,7 @@ def train(train_records: list[Record], dev_records: list[Record] | None, schema:
             logits, gold = _batch_tensors(scorer, train_ex[i:i + batch_size], rng)
             loss = loss_fn(logits, gold) / grad_accum
             loss.backward()
-            running += float(loss) * grad_accum
+            running += loss.item() * grad_accum
             running_n += 1
             micro += 1
             if micro % grad_accum == 0:

@@ -231,3 +231,54 @@ def _blind_verify(schema: DecisionSchema, llm: LLM, batch: list[Record],
         if blind and all(blind[q] == r.labels[q] for q in questions):
             out.append(r)
     return out
+
+
+# ---------------------------------------------------------------- blind verification by other agents
+# When the teacher is not called through `generate` (rows written by agents or another tool),
+# the same blind check runs in two halves: export shuffled, text-only batches that MIX
+# scenarios (so a labeller cannot infer the target from its neighbours), have independent
+# annotators label them, then merge: keep a row only when every blind label equals its target.
+
+
+def blind_batches(records: list[Record], batch_size: int = 150, seed: int = 0) -> list[list[dict]]:
+    """Shuffled id+text batches: no labels, no meta, scenarios mixed."""
+    rows = [{"id": r.id, "text": r.text} for r in records]
+    random.Random(seed).shuffle(rows)
+    return [rows[i:i + batch_size] for i in range(0, len(rows), batch_size)]
+
+
+def merge_blind(records: list[Record], blind: dict[str, dict[str, str]], schema: DecisionSchema,
+                questions: list[str] | None = None) -> tuple[list[Record], list[Record], dict]:
+    """Keep records whose blind labels equal the target on every question; report the rest.
+
+    Returns (kept, rejected, stats). Rejected rows carry meta.blind and meta.reject so the
+    confusion between target and blind label can be mined (step 3: "mine the confusion").
+    """
+    from collections import Counter
+
+    questions = questions or schema.names
+    kept, rejected = [], []
+    confusion: dict[str, Counter] = {q: Counter() for q in questions}
+    missing = 0
+    for r in records:
+        b = blind.get(r.id)
+        if b is None:
+            missing += 1
+            rejected.append(r.model_copy(update={"meta": {**r.meta, "reject": "no blind label"}}))
+            continue
+        diff = [q for q in questions if q in r.labels and b.get(q) != r.labels[q]]
+        for q in questions:
+            if q in r.labels:
+                confusion[q][(r.labels[q], b.get(q))] += 1
+        if diff:
+            rejected.append(r.model_copy(update={"meta": {**r.meta, "blind": {q: b.get(q) for q in questions},
+                                                          "reject": "blind disagrees on " + ",".join(diff)}}))
+        else:
+            kept.append(r.model_copy(update={"meta": {**r.meta, "blind_verified": True}}))
+    stats = {"rows": len(records), "kept": len(kept), "rejected": len(rejected), "no_blind_label": missing,
+             "agreement": {q: round(sum(n for (t, b), n in c.items() if t == b) / max(1, sum(c.values())), 4)
+                           for q, c in confusion.items()},
+             "top_disagreements": {q: [{"target": t, "blind": b, "count": n}
+                                       for (t, b), n in c.most_common() if t != b][:8]
+                                   for q, c in confusion.items()}}
+    return kept, rejected, stats

@@ -1,14 +1,19 @@
-# Synthetic-data recipe for the POS gate (used by `s1gate synth`).
+# Synthetic-data recipe for the POS gate (used by `s1gate synth` and the teacher workflow).
 #
-# Coverage comes from `scenarios` (one per answer combination worth teaching).
-# Diversity comes from `variation` (one value per axis is drawn at random for each call).
-# Raise `weight` on scenarios the baseline gets wrong; add a scenario for every new
-# failure mode found in production corrections.
+# Coverage comes from `scenarios` (one per answer combination worth teaching, several
+# sub-scenarios per combination) and from `pairs` (two rows that differ in one field and
+# flip the answer). Diversity comes from `variation` (label-neutral axes, drawn for every
+# batch) and `noise` (format-noise axes, drawn ONLY for scenarios whose `noise` allows it:
+# messy formats turn a commit into a normalize, so they must never be drawn for commit rows).
+#
+# Raise `weight` on scenarios the baseline gets wrong; add a scenario for every new failure
+# mode found in production corrections. Rules for every label: docs/labeling_guide.md.
 
 domain: >
   Monthly point-of-sale (POS) reports that electronics distributors send to a chip vendor.
   Each record is ONE reported sales line, followed by the vendor's master-data entry for
   that customer and part, so the classifier can compare what was reported with what is known.
+  The FSM renders every record with the same keys in the same order; only values vary.
 
 record_format: |
   distributor=<name>; period=<YYYY-MM or other date style>; customer=<name as reported>;
@@ -21,55 +26,340 @@ example: >
   part=WM-S3-N8R8; qty=1250; unit_price=2.31 USD; ref=INV-88213/4 || master: customer=Acme
   Controls Ltd; spq=250; moq=500; restricted=no; seen_refs=none
 
+guide: docs/labeling_guide.md
+parts: configs/pools/parts.yaml
+
+# label-neutral axes: one value per axis is drawn for every teacher call
 variation:
-  distributor_style:
-    - tidy ERP export
-    - hand-edited spreadsheet with inconsistent casing
-    - abbreviated column values
-    - extra whitespace and stray punctuation
-  customer_naming:
-    - exact canonical name
-    - all-caps abbreviation
-    - legal suffix changed (Ltd / GmbH / S.A. / Pvt Ltd)
-    - former company name after a rebrand
-    - minor typo
-  numbers:
-    - plain integers and dot decimals
-    - thousands separators
-    - European decimal comma
   region:
     - Western Europe
+    - Nordics
+    - Central and Eastern Europe
     - Turkey
+    - Middle East
     - India
     - Southeast Asia
+    - Greater China
+    - Japan and Korea
+    - Latin America
+    - North America
+  quantity_scale:
+    - small orders (tens to a few hundred pieces, small SPQ parts or dev kits)
+    - typical orders (one to ten thousand pieces)
+    - large orders (tens of thousands of pieces, reel parts)
+  history:
+    - seen_refs=none
+    - one unrelated earlier ref in seen_refs
+    - several unrelated earlier refs in seen_refs, some similar-looking
+  currency:
+    - the region's local currency
+    - USD
 
-n_per_scenario: 40
+# format-noise axes: drawn only when the scenario's noise is optional or required
+noise:
+  date_style:
+    - DD.MM.YYYY (30.09.2026)
+    - Mon-YY (Sep-26)
+    - YYYY/MM or YYYY/MM/DD
+    - MM/YYYY
+    - month name and year (September 2026)
+    - YYYY-M without zero padding
+  number_style:
+    - thousands separators in qty (1,000 / 1.000 / 1 000)
+    - European decimal comma in price (2,31)
+    - units after qty (pcs, EA, units)
+    - Indian digit grouping (1,00,000)
+    - trailing zero decimals in qty (1000.00)
+    - k suffix in qty (2.5k)
+  part_style:
+    - lower or mixed case part number
+    - spaces instead of hyphens in the part number
+    - hyphens missing from the part number
+  layout:
+    - stray spaces inside values
+    - lower-case currency code or a currency symbol
+    - currency before the price
+    - country as lower-case code or full country name
+
+# noise: none = canonical formats only; optional = may add 0-2 noise axes without changing
+# the answer; required = the noise IS the point of the scenario (normalize)
+n_per_scenario: 70
 batch_size: 10
 temperature: 1.0
 
 scenarios:
-  - target: {row_action: commit, needs_human: "no", severity: "0"}
-    hint: Everything matches master data; quantity is a valid SPQ multiple at or above MOQ; ref not seen.
+  # ---------------------------------------------------------------- commit / no / 0
+  - id: C1
+    target: {row_action: commit, needs_human: "no", severity: "0"}
+    noise: none
+    hint: Clean canonical row; qty a comfortable multiple of SPQ well above MOQ; customer identical to master; ref not in seen_refs.
+    weight: 1.0
+  - id: C2
+    target: {row_action: commit, needs_human: "no", severity: "0"}
+    noise: none
+    hint: Clean row whose qty is exactly MOQ (and a multiple of SPQ) - the boundary that still passes.
+    weight: 0.6
+  - id: C3
+    target: {row_action: commit, needs_human: "no", severity: "0"}
+    noise: none
+    hint: Clean row where seen_refs lists earlier refs that look similar to this ref but differ (another line number, one digit changed, a longer number with the same prefix) - not a duplicate.
+    weight: 0.8
+  - id: C4
+    target: {row_action: commit, needs_human: "no", severity: "0"}
+    noise: none
+    hint: Clean row for a part with SPQ 1 or 10 (dev kits, displays) and an unusual but valid qty (e.g. 7, 37, 130, 1013 with SPQ 1).
+    weight: 0.5
+  - id: C5
+    target: {row_action: commit, needs_human: "no", severity: "0"}
+    noise: none
+    hint: Clean row whose customer has a long or complex legal name (local-language legal form, diacritics, ampersands) written exactly as in master.
+    weight: 0.6
+  - id: C6
+    target: {row_action: commit, needs_human: "no", severity: "0"}
+    noise: none
+    hint: Clean row with restricted=no although the customer name or country sounds sensitive (defence, drones, surveillance, border regions) - only the master flag decides compliance.
+    weight: 0.6
 
-  - target: {row_action: normalize, needs_human: "no", severity: "1"}
-    hint: Correct values in a different format - date style, separators, part number with spaces or lower case.
+  # ---------------------------------------------------------------- normalize / no / 1
+  - id: N1
+    target: {row_action: normalize, needs_human: "no", severity: "1"}
+    noise: required
+    hint: Only the period is in a non-canonical date style; every value is right.
+  - id: N2
+    target: {row_action: normalize, needs_human: "no", severity: "1"}
+    noise: required
+    hint: Qty written with thousands separators, units, trailing decimals or a k suffix; once normalized it is a valid SPQ multiple at or above MOQ.
+  - id: N3
+    target: {row_action: normalize, needs_human: "no", severity: "1"}
+    noise: required
+    hint: Price written with a decimal comma, a lower-case currency, a symbol, or the currency first; everything else canonical and valid.
+    weight: 0.8
+  - id: N4
+    target: {row_action: normalize, needs_human: "no", severity: "1"}
+    noise: required
+    hint: Part number in lower or mixed case, with spaces, or without hyphens; everything else valid.
+    weight: 0.8
+  - id: N5
+    target: {row_action: normalize, needs_human: "no", severity: "1"}
+    noise: optional
+    hint: Customer name differs from master ONLY in letter case, spacing, punctuation (a trailing dot, a missing comma) or accents (Esya vs Eşya); not an abbreviation or suffix change.
+  - id: N6
+    target: {row_action: normalize, needs_human: "no", severity: "1"}
+    noise: required
+    hint: Hand-edited spreadsheet row with several format problems at once (stray whitespace, mixed case, separators, odd date) while every value is right.
+  - id: N7
+    target: {row_action: normalize, needs_human: "no", severity: "1"}
+    noise: required
+    hint: Country written as a lower-case code or the full country name, possibly with one more format issue; values right.
+    weight: 0.4
 
-  - target: {row_action: vendor_rename, needs_human: "no", severity: "2"}
-    hint: Customer reported under an abbreviation or changed legal suffix that clearly maps to the master name.
+  # ---------------------------------------------------------------- vendor_rename / no / 2
+  - id: V1
+    target: {row_action: vendor_rename, needs_human: "no", severity: "2"}
+    noise: none
+    hint: Customer reported as an abbreviation or all-caps short form that clearly maps to the master name (ACME CTRL LTD for Acme Controls Ltd).
+  - id: V2
+    target: {row_action: vendor_rename, needs_human: "no", severity: "2"}
+    noise: none
+    hint: Legal suffix changed, expanded or dropped (Ltd vs Limited, Pvt Ltd vs Private Limited, A.S. vs Anonim Sirketi, GmbH dropped); the name core is identical.
+  - id: V3
+    target: {row_action: vendor_rename, needs_human: "no", severity: "2"}
+    noise: none
+    hint: Customer name with a typo, transposed letters or a missing letter that still clearly refers to the master customer.
+    weight: 0.8
+  - id: V4
+    target: {row_action: vendor_rename, needs_human: "no", severity: "2"}
+    noise: none
+    hint: Same company written with a dropped or added generic word (Co., Intl, Technologies), a translated legal form, or words in a different order.
+    weight: 0.7
+  - id: V5
+    target: {row_action: vendor_rename, needs_human: "no", severity: "2"}
+    noise: required
+    hint: Clear rename (abbreviation, suffix or typo) AND one or two format problems - vendor_rename wins over normalize.
+    weight: 0.8
 
-  - target: {row_action: vendor_rename, needs_human: "yes", severity: "3"}
-    hint: Reported customer name only loosely resembles the master name (possible rebrand or parent company).
+  # ---------------------------------------------------------------- vendor_rename / yes / 3
+  - id: VU1
+    target: {row_action: vendor_rename, needs_human: "yes", severity: "3"}
+    noise: none
+    hint: Reported name shares only one distinctive word with master (Shakti Energy Solutions vs Shakti Meters Pvt Ltd) - maybe a sister company.
+    weight: 0.8
+  - id: VU2
+    target: {row_action: vendor_rename, needs_human: "yes", severity: "3"}
+    noise: none
+    hint: Reported name is completely different from the master name the lookup returned (possible rebrand, parent holding or acquirer).
+    weight: 0.7
+  - id: VU3
+    target: {row_action: vendor_rename, needs_human: "yes", severity: "3"}
+    noise: optional
+    hint: Reported name points to a branch, regional subsidiary or holding of the master customer (Acme Controls Asia Pte Ltd vs Acme Controls Ltd).
+    weight: 0.6
+
+  # ---------------------------------------------------------------- pack_qty_issue / yes / 2
+  - id: P1
+    target: {row_action: pack_qty_issue, needs_human: "yes", severity: "2"}
+    noise: none
+    hint: Qty above MOQ but not a whole multiple of SPQ (1100 with SPQ 250); otherwise clean.
+  - id: P2
+    target: {row_action: pack_qty_issue, needs_human: "yes", severity: "2"}
+    noise: none
+    hint: Qty a multiple of SPQ but below MOQ (500 with SPQ 500 and MOQ 1000); otherwise clean.
+  - id: P3
+    target: {row_action: pack_qty_issue, needs_human: "yes", severity: "2"}
+    noise: none
+    hint: Qty both below MOQ and not a multiple of SPQ (600 with SPQ 1000 and MOQ 1000; 130 with SPQ 100 and MOQ 500).
+    weight: 0.6
+  - id: P4
+    target: {row_action: pack_qty_issue, needs_human: "yes", severity: "2"}
+    noise: none
+    hint: Qty a near miss of a valid quantity (2501, 999, 4990, 12480 with SPQ 2500) - off by a little.
+    weight: 0.8
+  - id: P5
+    target: {row_action: pack_qty_issue, needs_human: "yes", severity: "2"}
+    noise: required
+    hint: Pack break hidden behind formatting (qty=1.100 or 1,250 pcs or 2.6k) - pack_qty_issue wins over normalize.
+    weight: 0.8
+  - id: P6
+    target: {row_action: pack_qty_issue, needs_human: "yes", severity: "2"}
+    noise: optional
+    hint: Pack break plus a CLEAR customer rename (abbreviation or suffix change) - pack_qty_issue wins over vendor_rename.
+    weight: 0.6
+
+  # ---------------------------------------------------------------- compliance_review / yes / 4
+  - id: R1
+    target: {row_action: compliance_review, needs_human: "yes", severity: "4"}
+    noise: none
+    hint: Otherwise clean row but master restricted=yes.
+  - id: R2
+    target: {row_action: compliance_review, needs_human: "yes", severity: "4"}
+    noise: optional
+    hint: restricted=yes AND another problem (pack break, rename, format issue, or ref already in seen_refs) - compliance wins.
+  - id: R3
+    target: {row_action: compliance_review, needs_human: "yes", severity: "4"}
+    noise: none
+    hint: restricted=yes on a customer whose name and country sound completely ordinary (consumer goods, toys, lighting) - the flag, not the name, decides.
+    weight: 0.6
+
+  # ---------------------------------------------------------------- duplicate / no / 3
+  - id: D1
+    target: {row_action: duplicate, needs_human: "no", severity: "3"}
+    noise: none
+    hint: The row's ref is the only entry in seen_refs.
+    weight: 0.8
+  - id: D2
+    target: {row_action: duplicate, needs_human: "no", severity: "3"}
+    noise: none
+    hint: The row's ref appears among two to five refs in seen_refs (not always first).
+  - id: D3
+    target: {row_action: duplicate, needs_human: "no", severity: "3"}
+    noise: none
+    hint: The ref matches a seen ref only after ignoring letter case or extra spaces (inv-88001/2 vs INV-88001/2).
+    weight: 0.6
+  - id: D4
+    target: {row_action: duplicate, needs_human: "no", severity: "3"}
+    noise: optional
+    hint: Duplicate ref AND a lower-priority problem (pack break, clear rename, format issue) - duplicate wins.
+    weight: 0.8
+
+  # ---------------------------------------------------------------- ask_human / yes / 3
+  - id: A1
+    target: {row_action: ask_human, needs_human: "yes", severity: "3"}
+    noise: optional
+    hint: Sales line with one or two required fields empty (customer, part, qty, unit_price, ref, period or country) while the rest looks normal.
+  - id: A2
+    target: {row_action: ask_human, needs_human: "yes", severity: "3"}
+    noise: optional
+    hint: Impossible value - qty zero, negative or fractional (1.5), price zero, negative or non-numeric (TBD), or month 13/00.
+  - id: A3
+    target: {row_action: ask_human, needs_human: "yes", severity: "3"}
+    noise: optional
+    hint: Contradictory or garbled content - two part numbers, two quantities (1000/1200), a note inside a value field (qty=see attachment), a value cut off mid-way.
+  - id: A4
+    target: {row_action: ask_human, needs_human: "yes", severity: "3"}
+    noise: none
+    hint: Normal-looking sales line but master lookup failed (customer=unknown and/or spq=? and moq=?).
+    weight: 0.7
+  - id: A5
+    target: {row_action: ask_human, needs_human: "yes", severity: "3"}
+    noise: none
+    hint: Period that is not a single month (Q3 2026, FY26, H2-2026, 2026) or an unparseable date; otherwise valid.
     weight: 0.5
 
-  - target: {row_action: pack_qty_issue, needs_human: "yes", severity: "2"}
-    hint: Quantity is not a multiple of SPQ, or is below MOQ, otherwise clean.
-
-  - target: {row_action: compliance_review, needs_human: "yes", severity: "4"}
-    hint: Master data marks the customer or country as restricted=yes.
-
-  - target: {row_action: duplicate, needs_human: "no", severity: "3"}
-    hint: The row's ref already appears in master seen_refs.
-
-  - target: {row_action: ask_human, needs_human: "yes", severity: "3"}
-    hint: Row is truncated, has contradictory fields, or a missing part number or quantity.
+  # ---------------------------------------------------------------- no_op / no / 1, 3, 4
+  - id: O1
+    target: {row_action: no_op, needs_human: "no", severity: "1"}
+    noise: none
+    hint: Repeated header row - every reported value is a column title (customer=Customer Name; part=Part No; qty=Qty); master lookup failed.
+    weight: 0.6
+  - id: O2
+    target: {row_action: no_op, needs_human: "no", severity: "1"}
+    noise: none
+    hint: Blank or separator row - reported values empty or filler (-----, =====, n/a), no qty and no ref; master lookup failed.
     weight: 0.5
+  - id: O3
+    target: {row_action: no_op, needs_human: "no", severity: "1"}
+    noise: none
+    hint: Note or comment line carried into the fields (*** end of report ***, continued on next page, prices exclude VAT), no quantity to report.
+    weight: 0.5
+  - id: O4
+    target: {row_action: no_op, needs_human: "no", severity: "3"}
+    noise: optional
+    hint: Subtotal line for one customer or one part (part=SUBTOTAL, customer=Total <name>), qty is a sum, ref empty or SUBTOTAL; restricted=no.
+    weight: 0.7
+  - id: O5
+    target: {row_action: no_op, needs_human: "no", severity: "4"}
+    noise: optional
+    hint: Grand total line for the whole report (customer=GRAND TOTAL or Report total), qty a large sum, part and ref empty; master lookup failed.
+    weight: 0.6
+
+# Hard pairs: each item asks for pairs of records identical except for the one change,
+# so the boundary itself is taught. a and b are the two targets.
+pairs:
+  - id: H01
+    change: qty is a multiple of SPQ (row a) vs a qty that is not a multiple of SPQ (row b), MOQ satisfied in both
+    a: {row_action: commit, needs_human: "no", severity: "0"}
+    b: {row_action: pack_qty_issue, needs_human: "yes", severity: "2"}
+  - id: H02
+    change: qty exactly at MOQ (row a) vs one SPQ below MOQ (row b)
+    a: {row_action: commit, needs_human: "no", severity: "0"}
+    b: {row_action: pack_qty_issue, needs_human: "yes", severity: "2"}
+  - id: H03
+    change: seen_refs without this ref (row a) vs seen_refs containing this exact ref (row b)
+    a: {row_action: commit, needs_human: "no", severity: "0"}
+    b: {row_action: duplicate, needs_human: "no", severity: "3"}
+  - id: H04
+    change: seen_refs contains this exact ref (row a) vs a seen ref that differs by one digit or line number (row b)
+    a: {row_action: duplicate, needs_human: "no", severity: "3"}
+    b: {row_action: commit, needs_human: "no", severity: "0"}
+  - id: H05
+    change: master restricted=no (row a) vs restricted=yes (row b)
+    a: {row_action: commit, needs_human: "no", severity: "0"}
+    b: {row_action: compliance_review, needs_human: "yes", severity: "4"}
+  - id: H06
+    change: customer differs from master only in case or punctuation (row a) vs an abbreviation of the master name (row b)
+    a: {row_action: normalize, needs_human: "no", severity: "1"}
+    b: {row_action: vendor_rename, needs_human: "no", severity: "2"}
+  - id: H07
+    change: customer is a clear abbreviation or suffix change (row a) vs a name that only loosely resembles master (row b)
+    a: {row_action: vendor_rename, needs_human: "no", severity: "2"}
+    b: {row_action: vendor_rename, needs_human: "yes", severity: "3"}
+  - id: H08
+    change: a subtotal line (row a) vs a real sales line for the same customer with one required field empty (row b)
+    a: {row_action: no_op, needs_human: "no", severity: "3"}
+    b: {row_action: ask_human, needs_human: "yes", severity: "3"}
+  - id: H09
+    change: qty with a thousands separator like 1.000 (row a) vs a fractional qty like 1.5 (row b)
+    a: {row_action: normalize, needs_human: "no", severity: "1"}
+    b: {row_action: ask_human, needs_human: "yes", severity: "3"}
+  - id: H10
+    change: canonical period 2026-09 (row a) vs the same month in another date style (row b)
+    a: {row_action: commit, needs_human: "no", severity: "0"}
+    b: {row_action: normalize, needs_human: "no", severity: "1"}
+  - id: H11
+    change: valid month (row a) vs month 13 or 00 (row b)
+    a: {row_action: commit, needs_human: "no", severity: "0"}
+    b: {row_action: ask_human, needs_human: "yes", severity: "3"}
+  - id: H12
+    change: master lookup succeeded (row a) vs master customer=unknown with spq=? and moq=? (row b)
+    a: {row_action: commit, needs_human: "no", severity: "0"}
+    b: {row_action: ask_human, needs_human: "yes", severity: "3"}

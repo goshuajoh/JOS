@@ -1,0 +1,29 @@
+# Proxy eval/dev set: a stand-in for 200-500 hand-labelled REAL rows until real rows exist.
+#
+# Built by a different process than the training data, to limit synthetic style leak:
+# each author simulates one distributor's monthly POS file (file order, house habits,
+# mostly ordinary lines), using companies from the held-out eval pool only. Labels come from
+# the author, two independent blind annotators and the rule checker, then adjudication.
+# Replace with real labelled rows as soon as they exist (labelling guide section 7).
+rows_per_file: 40
+minimums:   # per file; the rest follow the house style
+  compliance_review: 2
+  duplicate: 2
+  pack_qty_issue: 3
+  vendor_rename_clear: 2
+  vendor_rename_uncertain: 1
+  ask_human: 2
+  no_op: 2            # at least one subtotal or grand total
+  normalize: 3
+  commit: 6
+files:
+  - {id: p01, region: north_america, period: 2026-01, style: "Tidy ERP export with canonical formats everywhere. A few lines are re-sent from last month's file (their refs are already in seen_refs). The file ends with one grand-total line."}
+  - {id: p02, region: western_europe, period: 2026-02, style: "European conventions throughout - dates like 28.02.2026, thousands with dots (1.000), decimal commas in prices (2,31 EUR). A few pack-quantity breaks hide behind those formats."}
+  - {id: p03, region: nordics, period: 2026-03, style: "Mostly clean, but this ERP stores customer names with legal suffixes dropped or written out (AB dropped, A/S as Aktieselskab), and it sometimes ships part reels that break SPQ."}
+  - {id: p04, region: central_eastern_europe, period: 2026-04, style: "Hand-edited spreadsheet - stray spaces, mixed-case part numbers, the header row repeated at a page break, a subtotal line after each big customer, one blank separator row."}
+  - {id: p05, region: turkey, period: 2026-05, style: "Turkish names with ş/ğ/ı/İ sometimes typed without accents or in capitals, TRY prices with decimal commas, dates written like 'Mayıs 2026' or 31.05.2026."}
+  - {id: p06, region: middle_east, period: 2026-06, style: "A trading house - several customers are restricted parties in master data, partial reels are common (pack breaks), some lines were already reported last month."}
+  - {id: p07, region: india, period: 2026-07, style: "Indian conventions - digit grouping like 1,00,000, quantities with 'pcs' or 'Nos', Rs. or INR prices, country written as 'India', customer suffixes Pvt Ltd vs Private Limited."}
+  - {id: p08, region: southeast_asia, period: 2026-08, style: "The distributor's ERP truncates customer names into capitalised abbreviations; a few lines name a related group company or branch instead of the master customer."}
+  - {id: p09, region: greater_china, period: 2026-09, style: "Romanised Chinese company names with spacing and word-order variations, related subsidiaries and branches (uncertain links), large reel quantities, CNY or USD prices."}
+  - {id: p10, region: latin_america, period: 2026-10, style: "Legacy export - missing fields, notes typed into value fields, truncated values, a few customers the master lookup does not know, Spanish month names (octubre 2026)."}

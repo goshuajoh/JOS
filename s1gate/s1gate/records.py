@@ -6,7 +6,7 @@ labelled on. A record may leave a question unlabelled; metrics and training skip
 from __future__ import annotations
 
 import hashlib
-import json
+import math
 import random
 import re
 from collections import Counter
@@ -17,7 +17,7 @@ from pydantic import BaseModel, Field
 
 from .schema import DecisionSchema
 
-Source = Literal["real", "synthetic", "correction"]
+Source = Literal["real", "synthetic", "correction", "proxy"]  # proxy = hand-made stand-in for real rows
 
 
 class Record(BaseModel):
@@ -122,29 +122,65 @@ def jaccard(a: frozenset, b: frozenset) -> float:
     return len(a & b) / len(a | b)
 
 
-def dedupe(records: list[Record], threshold: float = 0.9) -> tuple[list[Record], list[Record]]:
+def _token_order(sets: list[frozenset]) -> dict:
+    """Global order for prefix filtering: rarest shingle first (ties broken by the shingle)."""
+    freq = Counter(t for sh in sets for t in sh)
+    return {t: (n, t) for t, n in freq.items()}
+
+
+def _prefix(sh: frozenset, order: dict, threshold: float) -> list:
+    """The shortest prefix (in global order) two sets must share to reach `threshold` Jaccard."""
+    toks = sorted(sh, key=order.__getitem__)
+    keep = len(toks) - math.ceil(threshold * len(toks)) + 1
+    return toks[:max(1, keep)]
+
+
+def dedupe(records: list[Record], threshold: float = 0.9,
+           label_aware: bool = True) -> tuple[list[Record], list[Record]]:
     """Drop exact and near-duplicate texts, keeping the first seen.
 
-    Pairwise, so fine to roughly 10k rows. Beyond that, swap in MinHash LSH
-    (the `datasketch` package) with the same threshold.
+    label_aware (default): a near-duplicate is dropped only when its labels equal the kept
+    row's. Two rows that differ in one field and carry different answers are hard pairs,
+    the most useful rows in the set, so both stay. Exact text copies with conflicting labels
+    cannot both be right and are dropped (the first copy too).
+
+    Exact, and fast: a prefix-filter similarity join (rare shingles first) means a row is only
+    compared with rows that share one of its rarest shingles.
     """
-    kept: list[Record] = []
-    kept_sh: list[frozenset] = []
+    sets = [shingles(r.text) for r in records]
+    order = _token_order(sets)
+    index: dict[str, list[int]] = {}
+    kept_idx: list[int] = []
     dropped: list[Record] = []
-    exact: set[str] = set()
-    for r in records:
+    exact: dict[str, int] = {}
+    conflicted: set[int] = set()
+    for i, r in enumerate(records):
         key = normalize(r.text)
         if key in exact:
+            j = exact[key]
+            if label_aware and records[j].labels != r.labels:
+                conflicted.add(j)
             dropped.append(r)
             continue
-        sh = shingles(r.text)
-        if any(_maybe_similar(sh, other, threshold) and jaccard(sh, other) >= threshold
-               for other in kept_sh):
+        sh = sets[i]
+        pre = _prefix(sh, order, threshold)
+        cands = {j for t in pre for j in index.get(t, ())}
+        dup = False
+        for j in cands:
+            if label_aware and records[j].labels != r.labels:
+                continue
+            if _maybe_similar(sh, sets[j], threshold) and jaccard(sh, sets[j]) >= threshold:
+                dup = True
+                break
+        if dup:
             dropped.append(r)
             continue
-        exact.add(key)
-        kept.append(r)
-        kept_sh.append(sh)
+        exact[key] = i
+        kept_idx.append(i)
+        for t in pre:
+            index.setdefault(t, []).append(i)
+    kept = [records[i] for i in kept_idx if i not in conflicted]
+    dropped.extend(records[i] for i in kept_idx if i in conflicted)
     return kept, dropped
 
 
@@ -155,10 +191,17 @@ def decontaminate(train: list[Record], held_out: list[Record],
     Without this, eval accuracy measures memory, not generalisation.
     """
     held_sh = [shingles(r.text) for r in held_out]
+    train_sh = [shingles(r.text) for r in train]
+    order = _token_order(held_sh + train_sh)
+    index: dict[str, list[int]] = {}
+    for j, sh in enumerate(held_sh):
+        for t in _prefix(sh, order, threshold):
+            index.setdefault(t, []).append(j)
     kept, dropped = [], []
-    for r in train:
-        sh = shingles(r.text)
-        hit = any(_maybe_similar(sh, h, threshold) and jaccard(sh, h) >= threshold for h in held_sh)
+    for r, sh in zip(train, train_sh):
+        cands = {j for t in _prefix(sh, order, threshold) for j in index.get(t, ())}
+        hit = any(_maybe_similar(sh, held_sh[j], threshold) and jaccard(sh, held_sh[j]) >= threshold
+                  for j in cands)
         (dropped if hit else kept).append(r)
     return kept, dropped
 

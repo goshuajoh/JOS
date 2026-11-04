@@ -1,0 +1,36 @@
+# Regions used to build the invented company pools (data/pools/companies.json).
+# currencies: what distributors in the region typically report in (USD is always allowed).
+regions:
+  western_europe:
+    countries: [DE, FR, NL, BE, IT, ES, GB, IE, AT, CH, PT]
+    currencies: [EUR, GBP, CHF, USD]
+  nordics:
+    countries: [DK, SE, NO, FI, IS]
+    currencies: [DKK, SEK, NOK, EUR, USD]
+  central_eastern_europe:
+    countries: [PL, CZ, SK, HU, RO, BG, SI, HR, LT, LV, EE]
+    currencies: [PLN, CZK, HUF, RON, EUR, USD]
+  turkey:
+    countries: [TR]
+    currencies: [TRY, USD, EUR]
+  middle_east:
+    countries: [AE, SA, IL, QA, EG, JO, OM]
+    currencies: [AED, SAR, ILS, USD]
+  india:
+    countries: [IN]
+    currencies: [INR, USD]
+  southeast_asia:
+    countries: [SG, MY, TH, VN, ID, PH]
+    currencies: [SGD, MYR, THB, VND, IDR, USD]
+  greater_china:
+    countries: [CN, HK, TW]
+    currencies: [CNY, HKD, TWD, USD]
+  japan_korea:
+    countries: [JP, KR]
+    currencies: [JPY, KRW, USD]
+  latin_america:
+    countries: [BR, MX, AR, CL, CO, PE]
+    currencies: [BRL, MXN, CLP, COP, USD]
+  north_america:
+    countries: [US, CA]
+    currencies: [USD, CAD]

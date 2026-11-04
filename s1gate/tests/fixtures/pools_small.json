@@ -1,0 +1,20 @@
+{
+ "western_europe": {
+  "distributors": [{"name": "Northwind Components", "country": "PL", "ref_style": "INV-#####/#"},
+                   {"name": "Rhein Bauteile GmbH", "country": "DE", "ref_style": "RB-2026-####"}],
+  "customers": [{"name": "Acme Controls Ltd", "country": "GB", "industry": "industrial controls"},
+                {"name": "Bluefjord Audio ApS", "country": "DK", "industry": "pro audio"},
+                {"name": "Kestrel Drone Systems GmbH", "country": "DE", "industry": "drone flight controllers"},
+                {"name": "Lumière Éclairage SAS", "country": "FR", "industry": "lighting"}]
+ },
+ "turkey": {
+  "distributors": [{"name": "Anatolia Elektronik", "country": "TR", "ref_style": "FTR-2026-####"}],
+  "customers": [{"name": "Vega Beyaz Esya A.S.", "country": "TR", "industry": "home appliances"},
+                {"name": "Kuzey Enerji Teknoloji San. ve Tic. A.Ş.", "country": "TR", "industry": "smart metering"}]
+ },
+ "india": {
+  "distributors": [{"name": "Indus Edge Pvt Ltd", "country": "IN", "ref_style": "IE/SO/####"}],
+  "customers": [{"name": "Shakti Meters Pvt Ltd", "country": "IN", "industry": "smart metering"},
+                {"name": "Ganga Smart Toys Private Limited", "country": "IN", "industry": "toys"}]
+ }
+}

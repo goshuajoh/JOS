@@ -10,39 +10,50 @@
 #
 # Option descriptions are fed to the model. Write them as tests a person could apply,
 # not as names. Edit freely; bump `version` whenever an option is added, removed or redefined.
+# The long form of every rule (edge cases, hard pairs) is docs/labeling_guide.md.
+#
+# Training shuffles option order, so precedence is stated by name in the prompt,
+# never as "the first option listed".
+#
+# v2: added no_op (rows that are not sales lines); added the precedence order; option
+#     descriptions rewritten as tests; severity rungs tied to the row types that produce them.
 
 name: pos_row_gate
-version: 1
+version: 2
 description: Classify gate for distributor POS rows.
 
 questions:
   - name: row_action
     kind: choice
-    prompt: What should the pipeline do with this POS row?
+    prompt: >-
+      What should the pipeline do with this POS row? When several options fit, take the
+      first that applies in this order: compliance_review, no_op, ask_human, duplicate,
+      pack_qty_issue, vendor_rename, normalize, commit.
     fallback: ask_human
     options:
-      commit: Row is clean and matches master data; commit as-is.
-      normalize: Values are right but formatted differently (dates, number separators, part-number spacing or case); normalize then commit.
-      vendor_rename: Reported customer name differs from master data but clearly refers to the same entity (abbreviation, legal suffix, rename).
-      pack_qty_issue: Quantity breaks the part's SPQ multiple or is below its MOQ.
-      compliance_review: Row involves a customer or country flagged as restricted in master data.
-      duplicate: Row repeats a line (same reference) already reported.
-      ask_human: Row is unreadable, contradictory, or fits none of the other options.
+      commit: Clean row that matches master data - customer identical to the master name, canonical formats, quantity a whole multiple of SPQ and at least MOQ, ref not yet seen.
+      normalize: Values are right but formatted differently - date style, thousands or decimal-comma separators, units or stray spaces, part number case or spacing, or a customer name differing only in case, punctuation or accents.
+      vendor_rename: Reported customer name differs from the master name beyond formatting but refers to the same entity - abbreviation, changed legal suffix, typo, rebrand, parent or subsidiary.
+      pack_qty_issue: Quantity, once its format is normalized, is not a whole multiple of the part's SPQ or is below its MOQ.
+      compliance_review: Master data marks the row restricted=yes. Always wins over every other option.
+      duplicate: The row's ref already appears in master seen_refs, ignoring letter case and extra spaces.
+      no_op: Not a sales line - a repeated header, a subtotal or grand-total line, a blank or separator line, or a note. Skip it.
+      ask_human: Looks like a sales line but cannot be trusted - a field missing, impossible or contradictory (zero or negative quantity, month 13), master lookup failed (unknown customer, spq or moq '?'), or nothing else fits.
 
   - name: needs_human
     kind: noul
     prompt: Must a person review this row before it is committed?
     fallback: "yes"
     options:
-      "yes": A person must review it.
-      "no": The pipeline can handle it without review.
+      "yes": A person must review it - pack-quantity break, compliance flag, untrustworthy row, or a customer link that is only loosely supported.
+      "no": The pipeline can handle it alone - clean row, format fix, clear rename, duplicate to drop, or non-sales line to skip.
 
   - name: severity
     kind: score
     prompt: How much would committing this row unchanged distort the POS report?
     options:
-      "0": No effect.
-      "1": Cosmetic only.
-      "2": Minor number drift for one line.
-      "3": Wrong totals for one customer or part.
-      "4": Wrong totals across the report, or a compliance exposure.
+      "0": No effect - the row is right as reported.
+      "1": Cosmetic only - formatting, or a header, blank or note line with no quantity.
+      "2": Minor number drift for one line - a pack-quantity break or a clear customer rename.
+      "3": Wrong totals for one customer or part - a duplicate, a subtotal line, an uncertain customer link, or an untrustworthy line.
+      "4": Wrong totals across the report, or a compliance exposure - a grand-total line or a restricted party.
