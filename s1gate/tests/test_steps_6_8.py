@@ -227,3 +227,21 @@ def test_report_html_and_full_cli_loop(tmp_path):
 def test_never_threshold_escalates_everything():
     g = _gate({"row_action": {"commit": 0.99, "normalize": 0.01}}, thresholds={"row_action": NEVER})
     assert g.decide("x")["row_action"].decided_by == "fallback"
+
+
+def test_mine_confusions_boosts_weights_and_drafts_pairs(tmp_path):
+    import yaml
+
+    from s1gate.synth import Recipe, mine_confusions
+    recipe = yaml.safe_load((ROOT / "configs" / "synth.pos.yaml").read_text())
+    report = {"questions": [{"question": "row_action", "confusion": {
+        "duplicate": {"duplicate": 10, "commit": 6}, "commit": {"commit": 30, "normalize": 1}}}]}
+    new, found = mine_confusions(report, recipe, min_count=3)
+    assert found == [{"question": "row_action", "gold": "duplicate", "pred": "commit", "count": 6, "rate": 0.375}]
+    w = {s["id"]: s.get("weight", 1.0) for s in new["scenarios"]}
+    old = {s["id"]: s.get("weight", 1.0) for s in recipe["scenarios"]}
+    assert w["D2"] > old["D2"] and w["C1"] == old["C1"]
+    assert "mined_pairs_todo" not in new  # duplicate->commit already has a hard pair (H04)
+    out = tmp_path / "r2.yaml"
+    out.write_text(yaml.safe_dump(new))
+    Recipe.load(str(out))  # still a valid recipe

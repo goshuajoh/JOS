@@ -1,0 +1,80 @@
+{"id": "b54823b153c", "row_action": "compliance_review", "needs_human": "yes", "severity": "4", "confidence": "high", "note": ""}
+{"id": "bde7e703ef7", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": ""}
+{"id": "bb30bfe6008", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": ""}
+{"id": "bd0df4e2f84", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": ""}
+{"id": "bedbdfff129", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": ""}
+{"id": "b9005c6e93f", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": ""}
+{"id": "bce643680fe", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": ""}
+{"id": "b17e5e032b8", "row_action": "duplicate", "needs_human": "no", "severity": "3", "confidence": "high", "note": ""}
+{"id": "b664bb6767c", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": ""}
+{"id": "b757cca6d8a", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": ""}
+{"id": "be024cc3e16", "row_action": "pack_qty_issue", "needs_human": "yes", "severity": "2", "confidence": "high", "note": "qty 300 < moq 500 beats typo rename"}
+{"id": "b682bc5e2d6", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "medium", "note": "o-umlaut vs o-slash treated as accent difference"}
+{"id": "b44d74af374", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": ""}
+{"id": "bab43ba55db", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": ""}
+{"id": "b738e902233", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": ""}
+{"id": "b33d4f35274", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": ""}
+{"id": "ba54b774214", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": ""}
+{"id": "b3b895749ed", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": ""}
+{"id": "b75c74875a0", "row_action": "duplicate", "needs_human": "no", "severity": "3", "confidence": "high", "note": ""}
+{"id": "bf7f2c84b44", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": ""}
+{"id": "b93411f575f", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": ""}
+{"id": "b274d13512f", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": ""}
+{"id": "b99005e194c", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": ""}
+{"id": "b97ded5a550", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": ""}
+{"id": "bc2168c419c", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": ""}
+{"id": "b8276ef2a51", "row_action": "duplicate", "needs_human": "no", "severity": "3", "confidence": "high", "note": ""}
+{"id": "b6057f60813", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": ""}
+{"id": "b40bb1aa769", "row_action": "duplicate", "needs_human": "no", "severity": "3", "confidence": "high", "note": ""}
+{"id": "b8286253f0e", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": ""}
+{"id": "bb916e324bb", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": ""}
+{"id": "b5895317ad9", "row_action": "compliance_review", "needs_human": "yes", "severity": "4", "confidence": "high", "note": ""}
+{"id": "b369c88e864", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": ""}
+{"id": "b2db3aaed22", "row_action": "pack_qty_issue", "needs_human": "yes", "severity": "2", "confidence": "high", "note": "qty 6000 not multiple of spq 4000; also dropped AB suffix"}
+{"id": "ba03bff50dc", "row_action": "duplicate", "needs_human": "no", "severity": "3", "confidence": "high", "note": ""}
+{"id": "bd211798ad4", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": ""}
+{"id": "bae0d44c01d", "row_action": "no_op", "needs_human": "no", "severity": "3", "confidence": "high", "note": ""}
+{"id": "b5c0f941047", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": ""}
+{"id": "b95b73ddf47", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": ""}
+{"id": "b591c20655e", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": ""}
+{"id": "bc9335e51d7", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": ""}
+{"id": "b4cffc19b19", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": ""}
+{"id": "b2e97ee4081", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": ""}
+{"id": "b210367c1b3", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": ""}
+{"id": "b84006a384e", "row_action": "no_op", "needs_human": "no", "severity": "4", "confidence": "high", "note": ""}
+{"id": "b1fa6f1ae26", "row_action": "pack_qty_issue", "needs_human": "yes", "severity": "2", "confidence": "high", "note": ""}
+{"id": "bbf85ad2520", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": ""}
+{"id": "be092300bcc", "row_action": "pack_qty_issue", "needs_human": "yes", "severity": "2", "confidence": "high", "note": ""}
+{"id": "bf3b566eb84", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": ""}
+{"id": "b365bcced55", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": ""}
+{"id": "bfa145322e5", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": ""}
+{"id": "b69163c7712", "row_action": "duplicate", "needs_human": "no", "severity": "3", "confidence": "high", "note": ""}
+{"id": "bf76ff2ac19", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": ""}
+{"id": "bb0c27f670e", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": ""}
+{"id": "bc0063000cd", "row_action": "compliance_review", "needs_human": "yes", "severity": "4", "confidence": "high", "note": ""}
+{"id": "b1914101376", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": ""}
+{"id": "b5bf5d52f7a", "row_action": "vendor_rename", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "completely different name vs master"}
+{"id": "b8a46841b37", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "medium", "note": "legal form S.p.A. vs S.r.l."}
+{"id": "b3f24f91df8", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": ""}
+{"id": "bc097dad369", "row_action": "pack_qty_issue", "needs_human": "yes", "severity": "2", "confidence": "high", "note": ""}
+{"id": "b6ede8689e4", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": ""}
+{"id": "b8f98724c34", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": ""}
+{"id": "bed80325cb3", "row_action": "pack_qty_issue", "needs_human": "yes", "severity": "2", "confidence": "high", "note": ""}
+{"id": "bbd48cef28a", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": ""}
+{"id": "b92f6ad77c9", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": ""}
+{"id": "b8fa7711055", "row_action": "compliance_review", "needs_human": "yes", "severity": "4", "confidence": "high", "note": ""}
+{"id": "ba9be071d0f", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": ""}
+{"id": "b7dd2a9cb1f", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": ""}
+{"id": "b68c96c6f91", "row_action": "pack_qty_issue", "needs_human": "yes", "severity": "2", "confidence": "high", "note": ""}
+{"id": "bee761e1501", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": ""}
+{"id": "bf9b45c24e3", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": ""}
+{"id": "b6cf0c519a1", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": ""}
+{"id": "b421183c12c", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": ""}
+{"id": "bcd008dcc26", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "medium", "note": "SRLS vs S.r.l.s. punctuation only"}
+{"id": "b53eebe2624", "row_action": "no_op", "needs_human": "no", "severity": "1", "confidence": "high", "note": ""}
+{"id": "b1867281570", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": ""}
+{"id": "bfabe89ed3b", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": ""}
+{"id": "b9c59fe8310", "row_action": "no_op", "needs_human": "no", "severity": "1", "confidence": "high", "note": ""}
+{"id": "b1bdda577de", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "medium", "note": "Aktieselskab vs A/S legal form"}
+{"id": "b28053eb498", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": ""}
+{"id": "b26a3d725c5", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": ""}

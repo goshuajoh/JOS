@@ -2,7 +2,7 @@
 
   1   validate, export-schema, export-enums, label, split, freeze, agreement, audit
   2   eval, compare
-  3   synth, procgen, blind-export, blind-merge, clean
+  3   synth, procgen, blind-export, blind-merge, mine, clean
   4-5 train-gliner, train-qwen
   6   calibrate, report
   7   thresholds
@@ -355,8 +355,18 @@ def cmd_synth(args) -> int:
 
     schema = _schema(args)
     recipe = Recipe.load(args.recipe)
-    llm = make_llm(args.provider, args.model, args.base_url)
-    records = generate(schema, recipe, llm, seed=args.seed, verify=not args.no_verify, scale=args.scale)
+    teachers = [make_llm(args.provider, args.model, args.base_url)]
+    for spec in args.teacher or []:  # provider:model[@base_url]
+        provider, _, rest = spec.partition(":")
+        model, _, base = rest.partition("@")
+        teachers.append(make_llm(provider, model or None, base or None))
+    rules, catalogue = None, None
+    if args.domain:
+        from .domains import get as get_domain
+        rules = get_domain(args.domain)
+        catalogue = rules.load_catalogue(recipe.parts) if recipe.parts else None
+    records = generate(schema, recipe, teachers, seed=args.seed, verify=not args.no_verify,
+                       scale=args.scale, rules=rules, catalogue=catalogue)
     n = write_jsonl(args.out, records)
     print(f"wrote {n} synthetic records to {args.out}")
     return 0
@@ -371,7 +381,11 @@ def cmd_blind_export(args) -> int:
         records.extend(read_jsonl(path))
     out = Path(args.out_dir)
     out.mkdir(parents=True, exist_ok=True)
-    batches = blind_batches(records, args.batch_size, args.seed)
+    batches, key = blind_batches(records, args.batch_size, args.seed, anonymize=not args.keep_ids)
+    if args.key_out:
+        _write_json(args.key_out, key)
+    elif not args.keep_ids:
+        print("note: no --key-out given; opaque ids cannot be mapped back", file=sys.stderr)
     for i, batch in enumerate(batches):
         with open(out / f"batch_{i:03d}.texts.jsonl", "w", encoding="utf-8") as fh:
             for row in batch:
@@ -388,13 +402,17 @@ def cmd_blind_merge(args) -> int:
     records: list[Record] = []
     for path in args.data:
         records.extend(read_jsonl(path))
+    key = json.loads(Path(args.key).read_text()) if args.key else {}
+    for k in args.extra_keys or []:
+        key.update(json.loads(Path(k).read_text()))
     blind: dict[str, dict[str, str]] = {}
     for path in args.labels:
         with open(path, encoding="utf-8") as fh:
             for line in fh:
                 if line.strip():
                     row = json.loads(line)
-                    blind[str(row["id"])] = {q: str(row[q]) for q in schema.names if q in row}
+                    rid = key.get(str(row["id"]), str(row["id"]))
+                    blind[rid] = {q: str(row[q]) for q in schema.names if q in row}
     kept, rejected, stats = merge_blind(records, blind, schema)
     if args.domain:
         from .domains import get as get_domain
@@ -412,7 +430,29 @@ def cmd_blind_merge(args) -> int:
     write_jsonl(args.out, kept)
     if args.rejected_out:
         write_jsonl(args.rejected_out, rejected)
-    print(json.dumps({**stats, "kept_after_rules": len(kept)}, indent=1))
+    stats["kept_after_rules"] = len(kept)
+    if args.stats_out:
+        _write_json(args.stats_out, stats)
+    print(json.dumps(stats, indent=1))
+    return 0
+
+
+def cmd_mine(args) -> int:
+    """Step 3: turn an eval report's confusions into recipe weights and hard-pair stubs."""
+    import yaml
+
+    from .synth import mine_confusions
+
+    report = json.loads(Path(args.report).read_text())
+    recipe = yaml.safe_load(Path(args.recipe).read_text(encoding="utf-8"))
+    new, found = mine_confusions(report, recipe, args.min_count, args.boost)
+    for c in found[:15]:
+        print(f"{c['question']}: {c['gold']} -> {c['pred']} x{c['count']} ({c['rate']:.0%})")
+    header = (f"# Mined from {args.report} by `s1gate mine`: scenario weights boosted by confusion rate;\n"
+              f"# mined_pairs_todo lists confused pairs that need a `change` and full targets.\n")
+    Path(args.out).write_text(header + yaml.safe_dump(new, sort_keys=False, allow_unicode=True, width=110),
+                              encoding="utf-8")
+    print(f"{len(found)} confusions -> {args.out}")
     return 0
 
 
@@ -446,6 +486,11 @@ def cmd_clean(args) -> int:
                                        for why, rs in (("duplicate", dups), ("held_out", leaks)) for r in rs])
     print(f"{len(records)} in, {len(dups)} duplicates or conflicting copies, {len(leaks)} too close to "
           f"held-out, {len(kept)} -> {args.out}")
+    if args.stats_out:
+        _write_json(args.stats_out, {"in": len(records), "duplicates": len(dups), "held_out": len(leaks),
+                                     "out": len(kept), "dup_threshold": args.dup, "contam_threshold": args.contam,
+                                     "label_aware": not args.no_label_aware,
+                                     "held_out_files": args.held_out or []})
     return 0
 
 
@@ -744,6 +789,10 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("--scale", type=float, default=1.0, help="multiply n_per_scenario (0.1 for a dry run)")
     p.add_argument("--seed", type=int, default=7)
     p.add_argument("--no-verify", action="store_true", help="skip the blind re-labelling pass")
+    p.add_argument("--teacher", nargs="*",
+                   help="more teachers, provider:model[@base_url]; calls rotate, each batch is "
+                        "blind-checked by the next teacher")
+    p.add_argument("--domain", default="pos", help="drop rows that break this domain's rules ('' to skip)")
     p.set_defaults(fn=cmd_synth)
 
     p = sub.add_parser("blind-export", help="shuffled text-only batches for blind re-labelling")
@@ -751,17 +800,30 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("--out-dir", required=True)
     p.add_argument("--batch-size", type=int, default=150)
     p.add_argument("--seed", type=int, default=0)
+    p.add_argument("--key-out", help="where to write opaque id -> record id (keep it away from annotators)")
+    p.add_argument("--keep-ids", action="store_true", help="do not replace record ids with opaque ones")
     p.set_defaults(fn=cmd_blind_export)
 
     p = sub.add_parser("blind-merge", help="keep rows whose blind labels equal their targets")
     p.add_argument("--schema", required=True)
     p.add_argument("--data", nargs="+", required=True, help="rows with target labels")
     p.add_argument("--labels", nargs="+", required=True, help="blind label files: {id, question: option}")
+    p.add_argument("--key", help="opaque id -> record id file from blind-export --key-out")
+    p.add_argument("--extra-keys", nargs="*", help="more key files (several export rounds)")
     p.add_argument("--domain", help="also drop rows that break the domain's rules (e.g. pos)")
     p.add_argument("--catalogue", default="configs/pools/parts.yaml")
     p.add_argument("--out", required=True)
     p.add_argument("--rejected-out")
+    p.add_argument("--stats-out", help="agreement and rejection stats as JSON")
     p.set_defaults(fn=cmd_blind_merge)
+
+    p = sub.add_parser("mine", help="turn an eval report's confusions into recipe weights + pair stubs")
+    p.add_argument("--report", required=True, help="eval --report-out JSON (on DEV)")
+    p.add_argument("--recipe", default="configs/synth.pos.yaml")
+    p.add_argument("--min-count", type=int, default=3)
+    p.add_argument("--boost", type=float, default=2.0)
+    p.add_argument("--out", required=True)
+    p.set_defaults(fn=cmd_mine)
 
     p = sub.add_parser("procgen", help="procedural POS rows with labels known by construction")
     p.add_argument("--pools", default="data/pools/train/companies.json", help="TRAIN-side company pool")
@@ -782,6 +844,7 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("--no-label-aware", action="store_true",
                    help="drop near-duplicates even when their labels differ (kills hard pairs)")
     p.add_argument("--dropped-out", help="write the dropped rows (with the reason) here")
+    p.add_argument("--stats-out", help="counts as JSON")
     p.add_argument("--frozen", nargs="*", help="frozen eval manifests to guard (default: data/eval/*.frozen.json)")
     p.add_argument("--out", required=True)
     p.set_defaults(fn=cmd_clean)

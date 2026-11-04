@@ -184,3 +184,40 @@ def test_gliner_training_rows_shuffle_options():
     assert first["task"] == "row_action" and first["true_label"] == ["commit"]
     assert sorted(first["labels"]) == sorted(s.question("row_action").labels)
     assert "label_descriptions" in first and "prompt" in first
+
+
+class _TwoTeachers:
+    """Generation and blind labelling by alternating fake teachers; pairs too."""
+
+    def __init__(self, name):
+        self.model = name
+        self.calls = []
+
+    def complete(self, system, user, temperature=1.0):
+        import re as _re
+        self.calls.append("label" if "Records:" in user else "gen")
+        if "Records:" in user:
+            idx = [int(i) for i in _re.findall(r"^\[(\d+)\]", user, flags=_re.MULTILINE)]
+            return json.dumps([{"i": i, "row_action": "commit"} for i in idx])
+        m = _re.search(r"Write (\d+) distinct PAIRS", user)
+        if m:
+            return json.dumps([{"a": f"pair {self.model} {len(self.calls)} {j} a", "b": f"pair {self.model} {len(self.calls)} {j} b"}
+                               for j in range(int(m.group(1)))])
+        k = int(_re.search(r"Write (\d+) distinct records", user).group(1))
+        return json.dumps([{"text": f"row {self.model} {len(self.calls)} {j}"} for j in range(k)])
+
+
+def test_synth_rotates_teachers_and_keeps_pairs_whole():
+    from s1gate.synth import Pair, Recipe, Scenario, generate
+
+    s = DecisionSchema.load(SCHEMA)
+    commit = {"row_action": "commit"}
+    recipe = Recipe(domain="d", record_format="f", scenarios=[Scenario(target=commit, hint="h", noise="none")],
+                    pairs=[Pair(id="H", change="c", a=commit, b=commit)], n_per_scenario=4, pairs_per_type=2,
+                    batch_size=2)
+    a, b = _TwoTeachers("A"), _TwoTeachers("B")
+    out = generate(s, recipe, [a, b], log=lambda *_: None)
+    assert len([r for r in out if "pair" not in r.meta]) == 4
+    pairs = [r for r in out if "pair" in r.meta]
+    assert len(pairs) == 4 and {r.meta["side"] for r in pairs} == {"a", "b"}
+    assert "gen" in a.calls and "label" in a.calls and "gen" in b.calls and "label" in b.calls

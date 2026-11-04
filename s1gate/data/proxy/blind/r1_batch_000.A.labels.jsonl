@@ -1,0 +1,80 @@
+{"id": "ba8e6c6b8c7", "row_action": "no_op", "needs_human": "no", "severity": "3", "confidence": "high", "note": "part=SUBTOTAL ('Razem' = total) with summed qty, no price/ref: subtotal line"}
+{"id": "b5b406208b3", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "'Company' vs master 'Co.': legal suffix expanded, clear rename; qty 5000 ok"}
+{"id": "b808491b3c5", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean; qty 10000 = MOQ, multiple of SPQ 5000"}
+{"id": "b31a115db9b", "row_action": "vendor_rename", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "'Hirvensalmi Hissitekniikka Eesti OÜ' points to an Estonian subsidiary of master Oy: uncertain link"}
+{"id": "b61c8afae59", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "period 28.02.2026, qty 1.500 (=1500, passes SPQ 500/MOQ 500), price decimal comma"}
+{"id": "bcdfda7c7aa", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "period 28.02.2026, qty 2.000 (=2000, passes), price decimal comma"}
+{"id": "b9058970684", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "customer differs only in spacing ('Sp.z' vs 'Sp. z')"}
+{"id": "b61c128edca", "row_action": "pack_qty_issue", "needs_human": "yes", "severity": "2", "confidence": "high", "note": "qty 3000 below MOQ 6000"}
+{"id": "be11a83b53c", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean; qty 3 with SPQ/MOQ 1"}
+{"id": "b18fe256867", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "'Intelig.' abbreviation of 'Inteligente': clear rename"}
+{"id": "b701263f353", "row_action": "pack_qty_issue", "needs_human": "yes", "severity": "2", "confidence": "high", "note": "qty 12500 not a multiple of SPQ 5000"}
+{"id": "bc8016fefab", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "customer differs only by accent ('Ltee' vs 'Ltée')"}
+{"id": "b609c25cbb9", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean"}
+{"id": "ba1b5739e14", "row_action": "compliance_review", "needs_human": "yes", "severity": "4", "confidence": "high", "note": "master restricted=yes"}
+{"id": "b0addb559f0", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "'Company' vs master 'Co.': clear rename; qty 6000 ok"}
+{"id": "bf970c860fc", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean"}
+{"id": "bffb5d74463", "row_action": "compliance_review", "needs_human": "yes", "severity": "4", "confidence": "high", "note": "master restricted=yes (beats qty 1250 pack break)"}
+{"id": "b9d2734f0d7", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean; qty 1500 multiple of SPQ 100, >= MOQ 200"}
+{"id": "b8f94a7f158", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean"}
+{"id": "b25379e4419", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean; qty 2500 = SPQ = MOQ"}
+{"id": "b73c72e5bd9", "row_action": "pack_qty_issue", "needs_human": "yes", "severity": "2", "confidence": "high", "note": "qty 1000 not a multiple of SPQ 650 and below MOQ 1300"}
+{"id": "b9a81f5a39a", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean; qty 40 multiple of SPQ 10, >= MOQ 20"}
+{"id": "bd9299c167d", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean; ref NH/6102/01 differs from seen NH/6011/01"}
+{"id": "b074c94de2a", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean; qty 9000 multiple of SPQ 3000, >= MOQ 6000"}
+{"id": "b35de9b924f", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "typo 'Bitteroot' vs master 'Bitterroot': clear rename"}
+{"id": "bdc245208c1", "row_action": "no_op", "needs_human": "no", "severity": "4", "confidence": "high", "note": "grand total line"}
+{"id": "b4ece301183", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean"}
+{"id": "b799c3e8a29", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "period 28.02.2026, qty 6.000 (=6000, passes), price decimal comma"}
+{"id": "be7a28834c1", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "period 28.02.2026, qty 12.000 (=12000, passes), price decimal comma"}
+{"id": "b1f0be146be", "row_action": "no_op", "needs_human": "no", "severity": "1", "confidence": "high", "note": "repeated header row"}
+{"id": "b24e2dcefc6", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "period 28.02.2026, qty 1.950 (=1950 = 3x650, >= MOQ 1300), price decimal comma"}
+{"id": "b5548f1b964", "row_action": "compliance_review", "needs_human": "yes", "severity": "4", "confidence": "high", "note": "master restricted=yes"}
+{"id": "b688ba55168", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "sales line but master lookup failed (customer=unknown, spq/moq ?)"}
+{"id": "b53b49ffa53", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "customer differs only in accents ('Electronique Matapedia' vs 'Électronique Matapédia'); qty 6000 = MOQ"}
+{"id": "ba41dd529e3", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean"}
+{"id": "bdfc0b2353a", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean"}
+{"id": "b2621606c53", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "customer differs only in case ('OY' vs 'Oy'); qty 6000 = MOQ"}
+{"id": "b0b8d32d000", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean"}
+{"id": "b6d9c4b92bf", "row_action": "no_op", "needs_human": "no", "severity": "3", "confidence": "high", "note": "part=SUBTOTAL ('Razem' = total) for one customer: subtotal line"}
+{"id": "bd24ca5c9e7", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean"}
+{"id": "be808413290", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean; qty 40 multiple of SPQ 10, >= MOQ 20"}
+{"id": "bc67887d965", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "legal suffix 'AB' dropped vs master 'Skogsdata Norrland AB': clear rename; ref NH/6125/01 not seen"}
+{"id": "b8e88c8d6e5", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean; qty 3000 = MOQ, multiple of SPQ 1000"}
+{"id": "b1325f0c2c7", "row_action": "no_op", "needs_human": "no", "severity": "1", "confidence": "high", "note": "note line 'End of report (38 lines)', no qty/ref"}
+{"id": "b8319c4e886", "row_action": "compliance_review", "needs_human": "yes", "severity": "4", "confidence": "high", "note": "master restricted=yes"}
+{"id": "b6f3eb57a1c", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean"}
+{"id": "bf2fdc1a5d0", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "legal suffix 'AB' dropped vs master 'Trampa Elcykel AB': clear rename"}
+{"id": "bacf6006a41", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean"}
+{"id": "b7129008223", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean; ref NH/6123/01 differs from seen NH/6023/01 by one digit"}
+{"id": "b187094633b", "row_action": "no_op", "needs_human": "no", "severity": "1", "confidence": "high", "note": "blank line, every reported value empty"}
+{"id": "b768cadf46b", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean; qty 8000 = MOQ"}
+{"id": "b76d96a4f81", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean; qty 6000 = MOQ"}
+{"id": "b91ad1cdee0", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean"}
+{"id": "b854f616eed", "row_action": "vendor_rename", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "completely different name 'Elektra Vaga Group d.o.o.' for master 'Velenjska Merilna Tehnika d.d.' (possible parent/acquirer): uncertain"}
+{"id": "be239ef6b32", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "customer differs only in accents ('Electronique Matapedia' vs 'Électronique Matapédia')"}
+{"id": "b673a7f0962", "row_action": "duplicate", "needs_human": "no", "severity": "3", "confidence": "high", "note": "ref NH/6071/02 already in seen_refs (beats the suffix-drop rename)"}
+{"id": "b92c07a5758", "row_action": "pack_qty_issue", "needs_human": "yes", "severity": "2", "confidence": "high", "note": "qty 7.500 = 7500, not a multiple of SPQ 3000"}
+{"id": "bddba13fc51", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "period 28.02.2026, qty 1.500 (=1500, passes), price decimal comma"}
+{"id": "b9447bd30c4", "row_action": "pack_qty_issue", "needs_human": "yes", "severity": "2", "confidence": "high", "note": "qty 4500 not a multiple of SPQ 3000"}
+{"id": "ba6db057c8e", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean"}
+{"id": "ba99f6131dd", "row_action": "pack_qty_issue", "needs_human": "yes", "severity": "2", "confidence": "high", "note": "qty 7500 not a multiple of SPQ 3000"}
+{"id": "bd9dd3fa536", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean; qty 4 with SPQ/MOQ 1"}
+{"id": "b7ebd02a428", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean"}
+{"id": "b7733385f2f", "row_action": "no_op", "needs_human": "no", "severity": "3", "confidence": "medium", "note": "part=SUBTOTAL, 'Zwischensumme Seite 1' (page subtotal) with summed qty, no price/ref: subtotal type -> 3; sums one page rather than one customer, so 3 vs 4 is a judgment call (not the grand total, which is a separate GESAMTSUMME row)"}
+{"id": "bbbd300fe20", "row_action": "compliance_review", "needs_human": "yes", "severity": "4", "confidence": "high", "note": "master restricted=yes (beats qty 1.100 = 1100 pack break)"}
+{"id": "bf6d1f14003", "row_action": "pack_qty_issue", "needs_human": "yes", "severity": "2", "confidence": "high", "note": "qty 600 not a multiple of SPQ 250"}
+{"id": "b41f41de561", "row_action": "compliance_review", "needs_human": "yes", "severity": "4", "confidence": "high", "note": "master restricted=yes"}
+{"id": "bc0b755638a", "row_action": "pack_qty_issue", "needs_human": "yes", "severity": "2", "confidence": "high", "note": "qty 1200 not a multiple of SPQ 500"}
+{"id": "b9b375a6754", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "period 28.02.2026, qty 3.000 (=3000, passes), price decimal comma"}
+{"id": "bfb9ca87a2b", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "legal form 'A/S' written out as 'Aktieselskab': clear rename; qty 750 ok"}
+{"id": "bb80d064f93", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean"}
+{"id": "b61c96819d5", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean"}
+{"id": "b960af08915", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "medium", "note": "'Tromsö' vs master 'Tromsø': only the diacritic differs (Swedish ö for Norwegian ø), read as accents-only formatting; a stricter reader could call it a misspelling (clear vendor_rename/no/2)"}
+{"id": "b02ff57302d", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "'Company' vs master 'Co.': clear rename; qty 3000 ok"}
+{"id": "b5175dba8f0", "row_action": "no_op", "needs_human": "no", "severity": "4", "confidence": "high", "note": "grand total line (GESAMTSUMME, ref 'Report total')"}
+{"id": "b3feaf6553a", "row_action": "vendor_rename", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "'Georgian Bay Marine Electronics (USA) Inc.' points to a US subsidiary of master 'Ltd.': uncertain link"}
+{"id": "bfa18e2bebb", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean; qty 5000 = MOQ"}
+{"id": "bfbe9298489", "row_action": "duplicate", "needs_human": "no", "severity": "3", "confidence": "high", "note": "ref KBV-RE-203871 already in seen_refs"}
+{"id": "bf9c7cccd95", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "period 28.02.2026, qty 10.000 (=10000, passes), price decimal comma"}
+{"id": "b82b67c69b9", "row_action": "duplicate", "needs_human": "no", "severity": "3", "confidence": "high", "note": "ref RRM-INV-0418671 already in seen_refs"}

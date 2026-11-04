@@ -1,0 +1,80 @@
+{"id": "ba8e6c6b8c7", "row_action": "no_op", "needs_human": "no", "severity": "3", "confidence": "high", "note": ""}
+{"id": "b5b406208b3", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "medium", "note": "Company vs Co. treated as clear rename"}
+{"id": "b808491b3c5", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": ""}
+{"id": "b31a115db9b", "row_action": "vendor_rename", "needs_human": "yes", "severity": "3", "confidence": "medium", "note": "uncertain: Eesti OU looks like a subsidiary of Oy"}
+{"id": "b61c8afae59", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": ""}
+{"id": "bcdfda7c7aa", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": ""}
+{"id": "b9058970684", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": ""}
+{"id": "b61c128edca", "row_action": "pack_qty_issue", "needs_human": "yes", "severity": "2", "confidence": "high", "note": ""}
+{"id": "be11a83b53c", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": ""}
+{"id": "b18fe256867", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": ""}
+{"id": "b701263f353", "row_action": "pack_qty_issue", "needs_human": "yes", "severity": "2", "confidence": "high", "note": ""}
+{"id": "bc8016fefab", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": ""}
+{"id": "b609c25cbb9", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": ""}
+{"id": "ba1b5739e14", "row_action": "compliance_review", "needs_human": "yes", "severity": "4", "confidence": "high", "note": ""}
+{"id": "b0addb559f0", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "medium", "note": "Company vs Co. treated as clear rename"}
+{"id": "bf970c860fc", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": ""}
+{"id": "bffb5d74463", "row_action": "compliance_review", "needs_human": "yes", "severity": "4", "confidence": "high", "note": ""}
+{"id": "b9d2734f0d7", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": ""}
+{"id": "b8f94a7f158", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": ""}
+{"id": "b25379e4419", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": ""}
+{"id": "b73c72e5bd9", "row_action": "pack_qty_issue", "needs_human": "yes", "severity": "2", "confidence": "high", "note": ""}
+{"id": "b9a81f5a39a", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": ""}
+{"id": "bd9299c167d", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": ""}
+{"id": "b074c94de2a", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": ""}
+{"id": "b35de9b924f", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": ""}
+{"id": "bdc245208c1", "row_action": "no_op", "needs_human": "no", "severity": "4", "confidence": "high", "note": ""}
+{"id": "b4ece301183", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": ""}
+{"id": "b799c3e8a29", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": ""}
+{"id": "be7a28834c1", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": ""}
+{"id": "b1f0be146be", "row_action": "no_op", "needs_human": "no", "severity": "1", "confidence": "high", "note": ""}
+{"id": "b24e2dcefc6", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": ""}
+{"id": "b5548f1b964", "row_action": "compliance_review", "needs_human": "yes", "severity": "4", "confidence": "high", "note": ""}
+{"id": "b688ba55168", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": ""}
+{"id": "b53b49ffa53", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": ""}
+{"id": "ba41dd529e3", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": ""}
+{"id": "bdfc0b2353a", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": ""}
+{"id": "b2621606c53", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": ""}
+{"id": "b0b8d32d000", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": ""}
+{"id": "b6d9c4b92bf", "row_action": "no_op", "needs_human": "no", "severity": "3", "confidence": "high", "note": ""}
+{"id": "bd24ca5c9e7", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": ""}
+{"id": "be808413290", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": ""}
+{"id": "bc67887d965", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": ""}
+{"id": "b8e88c8d6e5", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": ""}
+{"id": "b1325f0c2c7", "row_action": "no_op", "needs_human": "no", "severity": "1", "confidence": "high", "note": ""}
+{"id": "b8319c4e886", "row_action": "compliance_review", "needs_human": "yes", "severity": "4", "confidence": "high", "note": ""}
+{"id": "b6f3eb57a1c", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": ""}
+{"id": "bf2fdc1a5d0", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": ""}
+{"id": "bacf6006a41", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": ""}
+{"id": "b7129008223", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": ""}
+{"id": "b187094633b", "row_action": "no_op", "needs_human": "no", "severity": "1", "confidence": "high", "note": ""}
+{"id": "b768cadf46b", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": ""}
+{"id": "b76d96a4f81", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": ""}
+{"id": "b91ad1cdee0", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": ""}
+{"id": "b854f616eed", "row_action": "vendor_rename", "needs_human": "yes", "severity": "3", "confidence": "medium", "note": "completely different name for matched customer"}
+{"id": "be239ef6b32", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": ""}
+{"id": "b673a7f0962", "row_action": "duplicate", "needs_human": "no", "severity": "3", "confidence": "high", "note": ""}
+{"id": "b92c07a5758", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": ""}
+{"id": "bddba13fc51", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": ""}
+{"id": "b9447bd30c4", "row_action": "pack_qty_issue", "needs_human": "yes", "severity": "2", "confidence": "high", "note": ""}
+{"id": "ba6db057c8e", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": ""}
+{"id": "ba99f6131dd", "row_action": "pack_qty_issue", "needs_human": "yes", "severity": "2", "confidence": "high", "note": ""}
+{"id": "bd9dd3fa536", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": ""}
+{"id": "b7ebd02a428", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": ""}
+{"id": "b7733385f2f", "row_action": "no_op", "needs_human": "no", "severity": "3", "confidence": "high", "note": ""}
+{"id": "bbbd300fe20", "row_action": "compliance_review", "needs_human": "yes", "severity": "4", "confidence": "high", "note": ""}
+{"id": "bf6d1f14003", "row_action": "pack_qty_issue", "needs_human": "yes", "severity": "2", "confidence": "high", "note": ""}
+{"id": "b41f41de561", "row_action": "compliance_review", "needs_human": "yes", "severity": "4", "confidence": "high", "note": ""}
+{"id": "bc0b755638a", "row_action": "pack_qty_issue", "needs_human": "yes", "severity": "2", "confidence": "high", "note": ""}
+{"id": "b9b375a6754", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": ""}
+{"id": "bfb9ca87a2b", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": ""}
+{"id": "bb80d064f93", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": ""}
+{"id": "b61c96819d5", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": ""}
+{"id": "b960af08915", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "medium", "note": "o vs o-slash treated as accent/formatting difference"}
+{"id": "b02ff57302d", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "medium", "note": "Company vs Co. treated as clear rename"}
+{"id": "b5175dba8f0", "row_action": "no_op", "needs_human": "no", "severity": "4", "confidence": "high", "note": ""}
+{"id": "b3feaf6553a", "row_action": "vendor_rename", "needs_human": "yes", "severity": "3", "confidence": "medium", "note": "USA Inc. looks like a subsidiary of Ltd."}
+{"id": "bfa18e2bebb", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": ""}
+{"id": "bfbe9298489", "row_action": "duplicate", "needs_human": "no", "severity": "3", "confidence": "high", "note": ""}
+{"id": "bf9c7cccd95", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": ""}
+{"id": "b82b67c69b9", "row_action": "duplicate", "needs_human": "no", "severity": "3", "confidence": "high", "note": ""}

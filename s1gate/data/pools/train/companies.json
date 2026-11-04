@@ -1,0 +1,1883 @@
+{
+ "central_eastern_europe": {
+  "distributors": [
+   {
+    "name": "Struma Komponenti OOD",
+    "country": "BG",
+    "ref_style": "000#######"
+   },
+   {
+    "name": "Tiszavölgy Alkatrész Kft.",
+    "country": "HU",
+    "ref_style": "TVA-SZ-#####"
+   },
+   {
+    "name": "Pohorje Komponente d.o.o.",
+    "country": "SI",
+    "ref_style": "PK-###-#####"
+   },
+   {
+    "name": "Sudety Półprzewodniki S.A.",
+    "country": "PL",
+    "ref_style": "SUD/FS/######"
+   },
+   {
+    "name": "UAB Nemuno Komponentai",
+    "country": "LT",
+    "ref_style": "NMK0######"
+   }
+  ],
+  "customers": [
+   {
+    "name": "Balatoni Orvostechnikai Kft.",
+    "country": "HU",
+    "industry": "medical wearables"
+   },
+   {
+    "name": "Tallinna Pakiautomaadid AS",
+    "country": "EE",
+    "industry": "parcel locker controllers"
+   },
+   {
+    "name": "Jadranska Navigacija d.o.o.",
+    "country": "HR",
+    "industry": "marine navigation"
+   },
+   {
+    "name": "Elektrorower Beskidy Sp. z o.o.",
+    "country": "PL",
+    "industry": "e-bike controllers"
+   },
+   {
+    "name": "Skrzydło360 Sp. z o.o.",
+    "country": "PL",
+    "industry": "drone flight controllers"
+   },
+   {
+    "name": "Trakia Smart Grid EOOD",
+    "country": "BG",
+    "industry": "smart grid relays"
+   },
+   {
+    "name": "Liczniki Pomorze Sp. z o.o.",
+    "country": "PL",
+    "industry": "smart metering"
+   },
+   {
+    "name": "Ostravská bezpečnostní technika s.r.o.",
+    "country": "CZ",
+    "industry": "security cameras"
+   },
+   {
+    "name": "Nabíječky Valašsko s.r.o.",
+    "country": "CZ",
+    "industry": "EV chargers"
+   },
+   {
+    "name": "Străjer Securitate S.R.L.",
+    "country": "RO",
+    "industry": "alarm panels"
+   },
+   {
+    "name": "Wuxi Qinglan Motion Czech s.r.o.",
+    "country": "CZ",
+    "industry": "e-scooter motor controllers"
+   },
+   {
+    "name": "Hwaseong Jeongmil Poland Sp. z o.o.",
+    "country": "PL",
+    "industry": "display backlight modules"
+   },
+   {
+    "name": "Autoelectrica Bega S.R.L.",
+    "country": "RO",
+    "industry": "automotive aftermarket"
+   },
+   {
+    "name": "Automatizări Industriale Prahova S.A.",
+    "country": "RO",
+    "industry": "industrial automation"
+   },
+   {
+    "name": "Rila Robotika OOD",
+    "country": "BG",
+    "industry": "educational robotics"
+   },
+   {
+    "name": "Fiskalni Sistemi Pirin AD",
+    "country": "BG",
+    "industry": "fiscal POS terminals"
+   },
+   {
+    "name": "Fiskalia Śląsk S.A.",
+    "country": "PL",
+    "industry": "fiscal cash registers"
+   },
+   {
+    "name": "Luminotehnica Someș S.R.L.",
+    "country": "RO",
+    "industry": "LED lighting"
+   },
+   {
+    "name": "Gwangmyeong Battery Systems Hungary Kft.",
+    "country": "HU",
+    "industry": "EV battery modules"
+   },
+   {
+    "name": "Kauno Lazerinės Sistemos UAB",
+    "country": "LT",
+    "industry": "laser rangefinders"
+   },
+   {
+    "name": "Řídicí systémy Brno s.r.o.",
+    "country": "CZ",
+    "industry": "industrial controls"
+   },
+   {
+    "name": "Mecsek Hőszabályzó Zrt.",
+    "country": "HU",
+    "industry": "boiler controls"
+   },
+   {
+    "name": "Krakowska Automatyka Domowa Sp. z o.o.",
+    "country": "PL",
+    "industry": "smart home hubs"
+   },
+   {
+    "name": "Lumtech Košice s.r.o.",
+    "country": "SK",
+    "industry": "smart street lighting"
+   },
+   {
+    "name": "Čebelarska Tehnika Kranjc d.o.o.",
+    "country": "SI",
+    "industry": "beehive monitoring"
+   },
+   {
+    "name": "Zakłady Oświetleniowe Pilica S.A.",
+    "country": "PL",
+    "industry": "street lighting"
+   },
+   {
+    "name": "Plzeňské hračky s.r.o.",
+    "country": "CZ",
+    "industry": "electronic toys"
+   },
+   {
+    "name": "Halmi & Társa Járműelektronika Kft.",
+    "country": "HU",
+    "industry": "automotive aftermarket"
+   }
+  ]
+ },
+ "greater_china": {
+  "distributors": [
+   {
+    "name": "Hangzhou Qiantang Device Distribution Co., Ltd.",
+    "country": "CN",
+    "ref_style": "QT26-#####"
+   },
+   {
+    "name": "Hsinchu Lien-Sheng Components Corp.",
+    "country": "TW",
+    "ref_style": "LS-TW-#######"
+   },
+   {
+    "name": "Sanchung Electronic Parts Co., Ltd.",
+    "country": "TW",
+    "ref_style": "SC########"
+   },
+   {
+    "name": "Kowloon Bay Semiconductor Trading Limited",
+    "country": "HK",
+    "ref_style": "KBS/HK/#####"
+   },
+   {
+    "name": "Shenzhen Futian Xinlian Components Co., Ltd.",
+    "country": "CN",
+    "ref_style": "SZXL-XS-########"
+   }
+  ],
+  "customers": [
+   {
+    "name": "Zhongshan Mingyue Lighting Co., Ltd.",
+    "country": "CN",
+    "industry": "decorative lighting"
+   },
+   {
+    "name": "Tsuen Wan Audio Works Limited",
+    "country": "HK",
+    "industry": "wireless headphones"
+   },
+   {
+    "name": "Qingdao Bingquan Refrigeration Controls Co., Ltd.",
+    "country": "CN",
+    "industry": "commercial refrigeration controls"
+   },
+   {
+    "name": "Guangzhou Tianhe Display Co., Ltd.",
+    "country": "CN",
+    "industry": "digital signage"
+   },
+   {
+    "name": "Zhuhai Haiwan Audio Technology Co., Ltd.",
+    "country": "CN",
+    "industry": "Bluetooth speakers"
+   },
+   {
+    "name": "Xiamen Yinhai Medical Instruments Co., Ltd.",
+    "country": "CN",
+    "industry": "pulse oximeters"
+   },
+   {
+    "name": "Sheung Shui Medical Supplies Company Limited",
+    "country": "HK",
+    "industry": "blood pressure monitors"
+   },
+   {
+    "name": "Taichung Ching-Mi Machine Link Co., Ltd.",
+    "country": "TW",
+    "industry": "CNC machine controls"
+   },
+   {
+    "name": "Kwun Tong Smart Retail Technology Limited",
+    "country": "HK",
+    "industry": "electronic shelf labels"
+   },
+   {
+    "name": "Hangzhou Lanting IoT Technology Co., Ltd.",
+    "country": "CN",
+    "industry": "smart water meters"
+   },
+   {
+    "name": "Kaohsiung Hai-Yang Navigation Co., Ltd.",
+    "country": "TW",
+    "industry": "fish finders"
+   },
+   {
+    "name": "Yuan Hsiang Electronic Industrial Co., Ltd.",
+    "country": "TW",
+    "industry": "cycling computers"
+   },
+   {
+    "name": "Tai Hang Timepieces (Holdings) Limited",
+    "country": "HK",
+    "industry": "hybrid smartwatches"
+   },
+   {
+    "name": "Changsha Xiangjiang Security Technology Co., Ltd.",
+    "country": "CN",
+    "industry": "security cameras"
+   },
+   {
+    "name": "Shenzhen Qiyun Zhijia Technology Co., Ltd.",
+    "country": "CN",
+    "industry": "smart plugs and switches"
+   },
+   {
+    "name": "Shanghai Jinqiao Payment Devices Co., Ltd.",
+    "country": "CN",
+    "industry": "POS terminals"
+   },
+   {
+    "name": "Tianjin Binhai Logistics Tracking Co., Ltd.",
+    "country": "CN",
+    "industry": "asset trackers"
+   },
+   {
+    "name": "Shantou Chenghai Lele Toys Co., Ltd.",
+    "country": "CN",
+    "industry": "remote-control toys"
+   },
+   {
+    "name": "Nanjing Qinhuai Grid Automation Co., Ltd.",
+    "country": "CN",
+    "industry": "power distribution automation"
+   },
+   {
+    "name": "Chengdu Jinsha Drone Technology Co., Ltd.",
+    "country": "CN",
+    "industry": "drone flight controllers"
+   },
+   {
+    "name": "Huizhou Pengcheng New Energy (Group) Co., Ltd.",
+    "country": "CN",
+    "industry": "battery management systems"
+   },
+   {
+    "name": "Tainan Chien-Hung Precision Co., Ltd.",
+    "country": "TW",
+    "industry": "industrial power supplies"
+   },
+   {
+    "name": "Changzhou Wujin E-Bike Drive Co., Ltd.",
+    "country": "CN",
+    "industry": "e-bike motor controllers"
+   },
+   {
+    "name": "Lu-Kang Fitness Industrial Co., Ltd.",
+    "country": "TW",
+    "industry": "fitness equipment consoles"
+   },
+   {
+    "name": "Wuhan Guanggu Optoelectronic Co., Ltd.",
+    "country": "CN",
+    "industry": "optical network terminals"
+   },
+   {
+    "name": "Shenzhen Nanshan Xunjie Technology Co., Ltd.",
+    "country": "CN",
+    "industry": "kids smartwatches"
+   },
+   {
+    "name": "Kunshan Hongji EMS Co., Ltd.",
+    "country": "CN",
+    "industry": "contract electronics manufacturing"
+   },
+   {
+    "name": "Dongguan Jinhong Precision Electronics Co., Ltd.",
+    "country": "CN",
+    "industry": "power tool electronics"
+   }
+  ]
+ },
+ "india": {
+  "distributors": [
+   {
+    "name": "Deccan Chipline Distribution Pvt. Ltd.",
+    "country": "IN",
+    "ref_style": "DCD####-##"
+   },
+   {
+    "name": "Sahyadri Microtrade Pvt Ltd",
+    "country": "IN",
+    "ref_style": "SMT/26-27/#####"
+   },
+   {
+    "name": "Aravali Semicon Traders (P) Ltd",
+    "country": "IN",
+    "ref_style": "AST/GGN/##/####"
+   },
+   {
+    "name": "Kaveri Electrocomp Private Limited",
+    "country": "IN",
+    "ref_style": "KEC-TI-######"
+   },
+   {
+    "name": "Vidyutkosh Electronics Ltd",
+    "country": "IN",
+    "ref_style": "VKE/INV/2026/####"
+   }
+  ],
+  "customers": [
+   {
+    "name": "M. R. Iyer Instruments & Controls Pvt. Ltd.",
+    "country": "IN",
+    "industry": "industrial controls"
+   },
+   {
+    "name": "Sanjeevani Biomedical Devices Private Limited",
+    "country": "IN",
+    "industry": "patient monitors"
+   },
+   {
+    "name": "Sabarmati Elevator Controls Pvt Ltd",
+    "country": "IN",
+    "industry": "elevator controls"
+   },
+   {
+    "name": "Kothari Fan Works Private Limited",
+    "country": "IN",
+    "industry": "BLDC ceiling fans"
+   },
+   {
+    "name": "Trinetra 360 Vision Pvt Ltd",
+    "country": "IN",
+    "industry": "security cameras"
+   },
+   {
+    "name": "Dhanvantari Hearing Care Devices Pvt Ltd",
+    "country": "IN",
+    "industry": "hearing aids"
+   },
+   {
+    "name": "Anantam Classroom Technologies Pvt Ltd",
+    "country": "IN",
+    "industry": "edtech classroom devices"
+   },
+   {
+    "name": "Kavachtek Access Systems Pvt Ltd",
+    "country": "IN",
+    "industry": "biometric access control"
+   },
+   {
+    "name": "Pashudhan Trackers LLP",
+    "country": "IN",
+    "industry": "livestock trackers"
+   },
+   {
+    "name": "Ludhiana Cycletronics Pvt. Ltd.",
+    "country": "IN",
+    "industry": "e-bike controllers"
+   },
+   {
+    "name": "Aarohan Medtech Pvt. Ltd.",
+    "country": "IN",
+    "industry": "medical wearables"
+   },
+   {
+    "name": "Krishiyantra Agritech Pvt Ltd",
+    "country": "IN",
+    "industry": "agritech sensors"
+   },
+   {
+    "name": "Urjaveda Smart Meters Pvt Ltd",
+    "country": "IN",
+    "industry": "smart metering"
+   },
+   {
+    "name": "Setu Netlink Devices Pvt Ltd",
+    "country": "IN",
+    "industry": "broadband CPE devices"
+   },
+   {
+    "name": "Rasoighar Appliances Pvt Ltd",
+    "country": "IN",
+    "industry": "induction cooktops"
+   },
+   {
+    "name": "Suryavolt Inverters Pvt Ltd",
+    "country": "IN",
+    "industry": "solar inverters"
+   },
+   {
+    "name": "Konkan Aquasense LLP",
+    "country": "IN",
+    "industry": "aquaculture monitoring"
+   },
+   {
+    "name": "Raigad E-Mobility Pvt Ltd",
+    "country": "IN",
+    "industry": "e-rickshaw controllers"
+   },
+   {
+    "name": "Agnishaman Fire Alarm Systems Pvt Ltd",
+    "country": "IN",
+    "industry": "fire alarm panels"
+   },
+   {
+    "name": "Jalnetra Water Systems Pvt Ltd",
+    "country": "IN",
+    "industry": "water purifiers"
+   },
+   {
+    "name": "Shubh Labh POS Systems Pvt Ltd",
+    "country": "IN",
+    "industry": "POS terminals"
+   },
+   {
+    "name": "Vayuvega Drones Pvt Ltd",
+    "country": "IN",
+    "industry": "drone flight controllers"
+   },
+   {
+    "name": "Indrayani Gas Safety Devices Pvt Ltd",
+    "country": "IN",
+    "industry": "gas leak detectors"
+   },
+   {
+    "name": "Kadal Marine Navigation Pvt Ltd",
+    "country": "IN",
+    "industry": "fishing vessel trackers"
+   },
+   {
+    "name": "Bijlee EV Infra Pvt Ltd",
+    "country": "IN",
+    "industry": "EV chargers"
+   },
+   {
+    "name": "Swarlipi Pro Audio Pvt Ltd",
+    "country": "IN",
+    "industry": "pro audio"
+   },
+   {
+    "name": "Channapatna Toycraft Electronics OPC Private Limited",
+    "country": "IN",
+    "industry": "electronic toys"
+   },
+   {
+    "name": "Bhagirath Irrigation Controls Pvt Ltd",
+    "country": "IN",
+    "industry": "solar pump controllers"
+   }
+  ]
+ },
+ "japan_korea": {
+  "distributors": [
+   {
+    "name": "Guro Digital Components Inc.",
+    "country": "KR",
+    "ref_style": "GDC/####/##"
+   },
+   {
+    "name": "Sendai Elec-Parts Inc.",
+    "country": "JP",
+    "ref_style": "SEP-#####/26"
+   },
+   {
+    "name": "Kanda Denshi Buhin Shoji K.K.",
+    "country": "JP",
+    "ref_style": "KDB-26#####"
+   },
+   {
+    "name": "Yongsan Bupum Trading Co., Ltd.",
+    "country": "KR",
+    "ref_style": "YBT-26-######"
+   },
+   {
+    "name": "Moji Electro Trading Co., Ltd.",
+    "country": "JP",
+    "ref_style": "MOJ-####-###"
+   }
+  ],
+  "customers": [
+   {
+    "name": "Ginza Kiosk Technologies K.K.",
+    "country": "JP",
+    "industry": "self-checkout kiosks"
+   },
+   {
+    "name": "Nekomimi Pet Electronics K.K.",
+    "country": "JP",
+    "industry": "smart pet feeders"
+   },
+   {
+    "name": "Oita Heat Pump Engineering Co., Ltd.",
+    "country": "JP",
+    "industry": "heat pump controllers"
+   },
+   {
+    "name": "Jeju Pungryeok Monitoring Co., Ltd.",
+    "country": "KR",
+    "industry": "wind turbine monitoring"
+   },
+   {
+    "name": "Ansan Power Pack Inc.",
+    "country": "KR",
+    "industry": "e-scooter battery packs"
+   },
+   {
+    "name": "Sakuragawa Amusement Denshi K.K.",
+    "country": "JP",
+    "industry": "amusement machines"
+   },
+   {
+    "name": "Fukurou Vending Systems Co., Ltd.",
+    "country": "JP",
+    "industry": "vending machine controllers"
+   },
+   {
+    "name": "Hanul Drone Show Systems Inc.",
+    "country": "KR",
+    "industry": "drone show controllers"
+   },
+   {
+    "name": "Nagaoka Bosai Kiki Co., Ltd.",
+    "country": "JP",
+    "industry": "residential smoke alarms"
+   },
+   {
+    "name": "Kamakura Audio Laboratory Inc.",
+    "country": "JP",
+    "industry": "headphone amplifiers"
+   },
+   {
+    "name": "Suwon Doorlock Tech Co., Ltd.",
+    "country": "KR",
+    "industry": "digital door locks"
+   },
+   {
+    "name": "Mapo Noraebang Systems Inc.",
+    "country": "KR",
+    "industry": "karaoke systems"
+   },
+   {
+    "name": "Yonezawa Kaden Kogyo K.K.",
+    "country": "JP",
+    "industry": "induction rice cookers"
+   },
+   {
+    "name": "Bitsaem Lighting Co., Ltd.",
+    "country": "KR",
+    "industry": "LED lighting"
+   },
+   {
+    "name": "Kitami Yusetsu Systems Co., Ltd.",
+    "country": "JP",
+    "industry": "snow melting controls"
+   },
+   {
+    "name": "Gumi Signage Display Co., Ltd.",
+    "country": "KR",
+    "industry": "commercial displays"
+   },
+   {
+    "name": "Changwon Mechatronics Corp.",
+    "country": "KR",
+    "industry": "factory automation"
+   },
+   {
+    "name": "Biwako Suishitsu Keiki Co., Ltd.",
+    "country": "JP",
+    "industry": "water quality monitoring"
+   },
+   {
+    "name": "Kurobe Denshi Keiki K.K.",
+    "country": "JP",
+    "industry": "smart gas metering"
+   },
+   {
+    "name": "Toyohashi Auto Accessories Co., Ltd.",
+    "country": "JP",
+    "industry": "automotive aftermarket"
+   },
+   {
+    "name": "Siheung Smart Farm Co., Ltd.",
+    "country": "KR",
+    "industry": "smart farm controllers"
+   },
+   {
+    "name": "Nishijin Shomei Design Inc.",
+    "country": "JP",
+    "industry": "architectural lighting"
+   },
+   {
+    "name": "Setouchi Kaiyo Keisoku K.K.",
+    "country": "JP",
+    "industry": "oyster farm monitoring"
+   },
+   {
+    "name": "Tenryu Gakki Electronics Co., Ltd.",
+    "country": "JP",
+    "industry": "electronic musical instruments"
+   },
+   {
+    "name": "Pangyo Coding Robot Inc.",
+    "country": "KR",
+    "industry": "coding robots"
+   },
+   {
+    "name": "Tsukuba Service Robotics Inc.",
+    "country": "JP",
+    "industry": "service robots"
+   },
+   {
+    "name": "Kiso Dosha Monitoring K.K.",
+    "country": "JP",
+    "industry": "landslide monitoring"
+   },
+   {
+    "name": "Shirakawa Drone Inspection Inc.",
+    "country": "JP",
+    "industry": "inspection drones"
+   }
+  ]
+ },
+ "latin_america": {
+  "distributors": [
+   {
+    "name": "Callao Electrónica Industrial S.A.C.",
+    "country": "PE",
+    "ref_style": "F###-########"
+   },
+   {
+    "name": "Importadora Electrónica del Valle S.A.S.",
+    "country": "CO",
+    "ref_style": "IEV-FE-#####"
+   },
+   {
+    "name": "Suministros Regios de Semiconductores S. de R.L. de C.V.",
+    "country": "MX",
+    "ref_style": "SRS/MTY/#####"
+   },
+   {
+    "name": "Andina Microchips SpA",
+    "country": "CL",
+    "ref_style": "ANM-######-CL"
+   },
+   {
+    "name": "Distribuidora Electrónica Queretana S.A. de C.V.",
+    "country": "MX",
+    "ref_style": "DEQ-A######"
+   }
+  ],
+  "customers": [
+   {
+    "name": "Antioquia Medición y Control S.A.S.",
+    "country": "CO",
+    "industry": "process instrumentation"
+   },
+   {
+    "name": "Cuauhtémoc Medidores Inteligentes S.A.P.I. de C.V.",
+    "country": "MX",
+    "industry": "smart water metering"
+   },
+   {
+    "name": "Sertão Solar Inversores Ltda. EPP",
+    "country": "BR",
+    "industry": "solar inverters"
+   },
+   {
+    "name": "Recife Telemetria Hospitalar Ltda.",
+    "country": "BR",
+    "industry": "hospital telemetry"
+   },
+   {
+    "name": "Curitiba Rastreamento Veicular Ltda.",
+    "country": "BR",
+    "industry": "vehicle tracking units"
+   },
+   {
+    "name": "Lima Pagos Móviles S.A.C.",
+    "country": "PE",
+    "industry": "mobile POS terminals"
+   },
+   {
+    "name": "Iluminación Xóchitl S.A. de C.V.",
+    "country": "MX",
+    "industry": "stage lighting"
+   },
+   {
+    "name": "Biobío Sensores Forestales SpA",
+    "country": "CL",
+    "industry": "forest fire detection"
+   },
+   {
+    "name": "Mendoza Riego Inteligente S.A.S.",
+    "country": "AR",
+    "industry": "vineyard irrigation controls"
+   },
+   {
+    "name": "Electrónica Tapatía S.A. de C.V.",
+    "country": "MX",
+    "industry": "consumer electronics EMS"
+   },
+   {
+    "name": "Córdoba Semáforos Inteligentes S.R.L.",
+    "country": "AR",
+    "industry": "traffic signal controllers"
+   },
+   {
+    "name": "Caxias Automotiva Indústria e Comércio Ltda.",
+    "country": "BR",
+    "industry": "automotive aftermarket"
+   },
+   {
+    "name": "Chiclayo Cámaras y Vigilancia E.I.R.L.",
+    "country": "PE",
+    "industry": "CCTV systems"
+   },
+   {
+    "name": "Manaus Medição Inteligente S.A.",
+    "country": "BR",
+    "industry": "smart metering"
+   },
+   {
+    "name": "Vale do Sapucaí Telecom Ltda.",
+    "country": "BR",
+    "industry": "telecom access equipment"
+   },
+   {
+    "name": "Regiomontana de Controles Térmicos S.A. de C.V.",
+    "country": "MX",
+    "industry": "HVAC controls"
+   },
+   {
+    "name": "Chiloé Acuicultura Digital SpA",
+    "country": "CL",
+    "industry": "salmon farm monitoring"
+   },
+   {
+    "name": "Bogotá Señalización Digital S.A.S.",
+    "country": "CO",
+    "industry": "digital signage"
+   },
+   {
+    "name": "Rosarina de Electrónica S.A.I.C.",
+    "country": "AR",
+    "industry": "seed planter monitors"
+   },
+   {
+    "name": "Arequipa Geomonitoreo S.A.C.",
+    "country": "PE",
+    "industry": "slope stability monitoring"
+   },
+   {
+    "name": "Seguridad Electrónica Tlaquepaque S.A. de C.V.",
+    "country": "MX",
+    "industry": "access control systems"
+   },
+   {
+    "name": "Puebla Cargadores Eléctricos S.A.P.I. de C.V.",
+    "country": "MX",
+    "industry": "EV chargers"
+   },
+   {
+    "name": "Iluminação Ipê Amarelo Ltda.",
+    "country": "BR",
+    "industry": "public street lighting"
+   },
+   {
+    "name": "Sensores del Bajío S. de R.L. de C.V.",
+    "country": "MX",
+    "industry": "tire pressure sensors"
+   },
+   {
+    "name": "Juárez Arneses y Telemática S. de R.L. de C.V.",
+    "country": "MX",
+    "industry": "vehicle telematics"
+   },
+   {
+    "name": "Huila Café Tecnología S.A.S.",
+    "country": "CO",
+    "industry": "coffee drying controls"
+   },
+   {
+    "name": "Agrotrónica Sinaloense S.A. de C.V.",
+    "country": "MX",
+    "industry": "greenhouse climate controls"
+   },
+   {
+    "name": "Medellín Moto Rastreo S.A.S.",
+    "country": "CO",
+    "industry": "motorcycle GPS trackers"
+   }
+  ]
+ },
+ "middle_east": {
+  "distributors": [
+   {
+    "name": "Al Qusais Electronic Components Trading L.L.C.",
+    "country": "AE",
+    "ref_style": "TI/AQ/#####"
+   },
+   {
+    "name": "El-Kenana Components Distribution S.A.E.",
+    "country": "EG",
+    "ref_style": "EK-######-EG"
+   },
+   {
+    "name": "Al Muqawim Electronics Est.",
+    "country": "SA",
+    "ref_style": "SINV-#######"
+   },
+   {
+    "name": "Hamriyah Chip Distribution FZE",
+    "country": "AE",
+    "ref_style": "HCD-INV-######"
+   },
+   {
+    "name": "AWTS Electronics Trading W.L.L.",
+    "country": "QA",
+    "ref_style": "AWTS/DO/#####"
+   }
+  ],
+  "customers": [
+   {
+    "name": "Najd Smart Meters Factory Co.",
+    "country": "SA",
+    "industry": "smart metering"
+   },
+   {
+    "name": "Fayoum Agro Controls LLC",
+    "country": "EG",
+    "industry": "poultry house controllers"
+   },
+   {
+    "name": "Basira Security Cameras L.L.C.",
+    "country": "AE",
+    "industry": "security cameras"
+   },
+   {
+    "name": "Batinah Hydro Metering LLC",
+    "country": "OM",
+    "industry": "smart water meters"
+   },
+   {
+    "name": "Hermon Vision Ltd",
+    "country": "IL",
+    "industry": "thermal cameras"
+   },
+   {
+    "name": "Sinai Solar Power S.A.E.",
+    "country": "EG",
+    "industry": "solar inverters"
+   },
+   {
+    "name": "Pharos Marine Electronics LLC",
+    "country": "EG",
+    "industry": "marine electronics"
+   },
+   {
+    "name": "Dofek Cardio Ltd",
+    "country": "IL",
+    "industry": "medical wearables"
+   },
+   {
+    "name": "Mesaieed Water Technologies W.L.L.",
+    "country": "QA",
+    "industry": "desalination controls"
+   },
+   {
+    "name": "Al Sahraa Solar Lighting L.L.C.",
+    "country": "AE",
+    "industry": "solar street lighting"
+   },
+   {
+    "name": "10th Ramadan Lighting Industries S.A.E.",
+    "country": "EG",
+    "industry": "LED lighting"
+   },
+   {
+    "name": "Yokneam Motion Control Ltd",
+    "country": "IL",
+    "industry": "robotics motion control"
+   },
+   {
+    "name": "Nile Valley Prepaid Meters S.A.E.",
+    "country": "EG",
+    "industry": "prepaid electricity meters"
+   },
+   {
+    "name": "Dukhan Pipeline Monitoring W.L.L.",
+    "country": "QA",
+    "industry": "pipeline monitoring"
+   },
+   {
+    "name": "Borg El Arab Appliances Co.",
+    "country": "EG",
+    "industry": "home appliance controls"
+   },
+   {
+    "name": "Madaba Health Electronics PSC",
+    "country": "JO",
+    "industry": "patient monitors"
+   },
+   {
+    "name": "Kupa Smart Terminals Ltd",
+    "country": "IL",
+    "industry": "POS terminals"
+   },
+   {
+    "name": "Dekel Drip Controls Ltd",
+    "country": "IL",
+    "industry": "irrigation controllers"
+   },
+   {
+    "name": "Ajloun Olive Tech Co. L.L.C.",
+    "country": "JO",
+    "industry": "olive press controls"
+   },
+   {
+    "name": "Dhofar Solar Pumps & Controls SAOC",
+    "country": "OM",
+    "industry": "solar water pumps"
+   },
+   {
+    "name": "Al Khayma Smart Home LLC",
+    "country": "AE",
+    "industry": "smart home hubs"
+   },
+   {
+    "name": "Saqr Tracking Systems FZ-LLC",
+    "country": "AE",
+    "industry": "asset trackers"
+   },
+   {
+    "name": "Ozen Hearing Technologies Ltd",
+    "country": "IL",
+    "industry": "hearing devices"
+   },
+   {
+    "name": "Te'ena Aerial Systems Ltd",
+    "country": "IL",
+    "industry": "agricultural drones"
+   },
+   {
+    "name": "Raseed Payment Devices Co. Ltd.",
+    "country": "SA",
+    "industry": "POS terminals"
+   },
+   {
+    "name": "Al Khobar Wellsite Instruments Est.",
+    "country": "SA",
+    "industry": "oilfield telemetry"
+   },
+   {
+    "name": "Malqaf Smart Cooling LLC",
+    "country": "AE",
+    "industry": "district cooling controls"
+   },
+   {
+    "name": "Rimon Grid Analytics Ltd",
+    "country": "IL",
+    "industry": "smart grid monitoring"
+   }
+  ]
+ },
+ "nordics": {
+  "distributors": [
+   {
+    "name": "Limfjord Komponentlager A/S",
+    "country": "DK",
+    "ref_style": "FAK-#####"
+   },
+   {
+    "name": "Trøndelag Elektrokomponenter AS",
+    "country": "NO",
+    "ref_style": "TRD-######"
+   },
+   {
+    "name": "Íhlutasalan Reykjavík ehf.",
+    "country": "IS",
+    "ref_style": "IHL-####"
+   },
+   {
+    "name": "Hämeen Komponenttitukku Oy",
+    "country": "FI",
+    "ref_style": "#####-HKT"
+   },
+   {
+    "name": "Mälardalens Komponenthandel AB",
+    "country": "SE",
+    "ref_style": "ORD-#####-##"
+   }
+  ],
+  "customers": [
+   {
+    "name": "Lumiturva Kattoanturit Oy",
+    "country": "FI",
+    "industry": "snow load sensors"
+   },
+   {
+    "name": "Skipsradio Ålesund AS",
+    "country": "NO",
+    "industry": "maritime communications"
+   },
+   {
+    "name": "Gävle Värmepumpsteknik AB",
+    "country": "SE",
+    "industry": "heat pump controls"
+   },
+   {
+    "name": "Hytteverket Smarthus AS",
+    "country": "NO",
+    "industry": "cabin heating controls"
+   },
+   {
+    "name": "Hafís Sjávartækni ehf.",
+    "country": "IS",
+    "industry": "fishing sonar"
+   },
+   {
+    "name": "71Nord Sporing ASA",
+    "country": "NO",
+    "industry": "asset trackers"
+   },
+   {
+    "name": "SKS Kassesystemer A/S",
+    "country": "DK",
+    "industry": "POS terminals"
+   },
+   {
+    "name": "Armaturfabriken Ljusfors AB",
+    "country": "SE",
+    "industry": "LED luminaires"
+   },
+   {
+    "name": "Brattli & Sønner Elektro AS",
+    "country": "NO",
+    "industry": "industrial controls"
+   },
+   {
+    "name": "Vindmølle Sensorik A/S",
+    "country": "DK",
+    "industry": "wind turbine sensors"
+   },
+   {
+    "name": "Pohjoisen Mittaustekniikka Oy",
+    "country": "FI",
+    "industry": "district heating meters"
+   },
+   {
+    "name": "Hjälmare Mätsystem AB",
+    "country": "SE",
+    "industry": "smart water meters"
+   },
+   {
+    "name": "Nyborg Marineelektronik A/S",
+    "country": "DK",
+    "industry": "marine electronics"
+   },
+   {
+    "name": "Smålands Säkerhetsteknik AB",
+    "country": "SE",
+    "industry": "security cameras"
+   },
+   {
+    "name": "Agrisens Danmark ApS",
+    "country": "DK",
+    "industry": "livestock barn sensors"
+   },
+   {
+    "name": "Lekverket i Borås AB",
+    "country": "SE",
+    "industry": "educational robot toys"
+   },
+   {
+    "name": "Jarðhitamælir ehf.",
+    "country": "IS",
+    "industry": "geothermal monitoring"
+   },
+   {
+    "name": "Køge Ladeløsninger ApS",
+    "country": "DK",
+    "industry": "EV chargers"
+   },
+   {
+    "name": "Tampereen Automaatiotalo Oyj",
+    "country": "FI",
+    "industry": "industrial automation"
+   },
+   {
+    "name": "Kvarnby Laddsystem AB",
+    "country": "SE",
+    "industry": "EV chargers"
+   },
+   {
+    "name": "Kiruna Gruvsensor AB",
+    "country": "SE",
+    "industry": "mining safety sensors"
+   },
+   {
+    "name": "Hammel Høreteknik ApS",
+    "country": "DK",
+    "industry": "hearing devices"
+   },
+   {
+    "name": "Sjømerd Sensorteknikk AS",
+    "country": "NO",
+    "industry": "aquaculture sensors"
+   },
+   {
+    "name": "Fynsk Varmestyring ApS",
+    "country": "DK",
+    "industry": "district heating controls"
+   },
+   {
+    "name": "Rörsjö Medicinteknik AB",
+    "country": "SE",
+    "industry": "patient wearables"
+   },
+   {
+    "name": "Aarhus Hjemmestyring ApS",
+    "country": "DK",
+    "industry": "smart home hubs"
+   },
+   {
+    "name": "Fjordlading AS",
+    "country": "NO",
+    "industry": "shore power chargers"
+   },
+   {
+    "name": "Metsälinkki Telematiikka Oy",
+    "country": "FI",
+    "industry": "harvester telematics"
+   }
+  ]
+ },
+ "north_america": {
+  "distributors": [
+   {
+    "name": "Cascade Ridge Electronics Distribution Inc.",
+    "country": "US",
+    "ref_style": "CRE-SO-######"
+   },
+   {
+    "name": "Coast Mountain Components Ltd.",
+    "country": "CA",
+    "ref_style": "CMC/BC/######"
+   },
+   {
+    "name": "Composants Électroniques Beauce Inc.",
+    "country": "CA",
+    "ref_style": "CEB-QC-#####"
+   },
+   {
+    "name": "Copperline Technical Distribution Inc.",
+    "country": "US",
+    "ref_style": "CTD#######"
+   },
+   {
+    "name": "Prairie Grove Component Supply LLC",
+    "country": "US",
+    "ref_style": "PGC-######-#"
+   }
+  ],
+  "customers": [
+   {
+    "name": "Arroyo Seco Sound Inc.",
+    "country": "US",
+    "industry": "wireless microphones"
+   },
+   {
+    "name": "Blue Heron Baby Monitors Inc.",
+    "country": "US",
+    "industry": "baby monitors"
+   },
+   {
+    "name": "Okanagan Orchard Sensors Inc.",
+    "country": "CA",
+    "industry": "orchard frost sensors"
+   },
+   {
+    "name": "Longmont Fitness Electronics LLC",
+    "country": "US",
+    "industry": "connected fitness equipment"
+   },
+   {
+    "name": "Cumberland Poultry Systems Inc.",
+    "country": "US",
+    "industry": "poultry house controllers"
+   },
+   {
+    "name": "Hollis-Varga Security Inc.",
+    "country": "US",
+    "industry": "video doorbells"
+   },
+   {
+    "name": "Halcyon Field Robotics Inc.",
+    "country": "US",
+    "industry": "robotic lawn mowers"
+   },
+   {
+    "name": "Delacroix & Whitford Engineering LLC",
+    "country": "US",
+    "industry": "building automation"
+   },
+   {
+    "name": "Contrôles Laurentides Inc.",
+    "country": "CA",
+    "industry": "baseboard heater thermostats"
+   },
+   {
+    "name": "Pinyon Asset Intelligence LLC",
+    "country": "US",
+    "industry": "asset trackers"
+   },
+   {
+    "name": "Les Systèmes Mistassini Ltée",
+    "country": "CA",
+    "industry": "forestry equipment controls"
+   },
+   {
+    "name": "Calloway & Brandt Pet Products LLC",
+    "country": "US",
+    "industry": "automatic pet feeders"
+   },
+   {
+    "name": "Petrakis Packaging Controls Inc.",
+    "country": "US",
+    "industry": "packaging machine controls"
+   },
+   {
+    "name": "Sawtooth Irrigation Electronics LLC",
+    "country": "US",
+    "industry": "irrigation controllers"
+   },
+   {
+    "name": "Keweenaw Instruments Inc.",
+    "country": "US",
+    "industry": "test and measurement"
+   },
+   {
+    "name": "Tidewater Grow Lighting Inc.",
+    "country": "US",
+    "industry": "horticulture grow lights"
+   },
+   {
+    "name": "Saskatoon Grain Telemetry Corp.",
+    "country": "CA",
+    "industry": "grain bin monitoring"
+   },
+   {
+    "name": "Bras d'Or Ocean Instruments Ltd.",
+    "country": "CA",
+    "industry": "ocean monitoring buoys"
+   },
+   {
+    "name": "Tern Island Avionics LLC",
+    "country": "US",
+    "industry": "general aviation avionics"
+   },
+   {
+    "name": "Kootenay Trail Cameras Co.",
+    "country": "CA",
+    "industry": "trail cameras"
+   },
+   {
+    "name": "Mile 41 Microgrid Inc.",
+    "country": "US",
+    "industry": "microgrid controllers"
+   },
+   {
+    "name": "Quillfeather Toys LLC",
+    "country": "US",
+    "industry": "app-connected toys"
+   },
+   {
+    "name": "Mesquite Sky UAV Systems LLC",
+    "country": "US",
+    "industry": "drone flight controllers"
+   },
+   {
+    "name": "Tenfold3 Devices Inc.",
+    "country": "US",
+    "industry": "smart thermostats"
+   },
+   {
+    "name": "Pemberton Coldline Inc.",
+    "country": "US",
+    "industry": "commercial refrigeration"
+   },
+   {
+    "name": "Whitecap Restaurant Tech LLC",
+    "country": "US",
+    "industry": "restaurant POS terminals"
+   },
+   {
+    "name": "Larkspur STEM Kits Inc.",
+    "country": "US",
+    "industry": "STEM learning kits"
+   },
+   {
+    "name": "Ozark Pump Controls Inc.",
+    "country": "US",
+    "industry": "well pump controllers"
+   }
+  ]
+ },
+ "southeast_asia": {
+  "distributors": [
+   {
+    "name": "Tân Bình Linh Kiện Điện Tử Co., Ltd.",
+    "country": "VN",
+    "ref_style": "TB-HD-#######"
+   },
+   {
+    "name": "Chao Phraya Device Supply Co., Ltd.",
+    "country": "TH",
+    "ref_style": "CPD-26-#####"
+   },
+   {
+    "name": "Kalayaan Components Trading Inc.",
+    "country": "PH",
+    "ref_style": "KCT-#####-A"
+   },
+   {
+    "name": "Kallang Microparts Pte Ltd",
+    "country": "SG",
+    "ref_style": "KMP-SG-######"
+   },
+   {
+    "name": "PT Mitra Andalan Komponen",
+    "country": "ID",
+    "ref_style": "MAK/INV/##/####"
+   }
+  ],
+  "customers": [
+   {
+    "name": "Sông Hàn Logistics Tech Co., Ltd.",
+    "country": "VN",
+    "industry": "asset trackers"
+   },
+   {
+    "name": "Minh Khôi Electronics JSC",
+    "country": "VN",
+    "industry": "motorbike alarms"
+   },
+   {
+    "name": "PT Roda Listrik Nusantara",
+    "country": "ID",
+    "industry": "electric motorcycle controllers"
+   },
+   {
+    "name": "Cahaya Gemilang Lighting Sdn Bhd",
+    "country": "MY",
+    "industry": "LED lighting"
+   },
+   {
+    "name": "PT Sawit Sensorindo Abadi",
+    "country": "ID",
+    "industry": "plantation monitoring"
+   },
+   {
+    "name": "Thịnh Vượng Lighting Joint Stock Company",
+    "country": "VN",
+    "industry": "solar streetlights"
+   },
+   {
+    "name": "Phương Nam Aqua Sensors JSC",
+    "country": "VN",
+    "industry": "shrimp farm monitoring"
+   },
+   {
+    "name": "Wawasan Meter Pintar Berhad",
+    "country": "MY",
+    "industry": "smart metering"
+   },
+   {
+    "name": "Laem Chabang Reefer Monitoring Co., Ltd.",
+    "country": "TH",
+    "industry": "reefer container monitoring"
+   },
+   {
+    "name": "Đông Sơn Audio Company Limited",
+    "country": "VN",
+    "industry": "pro audio amplifiers"
+   },
+   {
+    "name": "Kranji Hydroponic Controls Pte Ltd",
+    "country": "SG",
+    "industry": "vertical farm controls"
+   },
+   {
+    "name": "Mactan Pet Tech Co., Inc.",
+    "country": "PH",
+    "industry": "pet trackers"
+   },
+   {
+    "name": "Lamphun Sensor Works Co., Ltd.",
+    "country": "TH",
+    "industry": "automotive sensors"
+   },
+   {
+    "name": "Biñan Microassembly Corporation",
+    "country": "PH",
+    "industry": "automotive electronics EMS"
+   },
+   {
+    "name": "Kinabalu Drone Works Sdn Bhd",
+    "country": "MY",
+    "industry": "agricultural drones"
+   },
+   {
+    "name": "PT Bandung Kreasi Mainan",
+    "country": "ID",
+    "industry": "educational toys"
+   },
+   {
+    "name": "Tampines Medisense Pte. Ltd.",
+    "country": "SG",
+    "industry": "medical wearables"
+   },
+   {
+    "name": "PT Dapur Pintar Indonesia",
+    "country": "ID",
+    "industry": "rice cookers"
+   },
+   {
+    "name": "PT Batam Presisi Manufaktur",
+    "country": "ID",
+    "industry": "contract electronics manufacturing"
+   },
+   {
+    "name": "Kulim Sensortek Sdn Bhd",
+    "country": "MY",
+    "industry": "industrial sensors"
+   },
+   {
+    "name": "AMK Acoustics Pte Ltd",
+    "country": "SG",
+    "industry": "conference audio systems"
+   },
+   {
+    "name": "Bắc Ninh Smart Devices Co., Ltd.",
+    "country": "VN",
+    "industry": "smart home devices"
+   },
+   {
+    "name": "Ipoh Peranti Perubatan Sdn Bhd",
+    "country": "MY",
+    "industry": "infusion pumps"
+   },
+   {
+    "name": "PT Meteran Digital Sejahtera Tbk",
+    "country": "ID",
+    "industry": "prepaid electricity meters"
+   },
+   {
+    "name": "Korat Solar Rooftop Co., Ltd.",
+    "country": "TH",
+    "industry": "solar monitoring gateways"
+   },
+   {
+    "name": "Prai Thermal Controls Sdn. Bhd.",
+    "country": "MY",
+    "industry": "HVAC controls"
+   },
+   {
+    "name": "Liwanag Solar Lighting Inc.",
+    "country": "PH",
+    "industry": "solar home lighting"
+   },
+   {
+    "name": "PT Tangerang Alat Kesehatan",
+    "country": "ID",
+    "industry": "digital thermometers"
+   }
+  ]
+ },
+ "turkey": {
+  "distributors": [
+   {
+    "name": "Başkent Çip Elektronik A.Ş.",
+    "country": "TR",
+    "ref_style": "SIP-######"
+   },
+   {
+    "name": "Ege Komponent Dağıtım Ltd. Şti.",
+    "country": "TR",
+    "ref_style": "EKD-######"
+   },
+   {
+    "name": "Kuzeyışık Elektronik Bileşenler San. ve Tic. A.Ş.",
+    "country": "TR",
+    "ref_style": "KZY2026#########"
+   },
+   {
+    "name": "Marmara Yarıiletken Tic. A.Ş.",
+    "country": "TR",
+    "ref_style": "MY-##-#####-#"
+   },
+   {
+    "name": "Boğaziçi Devre Elemanları Dış Tic. Ltd. Şti.",
+    "country": "TR",
+    "ref_style": "BDE.####.####"
+   }
+  ],
+  "customers": [
+   {
+    "name": "Yıldırım Sayaç Sistemleri A.Ş.",
+    "country": "TR",
+    "industry": "smart electricity meters"
+   },
+   {
+    "name": "Hızlı Adım Elektrikli Araçlar A.Ş.",
+    "country": "TR",
+    "industry": "e-scooter controllers"
+   },
+   {
+    "name": "Patiz Evcil Hayvan Teknolojileri Ltd. Şti.",
+    "country": "TR",
+    "industry": "pet trackers"
+   },
+   {
+    "name": "İzsürer Araç Takip Sistemleri A.Ş.",
+    "country": "TR",
+    "industry": "fleet telematics"
+   },
+   {
+    "name": "Nabız Medikal Elektronik A.Ş.",
+    "country": "TR",
+    "industry": "medical wearables"
+   },
+   {
+    "name": "Akdeniz Sera Otomasyon Ltd. Şti.",
+    "country": "TR",
+    "industry": "greenhouse controllers"
+   },
+   {
+    "name": "Yesilirmak Enerji Izleme A.S.",
+    "country": "TR",
+    "industry": "energy monitoring"
+   },
+   {
+    "name": "Ilgaz Güneş Enerjisi San. ve Tic. A.Ş.",
+    "country": "TR",
+    "industry": "solar inverters"
+   },
+   {
+    "name": "Erciyes Asansör Kumanda Sistemleri Ltd. Şti.",
+    "country": "TR",
+    "industry": "elevator controllers"
+   },
+   {
+    "name": "Şimşek Şarj Teknolojileri A.Ş.",
+    "country": "TR",
+    "industry": "EV chargers"
+   },
+   {
+    "name": "Denizli Dokuma Otomasyon Ltd. Şti.",
+    "country": "TR",
+    "industry": "textile machinery controls"
+   },
+   {
+    "name": "Harran Akıllı Tarım Ltd. Şti.",
+    "country": "TR",
+    "industry": "irrigation controllers"
+   },
+   {
+    "name": "Fincan Kahve Makineleri San. ve Tic. A.Ş.",
+    "country": "TR",
+    "industry": "coffee machine controls"
+   },
+   {
+    "name": "Mavi Fiş Ödeme Sistemleri A.Ş.",
+    "country": "TR",
+    "industry": "POS terminals"
+   },
+   {
+    "name": "4Mevsim Isı Pompası Kontrol Ltd. Şti.",
+    "country": "TR",
+    "industry": "heat pump controls"
+   },
+   {
+    "name": "Kaptan Deniz Elektroniği Ltd. Şti.",
+    "country": "TR",
+    "industry": "marine electronics"
+   },
+   {
+    "name": "Kızılırmak Su Sayaçları A.Ş.",
+    "country": "TR",
+    "industry": "smart water meters"
+   },
+   {
+    "name": "Çiftçi Dostu Makine Elektroniği Ltd. Şti.",
+    "country": "TR",
+    "industry": "tractor electronics"
+   },
+   {
+    "name": "Lodos Klima Kontrol Ltd. Şti.",
+    "country": "TR",
+    "industry": "HVAC controls"
+   },
+   {
+    "name": "Nilüfer Taşıt Elektroniği A.Ş.",
+    "country": "TR",
+    "industry": "bus electronics"
+   },
+   {
+    "name": "Kümesnet Tarım Teknolojileri A.Ş.",
+    "country": "TR",
+    "industry": "poultry farm controllers"
+   },
+   {
+    "name": "Kendin Öde Kiosk Sistemleri A.Ş.",
+    "country": "TR",
+    "industry": "self-checkout kiosks"
+   },
+   {
+    "name": "Sakarya CNC Kontrol Sistemleri Ltd. Şti.",
+    "country": "TR",
+    "industry": "CNC controllers"
+   },
+   {
+    "name": "Duyu İşitme Teknolojileri Ltd. Şti.",
+    "country": "TR",
+    "industry": "hearing devices"
+   },
+   {
+    "name": "Terazi Dünyası Tartım Sistemleri Ltd. Şti.",
+    "country": "TR",
+    "industry": "weighing scales"
+   },
+   {
+    "name": "Yangın Gözü Alarm Sistemleri A.Ş.",
+    "country": "TR",
+    "industry": "fire alarm panels"
+   },
+   {
+    "name": "Gecegözü Güvenlik Sistemleri A.Ş.",
+    "country": "TR",
+    "industry": "security cameras"
+   },
+   {
+    "name": "Toros Kombi Kontrol San. ve Tic. A.Ş.",
+    "country": "TR",
+    "industry": "combi boiler controls"
+   }
+  ]
+ },
+ "western_europe": {
+  "distributors": [
+   {
+    "name": "Euganea Componenti Elettronici S.r.l.",
+    "country": "IT",
+    "ref_style": "FT-#####/EU"
+   },
+   {
+    "name": "Distribuciones Electrónicas Turia S.L.",
+    "country": "ES",
+    "ref_style": "FV-A/######"
+   },
+   {
+    "name": "Görlitzer Halbleiterhandel GmbH",
+    "country": "DE",
+    "ref_style": "90########"
+   },
+   {
+    "name": "Van Heukelom Elektronica B.V.",
+    "country": "NL",
+    "ref_style": "VH.####.###"
+   },
+   {
+    "name": "Thornbury & Vale Components Ltd",
+    "country": "GB",
+    "ref_style": "TVC######"
+   }
+  ],
+  "customers": [
+   {
+    "name": "VEMATIQ Steuerungssysteme GmbH",
+    "country": "DE",
+    "industry": "industrial controls"
+   },
+   {
+    "name": "Kempische Laadpalen NV",
+    "country": "BE",
+    "industry": "EV chargers"
+   },
+   {
+    "name": "Joux Horlogerie Connectée SA",
+    "country": "CH",
+    "industry": "smartwatch modules"
+   },
+   {
+    "name": "Contadores Inteligentes del Ebro S.A.",
+    "country": "ES",
+    "industry": "smart water meters"
+   },
+   {
+    "name": "Vinicapt SARL",
+    "country": "FR",
+    "industry": "vineyard monitoring"
+   },
+   {
+    "name": "Odenwald E-Bike Antriebe GmbH",
+    "country": "DE",
+    "industry": "e-bike controllers"
+   },
+   {
+    "name": "Quayside Charging Limited",
+    "country": "GB",
+    "industry": "EV chargers"
+   },
+   {
+    "name": "Brandauer & Söhne Leuchten GmbH",
+    "country": "DE",
+    "industry": "architectural lighting"
+   },
+   {
+    "name": "Sentinella Antifurti S.r.l.",
+    "country": "IT",
+    "industry": "alarm systems"
+   },
+   {
+    "name": "Sémaphore Systèmes Embarqués SA",
+    "country": "FR",
+    "industry": "railway signalling"
+   },
+   {
+    "name": "Capteurs de l'Ourthe SRL",
+    "country": "BE",
+    "industry": "air quality monitors"
+   },
+   {
+    "name": "Hofbauer & Pichler Energietechnik GmbH",
+    "country": "AT",
+    "industry": "battery management systems"
+   },
+   {
+    "name": "Elettromeccanica Valtellina S.p.A.",
+    "country": "IT",
+    "industry": "motor drives"
+   },
+   {
+    "name": "Polderwacht Sensoren B.V.",
+    "country": "NL",
+    "industry": "water level sensors"
+   },
+   {
+    "name": "Schwarzbach Klimaregelung GmbH & Co. KG",
+    "country": "DE",
+    "industry": "HVAC controls"
+   },
+   {
+    "name": "Arvelle Audio Professionnel SAS",
+    "country": "FR",
+    "industry": "pro audio"
+   },
+   {
+    "name": "Fietsbrein B.V.",
+    "country": "NL",
+    "industry": "e-bike displays"
+   },
+   {
+    "name": "Corrib Clinical Devices Limited",
+    "country": "IE",
+    "industry": "cardiac monitors"
+   },
+   {
+    "name": "Asahina Denshi Europe GmbH",
+    "country": "DE",
+    "industry": "camera modules"
+   },
+   {
+    "name": "Zhejiang Lanqiao New Energy Europe B.V.",
+    "country": "NL",
+    "industry": "solar inverters"
+   },
+   {
+    "name": "Tinkerwell Toys Ltd",
+    "country": "GB",
+    "industry": "smart toys"
+   },
+   {
+    "name": "3Peaks Outdoor Tech Ltd",
+    "country": "GB",
+    "industry": "outdoor GPS trackers"
+   },
+   {
+    "name": "Latido Wearables S.L.",
+    "country": "ES",
+    "industry": "medical wearables"
+   },
+   {
+    "name": "Caffèlab Sistemi S.r.l.",
+    "country": "IT",
+    "industry": "espresso machine controls"
+   },
+   {
+    "name": "Lechfeld Messtechnik GmbH",
+    "country": "DE",
+    "industry": "smart metering"
+   },
+   {
+    "name": "Tejo Mobilidade Elétrica, Lda.",
+    "country": "PT",
+    "industry": "e-scooter controllers"
+   },
+   {
+    "name": "Ticino Medtech Sagl",
+    "country": "CH",
+    "industry": "infusion pumps"
+   },
+   {
+    "name": "Cigüeña Drones S.L.",
+    "country": "ES",
+    "industry": "drone flight controllers"
+   }
+  ]
+ }
+}

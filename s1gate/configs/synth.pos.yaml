@@ -28,6 +28,7 @@ example: >
 
 guide: docs/labeling_guide.md
 parts: configs/pools/parts.yaml
+pools: data/pools/train/companies.json   # TRAIN side only: eval companies never reach the teacher
 
 # label-neutral axes: one value per axis is drawn for every teacher call
 variation:
