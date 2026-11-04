@@ -1,0 +1,75 @@
+# Synthetic-data recipe for the POS gate (used by `s1gate synth`).
+#
+# Coverage comes from `scenarios` (one per answer combination worth teaching).
+# Diversity comes from `variation` (one value per axis is drawn at random for each call).
+# Raise `weight` on scenarios the baseline gets wrong; add a scenario for every new
+# failure mode found in production corrections.
+
+domain: >
+  Monthly point-of-sale (POS) reports that electronics distributors send to a chip vendor.
+  Each record is ONE reported sales line, followed by the vendor's master-data entry for
+  that customer and part, so the classifier can compare what was reported with what is known.
+
+record_format: |
+  distributor=<name>; period=<YYYY-MM or other date style>; customer=<name as reported>;
+  country=<ISO code>; part=<part number>; qty=<integer>; unit_price=<number> <currency>;
+  ref=<invoice/line reference> || master: customer=<canonical name>; spq=<int>; moq=<int>;
+  restricted=<yes|no>; seen_refs=<comma-separated refs already reported, or none>
+
+example: >
+  distributor=Northwind Components; period=2026-09; customer=ACME CTRL LTD; country=PL;
+  part=WM-S3-N8R8; qty=1250; unit_price=2.31 USD; ref=INV-88213/4 || master: customer=Acme
+  Controls Ltd; spq=250; moq=500; restricted=no; seen_refs=none
+
+variation:
+  distributor_style:
+    - tidy ERP export
+    - hand-edited spreadsheet with inconsistent casing
+    - abbreviated column values
+    - extra whitespace and stray punctuation
+  customer_naming:
+    - exact canonical name
+    - all-caps abbreviation
+    - legal suffix changed (Ltd / GmbH / S.A. / Pvt Ltd)
+    - former company name after a rebrand
+    - minor typo
+  numbers:
+    - plain integers and dot decimals
+    - thousands separators
+    - European decimal comma
+  region:
+    - Western Europe
+    - Turkey
+    - India
+    - Southeast Asia
+
+n_per_scenario: 40
+batch_size: 10
+temperature: 1.0
+
+scenarios:
+  - target: {row_action: commit, needs_human: "no", severity: "0"}
+    hint: Everything matches master data; quantity is a valid SPQ multiple at or above MOQ; ref not seen.
+
+  - target: {row_action: normalize, needs_human: "no", severity: "1"}
+    hint: Correct values in a different format - date style, separators, part number with spaces or lower case.
+
+  - target: {row_action: vendor_rename, needs_human: "no", severity: "2"}
+    hint: Customer reported under an abbreviation or changed legal suffix that clearly maps to the master name.
+
+  - target: {row_action: vendor_rename, needs_human: "yes", severity: "3"}
+    hint: Reported customer name only loosely resembles the master name (possible rebrand or parent company).
+    weight: 0.5
+
+  - target: {row_action: pack_qty_issue, needs_human: "yes", severity: "2"}
+    hint: Quantity is not a multiple of SPQ, or is below MOQ, otherwise clean.
+
+  - target: {row_action: compliance_review, needs_human: "yes", severity: "4"}
+    hint: Master data marks the customer or country as restricted=yes.
+
+  - target: {row_action: duplicate, needs_human: "no", severity: "3"}
+    hint: The row's ref already appears in master seen_refs.
+
+  - target: {row_action: ask_human, needs_human: "yes", severity: "3"}
+    hint: Row is truncated, has contradictory fields, or a missing part number or quantity.
+    weight: 0.5

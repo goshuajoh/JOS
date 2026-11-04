@@ -1,0 +1,48 @@
+# Decision schema for the POS ingestion Classify gate.
+# One record ("state") = one distributor POS row plus the master-data snippet for it.
+# Every question is answered independently; each returns ONE option with a probability.
+#
+# kind:
+#   choice - pick one of N named options
+#   noul   - yes/no (options must be exactly "yes" and "no")
+#   score  - ordinal scale; option names must be integers as strings ("0".."4")
+# fallback: the option the gate returns when confidence is under the threshold.
+#
+# Option descriptions are fed to the model. Write them as tests a person could apply,
+# not as names. Edit freely; bump `version` whenever an option is added, removed or redefined.
+
+name: pos_row_gate
+version: 1
+description: Classify gate for distributor POS rows.
+
+questions:
+  - name: row_action
+    kind: choice
+    prompt: What should the pipeline do with this POS row?
+    fallback: ask_human
+    options:
+      commit: Row is clean and matches master data; commit as-is.
+      normalize: Values are right but formatted differently (dates, number separators, part-number spacing or case); normalize then commit.
+      vendor_rename: Reported customer name differs from master data but clearly refers to the same entity (abbreviation, legal suffix, rename).
+      pack_qty_issue: Quantity breaks the part's SPQ multiple or is below its MOQ.
+      compliance_review: Row involves a customer or country flagged as restricted in master data.
+      duplicate: Row repeats a line (same reference) already reported.
+      ask_human: Row is unreadable, contradictory, or fits none of the other options.
+
+  - name: needs_human
+    kind: noul
+    prompt: Must a person review this row before it is committed?
+    fallback: "yes"
+    options:
+      "yes": A person must review it.
+      "no": The pipeline can handle it without review.
+
+  - name: severity
+    kind: score
+    prompt: How much would committing this row unchanged distort the POS report?
+    options:
+      "0": No effect.
+      "1": Cosmetic only.
+      "2": Minor number drift for one line.
+      "3": Wrong totals for one customer or part.
+      "4": Wrong totals across the report, or a compliance exposure.

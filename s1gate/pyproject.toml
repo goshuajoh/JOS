@@ -1,0 +1,27 @@
+[project]
+name = "s1gate"
+version = "0.1.0"
+description = "System 1 decision gate: typed, calibrated classification for FSM workflows"
+requires-python = ">=3.10"
+dependencies = ["pydantic>=2.6", "pyyaml>=6", "numpy>=1.26"]
+
+[project.optional-dependencies]
+gliner = ["gliner2[local]>=2.1"]
+gliner-train = ["gliner2[train]>=2.1"]
+qwen = ["torch>=2.3", "transformers>=4.45", "peft>=0.12", "accelerate>=0.33"]
+synth = ["anthropic>=0.40", "openai>=1.40"]
+serve = ["fastapi>=0.110", "uvicorn>=0.29"]
+dev = ["pytest>=8"]
+
+[project.scripts]
+s1gate = "s1gate.cli:main"
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+include = ["s1gate*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
