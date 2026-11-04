@@ -16,11 +16,11 @@ from __future__ import annotations
 import html
 from collections import Counter
 
-import numpy as np
 
 from .calibrate import apply_calibration
-from .metrics import coverage_curve, evaluate_question, probs_matrix
+from .metrics import coverage_curve, evaluate_question
 from .schema import DecisionSchema
+from .thresholds import auto_mask, gate_view
 
 W, H, PAD = 360, 260, 40
 
@@ -83,19 +83,20 @@ def _reliability_svg(series: list[tuple[str, list[dict]]], min_count: int = 5) -
     return "".join(out) + "</svg>"
 
 
-def _coverage_svg(curve: list[dict], tau: float | None) -> str:
+def _coverage_svg(curve: list[dict], tau: float | None, at_tau: tuple[float, float | None] | None = None,
+                  ruled: bool = False) -> str:
     out = [f'<svg viewBox="0 0 {W} {H}" width="{W}" height="{H}" role="img" aria-label="coverage curve">',
            _axes("coverage: share decided without a person", "accuracy of auto-accepted rows")]
     if curve:
         step = max(1, len(curve) // 150)
         pts = curve[::step] + [curve[-1]]
         out.append('<polyline class="cal" points="' + " ".join(f"{_x(p['coverage']):.1f},{_y(p['accuracy']):.1f}" for p in pts) + '"/>')
-        if tau is not None and tau <= 1.0:
-            kept = [p for p in curve if p["tau"] >= tau]
-            if kept:
-                p = kept[-1]
-                out.append(f'<line class="tau" x1="{_x(p["coverage"]):.1f}" y1="{PAD}" x2="{_x(p["coverage"]):.1f}" y2="{H - PAD}"/>')
-                out.append(f'<text x="{_x(p["coverage"]) + 4:.1f}" y="{PAD + 12}">tau {tau:.2f}: {p["coverage"]:.0%} automated, {p["accuracy"]:.1%} right</text>')
+        if tau is not None and at_tau is not None:
+            cov, acc = at_tau  # computed with the gate's own test, rules included
+            what = f"{cov:.0%} automated" + (f", {acc:.1%} right" if acc is not None else "")
+            out.append(f'<line class="tau" x1="{_x(cov):.1f}" y1="{PAD}" x2="{_x(cov):.1f}" y2="{H - PAD}"/>')
+            out.append(f'<text x="{min(_x(cov) + 4, W - 200):.1f}" y="{PAD + 12}">'
+                       f'tau {min(tau, 1.0):.2f}{" + rules" if ruled else ""}: {what}</text>')
     return "".join(out) + "</svg>"
 
 
@@ -136,8 +137,8 @@ def _metrics_row(name: str, rep) -> str:
 
 def build_report(schema: DecisionSchema, preds: list[dict], temperatures: dict[str, float] | None = None,
                  biases: dict[str, dict[str, float]] | None = None, taus: dict[str, float] | None = None,
-                 title: str = "s1gate report", source: str = "") -> str:
-    temperatures, biases, taus = temperatures or {}, biases or {}, taus or {}
+                 title: str = "s1gate report", source: str = "", rules: dict[str, dict] | None = None) -> str:
+    temperatures, biases, taus, rules = temperatures or {}, biases or {}, taus or {}, rules or {}
     body = [f"<h1>{html.escape(title)}</h1>",
             f'<div class="muted">{html.escape(source)} · schema {schema.name} v{schema.version} '
             f'({schema.fingerprint()}) · {len(preds)} rows</div>']
@@ -151,9 +152,12 @@ def build_report(schema: DecisionSchema, preds: list[dict], temperatures: dict[s
         ordinal = q.kind == "score"
         r0 = evaluate_question(q.name, raw, golds, q.labels, ordinal)
         r1 = evaluate_question(q.name, cal, golds, q.labels, ordinal)
-        P = probs_matrix(cal, q.labels)
-        g = np.array([q.labels.index(x) for x in golds])
-        curve = coverage_curve(P.max(axis=1), (P.argmax(axis=1) == g).astype(float))
+        conf, tops, correct = gate_view(cal, golds)
+        curve = coverage_curve(conf, correct)
+        at_tau = None
+        if q.name in taus:
+            auto = auto_mask(conf, tops, taus[q.name], rules.get(q.name))
+            at_tau = (float(auto.mean()), float(correct[auto].mean()) if auto.any() else None)
         t = temperatures.get(q.name, 1.0)
         body.append(f"<h2>{html.escape(q.name)} <span class='muted'>({q.kind}, T={t:g}"
                     f"{', vector biases' if q.name in biases else ''}"
@@ -162,9 +166,9 @@ def build_report(schema: DecisionSchema, preds: list[dict], temperatures: dict[s
                     "<th>ECE</th><th>conf</th><th>MAE</th></tr>" + _metrics_row("raw", r0) +
                     _metrics_row("calibrated", r1) + "</table>")
         panels = [_reliability_svg([("raw", r0.reliability), ("cal", r1.reliability)]),
-                  _coverage_svg(curve, taus.get(q.name))]
+                  _coverage_svg(curve, taus.get(q.name), at_tau, bool(rules.get(q.name)))]
         if ordinal:
-            panels.append(_spread_svg(q.labels, Counter(golds), Counter(q.labels[i] for i in P.argmax(axis=1))))
+            panels.append(_spread_svg(q.labels, Counter(golds), Counter(tops)))
         body.append('<div class="row">' + "".join(f'<div class="card">{p}</div>' for p in panels) + "</div>")
         body.append(f'<div class="card" style="margin-top:12px;overflow-x:auto">{_confusion_html(r1.confusion)}</div>')
     return (f'<!doctype html><html lang="en"><head><meta charset="utf-8">'

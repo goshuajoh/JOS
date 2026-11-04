@@ -225,8 +225,8 @@ def cmd_split(args) -> int:
 
 def cmd_eval(args) -> int:
     from .calibrate import apply_calibration, load_biases, load_calibration
-    from .metrics import evaluate_question, top_and_correct
-    from .thresholds import load_rules, load_thresholds, pick_threshold
+    from .metrics import evaluate_question
+    from .thresholds import auto_mask, gate_view, load_rules, load_thresholds, pick_threshold
 
     schema = _schema(args)
     records = read_jsonl(args.data)
@@ -272,19 +272,17 @@ def cmd_eval(args) -> int:
         reports.append(evaluate_question(q.name, probs, golds, q.labels, ordinal=q.kind == "score"))
         if not rows:
             continue
-        conf, correct = top_and_correct(probs, golds, q.labels)
+        conf, tops, correct = gate_view(probs, golds)
         support = max(1, min(20, len(rows) // 4))
         extras[q.name] = {"coverage_at_in_sample": {  # tau fitted on these same rows: optimistic
             str(t): pick_threshold(conf, correct, t, support)["coverage"] for t in (0.9, 0.95, 0.97, 0.98, 0.99)}}
         if q.name in taus:
-            rule = rules.get(q.name, {})
-            tops = [max(pr, key=pr.get) for pr in probs]
-            auto = [i for i, (c, top) in enumerate(zip(conf, tops))
-                    if top not in rule.get("always_escalate", ()) and c >= rule.get("option_tau", {}).get(top, taus[q.name])]
+            auto = auto_mask(conf, tops, taus[q.name], rules.get(q.name))  # exactly the gate's test
+            n_auto = int(auto.sum())
             extras[q.name]["at_threshold"] = {
-                "tau": taus[q.name], "coverage": round(len(auto) / len(rows), 4),
-                "accuracy": round(float(sum(correct[i] for i in auto) / len(auto)), 4) if auto else None,
-                "auto_errors": int(sum(1 - correct[i] for i in auto))}
+                "tau": taus[q.name], "coverage": round(n_auto / len(rows), 4),
+                "accuracy": round(float(correct[auto].mean()), 4) if n_auto else None,
+                "auto_errors": int((1 - correct[auto]).sum())}
 
     p50 = statistics.median(latencies) if latencies else float("nan")
     p95 = _percentile(latencies, 95)
@@ -589,13 +587,13 @@ def cmd_thresholds(args) -> int:
 def cmd_report(args) -> int:
     from .calibrate import load_biases, load_calibration
     from .report import build_report
-    from .thresholds import load_thresholds
+    from .thresholds import load_rules, load_thresholds
 
     schema = _schema(args)
     preds = _read_preds(args.preds)
     page = build_report(schema, preds, load_calibration(args.calibration, schema),
                         load_biases(args.calibration, schema), load_thresholds(args.thresholds, schema),
-                        title=args.title, source=args.preds)
+                        title=args.title, source=args.preds, rules=load_rules(args.thresholds, schema))
     Path(args.out).parent.mkdir(parents=True, exist_ok=True)
     Path(args.out).write_text(page, encoding="utf-8")
     print(f"report -> {args.out}")

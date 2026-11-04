@@ -245,3 +245,81 @@ def test_mine_confusions_boosts_weights_and_drafts_pairs(tmp_path):
     out = tmp_path / "r2.yaml"
     out.write_text(yaml.safe_dump(new))
     Recipe.load(str(out))  # still a valid recipe
+
+
+# ---------------------------------------------------------------- regressions from the calibration review
+
+def _preds_rows(spec):
+    """spec: list of (probs dict, gold) -> prediction rows for question row_action."""
+    return [{"id": str(i), "probs": {"row_action": dict(p)}, "gold": {"row_action": g}} for i, (p, g) in enumerate(spec)]
+
+
+def _gate_accepts(probs_list, tau, rule):
+    g = _gate({}, thresholds={"row_action": tau}, rules={"row_action": rule} if rule else None)
+    out = []
+    for p in probs_list:
+        g.backend = Fixed({"row_action": p})
+        out.append(g.decide("x")["row_action"])
+    return out
+
+
+@pytest.mark.parametrize("seed", range(6))
+def test_stored_tau_is_exactly_what_the_gate_applies(seed):
+    from s1gate.thresholds import fit_all as fit_thresholds
+    rng = np.random.default_rng(seed)
+    s = DecisionSchema.load(SCHEMA)
+    opts = s.question("row_action").labels
+    spec = []
+    for _ in range(300):
+        top = opts[rng.integers(3)]
+        conf = float(np.round(rng.choice([0.177493, 0.5, 0.91, 0.99991, 0.99994, rng.uniform(0.3, 1.0)]), 6))
+        rest = (1 - conf) / (len(opts) - 1)
+        p = {o: (conf if o == top else rest) for o in opts}
+        gold = top if rng.random() < conf else opts[(opts.index(top) + 1) % len(opts)]
+        spec.append((p, gold))
+    rule = {"always_escalate": ["compliance_review"], "option_tau": {"normalize": 0.6}} if seed % 2 else None
+    res = fit_thresholds(s, _preds_rows(spec), {}, 0.9, min_support=10, rules={"row_action": rule} if rule else None)
+    info = res["thresholds"]["row_action"]
+    decided = _gate_accepts([p for p, _ in spec], info["tau"], rule)
+    auto = [d for d in decided if d.decided_by == "gate"]
+    assert len(auto) / len(spec) == pytest.approx(info["coverage"], abs=1e-4)
+    if auto and info["tau"] <= 1.0:
+        acc = sum(d.option == g for d, (_, g) in zip(decided, spec) if d.decided_by == "gate") / len(auto)
+        assert acc >= 0.9 - 1e-9 and acc == pytest.approx(info["accuracy_at_tau"], abs=1e-4)
+
+
+def test_tau_fitting_respects_always_escalate():
+    from s1gate.thresholds import fit_all as fit_thresholds
+    s = DecisionSchema.load(SCHEMA)
+    spec = ([({"compliance_review": 0.99, "commit": 0.01}, "compliance_review")] * 50
+            + [({"commit": 0.9, "normalize": 0.1}, "commit")] * 45 + [({"commit": 0.9, "normalize": 0.1}, "normalize")] * 5)
+    res = fit_thresholds(s, _preds_rows(spec), {}, 0.95, min_support=20,
+                         rules={"row_action": {"always_escalate": ["compliance_review"]}})
+    info = res["thresholds"]["row_action"]
+    assert info["tau"] == NEVER and info["coverage"] == 0.0  # the commit rows alone are only 90% right
+
+
+def test_frontier_cannot_bypass_always_escalate():
+    unsure = {"row_action": {"commit": 0.5, "vendor_rename": 0.5}}
+    frontier = Fixed({"row_action": {"vendor_rename": 0.95, "commit": 0.05}})
+    g = _gate(unsure, thresholds={"row_action": 0.9}, escalator=frontier,
+              rules={"row_action": {"always_escalate": ["vendor_rename"]}})
+    d = g.decide("x")["row_action"]
+    assert d.decided_by == "rule" and d.option == "ask_human"
+
+
+def test_coverage_mode_exact_count_and_reachable_curve():
+    from s1gate.metrics import coverage_curve
+    c = np.linspace(1, 0.5, 100)
+    for p in (7, 14, 28, 55, 56):
+        assert pick_for_coverage(c, np.ones(100), p / 100)["coverage"] == p / 100
+    tied = np.array([0.4] * 10 + [0.9] * 5)
+    curve = coverage_curve(tied, np.ones(15))
+    assert [round(x["coverage"], 4) for x in curve] == [round(5 / 15, 4), 1.0]
+
+
+def test_report_caption_applies_rules():
+    s = DecisionSchema.load(SCHEMA)
+    preds = _preds_rows([({"commit": 0.9, "normalize": 0.1}, "commit")] * 30)
+    page = build_report(s, preds, taus={"row_action": 0.5}, rules={"row_action": {"always_escalate": ["commit"]}})
+    assert "0% automated" in page and "+ rules" in page

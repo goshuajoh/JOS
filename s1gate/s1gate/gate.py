@@ -114,6 +114,9 @@ class Gate:
             if not probs:
                 continue
             top = max(probs, key=probs.get)
+            if top in self.rules.get(d.question, {}).get("always_escalate", ()):
+                d.decided_by = "rule"  # a person sees these whoever answered: keep the fallback
+                continue
             if top in self.schema.question(d.question).options and probs[top] >= self.escalator_min_confidence:
                 d.option, d.decided_by = top, "frontier"
 

@@ -54,13 +54,17 @@ def reliability_bins(conf: np.ndarray, correct: np.ndarray, bins: int = 10) -> l
 
 
 def coverage_curve(conf: np.ndarray, correct: np.ndarray) -> list[dict]:
-    """For each cut-off (highest confidence first): share auto-accepted and its accuracy."""
+    """For each reachable cut-off (highest confidence first): share auto-accepted and its accuracy.
+
+    A cut-off keeps every row with confidence >= tau, so points inside a group of tied
+    confidences cannot be produced by any tau; only the end of each tie group is reported.
+    """
     order = np.argsort(-conf, kind="stable")
     c, ok = conf[order], correct[order]
     cum_ok = np.cumsum(ok)
     n = len(c)
     return [{"tau": float(c[k - 1]), "coverage": k / n, "accuracy": float(cum_ok[k - 1] / k)}
-            for k in range(1, n + 1)]
+            for k in range(1, n + 1) if k == n or c[k] != c[k - 1]]
 
 
 def macro_f1(gold: np.ndarray, pred: np.ndarray, k: int) -> float:
