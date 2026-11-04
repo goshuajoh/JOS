@@ -58,6 +58,9 @@ There is nothing to ingest. The pipeline skips it. Types:
 * **subtotal**: a sum over one customer or part (`part=SUBTOTAL`, `customer=Total Acme Controls`, qty is a sum, ref empty or `SUBTOTAL`)
 * **grand total**: a sum over the whole report (`customer=GRAND TOTAL`, `Report total`)
 
+Totals and notes count in any language: `TOTAL GENERAL`, `GENEL TOPLAM`, `Gesamtsumme` and
+`ARA TOPLAM` (subtotal) are total lines just as their English forms are.
+
 Master lookups usually fail on these rows (`customer=unknown; spq=?; moq=?`). That doesn't make them `ask_human`, because rule 2 comes before rule 3.
 
 Near miss: a row with *some* sales content (a qty and a ref, a real part) but missing other
@@ -69,7 +72,7 @@ Any one of these is enough:
 
 * **missing**: customer, part, qty, unit_price, ref, period or country is empty
 * **impossible**: qty zero, negative, fractional (`1.5`, `2,75`) or non-numeric (`see attachment`); price zero, negative or non-numeric (`TBD`); month `13` or `00`; a period that is not a month (`Q3 2026`, `FY26`, `2026`)
-* **contradictory or garbled**: two part numbers, two quantities (`1000/1200`), a note in a value field, a value cut off mid-way
+* **contradictory or garbled**: two part numbers, two quantities (`1000/1200`), a note in a value field in any language (`ref=see email`, `ref=ver nota: pago pendiente`), a value cut off mid-way with or without `…` (`customer=Medisonda Tijuana S. de R.L. d`, `unit_price=1.9…`)
 * **lookup failed**: master `customer=unknown`, `spq=?` or `moq=?` on an otherwise normal sales line
 * **nothing else fits**: e.g. a return or credit line
 
@@ -90,7 +93,8 @@ Any one of these is enough:
 
 * `.` or `,` followed by exactly three digits is a thousands separator: `1.000` = `1,000` = `1 000` = 1000. Indian grouping `1,00,000` = 100000.
 * Trailing zero decimals are fine: `1000.00` = `1.000,00` = 1000.
-* Units and suffixes are formatting: `4000pcs`, `4,000 EA`, `2.5k` (= 2500).
+* Units and suffixes are formatting: `4000pcs`, `4,000 EA`, `1.000 Stk.`, `1,000 Nos.`, `2.5k` (= 2500).
+* Indian grouping may carry zero decimals too: `1,00,000.00` = 100000.
 * Any other fractional qty (`1.5`, `2,75`) is impossible, so the row is `ask_human`.
 
 ### 2.6 `vendor_rename`: the customer name differs from master by more than formatting
@@ -107,7 +111,7 @@ At least one value is not in canonical form, *and* the value is right once norma
 
 * period: `30.09.2026`, `Sep-26`, `2026/09`, `09/2026`, `2026-9`, `September 2026`, `2026-09-30`
 * qty: separators, units or spaces, as in 2.5. The normalized qty must still pass SPQ and MOQ.
-* unit_price: a decimal comma (`2,31`), lower case (`usd`), a symbol (`$2.31`), the currency first (`USD 2.31`)
+* unit_price: a decimal comma (`2,31`), lower case (`usd`), a symbol or word for the currency (`$2.31`, `2,31 Euro`, `41,90 TL`, `Rs. 105`), the currency first (`USD 2.31`), spaces or apostrophes between thousands (`5 220,00 HUF`)
 * part: lower or mixed case, spaces instead of hyphens, missing hyphens (`wm-s3-n8r8`, `WM S3 N8R8`)
 * country: lower case (`pl`) or the full name (`Poland`)
 * customer: different **only** in case, spacing, punctuation or accents (`ACME CONTROLS LTD`, `Acme Controls Ltd.`, `Vega Beyaz Eşya A.Ş.` vs `Vega Beyaz Esya A.S.`)
@@ -118,10 +122,13 @@ At least one value is not in canonical form, *and* the value is right once norma
 Every value is present and canonical, the customer is identical to master, qty passes SPQ and
 MOQ, the ref is not in `seen_refs`, and `restricted=no`.
 
+A customer whose real name contains words like `Total`, `Check` or `TBC` (`Total Power
+Solutions Ltd`, `Check Point Systems`) is still a customer. Read the row, not the word.
+
 These are **not** problems. Don't flag them:
 
 * any upper-case currency code (`EUR`, `TRY`, `INR`, `SGD`, ...)
-* any country code, since only the master flag matters for compliance
+* any country code, since only the master flag matters for compliance (`NA` is Namibia, not "n/a")
 * the price level, because master has no price to compare against
 * `seen_refs` listing *other* refs
 * a qty far above MOQ
