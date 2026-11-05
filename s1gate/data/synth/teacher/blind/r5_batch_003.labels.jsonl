@@ -1,0 +1,127 @@
+{"id": "bfcd758d849", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "part trailing space, price decimal comma; qty 1500 passes spq/moq 500"}
+{"id": "b8fa80fc11b", "row_action": "vendor_rename", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "completely different customer name vs master -> uncertain rename"}
+{"id": "b72c90c8631", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "same words reordered vs master -> clear rename; ref differs from seen refs"}
+{"id": "b8019e97366", "row_action": "vendor_rename", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "completely different customer name vs master -> uncertain rename"}
+{"id": "b8351f440ac", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "legal suffix Sp. z o.o. dropped -> clear rename; qty 9.000,00=9000 passes"}
+{"id": "bd0f05defe9", "row_action": "vendor_rename", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "shares only one distinctive word (Malqaf) -> uncertain rename"}
+{"id": "b6f6f362ad6", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "legal suffix ApS -> Ltd. -> clear rename"}
+{"id": "bab04adcb1b", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "INSTR. abbreviation of Instruments -> clear rename; period also non-canonical"}
+{"id": "b47a95fd883", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "part lower case, qty 10,000 pcs=10000 passes"}
+{"id": "b1c4c1cf7e0", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "qty 0.5 K = 500 passes spq/moq 500; price $ symbol"}
+{"id": "b934a54853a", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "qty separator, currency first"}
+{"id": "b52f2c1280f", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "country Tr, part spaces"}
+{"id": "b067c7266fd", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "period dd.mm.yyyy, qty separator"}
+{"id": "b49d11db58d", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "dropped word Systems -> clear rename"}
+{"id": "b8026019ee9", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "part lower case, qty 5K"}
+{"id": "ba3123251a1", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "part lower case, qty 5.000 pcs"}
+{"id": "b46cdb81005", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "customer case only, part spaces, currency first"}
+{"id": "b278db1e4c9", "row_action": "vendor_rename", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "completely different customer name -> uncertain rename"}
+{"id": "bb5f7fb7789", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "Sist. abbreviation -> clear rename; period May 2026"}
+{"id": "b3dff252a78", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "country lower case, price decimal comma"}
+{"id": "b5c4f6c2f22", "row_action": "vendor_rename", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "customer names a branch (Springfield Service Center) of master -> uncertain rename"}
+{"id": "b5ecd25920a", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "legal form AS spelled out as Aktsiaselts -> clear rename; period July 2026"}
+{"id": "b7c5ce14993", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "Kont. abbreviation of Kontrol -> clear rename; stray spaces in part/qty"}
+{"id": "b8bcea2a6a7", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "typo Kisok vs Kiosk -> clear rename"}
+{"id": "b2f9c26b9df", "row_action": "vendor_rename", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "shares only one distinctive word (Sawtooth) -> uncertain rename"}
+{"id": "bcdc271d62e", "row_action": "vendor_rename", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "Azerbaijan MMC entity vs Turkish Ltd. Sti. master -> subsidiary, uncertain rename"}
+{"id": "b199b77a5b3", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "period 2026-3, qty 2.000=2000, price decimal comma"}
+{"id": "bbe6f91ddd2", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "added generic word Rendszerek -> clear rename"}
+{"id": "bf0bd071d5a", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "customer double space only, price 1,29 lei"}
+{"id": "bd723d24ce9", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "period 9/2026, part missing hyphen, price US$"}
+{"id": "b6cc039177e", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "typo Enerijsi vs Enerjisi -> clear rename"}
+{"id": "b7e7b1f2759", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "typo Yonezwa vs Yonezawa -> clear rename"}
+{"id": "b9c3c2ea8bc", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "part missing hyphens, qty 120 EA, price decimal comma"}
+{"id": "b28319f96c1", "row_action": "vendor_rename", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "customer is Ankara branch (Subesi) of master -> uncertain rename"}
+{"id": "b0ccd978418", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "country Bharat = IN, part lower case"}
+{"id": "be75399c7a1", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "legal suffix S.A.P.I. de C.V. -> S.A. de C.V. -> clear rename"}
+{"id": "b8b3dad2247", "row_action": "vendor_rename", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "shares only one distinctive word (Changwon) -> uncertain rename"}
+{"id": "b6fc366799d", "row_action": "vendor_rename", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "shares only place word Oita -> uncertain rename"}
+{"id": "bcc0926831b", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "period Mayo 2026, part lower case, qty 700 u"}
+{"id": "bd34aac616d", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "Co. Ltd. spelled out Company Limited -> clear rename; period 2026-6"}
+{"id": "b89d8786a65", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "legal form UAB moved to the front -> different string, clear rename"}
+{"id": "beae691e7d0", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "customer WLL vs W.L.L. punctuation only; period 08/2026; part spaces"}
+{"id": "b15766f25d8", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "dropped generic word Company -> clear rename"}
+{"id": "b6a5c0b12d8", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "qty 24.000=24000, price US$ 0,74"}
+{"id": "bbe61d92138", "row_action": "vendor_rename", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "completely different customer name -> uncertain rename"}
+{"id": "b0250a4aa3a", "row_action": "vendor_rename", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "completely different customer name -> uncertain rename"}
+{"id": "bdc7cb99171", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "translated legal form d.o.o. -> LLC -> clear rename"}
+{"id": "b4772cfc404", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "Youxian Gongsi = Co., Ltd. translated legal form -> clear rename"}
+{"id": "bae08d595e7", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "country tr, part missing hyphens, qty 1500.00, currency first"}
+{"id": "b2fe066fca9", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "period FEBRERO 2026, part lower case, qty 20 pcs"}
+{"id": "b26406ac2b7", "row_action": "vendor_rename", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "shares only one distinctive word (Dofek) -> uncertain rename"}
+{"id": "b58d3e176d3", "row_action": "vendor_rename", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "shares only one distinctive word (Basira) -> uncertain rename"}
+{"id": "b32e6fd6d1f", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "customer missing final dot only, part spaces, qty 750 pcs"}
+{"id": "b68b9960c46", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "part lower case, qty 2,500"}
+{"id": "b8830fbf4ea", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "typo Fram vs Farm -> clear rename"}
+{"id": "b5fe536c39b", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "period Noviembre 2025, country Colombia, qty 10.000"}
+{"id": "b32edcfb20a", "row_action": "vendor_rename", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "UK Ltd entity vs Turkish A.S. master -> subsidiary, uncertain rename"}
+{"id": "b47b7b0ae8c", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "period 02/2026, part missing hyphens, price decimal comma"}
+{"id": "b932ca5867f", "row_action": "vendor_rename", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "completely different name (possible parent holding) -> uncertain rename"}
+{"id": "b3589f8166e", "row_action": "vendor_rename", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "shares only one distinctive word (Rimon) -> uncertain rename; qty 5200 passes spq 650/moq 1300"}
+{"id": "b28e86c7a43", "row_action": "vendor_rename", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "completely different name (possible parent holding) -> uncertain rename"}
+{"id": "bcd74f6f2c3", "row_action": "vendor_rename", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "regional entity Kyushu Co., Ltd. vs master Inc. -> subsidiary, uncertain rename"}
+{"id": "b78f09a4159", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "customer missing comma only, part lower case, currency first"}
+{"id": "ba64d2dde11", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "medium", "note": "name translated (Marineelektronik -> Marine Electronics); same entity, judged clear rename"}
+{"id": "b3077f82d6f", "row_action": "vendor_rename", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "(Pacific) regional entity of master -> subsidiary, uncertain rename"}
+{"id": "b711aff7748", "row_action": "vendor_rename", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "completely different customer name -> uncertain rename"}
+{"id": "b6ac8ef8b91", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "period Agosto 2026, country pe, qty 2,600 pcs passes spq 650/moq 1300"}
+{"id": "bc8f52a09b1", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "customer Sti. vs Şti. accents only, period 2026-4, qty 10.000, decimal comma"}
+{"id": "b10d7c7ca3a", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "part mixed case, price $ symbol"}
+{"id": "b867baf3d19", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "period Jul-26, part lower case, currency first"}
+{"id": "bf5664e4f2d", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "country IND (alpha-3) -> IN, part lower case"}
+{"id": "bf9dfe9ab2a", "row_action": "vendor_rename", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "completely different customer name -> uncertain rename"}
+{"id": "b08e628b409", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "period 05/2026, customer trailing space, part mixed case, qty 4.500"}
+{"id": "b679fcace2c", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "country Viet Nam, price decimal comma"}
+{"id": "b15fc702dcd", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "country indonesia, price decimal comma"}
+{"id": "b938c024d1a", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "typo Lightning vs Lighting -> clear rename"}
+{"id": "b2f77d6ae7e", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "customer FZ LLC vs FZ-LLC punctuation only, period Jul-26, part spaces"}
+{"id": "beb25d34329", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "period 2026/02, part lower case, currency first"}
+{"id": "b060d284bc4", "row_action": "vendor_rename", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "Singapore Pte Ltd entity vs Malaysian Sdn Bhd master -> subsidiary, uncertain rename"}
+{"id": "bbf272881c4", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "customer upper case + trailing space only, part leading space"}
+{"id": "b3d78438910", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "part lower case, price usd lower case and currency first"}
+{"id": "bd7ebe9e52b", "row_action": "vendor_rename", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "completely different customer name -> uncertain rename"}
+{"id": "b43ae8aff4f", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "typo Tehc vs Tech -> clear rename"}
+{"id": "bc7db818e08", "row_action": "vendor_rename", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "customer is Sundsvall office (kontor) of master -> branch, uncertain rename"}
+{"id": "b4e26ab7ddd", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "translated legal form Ltd. -> Ltée -> clear rename"}
+{"id": "b8e5d8fe1ba", "row_action": "vendor_rename", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "shares only one distinctive word (Quayside) -> uncertain rename"}
+{"id": "bef0029c2b5", "row_action": "vendor_rename", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "completely different customer name -> uncertain rename"}
+{"id": "b6ac00b68b0", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "typo Noraebnag vs Noraebang -> clear rename"}
+{"id": "bf1ce90646a", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "typo Inspecton vs Inspection -> clear rename"}
+{"id": "b5b392eacd7", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "typo Kizilrmak vs Kizilirmak (letter missing) -> clear rename"}
+{"id": "b0dc941b375", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "same words reordered vs master -> clear rename"}
+{"id": "b41efe5598b", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "qty 17.500=17500 passes, price decimal comma"}
+{"id": "b4333ff977a", "row_action": "vendor_rename", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "shares only one distinctive word (Saqr) -> uncertain rename"}
+{"id": "b0e51bf049a", "row_action": "vendor_rename", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "completely different customer name -> uncertain rename"}
+{"id": "b13deb347e4", "row_action": "vendor_rename", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "customer names Memphis Distribution Center of master -> branch, uncertain rename"}
+{"id": "b9673ff8650", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "added generic word Systems -> clear rename"}
+{"id": "baec213cb48", "row_action": "vendor_rename", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "Canada entity of master -> subsidiary, uncertain rename"}
+{"id": "b890922e22b", "row_action": "vendor_rename", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "completely different name (possible parent Groupe) -> uncertain rename"}
+{"id": "b5f324b26b8", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "legal suffix Kft. dropped -> clear rename; period October 2025"}
+{"id": "ba95cda702c", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "period 31.08.2026, qty 1 000"}
+{"id": "b42505dbe9f", "row_action": "vendor_rename", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "completely different customer name -> uncertain rename"}
+{"id": "b971f02c992", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "stray spaces in customer, part and ref only"}
+{"id": "b820891ccca", "row_action": "vendor_rename", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "Hytteverket Gruppen (group) vs Hytteverket Smarthus -> one shared word, uncertain rename"}
+{"id": "b2a5eb802f5", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "same words reordered vs master -> clear rename"}
+{"id": "bbef7c62f21", "row_action": "vendor_rename", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "completely different name (possible parent holding) -> uncertain rename"}
+{"id": "bcfb3e409c6", "row_action": "vendor_rename", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "customer is Antalya regional office (Bolge Ofisi) -> branch, uncertain rename"}
+{"id": "b930f62c223", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "country Singapore, price decimal comma"}
+{"id": "b9226d7b4d3", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "qty 35.000=35000 passes, price decimal comma"}
+{"id": "bcbaf909485", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "customer double space only, part lower case, price decimal comma"}
+{"id": "b0d07ac34d6", "row_action": "vendor_rename", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "Eesti OU entity vs Finnish Oy master -> subsidiary, uncertain rename"}
+{"id": "ba074cc3693", "row_action": "vendor_rename", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "completely different name (possible parent/acquirer) -> uncertain rename"}
+{"id": "b47ddcaf989", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "translated legal form OOD -> Ltd. -> clear rename"}
+{"id": "baaeef9e357", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "added generic word Industrial -> clear rename"}
+{"id": "b0789a79c6a", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "qty 60 000 = 60000 passes spq/moq 4000"}
+{"id": "bed8842e310", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "typo Mechatornics vs Mechatronics -> clear rename"}
+{"id": "bb185c759a8", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "translated legal form Oyj -> Plc -> clear rename"}
+{"id": "b8ac662aec3", "row_action": "vendor_rename", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "shares only one distinctive word (Kurobe) -> uncertain rename"}
+{"id": "b02e3fde4fa", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "period MAYO 2026, country MEXICO, qty 2.5k=2500 passes"}
+{"id": "b2a9a51522e", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "part missing hyphens, qty 75 units, price decimal comma"}
+{"id": "bbcf437f89b", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "typo Nekomini vs Nekomimi -> clear rename"}
+{"id": "b98ec55e53d", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "part missing hyphens, qty 250,00 = 250 (zero decimals) passes, price decimal comma"}
+{"id": "b9d731d9aba", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "customer upper case only, period 2026-1, price symbol and decimal comma"}
+{"id": "b8374443c65", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "typo Codng vs Coding -> clear rename"}
+{"id": "ba0d5c9e14a", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "country ph, price decimal comma"}
+{"id": "b43f873dca0", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "Co. spelled out as Company -> legal suffix change, clear rename; period 2025-9"}
+{"id": "bf4c1747bfc", "row_action": "vendor_rename", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "shares only one distinctive word (Strajer) -> uncertain rename"}
+{"id": "bc9116b9234", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "typo Powr vs Power -> clear rename"}

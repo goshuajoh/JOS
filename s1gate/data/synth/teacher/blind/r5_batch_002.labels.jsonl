@@ -1,0 +1,135 @@
+{"id": "bb1ae70418b", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "LLC vs L.L.C. punctuation only; part spaces; qty 300 pcs passes"}
+{"id": "b6d32f2e38b", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "qty '48 000' space separator; passes SPQ/MOQ"}
+{"id": "b6f9bed5aa2", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "period with day; customer trailing space; part spaces"}
+{"id": "b8a45b405f0", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "part missing hyphens; qty unit; decimal comma price"}
+{"id": "b9d3adbc899", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "Spanish month period; country full name; qty 6,000.00"}
+{"id": "bedf3c8c65d", "row_action": "vendor_rename", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "completely different name vs master -> uncertain rename"}
+{"id": "b34ec6d7511", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "part lower case; US$ price"}
+{"id": "b0e372d6480", "row_action": "vendor_rename", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "shares only 'Fiskalia' with master -> uncertain rename"}
+{"id": "b2ff12d769b", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "Medisence vs Medisense typo -> clear rename"}
+{"id": "be2e8045ba4", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "period 2026-8; part spaces; decimal comma"}
+{"id": "b8a49d254e7", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "country full name; decimal comma price"}
+{"id": "b188be00d4a", "row_action": "vendor_rename", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "completely different name vs master -> uncertain rename"}
+{"id": "bb012879609", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "period 08/2026; Co.,Ltd. spacing; part case; qty 3,500 pcs"}
+{"id": "beb6331c5bc", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "Ctrls abbreviation of Controls -> clear rename (beats period format)"}
+{"id": "b01440c081c", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "part missing hyphens; qty unit; decimal comma"}
+{"id": "b0e15cb0cee", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "customer trailing space; part case; US$ price"}
+{"id": "b8132c1c40b", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "Spanish month period; qty pcs; currency first"}
+{"id": "b3829ffa4f5", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "Manufatkur transposed letters -> clear rename"}
+{"id": "b10fa17b45c", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "period dd.mm.yyyy; qty 2,250 passes"}
+{"id": "b7b70889a92", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "customer case only; part case; currency first"}
+{"id": "b75eb91c3d7", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "extra generic word 'Equipment', other words identical -> clear rename"}
+{"id": "b9689a6d44b", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "medium", "note": "word order swapped (Alesund Skipsradio vs Skipsradio Alesund); guide lists only case/spacing/punctuation/accents as formatting, so clear rename - word order not explicitly covered"}
+{"id": "b1e8b271e05", "row_action": "vendor_rename", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "'(Malaysia) Sdn Bhd' vs 'Pte Ltd' points to a subsidiary -> uncertain rename"}
+{"id": "bde916cc4fe", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "'Sist.' abbreviates 'Sistemleri' -> clear rename; double space in price is format only"}
+{"id": "bc2309746f0", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "Sejatera vs Sejahtera typo -> clear rename"}
+{"id": "be836cb5180", "row_action": "vendor_rename", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "'Kayseri Fabrikasi' (plant) instead of A.S. points to a branch -> uncertain rename"}
+{"id": "bfdfb62d1b7", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "stray spaces in period, customer, part"}
+{"id": "b5b4113dcf3", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "stray spaces in period, customer, qty"}
+{"id": "b409cdaa1b0", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "'spol. s r.o.' vs 's.r.o.' legal form variant -> clear rename; qty 3500.00 ok"}
+{"id": "bc0e675df56", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "'Pwr' abbreviates 'Power' -> clear rename"}
+{"id": "bca1150dfaa", "row_action": "vendor_rename", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "shares only 'Kempische' with master -> uncertain rename"}
+{"id": "be3459a5c91", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "Electronic vs Electronics typo -> clear rename"}
+{"id": "bd86dabf764", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "period dd/mm/yyyy; customer case only; part spaces"}
+{"id": "b66a01b1a91", "row_action": "vendor_rename", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "completely different name vs master -> uncertain rename"}
+{"id": "b4534179997", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "part lower case; price currency-first decimal comma; ref leading space"}
+{"id": "bfcacc75097", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "customer case only; part spaces; qty unit"}
+{"id": "be0b926f1ff", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "qty '15 000' space separator; passes"}
+{"id": "b12c776dcea", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "'Hosp.' abbreviates 'Hospitalar' -> clear rename"}
+{"id": "b08ed692764", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "part mixed case; currency first"}
+{"id": "b9a1b72883c", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "dropped article 'Les' -> clear rename"}
+{"id": "bb2b9febb14", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "part lower case; qty pcs; US$ price"}
+{"id": "bebf9cd7fa3", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "country full name; decimal comma price"}
+{"id": "b123dae381c", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "dropped generic word 'Industrial' -> clear rename"}
+{"id": "b38e62fda0c", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "Spanish month period; customer accent only; extra trailing space in ref"}
+{"id": "bb8c032078c", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "Meterng vs Metering typo -> clear rename"}
+{"id": "b3a066503f6", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "period mm/yyyy; part missing hyphens; currency first"}
+{"id": "b8615c22f4b", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "dropped 'San. ve Tic.' from legal name -> clear rename; country leading space"}
+{"id": "be3ebaa1a08", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "Accoustics vs Acoustics typo -> clear rename"}
+{"id": "b8ad33777f6", "row_action": "vendor_rename", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "'AgriVantage Holdings' vs 'Cumberland Poultry Systems' completely different (possible parent) -> uncertain"}
+{"id": "beb4db7c2bb", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "Guvenlk vs Guvenlik typo -> clear rename"}
+{"id": "b1d3af9ef74", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "Kiesoku vs Keisoku transposed letters -> clear rename"}
+{"id": "b1cf6b0ea8f", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "Elektronik vs Elektronigi word-form variant (beyond accents) -> clear rename"}
+{"id": "bf3074b0b4e", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "'Zrt.' written out in full -> legal form change, clear rename"}
+{"id": "bc3ee2349ea", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "period dd.mm.yyyy; qty 1,040 thousands separator passes"}
+{"id": "bd62631230b", "row_action": "vendor_rename", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "completely different name vs master -> uncertain rename"}
+{"id": "b1c79878b4e", "row_action": "vendor_rename", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "completely different name vs master -> uncertain rename"}
+{"id": "b8963ac1986", "row_action": "vendor_rename", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "shares only 'Tinkerwell' (Joinery vs Toys) -> uncertain rename"}
+{"id": "b80a9e27215", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "qty trailing space; euro symbol price"}
+{"id": "b0dd7060d33", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "medium", "note": "legal form 'AB' moved to front, same words; beyond case/spacing/punctuation/accents so clear rename - word order not explicitly covered"}
+{"id": "bac124a9ae3", "row_action": "vendor_rename", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "shares only 'Sabarmati' (Steel Structures vs Elevator Controls) -> uncertain rename"}
+{"id": "b4a6b85bcde", "row_action": "vendor_rename", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "completely different name (possible parent group) -> uncertain rename"}
+{"id": "bfad233194d", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "'San. ve Tic.' written out in full -> clear rename; ref leading space"}
+{"id": "b176ab2d588", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "'Ctrl' abbreviates 'Controls' -> clear rename"}
+{"id": "b8f346b12f2", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "period Jan-26; 'Ltd.Sti.' spacing only; part missing hyphen"}
+{"id": "bcd4efc4bc2", "row_action": "vendor_rename", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "shares only 'Odenwald' (Holzbau vs E-Bike Antriebe) -> uncertain rename"}
+{"id": "b1c1b82cf9a", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "customer leading space; part missing hyphens; qty 5,000 EA"}
+{"id": "bb40e66c2c4", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "country 'turkey' full name; part spaces"}
+{"id": "b6a313b3e4c", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "period with day; part missing hyphens; qty '8 000'"}
+{"id": "ba46d2dcfdc", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "customer leading space; price currency-first decimal comma"}
+{"id": "b4214ea2da7", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "period leading space; decimal comma price"}
+{"id": "b5a7900cf76", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "part mixed case; qty 1,000.00 passes MOQ 1000"}
+{"id": "b40a00a1f5f", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "legal suffix S.A.E. dropped -> clear rename"}
+{"id": "b8fef7df146", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "Singage vs Signage transposed letters -> clear rename"}
+{"id": "b33ce76e20a", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "Ltd -> Limited -> clear rename; IL with restricted=no is not compliance"}
+{"id": "bad233c05c2", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "Spanish month period; SAS vs S.A.S. punctuation; part lower case"}
+{"id": "bfa3352ed3a", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "extra word 'Scientific', other words identical -> clear rename"}
+{"id": "bbcc1d5d00b", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "'Sis.' abbreviates 'Sistemleri' -> clear rename; price leading space"}
+{"id": "b3d97da9905", "row_action": "vendor_rename", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "shares only 'Plzenske' (stavby vs hracky) -> uncertain rename"}
+{"id": "bbaddb34e54", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "Laboratroy transposed letters -> clear rename"}
+{"id": "b12f6683221", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "'Sist.' abbreviates 'Sistemos' -> clear rename"}
+{"id": "bd74e509166", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "Spanish month period; country lower case; qty 8.000 = 8000 passes"}
+{"id": "b968ba6a85f", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "legal suffix LLC dropped -> clear rename"}
+{"id": "bf55d3781e3", "row_action": "vendor_rename", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "completely different name (possible parent holding) -> uncertain rename"}
+{"id": "b05b3d8cb78", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "dropped generic word 'Systems' -> clear rename"}
+{"id": "be11ef94486", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "part missing hyphens; qty 0.3k = 300 passes"}
+{"id": "b37696bc775", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "'Ind.' abbreviates 'Industriale' (plus accent) -> clear rename"}
+{"id": "b4ccf4b8a86", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "country full name; part spaces"}
+{"id": "be533a93f8e", "row_action": "vendor_rename", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "'Cawangan Johor Bahru' = branch -> uncertain rename"}
+{"id": "bc9c5d38a19", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "part lower case; currency lower case"}
+{"id": "b357fed8a36", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "country lower case; part spaces"}
+{"id": "b24c1159ab2", "row_action": "vendor_rename", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "'Chile SpA' vs 'AS' points to a subsidiary -> uncertain rename"}
+{"id": "b2cfe93b783", "row_action": "vendor_rename", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "completely different name (possible parent group) -> uncertain rename"}
+{"id": "bc8c4defc9d", "row_action": "vendor_rename", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "completely different name (possible parent holding) -> uncertain rename"}
+{"id": "bc64d48cd90", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "qty 50,000 separator; currency lower case"}
+{"id": "b2c7502bbf2", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "Robtics vs Robotics typo -> clear rename"}
+{"id": "b522cddd2cd", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "qty '18 000' space separator; passes"}
+{"id": "b38ea309e5f", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "Doorlok vs Doorlock typo -> clear rename"}
+{"id": "b3eb943eebe", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "medium", "note": "same words reordered (Kranjc moved to front); beyond case/spacing/punctuation/accents so clear rename - word order not explicitly covered"}
+{"id": "bf0abcb6c6e", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "part missing hyphens; qty units; decimal comma"}
+{"id": "b32ead6b5bb", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "customer double space; currency first"}
+{"id": "baffd17e4ab", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "country 'TURKIYE' full name; part spaces"}
+{"id": "b2a7a72b8ec", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "legal suffix S.A.C. dropped -> clear rename"}
+{"id": "b29b1f6861b", "row_action": "vendor_rename", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "completely different name vs master -> uncertain rename"}
+{"id": "bfb24f330df", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "period dd/mm/yyyy; part spaces; currency lower case"}
+{"id": "bac66461ad7", "row_action": "vendor_rename", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "shares only 'Halmi' with master -> uncertain rename"}
+{"id": "b297e074a7e", "row_action": "vendor_rename", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "shares only 'Bijlee' (Switchgear vs EV Infra) -> uncertain rename"}
+{"id": "b8814925471", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "Sensortec vs Sensortek typo -> clear rename"}
+{"id": "bc109c0be1b", "row_action": "vendor_rename", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "shares only 'Quillfeather' (Publishing vs Toys) -> uncertain rename"}
+{"id": "bd3d0408eeb", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "period 2026-9; customer accents only; qty 3.000 = 3000; decimal comma"}
+{"id": "b54ca76a5d5", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "'Tech' abbreviates 'Technologies' -> clear rename"}
+{"id": "bf53202f574", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "customer case only; part missing hyphen; qty pcs passes"}
+{"id": "b19328ea23b", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "stray spaces in qty, price, ref"}
+{"id": "bcc17501f7e", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "stray spaces in country, qty, price"}
+{"id": "b203ca0ade0", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "Senors vs Sensors typo -> clear rename"}
+{"id": "be2001d3e95", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "period mm/yyyy; customer case only; part mixed case"}
+{"id": "b97a00bebf9", "row_action": "vendor_rename", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "shares only 'Yokneam' (Plastics vs Motion Control) -> uncertain; IL restricted=no not compliance"}
+{"id": "b6438d2ddfc", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "Spanish month period; country 'Peru' full name; qty 2,000"}
+{"id": "b62dd972617", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "part lower case; qty 1,250pcs passes"}
+{"id": "b5000a16c19", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "country 'india' full name; part lower case"}
+{"id": "b0d33a58358", "row_action": "vendor_rename", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "shares only 'Rila' (Tours vs Robotika) -> uncertain rename"}
+{"id": "be163e609f4", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "customer case only; part lower case; currency first"}
+{"id": "b39889b3c73", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "Amusment vs Amusement typo -> clear rename"}
+{"id": "bfed10144e1", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "extra generic word 'Co.' -> clear rename"}
+{"id": "bb99f0081cf", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "Oy translated to Ltd -> clear rename"}
+{"id": "b2e6c5403bf", "row_action": "vendor_rename", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "shares only 'Raseed' (Real Estate Development vs Payment Devices) -> uncertain rename"}
+{"id": "bab8fc48706", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "Gemillang vs Gemilang typo -> clear rename"}
+{"id": "b154afea3e9", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "part missing hyphen; qty '0.75 k' = 750 passes"}
+{"id": "baafba34b36", "row_action": "vendor_rename", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "'Busan Branch' points to a branch -> uncertain rename; price comma is format only"}
+{"id": "b101b1177b7", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "English month period; country full name; qty 4,000 EA"}
+{"id": "b695931920c", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "legal suffix S.A. de C.V. dropped -> clear rename"}
+{"id": "b64818ed69c", "row_action": "vendor_rename", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "completely different name vs master -> uncertain rename"}
+{"id": "ba01c7547d5", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "period dd.mm.yyyy; qty 2,000"}
+{"id": "b44165bc5d1", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "'Elec.' abbreviates 'Electronics' -> clear rename"}
+{"id": "be8db27000b", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "qty 36.000 = 36000 thousands separator; passes"}
+{"id": "bec54eba3c4", "row_action": "vendor_rename", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "'(Rayong Branch)' points to a branch -> uncertain rename"}
