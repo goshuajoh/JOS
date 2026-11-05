@@ -76,7 +76,9 @@ SYMBOLS = {"$": "USD", "us$": "USD", "€": "EUR", "£": "GBP", "₹": "INR", "�
            "rs": "INR", "rs.": "INR", "s$": "SGD", "r$": "BRL", "zl": "PLN", "zł": "PLN",
            "euro": "EUR", "euros": "EUR", "tl": "TRY", "dollar": "USD", "dollars": "USD", "yen": "JPY",
            "yuan": "CNY", "rmb": "CNY", "kc": "CZK", "kč": "CZK", "ft": "HUF", "lei": "RON",
-           "rupee": "INR", "rupees": "INR", "inr.": "INR", "sar.": "SAR", "aed.": "AED"}
+           "rupee": "INR", "rupees": "INR", "inr.": "INR", "sar.": "SAR", "aed.": "AED",
+           "ca$": "CAD", "c$": "CAD", "a$": "AUD", "au$": "AUD", "hk$": "HKD", "nt$": "TWD",
+           "nz$": "NZD", "mx$": "MXN"}
 UNITS = r"(?:pcs|pc|pce|pieces|piece|ea|each|units|unit|stk|stück|adet|nos|no|qty|u)\.?"
 HEADER_WORDS = {
     "customer", "customer name", "end customer", "end-customer", "client", "sold to", "part",
@@ -199,6 +201,10 @@ def _read_integer(t: str) -> int | None:
     return None
 
 
+_CUR = r"(?:[A-Za-z]{1,3}\$|[A-Za-z]{3}\.?|[^\w\s()]{1,2})"
+_ACCOUNTING_NEGATIVE = re.compile(rf"\s*(?:{_CUR}\s*)?\(\s*(?:{_CUR}\s*)?\d[\d.,' ]*(?:\s*{_CUR})?\s*\)(?:\s*{_CUR})?\s*")
+
+
 def read_price(raw: str) -> tuple[float | None, str]:
     s = raw.strip()
     if not s:
@@ -207,17 +213,26 @@ def read_price(raw: str) -> tuple[float | None, str]:
     if m:
         v = float(m.group(1))
         return (v, "canonical") if v > 0 else (v, "impossible")
-    t = s.replace("\u00a0", " ").replace("\u202f", " ")
+    t = s.replace("\u00a0", " ").replace("\u202f", " ").replace("\u2212", "-")
     if not re.search(r"\d", t):
         return None, "invalid"  # TBD, n/a, see contract: no number at all
     if re.search(r"\d\s*/\s*\d|\?", t):
         return None, "invalid"  # two prices, or a question inside the value
-    if re.search(r"(^|[^\w])-\s*\d", t):
-        return None, "impossible"  # negative
-    t = re.sub(r"([^\w\s.,'-])(?=\d)|(?<=\d)([^\w\s.,'-])", lambda m: f" {m.group(0)} ", t)
+    if re.search(r"(^|[^\w])-\s*\d", t) or _ACCOUNTING_NEGATIVE.fullmatch(t):
+        return None, "impossible"  # negative: -2.31, \u22122.31, (2.31) USD, ($2.31)
+    if re.search(r"\d\s*(?:[-\u2013\u2014~]|\bor\b|\bto\b|\bbis\b|\boder\b|\bou\b)\s*\d"
+                 r"|\d[.,]\d+\s+\d+[.,]\d|\b(approx|approximately|circa|about|around|estimated|est)\b\.?"
+                 r"|\bca\.|[~\u2248]", t, re.IGNORECASE):
+        return None, "invalid"  # a range, two prices, or a qualified (not exact) price
+    # split a symbol from the number ($2.31, 2,31€) but keep letter-prefixed ones whole (US$, R$, S$)
+    t = re.sub(r"(?<![A-Za-z])([^\w\s.,'-])(?=\d)|(?<=\d)([^\w\s.,'-])", lambda m: f" {m.group(0)} ", t)
+    t = re.sub(r"(?i)\b(us|r|s|ca|c|a|au|hk|nt|nz|mx)\$(?=\d)", lambda m: f"{m.group(0)} ", t)
     num_m = re.search(r"\d[\d.,' ]*\d|\d", t)
     num = re.sub(r"[ ']", "", num_m.group(0))
     rest = (t[:num_m.start()] + " " + t[num_m.end():]).strip()
+    value = _read_decimal(num)
+    if value is not None and value <= 0:
+        return value, "impossible"  # zero, whatever the currency notation
     tokens = [x for x in re.split(r"\s+", rest) if x]
     codes = []
     for tok in tokens:
@@ -386,6 +401,25 @@ def seen_list(raw: str) -> list[str]:
     return [x.strip() for x in s.split(",") if x.strip()]
 
 
+def new_marker(pattern: re.Pattern, value: str, master: str) -> bool:
+    """`value` carries a match of `pattern` that is not part of the master customer name.
+
+    A marker word inside the real name ('Total Power Solutions', 'Seguridad Total', 'Check Point
+    Software', 'TBC Corp') is the name, not a subtotal or a note: read the row, not the word. The
+    same word added to the name ('Acme Ltd Total', 'Acme Ltd ??') still counts, and so does a value
+    that is nothing but the marker, or any marker when there is no master name to compare with.
+    """
+    found = {m.group(0).strip(" -:").lower() for m in pattern.finditer(value)}
+    if not found:
+        return False
+    if not pattern.sub("", value).strip(" -:.,;"):
+        return True
+    master = master.strip()
+    if not master or master.lower() in ("unknown", "?"):
+        return True
+    return bool(found - {m.group(0).strip(" -:").lower() for m in pattern.finditer(master)})
+
+
 def nonsales_kind(rec: PosRecord, catalogue: set[str] | None = None) -> str | None:
     """header | blank | note | subtotal | grand_total | None (looks like a sales line)."""
     r = {k: rec.reported.get(k, "").strip() for k in REPORTED_KEYS}
@@ -401,12 +435,14 @@ def nonsales_kind(rec: PosRecord, catalogue: set[str] | None = None) -> str | No
     part_real = bool(r["part"]) and read_part(r["part"], catalogue)[1] in ("canonical", "formatted") \
         and not (GRAND.search(r["part"]) or SUBTOTAL.search(r["part"]))
     sales = ref_real and part_real
-    if GRAND.search(r["part"]) or GRAND.search(r["ref"]) or (GRAND.search(r["customer"]) and not sales):
+    mc = rec.master.get("customer", "")
+    if GRAND.search(r["part"]) or GRAND.search(r["ref"]) or (new_marker(GRAND, r["customer"], mc) and not sales):
         return "grand_total"
-    if SUBTOTAL.search(r["part"]) or SUBTOTAL.search(r["ref"]) or (SUBTOTAL.search(r["customer"]) and not sales):
+    if SUBTOTAL.search(r["part"]) or SUBTOTAL.search(r["ref"]) or \
+            (new_marker(SUBTOTAL, r["customer"], mc) and not sales):
         return "subtotal"
     if (not r["qty"] or FILLER.match(r["qty"])) and not sales and \
-            any(NOTE.search(r[k]) for k in ("customer", "part", "ref", "period")):
+            (new_marker(NOTE, r["customer"], mc) or any(NOTE.search(r[k]) for k in ("part", "ref", "period"))):
         return "note"
     return None
 
@@ -427,7 +463,7 @@ class Facts:
     customer: str                   # identical | format_only | different | missing | unknown
     problems: list[str]
     unread: list[str] = field(default_factory=list)   # not canonical, and the reader abstains
-    sales_evidence: bool = False    # catalogue part + readable qty + a ref + master lookup ok
+    sales_evidence: bool = False    # catalogue part + readable qty + a ref, and nothing else wrong
 
 
 def facts(text: str, catalogue: set[str] | None = None) -> Facts:
@@ -483,11 +519,12 @@ def facts(text: str, catalogue: set[str] | None = None) -> Facts:
     customer = "unknown" if lookup_failed else name_relation(rep["customer"], mas["customer"])
     for k in ("period", "customer", "country", "part", "qty", "unit_price", "ref"):
         v = rep[k].strip()
-        if k == "customer" and customer in ("identical", "format_only"):
-            continue  # the master name itself ("Check Point ...", "TBC Corp") is not a note
-        if TRUNCATED.search(v):
+        # in the customer field a marker that is part of the master name ("Check Point ...",
+        # "TBC Corp") is the name; one added to it ("Acme Ltd ??") is a note
+        has = (lambda pat: new_marker(pat, v, mas["customer"])) if k == "customer" else (lambda pat: bool(pat.search(v)))
+        if has(TRUNCATED):
             defects.append(f"{k} truncated: {v!r}")
-        elif NOTE_IN_VALUE.search(v):
+        elif has(NOTE_IN_VALUE):
             defects.append(f"note inside {k}: {v!r}")
     v = rep["ref"]
     if v.strip() and (v != v.strip() or "  " in v):
@@ -504,8 +541,11 @@ def facts(text: str, catalogue: set[str] | None = None) -> Facts:
         spq, moq = int(mas["spq"]), int(mas["moq"])
         if spq > 0:
             pack_ok = qty % spq == 0 and qty >= moq
+    # the reported side decides whether this is a sales line (rule 2 comes before rule 3): a failed
+    # lookup on an otherwise complete line is a sales line with a lookup problem (ask_human)
     sales_evidence = (pa in ("canonical", "formatted") and qs in ("canonical", "formatted")
-                      and bool(ref) and not FILLER.match(ref) and not lookup_failed)
+                      and bool(ref) and not FILLER.match(ref)
+                      and (not lookup_failed or defects == ["master lookup failed"]))
 
     return Facts(rec.ok, restricted, nonsales_kind(rec, catalogue), lookup_failed, defects, ref_seen,
                  pack_ok, qty, nonc, customer, rec.problems, unread, sales_evidence)
@@ -550,7 +590,7 @@ def check_labels(text: str, labels: dict[str, str], catalogue: set[str] | None =
         v("no_op", f"row looks like a {f.nonsales} line but row_action={act}")
     if act == "no_op":
         if not f.nonsales and f.sales_evidence:
-            v("no_op", "row_action=no_op but the row is a sales line (catalogue part, quantity, ref, master entry)")
+            v("no_op", "row_action=no_op but the row is a sales line (catalogue part, quantity, ref)")
         elif not f.nonsales:
             w("no_op", "row_action=no_op but no header/blank/note/subtotal/total marker found")
         expected = {"header": "1", "blank": "1", "note": "1", "subtotal": "3", "grand_total": "4"}

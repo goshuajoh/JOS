@@ -183,16 +183,24 @@ def promote(candidate: dict, current: dict | None, nll_slack: float = 0.0,
                 notes.append(f"{name}: coverage {cq['coverage']:.3f} below {cc['coverage']:.3f}")
             else:
                 notes.append(f"{name}: coverage {cq['coverage']:.3f} vs {cc['coverage']:.3f} ok")
-            acc, cur_acc, tgt = cq.get("accuracy"), cc.get("accuracy"), cq.get("target")
+            acc, cur_acc = cq.get("accuracy"), cc.get("accuracy")
+            # the deployed target is the contract: a candidate fitted for a looser one is held to it
+            targets = [t for t in (cq.get("target"), cc.get("target")) if t is not None]
+            tgt = max(targets) if targets else None
+            if cq.get("target") is not None and cc.get("target") is not None and cq["target"] < cc["target"]:
+                notes.append(f"{name}: candidate thresholds fitted for target {cq['target']}, "
+                             f"deployed target {cc['target']}; judged against {tgt}")
             if acc is not None:
                 meets_target = tgt is not None and acc >= tgt
-                not_worse = cur_acc is None or acc >= cur_acc - accuracy_slack
+                # "not worse than current" only counts when the current model auto-accepts anything
+                not_worse = cur_acc is not None and acc >= cur_acc - accuracy_slack
                 if meets_target or not_worse:
                     notes.append(f"{name}: auto-accept accuracy {acc:.3f} ok")
                 else:
                     ok = False
-                    notes.append(f"{name}: auto-accept accuracy {acc:.3f} under target {tgt} and below "
-                                 f"the current {cur_acc:.3f} ({cq.get('auto_errors')} auto errors)")
+                    vs = "the current model auto-accepts nothing" if cur_acc is None else f"below the current {cur_acc:.3f}"
+                    notes.append(f"{name}: auto-accept accuracy {acc:.3f} under target {tgt} and {vs} "
+                                 f"({cq.get('auto_errors')} auto errors)")
         else:
             notes.append(f"{name}: no thresholds in one report; coverage not compared")
     return ok, notes

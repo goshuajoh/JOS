@@ -24,7 +24,11 @@ What training does, and how it is made to fit a fixed-schema gate:
 * Checkpoints. Every epoch is saved; the one returned (`selected/`) has the lowest dev NLL
   of the probabilities the gliner backend actually produces - select on NLL, not accuracy.
   With LoRA, each adapter checkpoint is merged into the base weights (`*-merged/`) first, so
-  the backend can load what is selected.
+  the backend can load what is selected. The output folder must not hold an earlier run
+  (`overwrite=True` / `--overwrite` clears that run's folders first), so an old checkpoint
+  can never be selected.
+* Question names must not be prefixes of one another ("risk" and "risk_level"): gliner2 finds
+  a task's gold by prefix, so such a pair would train on the wrong labels.
 """
 from __future__ import annotations
 
@@ -43,8 +47,18 @@ from .schema import DecisionSchema
 _KNOWN_LOSS_SOURCE = {"f5dab62d38d57d73"}
 
 
+def check_task_names(schema: DecisionSchema) -> None:
+    """gliner2 matches a classification's gold by task-name prefix: refuse names that collide."""
+    names = schema.names
+    clash = [(a, b) for a in names for b in names if a != b and b.startswith(a)]
+    if clash:
+        raise ValueError("question names must not be prefixes of one another for GLiNER training "
+                         f"(gliner2 matches tasks by prefix): {', '.join(f'{a}/{b}' for a, b in clash)}")
+
+
 def to_gliner_rows(records: list[Record], schema: DecisionSchema, use_prompts: bool = True,
                    augment: int = 1, seed: int = 0) -> list[dict]:
+    check_task_names(schema)
     rng = random.Random(seed)
     rows = []
     for _ in range(augment):
@@ -116,10 +130,15 @@ def fixed_schema_sampling():
 
 
 def softmax_cls_loss_patch(model) -> bool:
-    """Make classification tasks train with cross-entropy over their options.
+    """Make single-label classification tasks train with cross-entropy over their options.
 
     Returns True when applied. Only applied when gliner2's loss method is the version this
     replacement was written from, so a gliner2 upgrade can never silently change training.
+    The loss sees only the gold vector, not the task's multi_label flag: a task with exactly one
+    gold is trained as single-label. Every s1gate question is single-label (`to_gliner_rows`),
+    so this holds for gate training; do not apply the patch to data with multi-label tasks.
+    Tasks with zero or several golds, or whose gold vector does not match its options, keep
+    gliner2's own loss (which rejects the mismatch, as before).
     """
     import torch
     import torch.nn.functional as F
@@ -151,11 +170,11 @@ def softmax_cls_loss_patch(model) -> bool:
             if task_type == "classifications":
                 logits = self.classifier(schema_emb[1:]).squeeze(-1)  # skip the [P] token
                 labels = torch.tensor(structure_labels[i], dtype=torch.float, device=device)
-                if logits.dim() == 1 and int(labels.sum().item()) == 1:
+                if logits.dim() == 1 and labels.shape == logits.shape and int(labels.sum().item()) == 1:
                     # single-label question: cross-entropy over every option's logit
                     gold = labels.argmax().unsqueeze(0)
                     cls_loss = cls_loss + F.cross_entropy(logits.unsqueeze(0), gold, reduction="sum")
-                else:  # multi-label or no gold: keep gliner2's own loss
+                else:  # no gold, several golds, or a size mismatch: gliner2's own loss (and its error)
                     cls_loss = cls_loss + F.binary_cross_entropy_with_logits(logits, labels, reduction="sum")
             else:
                 structure = structure_labels[i]
@@ -222,11 +241,21 @@ def select_on_dev_nll(candidates: list[Path], dev_records: list[Record], schema:
     return best, scores
 
 
+def run_artifacts(out: Path) -> list[Path]:
+    """What an earlier train() left in `out`: checkpoints, merged copies, selection."""
+    if not out.is_dir():
+        return []
+    names = {"final", "best", "selected", "selection.json"}
+    return sorted(p for p in out.iterdir()
+                  if p.name in names or p.name.startswith("checkpoint-") or p.name.endswith("-merged"))
+
+
 def train(train_records: list[Record], dev_records: list[Record] | None, schema: DecisionSchema,
           out_dir: str, base: str = "fastino/GLiNER2.5-Decide", epochs: int = 3,
           batch_size: int = 8, encoder_lr: float = 1e-5, task_lr: float = 5e-4,
           use_lora: bool = False, augment: int = 1, use_prompts: bool = True,
-          lora_r: int = 16, seed: int = 0, loss: str = "softmax", log=print) -> str:
+          lora_r: int = 16, seed: int = 0, loss: str = "softmax", overwrite: bool = False,
+          log=print) -> str:
     """Train and return the checkpoint to evaluate: `selected` (lowest dev NLL) with dev, else `final`."""
     from gliner2 import AutoExtractor
     from gliner2.training.trainer import ExtractorTrainer, TrainingConfig
@@ -234,6 +263,15 @@ def train(train_records: list[Record], dev_records: list[Record] | None, schema:
     if loss not in ("softmax", "bce"):
         raise ValueError("loss must be 'softmax' or 'bce'")
     out = Path(out_dir)
+    old = run_artifacts(out)
+    if old and not overwrite:
+        raise FileExistsError(f"{out} already holds a training run ({', '.join(p.name for p in old[:6])}"
+                              f"{', ...' if len(old) > 6 else ''}); use a fresh output folder or overwrite")
+    for p in old:  # only this module's own run folders and files, nothing else in `out`
+        if p.is_dir():
+            shutil.rmtree(p)
+        else:
+            p.unlink()
     rows = to_gliner_rows(train_records, schema, use_prompts, augment, seed=seed)
     write_rows(rows, out / "gliner_train.jsonl")  # for inspection; training reads `rows` reshuffled
     dev_path = None

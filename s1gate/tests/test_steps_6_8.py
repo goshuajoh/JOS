@@ -423,3 +423,16 @@ def test_prefix_filter_exact_at_threshold():
     assert [r.id for r in kept] == ["x"]
     k2, _ = decontaminate([Record(id="y", text=y)], [Record(id="x", text=x)], j)
     assert k2 == []
+
+
+def test_promote_holds_the_candidate_to_the_deployed_target():
+    def rep(nll, cov, acc, tgt, errs):
+        return {"questions": [{"question": "row_action", "nll": nll,
+                               "at_threshold": {"coverage": cov, "accuracy": acc, "auto_errors": errs, "target": tgt}}]}
+    # the current model auto-accepts nothing: the candidate must meet the target on its own
+    ok, notes = promote(rep(0.2, 1.0, 0.90, 0.99, 20), rep(0.3, 0.0, None, 0.99, 0))
+    assert not ok and any("auto-accepts nothing" in n for n in notes)
+    assert promote(rep(0.2, 0.7, 0.995, 0.99, 1), rep(0.3, 0.0, None, 0.99, 0))[0]
+    # thresholds fitted for a looser target do not lower the bar
+    ok, notes = promote(rep(0.2, 0.95, 0.9737, 0.97, 5), rep(0.3, 0.6, 1.0, 0.99, 0))
+    assert not ok and any("deployed target 0.99" in n for n in notes)

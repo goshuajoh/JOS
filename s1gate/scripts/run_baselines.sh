@@ -14,11 +14,16 @@ DEVICE=${DEVICE:-cpu}
 OUT=${OUT:-runs/baselines}
 mkdir -p "$OUT"
 
+REPORTS=()  # only this run's eval reports go to compare (not calibration files or older runs)
 run() {  # name, then backend args
   local name=$1; shift
   echo "=== $name"
-  s1gate eval --schema "$S" --data "$DATA" --device "$DEVICE" "$@" \
-      --preds-out "$OUT/$name.preds.jsonl" --report-out "$OUT/$name.json" || echo "!!! $name failed"
+  if s1gate eval --schema "$S" --data "$DATA" --device "$DEVICE" "$@" \
+      --preds-out "$OUT/$name.preds.jsonl" --report-out "$OUT/$name.json"; then
+    REPORTS+=("$OUT/$name.json")
+  else
+    echo "!!! $name failed"
+  fi
 }
 
 run keyword  --backend keyword
@@ -28,8 +33,8 @@ run qwen06   --backend qwen --model Qwen/Qwen3-0.6B --batch-size 4
 run qwen17   --backend qwen --model Qwen/Qwen3-1.7B --batch-size 2
 [ -n "${KEV_MODEL:-}" ] && run kev --backend qwen --model "$KEV_MODEL" --batch-size 4
 
-reports=$(ls "$OUT"/*.json)
-s1gate compare --reports $reports --target 0.97 --target-q row_action=0.99 needs_human=0.98 severity=0.90
+[ ${#REPORTS[@]} -gt 0 ] || { echo "no baseline finished"; exit 1; }
+s1gate compare --reports "${REPORTS[@]}" --target 0.97 --target-q row_action=0.99 needs_human=0.98 severity=0.90
 
 # reliability plots for the best zero-shot model, calibrated on these dev predictions
 best=${BEST:-gliner}

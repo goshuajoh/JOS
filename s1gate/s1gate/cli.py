@@ -62,8 +62,29 @@ def _percentile(values: list[float], q: float) -> float:
 
 
 def _frozen_manifests(args):
-    from .frozen import discover
-    return discover(getattr(args, "frozen", None))
+    """--frozen if given, else every data/eval/*.frozen.json in the working directory and in the
+    project folders around the inputs (the schema, preds, data, training files), so a run from
+    another directory is guarded too. Says so when nothing is found."""
+    from .frozen import DEFAULT_DIR, discover
+
+    explicit = getattr(args, "frozen", None)
+    if explicit:
+        return discover(explicit)
+    roots = [DEFAULT_DIR]
+    for attr in ("schema", "preds", "data", "train", "dev", "corrections", "synthetic", "held_out"):
+        value = getattr(args, attr, None)
+        for item in value if isinstance(value, list) else [value] if isinstance(value, str) else []:
+            roots += [parent / DEFAULT_DIR for parent in list(Path(item).resolve().parents)[:4]]
+    found, seen = [], set()
+    for root in roots:
+        for m in discover(None, root):
+            if m.resolve() not in seen:
+                seen.add(m.resolve())
+                found.append(m)
+    if not found:
+        print(f"warning: no frozen eval manifest found ({DEFAULT_DIR}/*.frozen.json here or near the inputs); "
+              "nothing guards this step against eval rows - pass --frozen", file=sys.stderr)
+    return found
 
 
 def _fmt(v, digits=3):
@@ -522,13 +543,22 @@ def _train_inputs(args):
 
 
 def cmd_train_gliner(args) -> int:
-    from .train_gliner import train
+    from .train_gliner import check_task_names, train
 
     schema, tr, dev = _train_inputs(args)
-    path = train(tr, dev, schema, args.out, base=args.base, epochs=args.epochs,
-                 batch_size=args.batch_size, encoder_lr=args.encoder_lr, task_lr=args.task_lr,
-                 use_lora=args.lora, augment=args.augment, lora_r=args.lora_r, seed=args.seed,
-                 loss=args.loss)
+    try:
+        check_task_names(schema)
+    except ValueError as e:
+        print(f"refused: {e}", file=sys.stderr)
+        return 2
+    try:
+        path = train(tr, dev, schema, args.out, base=args.base, epochs=args.epochs,
+                     batch_size=args.batch_size, encoder_lr=args.encoder_lr, task_lr=args.task_lr,
+                     use_lora=args.lora, augment=args.augment, lora_r=args.lora_r, seed=args.seed,
+                     loss=args.loss, overwrite=args.overwrite)
+    except FileExistsError as e:
+        print(f"refused: {e} (--overwrite clears the old run)", file=sys.stderr)
+        return 2
     print(f"model -> {path}  (evaluate with: s1gate eval --backend gliner --model {path} ...)")
     return 0
 
@@ -639,8 +669,8 @@ def cmd_queue(args) -> int:
     queue = review_queue(read_log(args.log), only_escalated=not args.all, since=args.since,
                          questions=args.questions, exclude_ids=done)
     n = write_jsonl(args.out, queue)
-    print(f"{n} rows to review -> {args.out}  (label with: s1gate label --data {args.out} "
-          f"--out {args.corrections} --source correction)")
+    print(f"{n} rows to review -> {args.out}  (label with: s1gate label --schema <schema.yaml> "
+          f"--data {args.out} --out {args.corrections} --source correction)")
     return 0
 
 
@@ -880,6 +910,8 @@ def build_parser() -> argparse.ArgumentParser:
             p.add_argument("--seed", type=int, default=0)
             p.add_argument("--loss", default="softmax", choices=["softmax", "bce"],
                            help="softmax: cross-entropy over each question's options; bce: gliner2's own")
+            p.add_argument("--overwrite", action="store_true",
+                           help="delete an earlier run's checkpoints in --out first (else training refuses)")
         else:
             p.add_argument("--base", default="Qwen/Qwen3-0.6B")
             p.add_argument("--lr", type=float, default=2e-4)

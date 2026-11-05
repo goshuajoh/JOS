@@ -25,6 +25,11 @@ import yaml
 from ..records import Record, stable_id
 from . import pos
 
+
+class UnknownRecipe(KeyError):
+    """The recipe names a scenario or pair id this generator has no procedure for."""
+
+
 COMMIT = {"row_action": "commit", "needs_human": "no", "severity": "0"}
 NORMALIZE = {"row_action": "normalize", "needs_human": "no", "severity": "1"}
 RENAME = {"row_action": "vendor_rename", "needs_human": "no", "severity": "2"}
@@ -448,8 +453,13 @@ class Generator:
             r = replace(r, customer=alias)
             return (self.noise(r) if sid == "V5" else r), RENAME
         if sid in ("VU1", "VU2", "VU3"):
-            region = rng.choice(self.regions)
-            r = self.base(region=region)
+            for _ in range(30):  # a sister company shares one word of a core that has several
+                region = rng.choice(self.regions)
+                r = self.base(region=region)
+                if sid != "VU1" or len(self.split_suffix(r.m_customer)[0].split()) >= 2:
+                    break
+            else:
+                return None
             kind = {"VU1": "sister", "VU2": rng.choice(["unrelated", "holding"]), "VU3": "branch"}[sid]
             r = replace(r, customer=self.unsure_alias(r.m_customer, region, kind))
             return (self.noise(r, k=1) if sid == "VU3" and rng.random() < 0.4 else r), RENAME_UNSURE
@@ -469,7 +479,11 @@ class Generator:
                 if rng.random() < 0.5:
                     r = self.noise(r, k=1, fields=["period", "price", "part"])
             if sid == "P6":
-                r = replace(r, customer=self.clear_alias(r.m_customer))
+                alias = self.clear_alias(r.m_customer, rng.choice(["abbrev", "suffix"]))
+                alias = alias or self.clear_alias(r.m_customer, "suffix") or self.clear_alias(r.m_customer, "abbrev")
+                if not alias:
+                    return None
+                r = replace(r, customer=alias)
             return r, PACK
         if sid in ("R1", "R2", "R3"):
             if sid == "R3":
@@ -549,7 +563,7 @@ class Generator:
                                                  f"H{rng.randint(1, 2)}-{y}", y, f"{y}-Q{rng.randint(1, 4)}"])), ASK
         if sid in ("O1", "O2", "O3", "O4", "O5"):
             return self._nonsales(sid)
-        raise KeyError(sid)
+        raise UnknownRecipe(sid)
 
     def _style(self, row: Row) -> str:
         for b in self.pools.values():
@@ -646,14 +660,23 @@ class Generator:
             a = self.base()
             return (a, COMMIT), (replace(a, restricted="yes"), COMPLIANCE)
         if pid == "H06":
-            a = self.base()
+            for _ in range(30):  # row b is an abbreviation: find a customer whose name has one
+                a = self.base()
+                ab = self.clear_alias(a.m_customer, "abbrev")
+                if ab:
+                    break
+            else:
+                return None
             fo = self.format_only_name(a.m_customer)
-            ab = self.clear_alias(a.m_customer)
             return (replace(a, customer=fo), NORMALIZE), (replace(a, customer=ab), RENAME)
         if pid == "H07":
             region = rng.choice(self.regions)
             a = self.base(region=region)
-            return (replace(a, customer=self.clear_alias(a.m_customer)), RENAME), \
+            clear = self.clear_alias(a.m_customer, rng.choice(["abbrev", "suffix"]))
+            clear = clear or self.clear_alias(a.m_customer, "suffix") or self.clear_alias(a.m_customer, "abbrev")
+            if not clear:
+                return None
+            return (replace(a, customer=clear), RENAME), \
                    (replace(a, customer=self.unsure_alias(a.m_customer, region)), RENAME_UNSURE)
         if pid == "H08":
             region = rng.choice(self.regions)
@@ -682,7 +705,7 @@ class Generator:
         if pid == "H12":
             a = self.base(history="none")
             return (a, COMMIT), (replace(a, m_customer="unknown", spq="?", moq="?"), ASK)
-        raise KeyError(pid)
+        raise UnknownRecipe(pid)
 
     # ------------------------------------------------------------ drivers
 
@@ -702,7 +725,7 @@ class Generator:
                 tries += 1
                 try:
                     built = self.scenario(sid)
-                except KeyError:
+                except UnknownRecipe:
                     log(f"procgen: no procedural recipe for scenario {sid}; skipped (teacher rows only)")
                     break
                 if built is None:
@@ -722,7 +745,7 @@ class Generator:
                 tries += 1
                 try:
                     built = self.pair(pid)
-                except KeyError:
+                except UnknownRecipe:
                     log(f"procgen: no procedural recipe for pair {pid}; skipped (teacher rows only)")
                     break
                 if built is None:

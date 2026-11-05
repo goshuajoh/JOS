@@ -46,7 +46,7 @@ pytest -q                               # no model download needed; ML smoke tes
 * `s1gate freeze` hashes the eval file. After that, `train-*`, `clean` and `build-train` refuse
   rows that copy it, `calibrate` and `thresholds` refuse predictions on it, and `eval` warns if
   the file changes.
-* `s1gate agreement --a A.jsonl --b B.jsonl` gives per-question agreement, Cohen's kappa and
+* `s1gate agreement --schema $S --a A.jsonl --b B.jsonl` gives per-question agreement, Cohen's kappa and
   the top disagreement pairs. That is Gate A, which wants at least 90%.
 * `s1gate audit` checks labels against the structural rules of the guide: restricted means
   compliance, a seen ref means duplicate, SPQ/MOQ arithmetic, missing or impossible values,

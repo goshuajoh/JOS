@@ -8,7 +8,7 @@ Schema: `pos_row_gate` v2 (fingerprint `19f942aef48c`).
 | `data/eval/eval.jsonl` | 199 | proxy eval set, frozen: final report only |
 | `data/dev.jsonl` | 201 | proxy dev set: baselines, calibration, thresholds |
 | `data/eval/eval.sample.jsonl` | 26 | 26 hand-written rows (from the scaffold): tests and smoke runs |
-| `data/synth/train.jsonl` | 8906 | the training set: verified teacher rows + procedural rows, deduped and decontaminated |
+| `data/synth/train.jsonl` | 8905 | the training set: verified teacher rows + procedural rows, deduped and decontaminated |
 | `data/synth/teacher.verified.jsonl` | 3956 | teacher rows that passed blind re-labelling and the rule audit |
 | `data/synth/procedural.jsonl` | 4962 | procedural rows, labels known by construction |
 | `data/proxy/labelled.jsonl` | 400 | all adjudicated proxy rows before the dev/eval split |
@@ -27,7 +27,7 @@ Supporting files: `synth/teacher/raw/` (each teacher agent's output), `synth/tea
 | `pack_qty_issue` | 1014 (11%) | 19 (9%) | 20 (10%) |
 | `compliance_review` | 543 (6%) | 12 (6%) | 12 (6%) |
 | `duplicate` | 726 (8%) | 11 (5%) | 10 (5%) |
-| `no_op` | 729 (8%) | 15 (7%) | 14 (7%) |
+| `no_op` | 728 (8%) | 15 (7%) | 14 (7%) |
 | `ask_human` | 1246 (14%) | 14 (7%) | 14 (7%) |
 
 **needs_human**
@@ -35,17 +35,17 @@ Supporting files: `synth/teacher/raw/` (each teacher agent's output), `synth/tea
 | option | `train.jsonl` | `dev.jsonl` | `eval.jsonl` |
 |---|---:|---:|---:|
 | `yes` | 3372 (38%) | 50 (25%) | 52 (26%) |
-| `no` | 5534 (62%) | 151 (75%) | 147 (74%) |
+| `no` | 5533 (62%) | 151 (75%) | 147 (74%) |
 
 **severity**
 
 | option | `train.jsonl` | `dev.jsonl` | `eval.jsonl` |
 |---|---:|---:|---:|
 | `0` | 1471 (17%) | 66 (33%) | 66 (33%) |
-| `1` | 1901 (21%) | 45 (22%) | 41 (21%) |
+| `1` | 1899 (21%) | 45 (22%) | 41 (21%) |
 | `2` | 2068 (23%) | 41 (20%) | 41 (21%) |
 | `3` | 2816 (32%) | 34 (17%) | 33 (17%) |
-| `4` | 650 (7%) | 15 (7%) | 18 (9%) |
+| `4` | 651 (7%) | 15 (7%) | 18 (9%) |
 
 **The eleven valid combinations** (row_action / needs_human / severity)
 
@@ -55,9 +55,9 @@ Supporting files: `synth/teacher/raw/` (each teacher agent's output), `synth/tea
 | commit / no / 0 | 1471 | 66 | 66 |
 | compliance_review / yes / 4 | 543 | 12 | 12 |
 | duplicate / no / 3 | 726 | 11 | 10 |
-| no_op / no / 1 | 347 | 8 | 5 |
+| no_op / no / 1 | 345 | 8 | 5 |
 | no_op / no / 3 | 275 | 4 | 3 |
-| no_op / no / 4 | 107 | 3 | 6 |
+| no_op / no / 4 | 108 | 3 | 6 |
 | normalize / no / 1 | 1554 | 37 | 36 |
 | pack_qty_issue / yes / 2 | 1014 | 19 | 20 |
 | vendor_rename / no / 2 | 1054 | 22 | 21 |
@@ -67,11 +67,11 @@ Rows outside the eleven combinations: 0.
 
 ## Training set composition
 
-* sources: 3955 teacher rows (opus 2494, sonnet 1461), 4951 procedural rows
+* sources: 3955 teacher rows (opus 2494, sonnet 1461), 4950 procedural rows
 * teacher rows by authoring: 2494 hand-authored (the agent chose every value), 1461 produced by a seeded generator script the agent wrote (valid and blind-verified, but less varied - `meta.authoring` lets you down-weight them)
-* hard pairs with both rows kept: 879
-* text length: median 291 chars, min 174, max 403
-* distinct customers named in master data: 309
+* hard pairs with both rows kept: 975
+* text length: median 292 chars, min 168, max 400
+* distinct customers named in master data (a failed lookup's 'unknown' not counted): 308
 
 | scenario | rows | scenario | rows | scenario | rows |
 |---|---:|---|---:|---|---:|
@@ -86,8 +86,8 @@ Rows outside the eleven combinations: 0.
 | H10 | 150 | H11 | 150 | H12 | 150 |
 | N1 | 180 | N2 | 250 | N3 | 200 |
 | N4 | 144 | N5 | 180 | N6 | 250 |
-| N7 | 100 | O1 | 108 | O2 | 118 |
-| O3 | 121 | O4 | 175 | O5 | 107 |
+| N7 | 100 | O1 | 108 | O2 | 115 |
+| O3 | 122 | O4 | 175 | O5 | 108 |
 | P1 | 180 | P2 | 180 | P3 | 108 |
 | P4 | 144 | P5 | 144 | P6 | 108 |
 | R1 | 180 | R2 | 180 | R3 | 108 |
@@ -107,7 +107,7 @@ Scenario ids are defined in `configs/synth.pos.yaml` (C commit, N normalize, V/V
 5. **Proxy dev/eval.** Ten agents each simulated one held-out distributor's monthly file in file order, with its own house habits (`configs/proxy_eval.pos.yaml`). Two blind annotators (Opus, Sonnet) labelled every row. Rows where author, both annotators and the rule audit agreed were accepted, and the rest went to an adjudicator with all three opinions. The result was split 50/50, stratified on row_action, into `dev.jsonl` and `eval/eval.jsonl`, with identical texts (a header row a file repeats) kept on one side, and the eval file was frozen (`eval/eval.frozen.json`).
    Result: 400 rows, 398 unanimous, 2 adjudicated. Agreement between the two blind annotators (Gate A wants ≥ 90%): row_action 99.5% (κ 0.99), needs_human 99.5% (κ 0.99), severity 99.8% (κ 1.00).
 6. **Cleaning.** `s1gate clean` removed exact and near-duplicates (5-gram Jaccard ≥ 0.9, label-aware, so hard pairs survive) and every training row within 0.8 Jaccard of dev, eval or the sample set.
-   Result: 8918 rows in, 12 duplicates or conflicting copies, 0 too close to held-out rows, 8906 rows in `train.jsonl`.
+   Result: 8918 rows in, 13 duplicates or conflicting copies, 0 too close to held-out rows, 8905 rows in `train.jsonl`.
 
 ## Limits
 

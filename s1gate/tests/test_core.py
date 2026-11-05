@@ -99,6 +99,12 @@ def test_split_keeps_identical_texts_on_one_side():
         heads = {r.id for r in held if r.id.startswith("h")}
         assert heads in (set(), {f"h{i}" for i in range(6)})  # all six copies move together
         assert sum(r.id.startswith("r") for r in held) == 20
+    # a large repeated unit cannot push the held-out share far past frac
+    big = [Record(id=f"h{i}", text=header, labels={"row_action": "no_op"}) for i in range(10)]
+    big += [Record(id=f"n{i}", text=f"note page {i}", labels={"row_action": "no_op"}) for i in range(20)]
+    for seed in range(200):
+        _, held = split(big, 0.3, seed=seed, stratify_on="row_action")
+        assert abs(len(held) - 9) <= 5  # within half the unit of the quota (k=9, unit of 10)
     # with no repeated texts the split is the plain stratified shuffle it always was
     singles = rows[6:]
     rest, held = split(singles, 0.25, seed=3, stratify_on="row_action")

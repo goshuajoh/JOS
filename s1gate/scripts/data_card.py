@@ -90,7 +90,9 @@ if train:
     teachers = Counter(r.meta.get("teacher") for r in train if r.meta.get("teacher"))
     authoring = Counter(r.meta.get("authoring") for r in train if r.meta.get("generator") != "procedural")
     scen = Counter(r.meta.get("scenario") for r in train)
-    pairs = Counter(r.meta.get("pair") for r in train if r.meta.get("pair"))
+    # pair ids are only unique within one source (a teacher chunk, or procgen): key on both
+    pairs = Counter((r.id.rsplit("-", 1)[0] if r.meta.get("generator") != "procedural" else "proc", r.meta["pair"])
+                    for r in train if r.meta.get("pair"))
     complete_pairs = sum(1 for v in pairs.values() if v == 2)
     lens = [len(r.text) for r in train]
     lines += ["## Training set composition", "",
@@ -101,8 +103,8 @@ if train:
               "(valid and blind-verified, but less varied - `meta.authoring` lets you down-weight them)",
               f"* hard pairs with both rows kept: {complete_pairs}",
               f"* text length: median {statistics.median(lens):.0f} chars, min {min(lens)}, max {max(lens)}",
-              f"* distinct customers named in master data: "
-              f"{len({r.text.split('|| master: customer=')[-1].split(';')[0] for r in train if '|| master: customer=' in r.text})}",
+              f"* distinct customers named in master data (a failed lookup's 'unknown' not counted): "
+              f"{len({c for r in train if '|| master: customer=' in r.text for c in [r.text.split('|| master: customer=')[-1].split(';')[0].strip()] if c.lower() not in ('unknown', '?', '')})}",
               "", "| scenario | rows | scenario | rows | scenario | rows |", "|---|---:|---|---:|---|---:|"]
     items = sorted(scen.items(), key=lambda kv: (kv[0][0], len(kv[0]), kv[0]))
     for i in range(0, len(items), 3):

@@ -3,10 +3,13 @@
 Getting a full distribution out of gliner2:
 `classify_text(..., include_confidence=True)` on a single-label task returns only the top
 label and its confidence. To score EVERY option, each task is sent as multi-label with
-cls_threshold 0.0, which returns a sigmoid score per option. GLiNER2 single-label uses a
-softmax over the same per-option logits, so the sigmoid scores are turned back into
-logits (log p / (1 - p)) and soft-maxed. That reproduces the single-label distribution
-instead of guessing one.
+cls_threshold 0.0 (every option is returned) and class_act "softmax", so the scores are
+gliner2's own softmax over the per-option logits: the single-label distribution, computed by
+gliner2, the same objective `train_gliner` trains with.
+
+A gliner2 without the class_act option returns float32 sigmoids instead. Those are turned
+back into logits (log p / (1 - p)) and soft-maxed, which matches the softmax until the
+sigmoids saturate at 1.0 (logits above about 16.6); then the confident options tie.
 
 If a gliner2 release changes the payload, `_parse` falls back to top-label-only and
 spreads the remainder evenly; `s1gate eval` will then show a flat calibration curve,
@@ -25,6 +28,14 @@ DEFAULT_MODEL = "fastino/GLiNER2.5-Decide"
 _P_MIN, _P_MAX = 1e-45, 1 - 2 ** -24
 
 
+def _has_class_act() -> bool:
+    try:
+        from gliner2.inference.schema_model import ClassificationInput
+    except ImportError:
+        return False
+    return "class_act" in getattr(ClassificationInput, "model_fields", {})
+
+
 class GlinerBackend(Backend):
     name = "gliner"
 
@@ -39,6 +50,7 @@ class GlinerBackend(Backend):
         self.use_prompts = use_prompts
         self.batch_size = batch_size
         self._task_cache: dict[str, dict] = {}
+        self.activation = "softmax" if _has_class_act() else "sigmoid"
 
     def tasks(self, schema: DecisionSchema) -> dict:
         key = schema.fingerprint()
@@ -51,6 +63,8 @@ class GlinerBackend(Backend):
                     "multi_label": True,
                     "cls_threshold": 0.0,
                 }
+                if self.activation == "softmax":
+                    spec["class_act"] = "softmax"
                 if self.use_prompts:
                     spec["prompt"] = q.prompt
                 tasks[q.name] = spec
@@ -67,13 +81,19 @@ class GlinerBackend(Backend):
         return [self._to_probs(r, schema) for r in raws]
 
     def _to_probs(self, raw: dict, schema: DecisionSchema) -> Probs:
-        return {q.name: _parse(raw.get(q.name), q.labels) for q in schema.questions}
+        return {q.name: _parse(raw.get(q.name), q.labels, self.activation) for q in schema.questions}
 
 
-def _parse(value, labels: list[str]) -> dict[str, float]:
+def _parse(value, labels: list[str], activation: str = "sigmoid") -> dict[str, float]:
     # Multi-label payload: [{"label": ..., "confidence": ...}, ...]
     if isinstance(value, list) and value and isinstance(value[0], dict):
-        sig = {item["label"]: float(item["confidence"]) for item in value if "label" in item}
+        scores = {item["label"]: float(item["confidence"]) for item in value if "label" in item}
+        if activation == "softmax" and all(l in scores for l in labels):
+            p = {l: max(scores[l], 0.0) for l in labels}  # already a softmax over the options
+            z = sum(p.values())
+            if z > 0:
+                return {l: v / z for l, v in p.items()}
+        sig = scores
         logits = {}
         for l in labels:
             p = min(max(sig.get(l, _P_MIN), _P_MIN), _P_MAX)

@@ -97,3 +97,23 @@ def test_agreement_and_kappa(tmp_path):
     assert ra["top_disagreements"][0] == {"a": "commit", "b": "normalize", "count": 1}
     assert cohen_kappa([("x", "x"), ("y", "y")]) == 1.0
     assert abs(cohen_kappa([("x", "y"), ("y", "x")]) + 1.0) < 1e-9
+
+
+def test_export_enums_survives_long_backslash_tokens_and_spaces_in_paths(tmp_path):
+    import yaml
+
+    from s1gate.codegen import _doc
+    token = "\\\\fileserver01\\POS_Uploads\\Distributors\\EMEA\\Northwind_Electronics\\2026\\Uploaded_raw_sheet.xlsx"
+    for n in range(40, 140):  # every split position of the long token
+        compile("def f():\n" + _doc("x" * n + " " + token + ' "end"') + "\n", "x", "exec")
+    data = yaml.safe_load(SCHEMA.read_text())
+    data["questions"][0]["prompt"] += " See " + token
+    src = tmp_path / "My Schemas" / "schema.yaml"
+    src.parent.mkdir()
+    src.write_text(yaml.safe_dump(data, allow_unicode=True))
+    out = tmp_path / "gen out" / "mod.py"
+    assert main(["export-enums", "--schema", str(src), "--out", str(out)]) == 0
+    compile(out.read_text(), str(out), "exec")
+    assert main(["export-enums", "--schema", str(src), "--out", str(out), "--check"]) == 0
+    out.write_text(out.read_text() + "# edited\n")
+    assert main(["export-enums", "--schema", str(src), "--out", str(out), "--check"]) == 1

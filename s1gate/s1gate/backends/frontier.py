@@ -16,6 +16,7 @@ data class (an internal Azure OpenAI deployment, say), with masking where it app
 from __future__ import annotations
 
 import json
+import math
 from pathlib import Path
 
 from ..schema import DecisionSchema
@@ -53,6 +54,26 @@ class FrontierBackend(Backend):
         return parse_answer(raw, schema)
 
 
+def _confidence(value) -> float:
+    """A stated confidence in [0, 1]; 0.5 when there is none usable.
+
+    No stated number counts as a coin flip, so it never clears an escalation floor by default:
+    a missing value, true/false, text that is not a number, NaN and infinity all give 0.5. A
+    number above 1 (up to 100) is read as a percentage.
+    """
+    if value is None or isinstance(value, bool):
+        return 0.5
+    try:
+        conf = float(value)
+    except (TypeError, ValueError):
+        return 0.5
+    if not math.isfinite(conf):
+        return 0.5
+    if 1 < conf <= 100:
+        conf /= 100
+    return conf
+
+
 def parse_answer(raw: str, schema: DecisionSchema) -> Probs:
     """JSON answer -> probabilities; anything unusable becomes a uniform (= unsure) row."""
     try:
@@ -69,15 +90,9 @@ def parse_answer(raw: str, schema: DecisionSchema) -> Probs:
         if option not in q.options:
             out[q.name] = {o: 1 / k for o in q.labels}
             continue
-        # no stated (numeric) confidence counts as a coin flip, so it never clears an escalation
-        # floor by default
-        try:
-            conf = float(item["confidence"]) if isinstance(item, dict) and "confidence" in item else 0.5
-        except (TypeError, ValueError):
-            conf = 0.5
-        if conf != conf:  # NaN
-            conf = 0.5
-        conf = min(max(conf, 1 / k), 0.999)
+        conf = _confidence(item.get("confidence") if isinstance(item, dict) else None)
+        # the stated option stays strictly on top, however low the stated confidence
+        conf = min(max(conf, 1 / k + 0.01), 0.999)
         rest = (1 - conf) / max(k - 1, 1)
         out[q.name] = {o: (conf if o == option else rest) for o in q.labels}
     return out

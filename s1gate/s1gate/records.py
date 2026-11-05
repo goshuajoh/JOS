@@ -94,7 +94,8 @@ def split(records: list[Record], frac: float, seed: int = 13,
     Records whose text is the same (after `normalize`) move as one unit, so the held-out side
     never shares a text with the rest: POS files repeat header, blank and subtotal rows. A unit
     is stratified on its first record's label, and each stratum's held-out share is counted in
-    records.
+    records: a unit is held out only when that brings the stratum closer to its quota, so a
+    large repeated unit cannot push the held-out share far past `frac`.
     """
     rng = random.Random(seed)
     units: dict[str, list[Record]] = {}
@@ -110,7 +111,8 @@ def split(records: list[Record], frac: float, seed: int = 13,
         k = round(sum(map(len, group)) * frac)
         taken = 0
         for unit in group:
-            if taken < k:
+            # same as `taken < k` for single rows; a unit that would overshoot more than it helps stays out
+            if abs(taken + len(unit) - k) < abs(taken - k):
                 held.extend(unit)
                 taken += len(unit)
             else:

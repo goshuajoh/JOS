@@ -155,4 +155,57 @@ def test_frontier_without_confidence_does_not_clear_the_floor():
     s = DecisionSchema.load(SCHEMA)
     out = parse_answer('{"row_action": {"option": "normalize", "confidence": "low"}, '
                        '"needs_human": {"option": "no"}, "severity": "1"}', s)
-    assert out["row_action"]["normalize"] == 0.5 and out["needs_human"]["no"] == 0.5
+    assert out["row_action"]["normalize"] == 0.5  # a coin flip: under any escalation floor
+    # a yes/no answer keeps its stated option on top, just above a tie
+    assert out["needs_human"]["no"] == 0.51 and out["needs_human"]["yes"] < 0.5
+
+
+def test_gliner_backend_reads_gliner2_softmax_so_confident_outputs_stay_apart(tiny_gliner):
+    import torch
+
+    from s1gate.backends.gliner import GlinerBackend
+    s = DecisionSchema.load(SCHEMA)
+    text = read_jsonl(EVAL)[0].text
+    b = GlinerBackend(tiny_gliner)
+    assert b.activation == "softmax" and all(t.get("class_act") == "softmax" for t in b.tasks(s).values())
+    base = b.predict(text, s)
+    last = [m for m in b.model.classifier.modules() if isinstance(m, torch.nn.Linear)][-1]
+    with torch.no_grad():
+        last.bias += 25.0  # every option's logit moves together: the softmax must not change
+    shifted = b.predict(text, s)
+    for q in s.questions:
+        assert max(abs(base[q.name][o] - shifted[q.name][o]) for o in q.labels) < 1e-4
+
+
+def test_gliner_training_refuses_an_old_run_and_prefix_task_names(tiny_gliner, tmp_path):
+    import json
+
+    from s1gate.train_gliner import check_task_names, train
+
+    s = DecisionSchema.load(SCHEMA)
+    rows = read_jsonl(EVAL)
+    out = tmp_path / "run"
+    train(rows[:8], rows[8:12], s, str(out), base=tiny_gliner, epochs=2, batch_size=8, log=lambda *_: None)
+    with pytest.raises(FileExistsError):
+        train(rows[:8], rows[8:12], s, str(out), base=tiny_gliner, epochs=1, batch_size=8, log=lambda *_: None)
+    (out / "notes.txt").write_text("mine")
+    train(rows[:8], rows[8:12], s, str(out), base=tiny_gliner, epochs=1, batch_size=8, overwrite=True,
+          log=lambda *_: None)
+    sel = json.loads((out / "selection.json").read_text())
+    assert set(sel["dev_nll"]) <= {str(out / "checkpoint-epoch-1"), str(out / "final")}  # nothing from run 1
+    assert (out / "notes.txt").read_text() == "mine"  # only run folders are cleared
+    bad = s.model_copy(update={"questions": [s.questions[0], s.questions[0].model_copy(update={"name": "row_action_2"})]})
+    with pytest.raises(ValueError, match="prefixes"):
+        check_task_names(bad)
+
+
+def test_frontier_confidence_edge_cases():
+    from s1gate.backends.frontier import parse_answer
+    s = DecisionSchema.load(SCHEMA)
+    for conf, expect_floor in (("true", False), ("Infinity", False), ('"high"', False), ("90", True), ("0.2", False)):
+        raw = '{"row_action": {"option": "commit", "confidence": %s}, "needs_human": {"option": "no", "confidence": %s}}' % (conf, conf)
+        p = parse_answer(raw, s)
+        for q in ("row_action", "needs_human"):
+            top = max(p[q], key=p[q].get)
+            assert top == {"row_action": "commit", "needs_human": "no"}[q]  # the stated option stays on top
+            assert (p[q][top] >= 0.8) == expect_floor

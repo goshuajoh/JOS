@@ -210,3 +210,88 @@ def test_procgen_scenario_kinds_mean_what_they_say():
         r, _ = g.scenario("D3")   # a real case/space variant, never the ref verbatim
         seen = r.seen_refs.split(", ")
         assert r.ref not in seen and pos.norm_ref(r.ref) in {pos.norm_ref(x) for x in seen}
+
+
+# ---------------------------------------------------------------- final verification round
+
+def _named(customer, master=None, **swap):
+    text = row(**swap).replace("customer=Acme Controls Ltd; country", f"customer={customer}; country", 1)
+    return text.replace("master: customer=Acme Controls Ltd", f"master: customer={master or customer}", 1)
+
+
+def _violations(text, lab):
+    return [f.message for f in pos.check_labels(text, lab, CATALOGUE) if f.level == "violation"]
+
+
+@pytest.mark.parametrize("name", ["Summa Technologies Inc", "Calidad Total", "Totaal Techniek B.V.", "Kids-Total",
+                                  "Toplam Enerji A.S.", "Total General Contracting LLC", "Total Power Solutions Ltd"])
+def test_marker_words_inside_a_real_customer_name_are_the_name(name):
+    for broken in (dict(ref=""), dict(part="WM-S3-N8R8 / WM-S3-N8R9")):
+        text = _named(name, **broken)
+        assert pos.facts(text, CATALOGUE).nonsales is None
+        assert not _violations(text, labels("ask_human", "yes", "3"))
+    renamed = _named("Total Power Solutions", "Total Power Solutions Ltd", ref="")
+    assert pos.facts(renamed, CATALOGUE).nonsales is None
+
+
+@pytest.mark.parametrize("customer,master", [("Subtotal", "unknown"), ("Total", "Total Power Solutions Ltd"),
+                                             ("Acme Controls Ltd Total", "Acme Controls Ltd"),
+                                             ("Total Acme Controls Ltd", "Acme Controls Ltd")])
+def test_subtotal_rows_still_read_as_subtotals(customer, master):
+    text = ("distributor=Northwind Components; period=2026-09; customer=%s; country=; part=; qty=12,500; unit_price=; "
+            "ref= || master: customer=%s; spq=?; moq=?; restricted=no; seen_refs=none" % (customer, master))
+    assert pos.facts(text, CATALOGUE).nonsales == "subtotal"
+    assert not _violations(text, labels("no_op", "no", "3"))
+
+
+def test_no_op_on_a_sales_line_with_a_failed_lookup_is_a_violation():
+    text = row().replace("master: customer=Acme Controls Ltd; spq=250; moq=500", "master: customer=unknown; spq=?; moq=?")
+    assert _violations(text, labels("no_op", "no", "1"))
+    assert not _violations(text, labels("ask_human", "yes", "3"))
+
+
+def test_notes_in_the_customer_field_are_judged_against_the_master_name():
+    assert _violations(_named("Acme Controls Ltd ??", "Acme Controls Ltd"), labels("normalize", "no", "1"))
+    assert not _violations(_named("Check Point Software", "Check Point Software Ltd."), labels("vendor_rename", "no", "2"))
+    assert not _violations(_named("TBC Corporation", "TBC Corp"), labels("vendor_rename", "no", "2"))
+    assert _violations(_named("Check Point Software (TBC)", "Check Point Software Ltd."), labels("vendor_rename", "no", "2"))
+
+
+@pytest.mark.parametrize("raw,status", [
+    ("−2.31 USD", "impossible"), ("(2.31) USD", "impossible"), ("($2.31)", "impossible"), ("USD (2.31)", "impossible"),
+    ("R$0,00", "impossible"), ("US$0.00", "impossible"), ("S$0.00", "impossible"),
+    ("2.31-2.40 USD", "invalid"), ("2.31 2.40 USD", "invalid"), ("2.31 or 2.40 USD", "invalid"),
+    ("approx 2.31 USD", "invalid"), ("~2.31 USD", "invalid"), ("ca. 2.31 EUR", "invalid"),
+    ("R$10,50", "formatted"), ("US$2.31", "formatted"), ("CA$2.31", "formatted"), ("5 220,00 HUF", "formatted"),
+    ("12 345,67 CZK", "formatted"), ("2.31 USD (net 30)", "unknown"),
+])
+def test_price_reader_final_round(raw, status):
+    assert pos.read_price(raw)[1] == status
+
+
+def test_procgen_reports_real_data_errors_instead_of_skipping(tmp_path):
+    import json
+    pools = json.loads(POOLS.read_text())
+    region = next(iter(pools))
+    pools[region]["customers"].append({"Name": "Typo Key Customer Ltd", "country": "IN"})
+    bad = tmp_path / "pools.json"
+    bad.write_text(json.dumps(pools))
+    with pytest.raises(KeyError):
+        for seed in range(5):  # the bad entry is drawn sooner or later
+            pos_gen.generate(str(bad), str(ROOT / "configs/pools/parts.yaml"), str(ROOT / "configs/synth.pos.yaml"),
+                             str(ROOT / "configs/pools/regions.yaml"), n_per_scenario=6, pairs_per_type=3, seed=seed,
+                             log=lambda *_: None)
+
+
+def test_procgen_rename_scenarios_meet_their_definitions():
+    import json
+    g = pos_gen.Generator(json.loads(POOLS.read_text()), pos_gen.load_parts(ROOT / "configs/pools/parts.yaml"), seed=5)
+    for _ in range(40):
+        r, _ = g.scenario("VU1")   # a sister company: shares the first word of a multi-word core
+        core = g.split_suffix(r.m_customer)[0].split()
+        assert len(core) >= 2 and r.customer.split()[0] == core[0]
+        built = g.pair("H06")
+        if built:
+            (_, _), (b, _) = built  # row b is an abbreviation, never a typo or a suffix change
+            assert g.split_suffix(b.customer)[0] != g.split_suffix(b.m_customer)[0]
+            assert len(b.customer) < len(b.m_customer) or b.customer.isupper() or any(w.isupper() for w in b.customer.split())
