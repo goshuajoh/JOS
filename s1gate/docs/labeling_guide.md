@@ -71,8 +71,8 @@ fields is a broken sales line, so it's `ask_human`, not `no_op`.
 Any one of these is enough:
 
 * **missing**: customer, part, qty, unit_price, ref, period or country is empty
-* **impossible**: qty zero, negative, fractional (`1.5`, `2,75`) or non-numeric (`see attachment`); price zero, negative or non-numeric (`TBD`); month `13` or `00`; a period that is not a month (`Q3 2026`, `FY26`, `2026`)
-* **contradictory or garbled**: two part numbers, two quantities (`1000/1200`), a note in a value field in any language (`ref=see email`, `ref=ver nota: pago pendiente`), a value cut off mid-way with or without `…` (`customer=Medisonda Tijuana S. de R.L. d`, `unit_price=1.9…`)
+* **impossible**: qty zero, negative, fractional (`1.5`, `2,75`) or non-numeric (`see attachment`); price zero, negative or non-numeric (`TBD`, `0,00 BRL`, `R$0,00`, `−2.31 USD`, `(2.31) USD`); month `13` or `00`; a period that is not a month (`Q3 2026`, `FY26`, `2026`)
+* **contradictory or garbled**: two part numbers, two quantities (`1000/1200`), two prices or a price range (`2.31/2.40 USD`, `2.31-2.40 USD`, `2.31 USD or 2.40 USD`), a price that is not exact (`approx 2.31 USD`, `~2.31 USD`), a note in a value field in any language (`ref=see email`, `ref=ver nota: pago pendiente`, `unit_price=2.31 USD (net 30)`), a value cut off mid-way with or without `…` (`customer=Medisonda Tijuana S. de R.L. d`, `unit_price=1.9…`)
 * **lookup failed**: master `customer=unknown`, `spq=?` or `moq=?` on an otherwise normal sales line
 * **nothing else fits**: e.g. a return or credit line
 
@@ -111,7 +111,7 @@ At least one value is not in canonical form, *and* the value is right once norma
 
 * period: `30.09.2026`, `Sep-26`, `2026/09`, `09/2026`, `2026-9`, `September 2026`, `2026-09-30`
 * qty: separators, units or spaces, as in 2.5. The normalized qty must still pass SPQ and MOQ.
-* unit_price: a decimal comma (`2,31`), lower case (`usd`), a symbol or word for the currency (`$2.31`, `2,31 Euro`, `41,90 TL`, `Rs. 105`), the currency first (`USD 2.31`), spaces or apostrophes between thousands (`5 220,00 HUF`)
+* unit_price: a decimal comma (`2,31`), lower case (`usd`), a symbol or word for the currency (`$2.31`, `US$2.31`, `R$10,50`, `2,31 Euro`, `41,90 TL`, `Rs. 105`), rupee-paise notation (`Rs. 105-00` is 105.00 INR), the currency first (`USD 2.31`), spaces or apostrophes between thousands (`5 220,00 HUF`, `1’234.50 CHF`)
 * part: lower or mixed case, spaces instead of hyphens, missing hyphens (`wm-s3-n8r8`, `WM S3 N8R8`)
 * country: lower case (`pl`) or the full name (`Poland`)
 * customer: different **only** in case, spacing, punctuation or accents (`ACME CONTROLS LTD`, `Acme Controls Ltd.`, `Vega Beyaz Eşya A.Ş.` vs `Vega Beyaz Esya A.S.`)

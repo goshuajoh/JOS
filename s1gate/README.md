@@ -97,7 +97,7 @@ s1gate clean --train data/synth/teacher.verified.jsonl data/synth/procedural.jso
              --out data/synth/train.jsonl
 
 # 4-5  fine-tune (route A first)
-s1gate train-gliner --schema $S --train data/synth/train.jsonl --dev data/dev.jsonl --out runs/gliner
+s1gate train-gliner --schema $S --train data/synth/train.jsonl --dev data/dev.jsonl --out runs/gliner  # --overwrite to retrain
 s1gate train-qwen   --schema $S --train data/synth/train.jsonl --dev data/dev.jsonl --out runs/qwen
 
 # 6-7  calibrate + thresholds on DEV predictions, then report on EVAL
@@ -134,7 +134,7 @@ is approved for the data class.
 
 ## What was and was not tested
 
-* **Tested here.** About 160 unit, CLI and data tests (`pytest -q`). They cover:
+* **Tested here.** About 250 unit, CLI and data tests (`pytest -q`). They cover:
   * the schema and enums, records, and dedupe/decontamination (checked against brute force)
   * metrics, temperature and vector calibration, and thresholds with rules. A property test checks
     that the coverage and accuracy in `thresholds.json` are exactly what the `Gate` does.
@@ -149,7 +149,10 @@ is approved for the data class.
   `selected/` in the backend. All training rows pass gliner2 2.1.0's own loader, with option
   order re-drawn on every read.
 * **Reviewed.** Independent review agents went over the rule checker, generator, calibration,
-  thresholds, CLI and loop code. Every defect they found is fixed and has a regression test.
+  thresholds, CLI, loop and training code, then three more rounds re-checked the fixes and hunted
+  regressions, each claim checked by a separate skeptic. Every confirmed defect is fixed and has a
+  regression test; across those rounds the checker's verdict on the 23,403 labelled rows under
+  `data/` never changed.
 * **Not run here.** GLiNER2.5-Decide and real Qwen3 checkpoints. Hugging Face was not reachable
   from the build environment, so there are no zero-shot or fine-tuned numbers yet, only the
   keyword floor in `reports/`. Your first `scripts/run_baselines.sh` on `data/dev.jsonl` is the
