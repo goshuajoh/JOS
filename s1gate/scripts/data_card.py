@@ -120,9 +120,14 @@ lines += ["1. **Company pools.** Two agents invented 88 distributors and 440 cus
           "(`data/pools/raw/`). `scripts/split_pools.py` assigns every company to train or eval by a stable hash, so the "
           "proxy dev/eval rows use companies training never sees.",
           "2. **Teacher rows.** 25 agents (Opus and Sonnet alternating, the guide's \"several teachers\") each got a "
-          "work order: scenarios or hard-pair types from `configs/synth.pos.yaml`, plus a style card per batch "
-          "(region, order size, seen_refs history, currency, the format noise allowed for that scenario). "
-          "Each agent self-checked with `s1gate audit` until there were no violations.",
+          "work order (`synth/teacher/workorders/t*.md`): scenarios or hard-pair types from `configs/synth.pos.yaml`, "
+          "plus a style card per batch (region, order size, seen_refs history, currency, the format noise allowed for "
+          "that scenario). Each agent self-checked with `s1gate audit` until there were no violations. The Sonnet "
+          "agents met their orders by writing seeded generator scripts, and the Opus agents chose each row's values "
+          "themselves. So 8 more Opus chunks (`h*.md`, new style cards, an explicit no-generator rule) were written by "
+          "hand for the scenarios where natural variety matters most: format messiness, typos and renames, uncertain "
+          "links, garbled rows, note and subtotal lines, and the rename and qty-format hard pairs. "
+          "`meta.authoring` records which is which.",
           "3. **Blind re-labelling.** `s1gate blind-export` shuffled all teacher rows into mixed batches with opaque "
           "ids. Separate annotator agents labelled them from the guide alone. `s1gate blind-merge --domain pos` "
           "kept a row only if the blind label matched its target on all three questions and the rule audit passed."]

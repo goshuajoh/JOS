@@ -58,8 +58,10 @@ The guide calls this step the one that decides how good the gate gets. `data/` s
 
 * **teacher rows**: written by frontier-model agents from `configs/synth.pos.yaml` (44
   scenarios, 12 hard-pair types, style cards per batch). Each agent self-checked with `audit`,
-  then independent annotators labelled the rows blind, in shuffled mixed batches, and a row
-  was kept only when the blind labels matched its target and the rule audit passed.
+  then independent annotators labelled the rows blind, in shuffled mixed batches with opaque
+  ids, and a row was kept only when the blind labels matched its target and the rule audit
+  passed. `meta.authoring` says whether the agent wrote each row itself (`hand`) or wrote a
+  seeded generator script (`script`). Down-weight the script rows if they turn out too uniform.
 * **procedural rows** (`s1gate procgen`): labels known by construction, for exact SPQ/MOQ
   boundaries, near-miss refs, flags, stacked problems and every hard pair. Every row passes the
   rule audit.
@@ -132,14 +134,21 @@ is approved for the data class.
 
 ## What was and was not tested
 
-* Tested here: 100+ unit and CLI tests. They cover the schema and enums, records,
-  dedupe/decontamination (checked against brute force), metrics, temperature and vector
-  calibration, thresholds and rules, the gate's escalation paths, the HTTP service, the loop
-  tools, the HTML report and the POS rule checker. The procedural generator is tested too: every
-  combination is covered and every label holds. The Qwen backend and LoRA training ran end to end
-  on a tiny random Qwen3, and GLiNER training rows went through gliner2 2.1.0's own loader with
-  per-read option reshuffling.
-* Not run here: GLiNER2.5-Decide and real Qwen3 checkpoints. Hugging Face was not reachable
-  from the build environment, so there are no zero-shot or fine-tuned numbers yet. The first
-  `s1gate eval --backend gliner` run on `data/dev.jsonl` is the real check. See
-  `backends/gliner.py` for what to look at if the calibration curve comes out flat.
+* **Tested here.** About 150 unit, CLI and data tests (`pytest -q`). They cover:
+  * the schema and enums, records, and dedupe/decontamination (checked against brute force)
+  * metrics, temperature and vector calibration, and thresholds with rules. A property test checks
+    that the coverage and accuracy in `thresholds.json` are exactly what the `Gate` does.
+  * the gate's escalation paths, the HTTP service, the loop tools and the HTML report
+  * the POS rule checker and the procedural generator: every combination is covered and every
+    label holds
+  * the shipped data: it is rule-clean, the eval file is frozen and untouched, and no eval or
+    dev rows or held-out companies appear in training
+* **Smoke-tested on toy models.** The Qwen backend and LoRA training ran end to end on a tiny
+  random Qwen3. All training rows pass gliner2 2.1.0's own loader, with option order re-drawn on
+  every read.
+* **Reviewed.** Independent review agents went over the rule checker, generator, calibration,
+  thresholds, CLI and loop code. Every defect they found is fixed and has a regression test.
+* **Not run here.** GLiNER2.5-Decide and real Qwen3 checkpoints. Hugging Face was not reachable
+  from the build environment, so there are no zero-shot or fine-tuned numbers yet, only the
+  keyword floor in `reports/`. Your first `scripts/run_baselines.sh` on `data/dev.jsonl` is the
+  real check. See `backends/gliner.py` for what to look at if the calibration curve comes out flat.
