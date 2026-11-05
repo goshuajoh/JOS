@@ -64,10 +64,11 @@ def _percentile(values: list[float], q: float) -> float:
 def _frozen_manifests(args):
     """--frozen if given, else every data/eval/*.frozen.json in the working directory and in the
     project around each input (the schema, preds, data, training files): the nearest folder
-    above the input that has data/eval, never above the project root (pyproject.toml, .git), so
+    above the input that has data/eval, never above the project root (pyproject.toml, setup.py), so
     a run from another directory is guarded and an unrelated project is not. A manifest that is
     not readable is skipped with a warning. Says so when nothing is found."""
     from .frozen import DEFAULT_DIR, discover
+    from .frozen import load as load_manifest
 
     explicit = getattr(args, "frozen", None)
     if explicit:
@@ -80,7 +81,7 @@ def _frozen_manifests(args):
                 if (parent / DEFAULT_DIR).is_dir():
                     roots.append(parent / DEFAULT_DIR)
                     break
-                if any((parent / m).exists() for m in ("pyproject.toml", ".git", "setup.py")):
+                if any((parent / m).exists() for m in ("pyproject.toml", "setup.py", "setup.cfg")):
                     break  # the project root, and it has no frozen eval
     found, seen = [], set()
     for root in roots:
@@ -89,7 +90,7 @@ def _frozen_manifests(args):
                 continue
             seen.add(m.resolve())
             try:
-                json.loads(m.read_text(encoding="utf-8"))
+                load_manifest(m)
             except (OSError, ValueError) as e:
                 print(f"warning: skipping unreadable manifest {m}: {e}", file=sys.stderr)
                 continue

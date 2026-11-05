@@ -123,16 +123,26 @@ def test_export_enums_refuses_names_that_would_not_import(tmp_path):
     import shlex
 
     import yaml
-    for name, options, why in (("row_action", {"no-op": "skip", "no_op": "also skip", "commit": "write"}, "both become"),
-                               ("class", {"a": "x", "b": "y"}, "keyword"),
-                               ("model_config", {"a": "x", "b": "y"}, "pydantic")):
+    def schema_file(name, options):
         src = tmp_path / f"{name}.yaml"
         src.write_text(yaml.safe_dump({"name": "g", "version": 1,
                                        "questions": [{"name": name, "prompt": "?", "options": options}]}))
+        return src
+
+    for name, options, why in (("row_action", {"no-op": "skip", "no_op": "also skip", "commit": "write"}, "both become"),
+                               ("class", {"a": "x", "b": "y"}, "keyword"),
+                               ("model_config", {"a": "x", "b": "y"}, "pydantic")):
+        src = schema_file(name, options)
         out = tmp_path / f"{name}.py"
         assert main(["export-enums", "--schema", str(src), "--out", str(out)]) == 2 and not out.exists()
-        with pytest.raises(ValueError, match=why):
-            render(DecisionSchema.load(src))
+        if why:
+            with pytest.raises(ValueError, match=why):
+                render(DecisionSchema.load(src))
+    for name in ("match", "case", "type", "model_number", "copy"):  # legal names export and import
+        src = schema_file(name, {"a": "x", "b": "y"})
+        out = tmp_path / f"ok_{name}.py"
+        assert main(["export-enums", "--schema", str(src), "--out", str(out)]) == 0
+        assert main(["export-enums", "--schema", str(src), "--out", str(out), "--check"]) == 0
     # the regenerate command in the header is quoted, so it works for paths with spaces
     src = tmp_path / "My Schemas" / "s.yaml"
     src.parent.mkdir()
@@ -142,3 +152,29 @@ def test_export_enums_refuses_names_that_would_not_import(tmp_path):
     line = next(x.strip() for x in out.read_text().splitlines() if x.strip().startswith("s1gate export-enums"))
     argv = shlex.split(line)[1:]
     assert argv[argv.index("--schema") + 1] == src.as_posix() and argv[argv.index("--out") + 1] == out.as_posix()
+
+
+def test_frozen_guard_finds_the_project_eval_from_a_nested_repo_and_reads_old_manifests(tmp_path, monkeypatch):
+    import locale
+
+    from s1gate.frozen import load
+
+    proj = tmp_path / "proj"
+    (proj / "data" / "eval").mkdir(parents=True)
+    (proj / "pyproject.toml").write_text("[project]\nname='x'\n")
+    rows = read_jsonl(ROOT / "data" / "eval" / "eval.sample.jsonl")
+    write_jsonl(proj / "data" / "eval" / "ev.jsonl", rows)
+    assert main(["freeze", "--schema", str(SCHEMA), "--data", str(proj / "data" / "eval" / "ev.jsonl")]) == 0
+    nested = proj / "data" / "teacher_repo"  # a git submodule checkout holds a .git file
+    nested.mkdir()
+    (nested / ".git").write_text("gitdir: ../../.git/modules/teacher_repo\n")
+    write_jsonl(nested / "train.jsonl", rows[:5])
+    monkeypatch.chdir(tmp_path)  # run from outside the project
+    assert main(["clean", "--train", str(nested / "train.jsonl"), "--out", str(tmp_path / "o.jsonl")]) == 2
+    # a manifest written in the locale's encoding (cp1252 on Windows) still loads
+    man = proj / "data" / "eval" / "ev.frozen.json"
+    data = json.loads(man.read_text(encoding="utf-8"))
+    data["note"] = "proxy eval — replace with real rows"
+    man.write_bytes(json.dumps(data, ensure_ascii=False).encode("cp1252"))
+    monkeypatch.setattr(locale, "getpreferredencoding", lambda *_: "cp1252")
+    assert load(man)["note"].endswith("real rows")

@@ -248,23 +248,60 @@ def select_on_dev_nll(candidates: list[Path], dev_records: list[Record], schema:
     return best, scores
 
 
-STAGING = ".s1gate-staging"
-_RUN_FILES = {"final", "best", "selected", "selection.json", "logs", "training_config.json",
-              "gliner_train.jsonl", "gliner_dev.jsonl"}
+STAGING, PREVIOUS = ".s1gate-staging", ".s1gate-previous"
+_RUN = {"final", "best", "selected", "selection.json"}                     # only a training run writes these
+_RUN_EXTRAS = {"training_config.json", "gliner_train.jsonl", "gliner_dev.jsonl"}  # replaced with it
 
 
 class PreviousRunError(FileExistsError):
-    """The output folder already holds a training run."""
+    """The output folder already holds a training run (or the remains of an interrupted one)."""
 
 
 def run_artifacts(out: Path) -> list[Path]:
-    """What an earlier train() left in `out` (checkpoints, merged copies, selection, gliner2's
-    logs and caches); nothing else in the folder."""
+    """The training run in `out`: checkpoints, merged copies, best/, final/, selected/, selection.json."""
     if not out.is_dir():
         return []
     return sorted(p for p in out.iterdir()
-                  if p.name in _RUN_FILES or p.name.startswith(("checkpoint-", "gliner_dev.jsonl."))
-                  or p.name.endswith("-merged"))
+                  if p.name in _RUN or p.name.startswith("checkpoint-") or p.name.endswith("-merged"))
+
+
+def _run_extras(out: Path) -> list[Path]:
+    """Files a run writes besides the run itself (its config, its rows, gliner2's length caches)."""
+    if not out.is_dir():
+        return []
+    return sorted(p for p in out.iterdir() if p.name in _RUN_EXTRAS or p.name.startswith("gliner_dev.jsonl."))
+
+
+def _swap_in(stage: Path, out: Path, log=print) -> None:
+    """Replace the run in `out` by the finished one in `stage`.
+
+    The old run is first moved aside into `<out>/.s1gate-previous` and deleted only after the new
+    one is in place, so an interruption leaves one complete run on disk (train() then refuses to
+    start until it is sorted out). gliner2's logs/ is merged into a logs/ folder of the user's, never
+    replaces it; any other name that is not the run's own is left to the user.
+    """
+    previous = out / PREVIOUS
+    old = run_artifacts(out) + _run_extras(out)
+    if old:
+        previous.mkdir()
+        for p in old:
+            p.rename(previous / p.name)
+    for p in sorted(stage.iterdir()):
+        target = out / p.name
+        if p.name == "logs" and p.is_dir():
+            if any(p.iterdir()):
+                target.mkdir(exist_ok=True)
+                for q in p.iterdir():
+                    _remove(target / q.name)
+                    q.rename(target / q.name)
+            _remove(p)
+        elif target.exists() or target.is_symlink():
+            log(f"kept your {target}; the run's own {p.name} is dropped")
+            _remove(p)
+        else:
+            p.rename(target)
+    stage.rmdir()
+    _remove(previous)
 
 
 def _remove(p: Path) -> None:
@@ -287,6 +324,12 @@ def train(train_records: list[Record], dev_records: list[Record] | None, schema:
     if loss not in ("softmax", "bce"):
         raise ValueError("loss must be 'softmax' or 'bce'")
     out = Path(out_dir)
+    if (out / PREVIOUS).exists():
+        raise PreviousRunError(f"{out / PREVIOUS} holds the run an interrupted swap moved aside; move what "
+                               f"you want to keep back into {out}, then delete {PREVIOUS} (and {STAGING})")
+    if any((out / STAGING / n).exists() for n in ("selected", "selection.json", "final")):
+        raise PreviousRunError(f"{out / STAGING} holds a finished run that was never moved into {out}; "
+                               "move it in or delete it first")
     old = run_artifacts(out)
     if old and not overwrite:
         raise PreviousRunError(f"{out} already holds a training run ({', '.join(p.name for p in old[:6])}"
@@ -296,7 +339,7 @@ def train(train_records: list[Record], dev_records: list[Record] | None, schema:
     model = AutoExtractor.from_pretrained(base)  # fails before anything in `out` is touched
 
     stage = out / STAGING  # the run is built here and replaces the old one only when complete
-    _remove(stage)         # a crashed earlier attempt
+    _remove(stage)         # an unfinished earlier attempt (a finished one is refused above)
     stage.mkdir(parents=True)
     write_rows(rows, stage / "gliner_train.jsonl")  # for inspection; training reads `rows` reshuffled
     dev_path = None
@@ -339,10 +382,5 @@ def train(train_records: list[Record], dev_records: list[Record] | None, schema:
     else:
         result = next(c for c in candidates if c.name.startswith("final")).name
 
-    for p in run_artifacts(out):  # the finished run replaces the previous one
-        _remove(p)
-    for p in sorted(stage.iterdir()):
-        _remove(out / p.name)
-        p.rename(out / p.name)
-    stage.rmdir()
+    _swap_in(stage, out, log)
     return str(out / result)

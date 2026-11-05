@@ -60,10 +60,10 @@ def check_names(schema: DecisionSchema) -> list[str]:
     reserved = {"Enum", "BaseModel", "ConfigDict", model}
     classes: dict[str, str] = {}
     for q in schema.questions:
-        if keyword.iskeyword(q.name) or keyword.issoftkeyword(q.name):
+        if keyword.iskeyword(q.name):  # soft keywords (match, case, type) are fine as names
             problems.append(f"question {q.name!r} is a Python keyword")
-        if q.name.startswith("model_") or hasattr(BaseModel, q.name):
-            problems.append(f"question {q.name!r} clashes with a pydantic BaseModel attribute")
+        if q.name.startswith("model_") and hasattr(BaseModel, q.name):  # model_config, model_dump, ...
+            problems.append(f"question {q.name!r} is a pydantic BaseModel attribute, so it cannot be a field")
         cls = _camel(q.name)
         if cls in reserved or cls in classes:
             problems.append(f"question {q.name!r} becomes class {cls}, which "
@@ -128,10 +128,14 @@ def _path(p) -> str:
 def write(schema_path: str, out_path: str) -> str:
     schema = DecisionSchema.load(schema_path)
     text = render(schema, source=_path(schema_path), out=_path(out_path))
+    ns: dict = {"__name__": "s1gate_export_check"}
     try:  # never write a module that does not import (the module defines enums and one model)
-        exec(compile(text, str(out_path), "exec"), {"__name__": "s1gate_export_check"})
+        exec(compile(text, str(out_path), "exec"), ns)
     except Exception as e:  # noqa: BLE001 - any failure here means the schema cannot be exported
         raise ValueError(f"the generated module would not import: {type(e).__name__}: {e}") from e
+    fields = set(ns[_camel(schema.name) + "Decision"].model_fields)
+    if fields != set(schema.names):  # every question must be a field of the decision model
+        raise ValueError(f"the generated decision model would lack fields: {sorted(set(schema.names) - fields)}")
     Path(out_path).parent.mkdir(parents=True, exist_ok=True)
     Path(out_path).write_text(text, encoding="utf-8")
     init = Path(out_path).parent / "__init__.py"

@@ -213,7 +213,7 @@ def read_price(raw: str) -> tuple[float | None, str]:
     if m:
         v = float(m.group(1))
         return (v, "canonical") if v > 0 else (v, "impossible")
-    t = s.replace("\u00a0", " ").replace("\u202f", " ").replace("\u2212", "-")
+    t = re.sub(r"\s", " ", s).replace("\u2019", "'").replace("\u2212", "-")
     if not re.search(r"\d", t):
         return None, "invalid"  # TBD, n/a, see contract: no number at all
     if re.search(r"\d\s*/\s*\d|\?", t):
@@ -357,9 +357,13 @@ def read_country(raw: str) -> tuple[str | None, str]:
     if re.fullmatch(r"[A-Za-z]{2}", s):
         return s.upper(), "formatted"
     name = _fold(s)
-    if name in COUNTRY_NAMES:
-        return COUNTRY_NAMES[name], "formatted"
+    if name in _COUNTRY_FOLDED:
+        return _COUNTRY_FOLDED[name], "formatted"
     return None, "unknown"
+
+
+# the table's own keys folded the same way ('u.s.a.' -> 'u s a', 'korea, republic of' -> 'korea republic of')
+_COUNTRY_FOLDED: dict[str, str] = {}
 
 
 def _strip_accents(s: str) -> str:
@@ -380,6 +384,9 @@ def _fold(s: str) -> str:
     """Lower case, accents stripped, punctuation to spaces, whitespace collapsed."""
     s = re.sub(r"[^\w]+", " ", _strip_accents(s.lower()))
     return re.sub(r"\s+", " ", s).strip()
+
+
+_COUNTRY_FOLDED.update({_fold(k): v for k, v in COUNTRY_NAMES.items()})
 
 
 def name_key(s: str) -> str:
@@ -409,31 +416,55 @@ def seen_list(raw: str) -> list[str]:
     return [x.strip() for x in s.split(",") if x.strip()]
 
 
-# words that say nothing about which company a name means (legal forms, filler)
-_NAME_FILLER = {"ltd", "limited", "inc", "incorporated", "corp", "corporation", "company", "llc", "llp",
-                "plc", "gmbh", "sas", "sarl", "srl", "spa", "pvt", "pte", "bhd", "sdn", "jsc", "ooo", "sapi",
-                "the", "and", "und", "group", "holding", "holdings", "intl", "international"}
+# words that say nothing about which company a name means: legal forms in their short, long and
+# translated spellings (Pvt Ltd / Private Limited, A.S. / Anonim Sirketi, K.K. / Kabushiki Kaisha)
+# and filler. Words of one or two letters never count either.
+_NAME_FILLER = set("""
+ltd limited inc incorporated corp corporation company llc llp plc gmbh mbh gesellschaft sas sarl srl
+spa pvt pte private public liability bhd berhad sdn sendirian jsc pjsc ooo sapi capital variable cv
+sociedad anonima anonyme societe societa azioni responsabilita limitata ltda anonim sirketi sti san
+tic ticaret sanayi kabushiki kaisha besloten vennootschap aktieselskab aktiebolag osakeyhtio oyj
+spolka kommanditgesellschaft ehf kft eood uab sia fze fzco wll tbk sac sro the and und per con
+group holding holdings intl international
+""".split())
 
 
-def _fold(s: str) -> str:
+def _fold_marker(s: str) -> str:
+    """Lower case, accents stripped, runs of spaces, hyphens and underscores to one space."""
     return re.sub(r"[\s\-_]+", " ", _strip_accents(s.lower())).strip()
 
 
 def _marker_key(raw: str) -> str:
     raw = raw.strip()
     if re.search(r"[^\W_]", raw):
-        return _fold(raw).strip(" -:")  # 'Sub-Total', 'sub total' and 'subtotal:' alike
+        return _fold_marker(raw).strip(" -:")  # 'Sub-Total', 'sub total' and 'subtotal:' alike
     return unicodedata.normalize("NFKC", raw)  # punctuation stays as it is: '---', '??', '...'
 
 
 def _count(marker: str, text: str) -> int:
+    """How often `marker` occurs in `text` where the marker patterns could match it: from a word
+    start ('Delsumma', 'Remarks:', 'ARA TOPLAMI'), and anywhere for one that starts with
+    punctuation ('Ltd(see email)', '??')."""
     if not re.search(r"[^\W_]", marker):
         return unicodedata.normalize("NFKC", text.lower()).count(marker)
-    return len(re.findall(r"(?<![^\W_])" + re.escape(marker) + r"(?![^\W_])", _fold(text)))
+    lead = r"(?<![^\W_])" if re.match(r"[^\W_]", marker) else ""
+    return len(re.findall(lead + re.escape(marker), _fold_marker(text)))
 
 
 def _name_words(s: str) -> set[str]:
-    return {w for w in re.split(r"[\W_]+", _fold(s)) if len(w) > 2 and w not in _NAME_FILLER}
+    return {w for w in re.split(r"[\W_]+", _fold_marker(s)) if len(w) > 2 and w not in _NAME_FILLER}
+
+
+def _abbreviates(short: str, long: str) -> bool:
+    """'ctrl' for 'controls', 'pwr' for 'power': same first letter, the letters in order."""
+    if len(short) >= len(long) or short[0] != long[0]:
+        return False
+    rest = iter(long[1:])
+    return all(c in rest for c in short[1:])
+
+
+def _share_a_word(a: set[str], b: set[str]) -> bool:
+    return bool(a & b) or any(_abbreviates(x, y) or _abbreviates(y, x) for x in a for y in b)
 
 
 def new_marker(pattern: re.Pattern, value: str, master: str) -> bool:
@@ -446,9 +477,11 @@ def new_marker(pattern: re.Pattern, value: str, master: str) -> bool:
       * it occurs more often than in the master name ('Acme Ltd Total', 'TBC Corp (TBC)',
         'Total Power Solutions Ltd Total'); for a name with the master's very letters (a case,
         spacing or punctuation variant) only an added '??' or '...' can be new;
-      * the master name holds it but the value shares no other distinctive word with that name
-        ('Note: credit to follow' when the lookup matched 'Note AB', 'Total Acme Controls Ltd'
-        when it matched 'Total Power Solutions Ltd').
+      * the master name holds it but the value shares no other distinctive word with that name,
+        legal forms and abbreviations allowed for ('Note: credit to follow' when the lookup
+        matched 'Note AB', 'Total Acme Controls Ltd' when it matched 'Total Power Solutions
+        Ltd'; but 'TBC Private Limited' for 'TBC Pvt Ltd' and 'Total Pwr Solutions' for 'Total
+        Power Solutions Ltd' are the name).
     """
     found = {_marker_key(m.group(0)) for m in pattern.finditer(value)} - {""}
     if not found:
@@ -464,7 +497,7 @@ def new_marker(pattern: re.Pattern, value: str, master: str) -> bool:
         return True
     marker_words = {w for f in found for w in re.split(r"[\W_]+", f) if w}
     own, theirs = _name_words(value) - marker_words, _name_words(master) - marker_words
-    return bool(own) and not (own & theirs)
+    return bool(own) and not _share_a_word(own, theirs)
 
 
 def nonsales_kind(rec: PosRecord, catalogue: set[str] | None = None) -> str | None:

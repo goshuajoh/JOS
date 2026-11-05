@@ -332,19 +332,45 @@ def test_failed_lookup_sales_line_with_a_note_word_in_the_name_is_still_a_sales_
     assert not _violations(text, labels("ask_human", "yes", "3"))
 
 
-def test_procgen_says_when_a_scenario_falls_short():
+def test_procgen_says_when_a_scenario_falls_short(tmp_path):
     import json
     pools = json.loads(POOLS.read_text())
     for region in pools.values():  # single-word names only: no sister company, no abbreviation
         region["customers"] = [{"name": "Sakuragawa K.K.", "country": "JP"}, {"name": "Mirae Inc.", "country": "KR"}]
-    path = POOLS.parent / "_short_pools.json"
-    try:
-        path.write_text(json.dumps(pools))
-        logs = []
-        pos_gen.generate(str(path), str(ROOT / "configs/pools/parts.yaml"), str(ROOT / "configs/synth.pos.yaml"),
-                         str(ROOT / "configs/pools/regions.yaml"), n_per_scenario=4, pairs_per_type=2, seed=1,
-                         log=logs.append)
-    finally:
-        path.unlink(missing_ok=True)
+    path = tmp_path / "short_pools.json"
+    path.write_text(json.dumps(pools))
+    logs = []
+    pos_gen.generate(str(path), str(ROOT / "configs/pools/parts.yaml"), str(ROOT / "configs/synth.pos.yaml"),
+                     str(ROOT / "configs/pools/regions.yaml"), n_per_scenario=4, pairs_per_type=2, seed=1,
+                     log=logs.append)
     assert any(m.startswith("procgen: scenario VU1: 0 of") for m in logs)  # weighted quota, none built
     assert any(m.startswith("procgen: pair H06: 0 of") for m in logs)
+
+
+@pytest.mark.parametrize("pattern,value,master,marker", [
+    (_NV, "TBC Private Limited", "TBC Pvt Ltd", False),          # legal form spelled out: a clear rename
+    (_NV, "TBC Anonim \u015eirketi", "TBC A.\u015e.", False),
+    (_NV, "TBC Kabushiki Kaisha", "TBC K.K.", False),
+    (_NV, "TBC Sociedad An\u00f3nima de Capital Variable", "TBC S.A. de C.V.", False),
+    (_NV, "TBC GmbH & Co. Kommanditgesellschaft", "TBC GmbH & Co. KG", False),
+    (_NV, "Check Pt Sw Tech Ltd", "Check Point Software Technologies Ltd.", False),  # abbreviations
+    (_NV, "TBC CTRL LTD", "TBC Controls Ltd", False),
+    (_S, "Total Pwr Solutions", "Total Power Solutions Ltd", False),
+    (_S, "Delsumma Acme", "unknown", True),                       # markers glued to a word still count
+    (_N, "Remarks: credit to follow", "Remark Holdings Ltd", True),
+    (_S, "Acme Ltd ARA TOPLAMI", "Acme Ltd", True),
+    (_NV, "Acme Ltd(see email)", "Acme Ltd", True),
+])
+def test_new_marker_legal_forms_abbreviations_and_glued_markers(pattern, value, master, marker):
+    assert pos.new_marker(pattern, value, master) is marker
+
+
+@pytest.mark.parametrize("raw,code", [("Germany.", "DE"), ("(Poland)", "PL"), ("U.S.A.", "US"),
+                                      ("Korea, Republic of", "KR"), ("Czech Rep.", "CZ")])
+def test_read_country_folds_its_own_table(raw, code):
+    assert pos.read_country(raw) == (code, "formatted")
+
+
+def test_price_thousands_separators_in_any_unicode_spacing():
+    assert pos.read_price("1\u2019234.50 CHF") == (1234.5, "formatted")
+    assert pos.read_price("1\u2009234,50 EUR") == (1234.5, "formatted")

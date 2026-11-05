@@ -230,3 +230,24 @@ def test_frontier_confidence_edge_cases():
             top = max(p[q], key=p[q].get)
             assert top == {"row_action": "commit", "needs_human": "no"}[q]  # the stated option stays on top
             assert (p[q][top] >= 0.8) == expect_floor
+
+
+def test_gliner_training_keeps_user_files_and_refuses_after_an_interrupted_swap(tiny_gliner, tmp_path):
+    from s1gate.train_gliner import PREVIOUS, STAGING, PreviousRunError, train
+
+    s = DecisionSchema.load(SCHEMA)
+    rows = read_jsonl(EVAL)
+    quiet = dict(batch_size=8, epochs=1, log=lambda *_: None)
+    out = tmp_path / "run"
+    (out / "logs").mkdir(parents=True)
+    (out / "logs" / "serve.log").write_text("mine")  # a user's own logs/ is not a training run
+    path = train(rows[:8], rows[8:12], s, str(out), base=tiny_gliner, **quiet)
+    assert (out / "logs" / "serve.log").read_text() == "mine" and path.endswith("selected")
+    assert not (out / STAGING).exists() and not (out / PREVIOUS).exists()
+    (out / PREVIOUS).mkdir()  # what an interrupted swap leaves: train() must not guess
+    with pytest.raises(PreviousRunError, match="interrupted"):
+        train(rows[:8], rows[8:12], s, str(out), base=tiny_gliner, overwrite=True, **quiet)
+    (out / PREVIOUS).rmdir()
+    (out / STAGING / "selected").mkdir(parents=True)  # a finished run that was never moved in
+    with pytest.raises(PreviousRunError, match="never moved"):
+        train(rows[:8], rows[8:12], s, str(out), base=tiny_gliner, overwrite=True, **quiet)

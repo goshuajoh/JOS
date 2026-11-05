@@ -15,6 +15,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import locale
 from collections import Counter
 from datetime import date
 from pathlib import Path
@@ -64,12 +65,17 @@ def freeze(data_path: str | Path, schema: DecisionSchema, note: str = "") -> dic
         "text_hashes": sorted({text_hash(r.text) for r in records}),
     }
     out = manifest_path(data_path)
-    out.write_text(json.dumps(manifest, indent=1, ensure_ascii=False))
+    out.write_text(json.dumps(manifest, indent=1, ensure_ascii=False), encoding="utf-8")
     return manifest
 
 
 def load(path: str | Path) -> dict:
-    return json.loads(Path(path).read_text())
+    raw = Path(path).read_bytes()
+    try:
+        text = raw.decode("utf-8")
+    except UnicodeDecodeError:  # written before manifests were UTF-8, in the locale's encoding
+        text = raw.decode(locale.getpreferredencoding(False))
+    return json.loads(text)
 
 
 def discover(paths: list[str] | None = None, root: str | Path = DEFAULT_DIR) -> list[Path]:
