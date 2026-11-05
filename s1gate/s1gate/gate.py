@@ -1,6 +1,6 @@
 """Step 8: the runtime gate the FSM calls in its Classify state.
 
-    gate = Gate.from_files("configs/schema.pos.yaml", make_backend("gliner", model="runs/gliner/best"),
+    gate = Gate.from_files("configs/schema.pos.yaml", make_backend("gliner", model="runs/gliner/selected"),
                            calibration="runs/calibration.json", thresholds="runs/thresholds.json",
                            log_path="runs/decisions.jsonl")
     d = gate.decide(row_text)

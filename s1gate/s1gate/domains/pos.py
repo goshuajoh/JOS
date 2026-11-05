@@ -86,7 +86,11 @@ HEADER_WORDS = {
 }
 FILLER = re.compile(r"^[\s\-=_*.~#/\u2500-\u257f\u2014\u2013]*$|^(n/?a|none|null|nil|-+|tbd)$", re.IGNORECASE)
 GRAND = re.compile(r"\b(grand[\s-]*total|report[\s-]*total|total[\s-]*(all|report|for report)|overall[\s-]*total|genel[\s-]*toplam|gesamtsumme|gesamttotal|total[\s-]*general|total[\s-]*geral|totale[\s-]*(generale|complessivo)|totaal[\s-]*generaal|summa[\s-]*totalt)\b", re.IGNORECASE)
-SUBTOTAL = re.compile(r"^\s*(sub[\s-]*total|subtotal|total\b|totals\b|totaal\b|ara[\s-]*toplam|zwischensumme)", re.IGNORECASE)
+SUBTOTAL = re.compile(
+    r"^\s*(sub[\s-]*total|subtotal|total\b|totals\b|totaal\b|subtotaal|sous[\s-]*total|totale[\s-]*parziale|"
+    r"suma[\s-]+cz[eę]ściowa|tarpin[eė][\s-]+suma|междинна[\s-]+сума|ara[\s-]*toplam|toplam\b|zwischensumme|"
+    r"summe\b|summa\b|delsum|samtals|v[aä]lisumma|yhteens[aä]|[oö]sszesen|小計|小计|소계|合計|합계)"
+    r"|(\s|-)(sub[\s-]*total|total|totaal|toplam[ıi]?|summe|i alt)\s*:?\s*$", re.IGNORECASE)
 TRUNCATED = re.compile(r"…|\.\.\.")
 NOTE_IN_VALUE = re.compile(r"\?\?|\(see\b|\bsee (email|attachment|mail|note)|\bplease check\b|\bcheck\b|"
                            r"\btbc\b|\bto be confirmed\b|\bverify\b", re.IGNORECASE)
@@ -393,13 +397,13 @@ def nonsales_kind(rec: PosRecord, catalogue: set[str] | None = None) -> str | No
         return "blank"
     # A total or note marker in the customer field is vetoed by sales-line evidence: a real ref
     # plus a catalogue-style part means a customer that happens to be called "Total ..." .
-    ref_real = bool(r["ref"]) and not FILLER.match(r["ref"]) and not (GRAND.search(r["ref"]) or SUBTOTAL.match(r["ref"]))
+    ref_real = bool(r["ref"]) and not FILLER.match(r["ref"]) and not (GRAND.search(r["ref"]) or SUBTOTAL.search(r["ref"]))
     part_real = bool(r["part"]) and read_part(r["part"], catalogue)[1] in ("canonical", "formatted") \
-        and not (GRAND.search(r["part"]) or SUBTOTAL.match(r["part"]))
+        and not (GRAND.search(r["part"]) or SUBTOTAL.search(r["part"]))
     sales = ref_real and part_real
     if GRAND.search(r["part"]) or GRAND.search(r["ref"]) or (GRAND.search(r["customer"]) and not sales):
         return "grand_total"
-    if SUBTOTAL.match(r["part"]) or SUBTOTAL.match(r["ref"]) or (SUBTOTAL.match(r["customer"]) and not sales):
+    if SUBTOTAL.search(r["part"]) or SUBTOTAL.search(r["ref"]) or (SUBTOTAL.search(r["customer"]) and not sales):
         return "subtotal"
     if (not r["qty"] or FILLER.match(r["qty"])) and not sales and \
             any(NOTE.search(r[k]) for k in ("customer", "part", "ref", "period")):

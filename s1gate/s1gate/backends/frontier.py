@@ -69,10 +69,14 @@ def parse_answer(raw: str, schema: DecisionSchema) -> Probs:
         if option not in q.options:
             out[q.name] = {o: 1 / k for o in q.labels}
             continue
+        # no stated (numeric) confidence counts as a coin flip, so it never clears an escalation
+        # floor by default
         try:
-            conf = float(item.get("confidence", 0.9)) if isinstance(item, dict) else 0.9
+            conf = float(item["confidence"]) if isinstance(item, dict) and "confidence" in item else 0.5
         except (TypeError, ValueError):
-            conf = 0.9
+            conf = 0.5
+        if conf != conf:  # NaN
+            conf = 0.5
         conf = min(max(conf, 1 / k), 0.999)
         rest = (1 - conf) / max(k - 1, 1)
         out[q.name] = {o: (conf if o == option else rest) for o in q.labels}

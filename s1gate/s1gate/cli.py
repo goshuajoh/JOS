@@ -527,7 +527,8 @@ def cmd_train_gliner(args) -> int:
     schema, tr, dev = _train_inputs(args)
     path = train(tr, dev, schema, args.out, base=args.base, epochs=args.epochs,
                  batch_size=args.batch_size, encoder_lr=args.encoder_lr, task_lr=args.task_lr,
-                 use_lora=args.lora, augment=args.augment, lora_r=args.lora_r, seed=args.seed)
+                 use_lora=args.lora, augment=args.augment, lora_r=args.lora_r, seed=args.seed,
+                 loss=args.loss)
     print(f"model -> {path}  (evaluate with: s1gate eval --backend gliner --model {path} ...)")
     return 0
 
@@ -877,6 +878,8 @@ def build_parser() -> argparse.ArgumentParser:
             p.add_argument("--augment", type=int, default=1,
                            help="extra static copies (options are re-shuffled on every read anyway)")
             p.add_argument("--seed", type=int, default=0)
+            p.add_argument("--loss", default="softmax", choices=["softmax", "bce"],
+                           help="softmax: cross-entropy over each question's options; bce: gliner2's own")
         else:
             p.add_argument("--base", default="Qwen/Qwen3-0.6B")
             p.add_argument("--lr", type=float, default=2e-4)

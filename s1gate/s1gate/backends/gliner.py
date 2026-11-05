@@ -20,7 +20,9 @@ from ..schema import DecisionSchema
 from .base import Backend, Probs, softmax
 
 DEFAULT_MODEL = "fastino/GLiNER2.5-Decide"
-_P_MIN, _P_MAX = 1e-6, 1 - 1e-6
+# gliner2 returns float32 sigmoids: keep their whole range (logits about -103..16.6) so confident
+# outputs do not collapse into ties; only exact 0 and 1 are nudged inside the open interval.
+_P_MIN, _P_MAX = 1e-45, 1 - 2 ** -24
 
 
 class GlinerBackend(Backend):

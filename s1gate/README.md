@@ -101,7 +101,7 @@ s1gate train-gliner --schema $S --train data/synth/train.jsonl --dev data/dev.js
 s1gate train-qwen   --schema $S --train data/synth/train.jsonl --dev data/dev.jsonl --out runs/qwen
 
 # 6-7  calibrate + thresholds on DEV predictions, then report on EVAL
-s1gate eval --schema $S --data data/dev.jsonl --backend gliner --model runs/gliner/best \
+s1gate eval --schema $S --data data/dev.jsonl --backend gliner --model runs/gliner/selected \
             --preds-out runs/dev_preds.jsonl
 s1gate calibrate  --schema $S --preds runs/dev_preds.jsonl --out runs/calibration.json
 s1gate thresholds --schema $S --preds runs/dev_preds.jsonl --calibration runs/calibration.json \
@@ -109,13 +109,13 @@ s1gate thresholds --schema $S --preds runs/dev_preds.jsonl --calibration runs/ca
                   --always-escalate row_action=compliance_review --out runs/thresholds.json
 s1gate report --schema $S --preds runs/dev_preds.jsonl --calibration runs/calibration.json \
               --thresholds runs/thresholds.json --out runs/report.html
-s1gate eval --schema $S --data data/eval/eval.jsonl --backend gliner --model runs/gliner/best \
+s1gate eval --schema $S --data data/eval/eval.jsonl --backend gliner --model runs/gliner/selected \
             --calibration runs/calibration.json --thresholds runs/thresholds.json --report-out runs/eval_v1.json
 
 # 8  serve, then close the loop
-s1gate bundle --schema $S --name v1 --backend gliner --model runs/gliner/best \
+s1gate bundle --schema $S --name v1 --backend gliner --model runs/gliner/selected \
               --calibration runs/calibration.json --thresholds runs/thresholds.json --report runs/eval_v1.json
-s1gate serve --schema $S --backend gliner --model runs/gliner/best \
+s1gate serve --schema $S --backend gliner --model runs/gliner/selected \
              --calibration runs/calibration.json --thresholds runs/thresholds.json
 s1gate loop-report --log runs/decisions.jsonl --corrections data/corrections.jsonl   # weekly
 s1gate queue --log runs/decisions.jsonl --out data/review_queue.jsonl
