@@ -133,7 +133,8 @@ def test_http_service(tmp_path):
     c = TestClient(create_app(gate, str(tmp_path / "corr.jsonl")))
     assert c.get("/health").json()["fingerprint"] == s.fingerprint()
     r = c.post("/decide", json={"text": "qty=1100; spq=250"}).json()
-    assert r["escalated"] and r["decisions"]["row_action"]["option"] == "ask_human"
+    assert r["escalated"] and r["needs_person"] and r["decisions"]["row_action"]["option"] == "ask_human"
+    assert r["decisions"]["row_action"]["decided_by"] == "fallback"
     assert c.post("/feedback", json={"id": "x", "text": "t", "labels": {"row_action": "duplicate"}}).json()["ok"]
     assert c.post("/feedback", json={"id": "x", "text": "t", "labels": {"row_action": "nope"}}).status_code == 422
     probs = c.post("/predict", json={"text": "t", "questions": [

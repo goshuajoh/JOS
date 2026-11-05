@@ -1,6 +1,6 @@
 """Step 8: a small HTTP service around the gate (FastAPI).
 
-POST /decide    {"text": "...", "id": "optional"}           -> calibrated decisions + escalation flags
+POST /decide    {"text": "...", "id": "optional"}           -> calibrated decisions, escalated, needs_person
 POST /predict   {"text": "...", "questions": [...]}         -> raw probabilities (EndpointBackend wire format)
 POST /feedback  {"id": "...", "text": "...", "labels": {...}} -> appends a correction
 GET  /health                                                 -> schema name, fingerprint, backend
@@ -53,8 +53,11 @@ def create_app(gate: Gate, corrections_path: str = "data/corrections.jsonl"):
     @app.post("/decide")
     def decide(body: DecideIn):
         result = gate.decide(body.text, body.id)
+        # escalated: System 1 did not decide every question alone (a frontier model may have).
+        # needs_person: some question fell back to the fallback option or hit an always-escalate rule.
         return {"decisions": {k: asdict(v) for k, v in result.items()},
-                "escalated": any(v.escalated for v in result.values())}
+                "escalated": any(v.escalated for v in result.values()),
+                "needs_person": any(v.decided_by in ("fallback", "rule") for v in result.values())}
 
     @app.post("/predict")
     def predict(body: PredictIn):
