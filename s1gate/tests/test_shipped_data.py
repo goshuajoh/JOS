@@ -52,6 +52,8 @@ def test_no_eval_or_dev_rows_in_training():
     kept, leaked = decontaminate(train, dev + ev, 0.8)
     assert leaked == []
     assert not {r.id for r in dev} & {r.id for r in ev}
+    # repeated header/blank rows must not straddle the split: calibrate would refuse dev preds
+    assert not {text_hash(r.text) for r in dev} & {text_hash(r.text) for r in ev}
 
 
 def test_held_out_companies_never_appear_in_training():

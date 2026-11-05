@@ -1,7 +1,7 @@
 {
   "schema": "pos_row_gate",
   "schema_fingerprint": "19f942aef48c",
-  "fitted": "2026-11-04",
+  "fitted": "2026-11-05",
   "min_support": 20,
   "thresholds": {
     "row_action": {

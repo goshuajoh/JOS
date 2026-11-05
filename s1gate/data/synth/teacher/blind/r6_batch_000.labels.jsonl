@@ -1,0 +1,131 @@
+{"id": "b37a0618786", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "qty=2000/2500 gives two quantities (contradictory)"}
+{"id": "bbe788b42bb", "row_action": "no_op", "needs_human": "no", "severity": "1", "confidence": "high", "note": "note line 'All prices USD, freight not included'; no qty, part or ref"}
+{"id": "b8b753e8e93", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": ""}
+{"id": "b188cd54640", "row_action": "no_op", "needs_human": "no", "severity": "1", "confidence": "high", "note": "blank row, every value whitespace"}
+{"id": "b9ba68a1ea1", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "customer truncated mid-word ('Ostravská bezpečnostní te')"}
+{"id": "bdeff3242b0", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": ""}
+{"id": "bfc529dfc14", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": ""}
+{"id": "bc8d1b769fb", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "negative qty -1500"}
+{"id": "b331b97c2bf", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": ""}
+{"id": "ba492bfe35f", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "negative qty -40000"}
+{"id": "be699efbe60", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": ""}
+{"id": "b2cdc4ca58e", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "customer truncated ('Delacroix & Whitford Engineeri')"}
+{"id": "b101100cce0", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": ""}
+{"id": "bb588bf1bd9", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": ""}
+{"id": "b976418f0d8", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": ""}
+{"id": "b56547b7a99", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": ""}
+{"id": "b972a750e9d", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "negative unit_price -0.41 EUR"}
+{"id": "baebbbd0bb3", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "period month 13"}
+{"id": "b37f5d52ec4", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": ""}
+{"id": "b62427f27b2", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "unit_price is a note ('see contract pricing')"}
+{"id": "b9c8fa4a848", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "two part numbers (wm-c6-n4 / wm-c6-n8)"}
+{"id": "bfb363cae28", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": ""}
+{"id": "b4e734726d5", "row_action": "no_op", "needs_human": "no", "severity": "3", "confidence": "high", "note": "Dutch 'Subtotaal' line for one customer; no part, price or ref"}
+{"id": "ba80ea4dc97", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "ref truncated with ellipsis (TB-HD-0434…)"}
+{"id": "b2816c1dfe9", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": ""}
+{"id": "b7fb9e8d356", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": ""}
+{"id": "b468f65ad9f", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": ""}
+{"id": "bc37e83cbd8", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "seen ref TRD-5603141 has an extra digit, not a match"}
+{"id": "b8a9e3b9840", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "customer cut off mid-suffix ('Sdn B' for 'Sdn Bhd')"}
+{"id": "bc0fa519452", "row_action": "no_op", "needs_human": "no", "severity": "1", "confidence": "high", "note": "blank row, every value 'None'"}
+{"id": "b6996b768be", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "qty zero"}
+{"id": "bca45d94b92", "row_action": "no_op", "needs_human": "no", "severity": "1", "confidence": "high", "note": "separator row of '=' filler"}
+{"id": "bbc1b06c4eb", "row_action": "no_op", "needs_human": "no", "severity": "3", "confidence": "high", "note": "Icelandic 'Samtals' (total) line for one customer; subtotal"}
+{"id": "bc39c12d7c9", "row_action": "no_op", "needs_human": "no", "severity": "1", "confidence": "high", "note": "Finnish note line (quantities in pieces, full reels)"}
+{"id": "b43193739ea", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "qty non-numeric ('lásd melléklet' = see attachment)"}
+{"id": "bd18facd2d5", "row_action": "no_op", "needs_human": "no", "severity": "1", "confidence": "high", "note": "Danish note 'continued on next page'"}
+{"id": "b02eef9b282", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "negative qty -20"}
+{"id": "b1494b5e015", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "two part numbers in part field"}
+{"id": "b01b9e8b7d2", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "qty carries two quantities / note ('1500 (1000 lev.)')"}
+{"id": "b74c5f487e2", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "fractional qty 7.5"}
+{"id": "bfd966038a1", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "negative qty -3"}
+{"id": "b4b5cfce5a1", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "qty exactly at MOQ and SPQ multiple"}
+{"id": "bc77b6af8c6", "row_action": "no_op", "needs_human": "no", "severity": "3", "confidence": "high", "note": "German 'Zwischensumme' (subtotal) line for one customer"}
+{"id": "b83c46d63b0", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": ""}
+{"id": "b579165181c", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "part truncated with ellipsis (WM-S3-N16…)"}
+{"id": "b04d4e31671", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "two quantities 40000/48000"}
+{"id": "b4dac59836a", "row_action": "no_op", "needs_human": "no", "severity": "3", "confidence": "high", "note": "customer 'Zwischensumme' (subtotal) for one part; ref empty"}
+{"id": "b74e1d1fe03", "row_action": "no_op", "needs_human": "no", "severity": "1", "confidence": "high", "note": "note '*** End of report ***'"}
+{"id": "b39dd547e4b", "row_action": "no_op", "needs_human": "no", "severity": "3", "confidence": "medium", "note": "'Total <customer>' with empty ref and master customer unknown reads as a per-customer subtotal; alternative is ask_human (missing ref, lookup failed), also severity 3"}
+{"id": "b8715f92277", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": ""}
+{"id": "b7c349546ee", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": ""}
+{"id": "b36b4f0bf68", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": ""}
+{"id": "b2dff0100e2", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "ref is a note ('see mail 03.09')"}
+{"id": "b4c5624a751", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": ""}
+{"id": "b3b5d523713", "row_action": "no_op", "needs_human": "no", "severity": "3", "confidence": "high", "note": "ref=ARA TOPLAM (Turkish subtotal)"}
+{"id": "bce0d5d8b5b", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": ""}
+{"id": "b356c435f6b", "row_action": "no_op", "needs_human": "no", "severity": "3", "confidence": "high", "note": "ref=SUBTOTAL"}
+{"id": "b27bb761f41", "row_action": "no_op", "needs_human": "no", "severity": "1", "confidence": "high", "note": "Bulgarian note 'end of report'"}
+{"id": "b833e01fe4b", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": ""}
+{"id": "bb9f82a178c", "row_action": "no_op", "needs_human": "no", "severity": "1", "confidence": "high", "note": "blank row"}
+{"id": "bda16a5228e", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "unit_price is a note ('enligt avtal' = per agreement)"}
+{"id": "ba4231268c1", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": ""}
+{"id": "b98bcc32097", "row_action": "no_op", "needs_human": "no", "severity": "1", "confidence": "high", "note": "German note 'continued on next page' in period; rest empty"}
+{"id": "b1b98721a6d", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "seen VKE/INV/2025/0388 differs in year, not a match"}
+{"id": "b43f9e0dc91", "row_action": "no_op", "needs_human": "no", "severity": "1", "confidence": "medium", "note": "blank row: no customer, part, qty or ref; only template residue (period, bare 'VND')"}
+{"id": "b5f86c8e4b0", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "period month 00"}
+{"id": "bcc2608e885", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": ""}
+{"id": "b1e6401fe1e", "row_action": "no_op", "needs_human": "no", "severity": "1", "confidence": "high", "note": "note line 'No POS activity ...'"}
+{"id": "b2b319fc521", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "ref is a note ('katso liite' = see attachment)"}
+{"id": "bea0022ef34", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "period month 13"}
+{"id": "bb0040a49a2", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "qty zero"}
+{"id": "bd70e46fb97", "row_action": "no_op", "needs_human": "no", "severity": "3", "confidence": "high", "note": "'Total <customer>' subtotal; no part, price or ref"}
+{"id": "b6049979d5a", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": ""}
+{"id": "bfa2af6ff96", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": ""}
+{"id": "bd0edfabc01", "row_action": "no_op", "needs_human": "no", "severity": "1", "confidence": "high", "note": "Dutch note (consignment stock not included)"}
+{"id": "b67e15e7961", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": ""}
+{"id": "b103a047932", "row_action": "no_op", "needs_human": "no", "severity": "3", "confidence": "high", "note": "part=SUBTOTAAL (Dutch subtotal) for one customer"}
+{"id": "b314e194031", "row_action": "no_op", "needs_human": "no", "severity": "3", "confidence": "high", "note": "customer and ref SUBTOTAL for one part"}
+{"id": "b6994c26b4a", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": ""}
+{"id": "b34cfe1e273", "row_action": "no_op", "needs_human": "no", "severity": "1", "confidence": "high", "note": "Spanish note 'continued on next page'"}
+{"id": "b7ea62fe41d", "row_action": "no_op", "needs_human": "no", "severity": "1", "confidence": "high", "note": "Lithuanian note 'report generated automatically'"}
+{"id": "b1f272663be", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "fractional qty 27500.5"}
+{"id": "b2a43e59a47", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": ""}
+{"id": "b2a9391fb75", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "unit_price non-numeric ('TBA INR')"}
+{"id": "baf1391fbf6", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": ""}
+{"id": "b330496c261", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": ""}
+{"id": "baca8d76fa6", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "negative qty -2500"}
+{"id": "b914e7a955a", "row_action": "no_op", "needs_human": "no", "severity": "3", "confidence": "high", "note": "Turkish 'Ara toplam' (subtotal) line for one customer"}
+{"id": "b79e8abfba3", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "qty zero"}
+{"id": "b1191ee3824", "row_action": "no_op", "needs_human": "no", "severity": "3", "confidence": "high", "note": "ref=SUBTOTAL"}
+{"id": "b6cb9ad7aa0", "row_action": "no_op", "needs_human": "no", "severity": "1", "confidence": "high", "note": "blank row, values N/A or empty"}
+{"id": "b8e5d49e2e9", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": ""}
+{"id": "b123f18c7dd", "row_action": "no_op", "needs_human": "no", "severity": "1", "confidence": "high", "note": "German note (credits and returns reported separately)"}
+{"id": "baa275e902b", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "qty exactly at MOQ and SPQ multiple"}
+{"id": "bb9df73f88d", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": ""}
+{"id": "b0f42370e01", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": ""}
+{"id": "bfeb4dc7a58", "row_action": "no_op", "needs_human": "no", "severity": "1", "confidence": "high", "note": "blank row"}
+{"id": "ba5687de004", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": ""}
+{"id": "b88dfec59f1", "row_action": "no_op", "needs_human": "no", "severity": "1", "confidence": "high", "note": "note line about drop-ship reporting"}
+{"id": "bdb6b94afcb", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "period month 13"}
+{"id": "b9563373f49", "row_action": "no_op", "needs_human": "no", "severity": "3", "confidence": "high", "note": "subtotal: customer=Delsumma (Swedish 'subtotal'), qty is a sum for part WX-HDR-2X20, ref and country empty"}
+{"id": "b119d4e6bf6", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean: customer identical, 6 % spq 1 ok, >= moq 1, refs none, all canonical"}
+{"id": "b44564a1877", "row_action": "no_op", "needs_human": "no", "severity": "1", "confidence": "high", "note": "separator: every reported value is '--' filler, no qty, no ref"}
+{"id": "ba1e1bdd43a", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean: 27500 = 11x2500 >= 2500; ref FT-40880/EU only similar to seen FT-40808/EU, FT-40881/EU, not a match"}
+{"id": "bf91ddb4a7f", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "ref is a note ('faktura følger' = invoice follows)"}
+{"id": "bc1690fbef3", "row_action": "no_op", "needs_human": "no", "severity": "1", "confidence": "high", "note": "note: 'Alle priser i USD, eks. mva.' (all prices in USD excl. VAT), no qty"}
+{"id": "b204069f196", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "qty=0 is impossible"}
+{"id": "bddcf4cdbc2", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "unit_price=NIL is non-numeric"}
+{"id": "b9648d60e2b", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "qty 'as per annexure' is non-numeric"}
+{"id": "b7dd39e0e08", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean: 33000 = 11x3000 >= 3000; ref BDE.2603.0417 vs seen BDE.2603.0471 only similar; customer identical"}
+{"id": "b264f9d6aa1", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean: 40000 = 10x4000 >= 4000; ref not seen; all canonical"}
+{"id": "bc78d7c5713", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "qty -60000 is negative (return/credit)"}
+{"id": "bbc5ee431b7", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean: 117 with spq 1/moq 1; ref SMT/26-27/00764 only similar to seen 00746/00769"}
+{"id": "b47fe7730b0", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "ref is a note ('see email (Dana)')"}
+{"id": "b4a1d7bf9cf", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "qty 'se bilag' (see attachment) is non-numeric"}
+{"id": "b61e4c6fa95", "row_action": "no_op", "needs_human": "no", "severity": "1", "confidence": "high", "note": "note: 'Suite à la page suivante' (continued on next page)"}
+{"id": "bb618b3064e", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean: 16 with spq 1/moq 1; ref SRS/MTY/40871 only similar to seen 40817/40872; customer identical"}
+{"id": "be4c300189f", "row_action": "no_op", "needs_human": "no", "severity": "1", "confidence": "high", "note": "blank: every reported value is N/A filler"}
+{"id": "b2d2269756f", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "qty carries a note and two quantities ('3,000 (2,000 shipped / 1,000 B/O)')"}
+{"id": "b938f3733c1", "row_action": "no_op", "needs_human": "no", "severity": "1", "confidence": "high", "note": "note: 'Prix en dollars US, taxes en sus' (prices in USD, taxes extra)"}
+{"id": "b440b8665c3", "row_action": "no_op", "needs_human": "no", "severity": "3", "confidence": "high", "note": "subtotal for one customer: 'Køge Ladeløsninger ApS i alt' (Danish 'in total'), qty is a sum, part/price/ref empty"}
+{"id": "bbb1d532a40", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "medium", "note": "qty '2500-' has a trailing minus (SAP-style negative = credit/return line), impossible qty; read as stray hyphen it would be normalize"}
+{"id": "b2e0b4b565a", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "qty=0 is impossible"}
+{"id": "bb1d351d7e0", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean: 17500 = 7x2500 >= 5000; ref 9035102874 vs seen 9035102847 only similar; all canonical"}
+{"id": "b2d972bd846", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "two quantities ('50000 atau 60000' = 50000 or 60000)"}
+{"id": "b39dfcdff60", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "unit_price 'as per rate contract' is non-numeric"}
+{"id": "b0a9878387c", "row_action": "no_op", "needs_human": "no", "severity": "1", "confidence": "high", "note": "note: '--- Fine elenco ---' (end of list)"}
+{"id": "bfe6721ce30", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "unit_price '1.4…' is cut off"}
+{"id": "ba905371d32", "row_action": "no_op", "needs_human": "no", "severity": "1", "confidence": "high", "note": "separator: every value is dot filler"}
+{"id": "b4239367f43", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "medium", "note": "customer cut off mid-suffix ('...Pet Products L' vs master '...LLC', 32 chars) = truncated value; alternative reading clear rename"}
+{"id": "bfb4f9328aa", "row_action": "no_op", "needs_human": "no", "severity": "1", "confidence": "high", "note": "separator: every value is asterisk filler"}

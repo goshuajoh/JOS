@@ -1,0 +1,130 @@
+{"id": "b0d9347fc0d", "row_action": "no_op", "needs_human": "no", "severity": "1", "confidence": "high", "note": "separator line: every value is box-drawing filler"}
+{"id": "b6773f3b79f", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean; ref 2026/1129 not in seen (1192, 2025/1129 differ); 30 ok spq10 moq20"}
+{"id": "bbb60aa2488", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "unit_price 0.00 is impossible"}
+{"id": "ba3030ad46c", "row_action": "no_op", "needs_human": "no", "severity": "1", "confidence": "high", "note": "note line (prices in USD excl. VAT), no qty or ref"}
+{"id": "b3580929457", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "part truncated wk-lcd-3…"}
+{"id": "b9c9f5d12d1", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean; ref differs from 9031846620; 600 ok spq100 moq200"}
+{"id": "bd5f748c4df", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "unit_price TBD non-numeric"}
+{"id": "b33daf89c41", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean; ref not in seen (year/digits differ); 6000 ok"}
+{"id": "b77ff5e5258", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "period month 00 impossible"}
+{"id": "b50e8a307ed", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "qty 1,20,000.50 fractional"}
+{"id": "b9f064d447c", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean; ref 0003561794 differs from 0003561749; 1950 = 3x650 >= 1300"}
+{"id": "beada8b0e32", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean; 20000 ok spq5000 moq10000"}
+{"id": "b80635ba0f7", "row_action": "no_op", "needs_human": "no", "severity": "1", "confidence": "high", "note": "note: Hungarian 'continued on next page'"}
+{"id": "b0bda6b7af0", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "two part numbers in part field"}
+{"id": "bfec0998d03", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "ref truncated EKD-2081…"}
+{"id": "b36cc9015e2", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean; ref TVC204617 not in seen; spq1 moq1"}
+{"id": "b62011e1d8c", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "ref is a note 'lihat lampiran' (see attachment)"}
+{"id": "b42f72ec108", "row_action": "no_op", "needs_human": "no", "severity": "3", "confidence": "high", "note": "subtotal: 'Summe <customer>' with summed qty, no part/price/ref"}
+{"id": "b7ec8b7fb5d", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean; ref 0004410268 not in seen (similar refs differ); 9000 ok"}
+{"id": "b2bcbae5ebb", "row_action": "no_op", "needs_human": "no", "severity": "3", "confidence": "medium", "note": "ref=Subtotal marks a subtotal line for one customer/part, though customer/part/price are filled; alternative reading ask_human"}
+{"id": "bf422b70279", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "unit_price T.B.D. non-numeric"}
+{"id": "bf3d64c2821", "row_action": "no_op", "needs_human": "no", "severity": "1", "confidence": "medium", "note": "blank row: no customer, part, qty or ref; only report period and a bare currency code left"}
+{"id": "b4fda3ab623", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean; ref differs from FV-A/297301; 55000 ok"}
+{"id": "b0088a81331", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean; ref TRD-552907 not seen; 700 ok spq100 moq500"}
+{"id": "b3792e549c2", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean; spq1 moq1"}
+{"id": "b0b8f04788b", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean; 65000 = 13x5000"}
+{"id": "b43da0d1cc0", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "period month 00 impossible"}
+{"id": "b0aea0dc231", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean; spq1 moq1"}
+{"id": "b1be6864933", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "unit_price 0.00 is impossible"}
+{"id": "be2e892df02", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean; 130 ok spq10 moq20"}
+{"id": "b1ac65634a9", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "qty is a note 'bkz. ekli liste' (see attached list)"}
+{"id": "b3a42e837d3", "row_action": "no_op", "needs_human": "no", "severity": "1", "confidence": "high", "note": "note line (credits listed separately), no qty or ref"}
+{"id": "be34ea57d2f", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean; 25000 ok spq1000 moq5000"}
+{"id": "b65b7adff0e", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean; ref 9032270518 not in seen (similar refs differ)"}
+{"id": "ba499a091e4", "row_action": "no_op", "needs_human": "no", "severity": "1", "confidence": "high", "note": "note: page marker, rest empty"}
+{"id": "b119a3975f0", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean; spq1 moq1"}
+{"id": "bef095645bb", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "two quantities '2000 eller 2500'"}
+{"id": "b089382f7e6", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "two quantities 5,000/6,000"}
+{"id": "b34c6538603", "row_action": "no_op", "needs_human": "no", "severity": "3", "confidence": "high", "note": "subtotal for one part: ref=SUBTOTALE, customer empty, qty a sum"}
+{"id": "bef6b73705a", "row_action": "no_op", "needs_human": "no", "severity": "1", "confidence": "high", "note": "blank row: only period and country, no customer, part, qty or ref"}
+{"id": "bce423ede89", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean; ref -1 vs seen -3 differ; 27000 ok"}
+{"id": "baa8c0d79fc", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean; ref FT-42630/EU not in seen (similar refs differ)"}
+{"id": "b4334d0238d", "row_action": "no_op", "needs_human": "no", "severity": "3", "confidence": "high", "note": "subtotal: customer=SUB-TOTAL for one part, ref empty"}
+{"id": "bfdd36e2fd5", "row_action": "no_op", "needs_human": "no", "severity": "1", "confidence": "high", "note": "separator line of ===="}
+{"id": "baba996c073", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "period month 13 impossible"}
+{"id": "bb5767f5394", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean; ref IHL-3852 not in seen (similar refs differ)"}
+{"id": "b9804d40c3d", "row_action": "no_op", "needs_human": "no", "severity": "1", "confidence": "medium", "note": "blank row: no customer, part, qty or ref; only report period and a bare currency code left"}
+{"id": "b4c4d833729", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean; ref 02918 not in seen (similar refs differ)"}
+{"id": "b35c828cafa", "row_action": "no_op", "needs_human": "no", "severity": "3", "confidence": "high", "note": "subtotal: 'Total cliente <customer>' with summed qty, no part/price/ref"}
+{"id": "be95c35a774", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "unit_price negative -2.31"}
+{"id": "bc29bca995a", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "qty (3000) is negative in accounting notation (return/credit)"}
+{"id": "ba14d6cc278", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "unit_price k.A. (not given) non-numeric"}
+{"id": "b386766109e", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "medium", "note": "customer 'Pohjoisen Mittaustekniik' is master name cut off mid-word (exact prefix), read as truncated; alternative reading clear vendor_rename"}
+{"id": "baa9b8e20c5", "row_action": "no_op", "needs_human": "no", "severity": "1", "confidence": "high", "note": "note: Icelandic 'end of report'"}
+{"id": "bf357a20be9", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "two quantities 2500/3000"}
+{"id": "bfdcfcd2c05", "row_action": "no_op", "needs_human": "no", "severity": "1", "confidence": "high", "note": "note: continued on next page"}
+{"id": "b1108d03e77", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "unit_price 0.00 is impossible"}
+{"id": "bb01bd576c6", "row_action": "no_op", "needs_human": "no", "severity": "1", "confidence": "high", "note": "separator line of ----"}
+{"id": "bea4d34fe82", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "period 2026-07/2026-08 two months, contradictory"}
+{"id": "b2a94da44fc", "row_action": "no_op", "needs_human": "no", "severity": "1", "confidence": "high", "note": "blank/separator: every value is a dash"}
+{"id": "b5728891920", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "unit_price TBD non-numeric"}
+{"id": "bbbd78beef8", "row_action": "no_op", "needs_human": "no", "severity": "1", "confidence": "high", "note": "note line (quantities in pieces, full reels), no qty or ref"}
+{"id": "b4f7eda2407", "row_action": "no_op", "needs_human": "no", "severity": "1", "confidence": "high", "note": "blank row: every value is nan filler"}
+{"id": "b0f5576469d", "row_action": "no_op", "needs_human": "no", "severity": "1", "confidence": "high", "note": "note: end of POS report"}
+{"id": "b495f38bd81", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "period month 13 impossible"}
+{"id": "b9acd062697", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "qty (3,00,000) is negative in accounting notation (return/credit)"}
+{"id": "b3f81c4adea", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean; integer TWD price with code; 170 ok spq10 moq20"}
+{"id": "bf74bcf6e63", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean; 28000 = 7x4000"}
+{"id": "ba49e1bf7d8", "row_action": "no_op", "needs_human": "no", "severity": "3", "confidence": "high", "note": "subtotal: part=小計 (subtotal) for one customer, no price/ref"}
+{"id": "ba6574a7481", "row_action": "no_op", "needs_human": "no", "severity": "1", "confidence": "high", "note": "blank row: #N/A filler, no part, qty or ref"}
+{"id": "b059506e495", "row_action": "no_op", "needs_human": "no", "severity": "3", "confidence": "high", "note": "subtotal: customer 【小計】<name> with summed qty, no part/price/ref"}
+{"id": "b240c5e3c61", "row_action": "no_op", "needs_human": "no", "severity": "3", "confidence": "high", "note": "subtotal: part=Summa for one customer, no price/ref"}
+{"id": "b0e9accff36", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean; 36000 = 12x3000"}
+{"id": "b20cb59261e", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean; ref 005207 not in seen (005270/005206 differ)"}
+{"id": "b5a2dfc5667", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean; 10000 = 4x2500"}
+{"id": "b4784a4c184", "row_action": "no_op", "needs_human": "no", "severity": "3", "confidence": "high", "note": "subtotal: ref=ARA TOPLAM, customer empty, qty a sum for one part"}
+{"id": "b16f6e5276c", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean; integer TWD price; spq1 moq1"}
+{"id": "bab76bc3f57", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean; ref 02/1185 not in seen (02/1158 differs)"}
+{"id": "b621284b32d", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean; 20000 = 4x5000"}
+{"id": "bcb70d51f7f", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "unit_price is a note 'fiyat teyit edilecek' (price to be confirmed)"}
+{"id": "bcdac4478d3", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "customer truncated 'OPC Pri…'"}
+{"id": "b999263714d", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "two part numbers in part field"}
+{"id": "b9ca6752c9e", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean; 25000 ok spq5000 moq10000"}
+{"id": "b0a73b014cd", "row_action": "no_op", "needs_human": "no", "severity": "1", "confidence": "high", "note": "note: print date and page marker"}
+{"id": "ba827fe1bac", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "period month 13 impossible"}
+{"id": "be0b850f490", "row_action": "no_op", "needs_human": "no", "severity": "1", "confidence": "high", "note": "blank row: only period, nothing else"}
+{"id": "bf565d5734f", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "ref is a note 'PO awaited'"}
+{"id": "b6df002e839", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "qty 12.5 fractional"}
+{"id": "b90ae02a4c8", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean; ref 9031920537 not in seen (…573 differs)"}
+{"id": "b81bc377248", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean; ref 28816 not in seen (28861 differs)"}
+{"id": "b72928ae897", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "qty 0 impossible"}
+{"id": "ba35351f3c5", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean; ref …164 not in seen (…146/…165 differ)"}
+{"id": "b7787ba6186", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean; ref 33104 vs seen 33014 differ"}
+{"id": "b849be8a70d", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean; ref -2 vs seen -1 differ; 48000 ok"}
+{"id": "b72a402714f", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "unit_price truncated 38.2…"}
+{"id": "b81d66eeb17", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean; 50 ok spq10 moq10"}
+{"id": "b069d3823db", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean; ref 9033519046 not in seen (similar refs differ)"}
+{"id": "b8201356370", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "unit_price TBD EUR non-numeric"}
+{"id": "bdb97db7924", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "unit_price negative -124.95"}
+{"id": "b2ef26fc2b2", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "unit_price negative -0.88"}
+{"id": "bd114a2aa75", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean; ref 43307 vs seen 43807 differ; 12500 = 5x2500"}
+{"id": "b7224fbcba3", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "period month 00 impossible"}
+{"id": "bc5b5581897", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "qty #VALUE! non-numeric"}
+{"id": "bbf568f6335", "row_action": "no_op", "needs_human": "no", "severity": "3", "confidence": "high", "note": "subtotal: customer=Sub-total for one part, no price/ref"}
+{"id": "b760429aa62", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "unit_price negative -31800"}
+{"id": "bdd95f6540f", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean; ref 37925 not in seen (37952/37924 differ); 60000 ok"}
+{"id": "bd981bae4c8", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean; integer TWD price; 340 ok spq10 moq20"}
+{"id": "b086bb10926", "row_action": "no_op", "needs_human": "no", "severity": "1", "confidence": "high", "note": "note: report run / EDI job stamp"}
+{"id": "be2545c0e42", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "unit_price is a note 'voir soumission' (see quote)"}
+{"id": "bc488e7d8df", "row_action": "no_op", "needs_human": "no", "severity": "3", "confidence": "high", "note": "subtotal: customer=Ara Toplam for one part, ref empty"}
+{"id": "baaa905ab88", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "qty 37,5 fractional"}
+{"id": "b45911f8208", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "two part numbers joined with +"}
+{"id": "bff08fe5c66", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean; 750 = 3x250 >= 500"}
+{"id": "b6add93df29", "row_action": "no_op", "needs_human": "no", "severity": "3", "confidence": "high", "note": "subtotal: part=Sub-total for one customer, no price/ref"}
+{"id": "b3a5dd021ea", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "qty 0 impossible"}
+{"id": "b7e3e593540", "row_action": "no_op", "needs_human": "no", "severity": "1", "confidence": "high", "note": "note: prices exclude GST/PST"}
+{"id": "bc87a4768fd", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "two customer names in customer field"}
+{"id": "bc44491dd5a", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "two part numbers in part field"}
+{"id": "b142014bf2a", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "unit_price FOC (free of charge) not a valid price"}
+{"id": "b30c0560a0a", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "two prices 18.60/17.90"}
+{"id": "be61e641651", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean: canonical values, customer identical, 24000=8x3000>=6000, ref not seen (TVC222603/TVC222640 only similar)"}
+{"id": "b5a2066f9c6", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean: 64000=16x4000>=4000, customer identical, ref TVC219485 not seen (TVC219458 is a transposition)"}
+{"id": "b0096af4a0a", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean: 40=4x10>=20, integer COP price canonical, customer identical, ref not seen (17363/17236 only similar)"}
+{"id": "b3bfed2eca3", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean: 3000=6x500>=1000, customer identical, ref .../1406 not seen (.../1460 only similar)"}
+{"id": "b905ac39e3e", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "two quantities qty=25/30 (contradictory); period/part format issues lose on precedence"}
+{"id": "bb813dc4d83", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "unit_price=15,9... truncated and no currency"}
+{"id": "b43ddd35c1e", "row_action": "no_op", "needs_human": "no", "severity": "1", "confidence": "high", "note": "separator line: every reported value is dashes, no qty, no ref"}
+{"id": "bce0206da32", "row_action": "commit", "needs_human": "no", "severity": "0", "confidence": "high", "note": "clean: qty 500 exactly at MOQ and multiple of SPQ 500, ref FT-44102/EU not seen (/IT differs)"}
+{"id": "bf07f71c1a0", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "qty is a note (see attached packing list), non-numeric"}
+{"id": "bab1c943b9e", "row_action": "no_op", "needs_human": "no", "severity": "3", "confidence": "high", "note": "subtotal: part=ARA TOPLAM, qty is a sum, price and ref empty; spq/moq ? expected"}

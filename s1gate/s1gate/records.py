@@ -89,18 +89,32 @@ def label_counts(records: list[Record], schema: DecisionSchema) -> dict[str, Cou
 
 def split(records: list[Record], frac: float, seed: int = 13,
           stratify_on: str | None = None) -> tuple[list[Record], list[Record]]:
-    """Split into (rest, held_out). Stratified on one question's label when given."""
+    """Split into (rest, held_out). Stratified on one question's label when given.
+
+    Records whose text is the same (after `normalize`) move as one unit, so the held-out side
+    never shares a text with the rest: POS files repeat header, blank and subtotal rows. A unit
+    is stratified on its first record's label, and each stratum's held-out share is counted in
+    records.
+    """
     rng = random.Random(seed)
-    groups: dict[str, list[Record]] = {}
+    units: dict[str, list[Record]] = {}
     for r in records:
-        key = r.labels.get(stratify_on, "") if stratify_on else ""
-        groups.setdefault(key, []).append(r)
+        units.setdefault(normalize(r.text), []).append(r)
+    groups: dict[str, list[list[Record]]] = {}
+    for unit in units.values():
+        key = unit[0].labels.get(stratify_on, "") if stratify_on else ""
+        groups.setdefault(key, []).append(unit)
     rest, held = [], []
     for group in groups.values():
         rng.shuffle(group)
-        k = round(len(group) * frac)
-        held.extend(group[:k])
-        rest.extend(group[k:])
+        k = round(sum(map(len, group)) * frac)
+        taken = 0
+        for unit in group:
+            if taken < k:
+                held.extend(unit)
+                taken += len(unit)
+            else:
+                rest.extend(unit)
     return rest, held
 
 

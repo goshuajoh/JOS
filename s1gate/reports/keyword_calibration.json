@@ -2,17 +2,17 @@
   "schema": "pos_row_gate",
   "schema_fingerprint": "19f942aef48c",
   "method": "temperature",
-  "fitted": "2026-11-04",
+  "fitted": "2026-11-05",
   "temperatures": {
-    "row_action": 2.4351,
+    "row_action": 2.518,
     "needs_human": 20.0,
     "severity": 20.0
   },
   "detail": {
     "row_action": {
       "n": 201,
-      "nll_before": 2.1237,
-      "nll_after": 2.0232,
+      "nll_before": 2.1323,
+      "nll_after": 2.0266,
       "accuracy_before": 0.3284,
       "accuracy_after": 0.3284
     },
@@ -25,10 +25,10 @@
     },
     "severity": {
       "n": 201,
-      "nll_before": 1.8119,
-      "nll_after": 1.6138,
-      "accuracy_before": 0.1891,
-      "accuracy_after": 0.1891
+      "nll_before": 1.824,
+      "nll_after": 1.6144,
+      "accuracy_before": 0.1791,
+      "accuracy_after": 0.1791
     }
   }
 }

@@ -1,8 +1,8 @@
 {
-  "in": 7323,
-  "duplicates": 11,
+  "in": 8918,
+  "duplicates": 12,
   "held_out": 0,
-  "out": 7312,
+  "out": 8906,
   "dup_threshold": 0.9,
   "contam_threshold": 0.8,
   "label_aware": true,

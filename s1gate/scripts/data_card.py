@@ -145,7 +145,8 @@ lines += ["4. **Procedural rows.** `s1gate procgen` (`s1gate/domains/pos_gen.py`
           "with its own house habits (`configs/proxy_eval.pos.yaml`). Two blind annotators (Opus, Sonnet) labelled "
           "every row. Rows where author, both annotators and the rule audit agreed were accepted, and the rest went "
           "to an adjudicator with all three opinions. The result was split 50/50, stratified on row_action, into "
-          "`dev.jsonl` and `eval/eval.jsonl`, and the eval file was frozen (`eval/eval.frozen.json`)."]
+          "`dev.jsonl` and `eval/eval.jsonl`, with identical texts (a header row a file repeats) kept on one "
+          "side, and the eval file was frozen (`eval/eval.frozen.json`)."]
 if agree:
     lines.append(f"   Result: {agree['rows']} rows, {agree['unanimous']} unanimous, {agree['disputed']} adjudicated. "
                  "Agreement between the two blind annotators (Gate A wants ≥ 90%): "
@@ -165,6 +166,10 @@ lines += ["",
           "* The class mix is deliberately not the production mix. Training over-samples rare classes, as the guide "
           "suggests, and the proxy dev/eval keep commit as the plurality but carry far more problems than a real "
           "month. Refit calibration and thresholds on real dev rows before trusting coverage numbers.",
+          "* Blind agreement on the teacher rows is perfect, which says the rows follow the guide, not that the "
+          "task is easy: authors and annotators are the same model family and read the same guide, so they "
+          "share its blind spots. Real rows will hold cases the guide does not settle; adjudicate those and "
+          "extend the guide.",
           "* All companies and part numbers are invented. A real customer name that happens to match an invented "
           "one is a coincidence.", ""]
 (D / "README.md").write_text("\n".join(lines), encoding="utf-8")

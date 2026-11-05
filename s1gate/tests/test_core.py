@@ -86,6 +86,28 @@ def test_dedupe_and_decontaminate():
     assert [r.id for r in kept] == ["3"]
 
 
+def test_split_keeps_identical_texts_on_one_side():
+    from s1gate.records import split
+
+    header = "distributor=X; period=Period; customer=Customer; qty=Qty"
+    rows = [Record(id=f"h{i}", text=(header if i % 2 else header.upper() + " "), labels={"row_action": "no_op"})
+            for i in range(6)]
+    rows += [Record(id=f"r{i}", text=f"distributor=X; qty={i}", labels={"row_action": "commit"}) for i in range(40)]
+    for seed in range(20):
+        rest, held = split(rows, 0.5, seed=seed, stratify_on="row_action")
+        assert sorted(r.id for r in rest + held) == sorted(r.id for r in rows)
+        heads = {r.id for r in held if r.id.startswith("h")}
+        assert heads in (set(), {f"h{i}" for i in range(6)})  # all six copies move together
+        assert sum(r.id.startswith("r") for r in held) == 20
+    # with no repeated texts the split is the plain stratified shuffle it always was
+    singles = rows[6:]
+    rest, held = split(singles, 0.25, seed=3, stratify_on="row_action")
+    import random
+    order = singles[:]
+    random.Random(3).shuffle(order)
+    assert [r.id for r in held] == [r.id for r in order[:10]]
+
+
 def test_gliner_parse_multilabel_recovers_softmax():
     # sigmoid(2)=0.881, sigmoid(0)=0.5 -> softmax over logits (2, 0) = (0.881, 0.119)
     out = _parse([{"label": "a", "confidence": 0.8807970779778823},
