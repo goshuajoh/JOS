@@ -183,27 +183,39 @@ def promote(candidate: dict, current: dict | None, nll_slack: float = 0.0,
                 notes.append(f"{name}: coverage {cq['coverage']:.3f} below {cc['coverage']:.3f}")
             else:
                 notes.append(f"{name}: coverage {cq['coverage']:.3f} vs {cc['coverage']:.3f} ok")
-            acc, cur_acc = cq.get("accuracy"), cc.get("accuracy")
-            # the deployed target is the contract: a candidate fitted for a looser one is held to it
-            targets = [t for t in (cq.get("target"), cc.get("target")) if t is not None]
-            tgt = max(targets) if targets else None
-            if cq.get("target") is not None and cc.get("target") is not None and cq["target"] < cc["target"]:
-                notes.append(f"{name}: candidate thresholds fitted for target {cq['target']}, "
-                             f"deployed target {cc['target']}; judged against {tgt}")
-            if acc is not None:
-                meets_target = tgt is not None and acc >= tgt
-                # "not worse than current" only counts when the current model auto-accepts anything
-                not_worse = cur_acc is not None and acc >= cur_acc - accuracy_slack
-                if meets_target or not_worse:
-                    notes.append(f"{name}: auto-accept accuracy {acc:.3f} ok")
-                else:
-                    ok = False
-                    vs = "the current model auto-accepts nothing" if cur_acc is None else f"below the current {cur_acc:.3f}"
-                    notes.append(f"{name}: auto-accept accuracy {acc:.3f} under target {tgt} and {vs} "
-                                 f"({cq.get('auto_errors')} auto errors)")
+        elif cq or cc:
+            notes.append(f"{name}: thresholds in only one report; coverage not compared")
         else:
-            notes.append(f"{name}: no thresholds in one report; coverage not compared")
+            notes.append(f"{name}: no thresholds in either report; coverage not compared")
+        if cq:
+            ok = _accuracy_ok(name, cq, cc or {}, accuracy_slack, notes) and ok
     return ok, notes
+
+
+def _accuracy_ok(name: str, cq: dict, cc: dict, accuracy_slack: float, notes: list[str]) -> bool:
+    """The candidate's auto-accepted rows meet the target, or are no less accurate than the current
+    model's. The deployed target is the contract: a candidate fitted for a looser one is held to it."""
+    acc, cur_acc = cq.get("accuracy"), cc.get("accuracy")
+    targets = [t for t in (cq.get("target"), cc.get("target")) if t is not None]
+    tgt = max(targets) if targets else None
+    if cq.get("target") is not None and cc.get("target") is not None and cq["target"] < cc["target"]:
+        notes.append(f"{name}: candidate thresholds fitted for target {cq['target']}, "
+                     f"deployed target {cc['target']}; judged against {tgt}")
+    if acc is None:
+        return True  # the candidate auto-accepts nothing: no auto-accept errors to weigh
+    if tgt is None and cur_acc is None:
+        notes.append(f"{name}: no target and nothing auto-accepted by the current model; accuracy not compared")
+        return True
+    meets_target = tgt is not None and acc >= tgt
+    # "not worse than current" only counts when the current model auto-accepts anything
+    not_worse = cur_acc is not None and acc >= cur_acc - accuracy_slack
+    if meets_target or not_worse:
+        notes.append(f"{name}: auto-accept accuracy {acc:.3f} ok")
+        return True
+    vs = "the current model auto-accepts nothing" if cur_acc is None else f"below the current {cur_acc:.3f}"
+    notes.append(f"{name}: auto-accept accuracy {acc:.3f} under target {tgt} and {vs} "
+                 f"({cq.get('auto_errors')} auto errors)")
+    return False
 
 
 def _num(x) -> float:

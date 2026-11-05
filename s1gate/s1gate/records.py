@@ -94,8 +94,9 @@ def split(records: list[Record], frac: float, seed: int = 13,
     Records whose text is the same (after `normalize`) move as one unit, so the held-out side
     never shares a text with the rest: POS files repeat header, blank and subtotal rows. A unit
     is stratified on its first record's label, and each stratum's held-out share is counted in
-    records: a unit is held out only when that brings the stratum closer to its quota, so a
-    large repeated unit cannot push the held-out share far past `frac`.
+    records: units are held out in shuffled order while they fit the quota, and only if that
+    leaves the stratum short is a bigger unit added, when it brings the count closer. So a large
+    repeated unit never pushes the held-out share past `frac` while smaller units can fill it.
     """
     rng = random.Random(seed)
     units: dict[str, list[Record]] = {}
@@ -109,14 +110,15 @@ def split(records: list[Record], frac: float, seed: int = 13,
     for group in groups.values():
         rng.shuffle(group)
         k = round(sum(map(len, group)) * frac)
-        taken = 0
-        for unit in group:
-            # same as `taken < k` for single rows; a unit that would overshoot more than it helps stays out
-            if abs(taken + len(unit) - k) < abs(taken - k):
-                held.extend(unit)
-                taken += len(unit)
-            else:
-                rest.extend(unit)
+        taken, chosen = 0, [False] * len(group)
+        for i, unit in enumerate(group):  # pass 1: units that fit (for single rows: `taken < k`)
+            if taken + len(unit) <= k:
+                chosen[i], taken = True, taken + len(unit)
+        for i, unit in enumerate(group):  # pass 2: still short, and only units too big to fit
+            if not chosen[i] and abs(taken + len(unit) - k) < abs(taken - k):
+                chosen[i], taken = True, taken + len(unit)
+        for unit, c in zip(group, chosen):
+            (held if c else rest).extend(unit)
     return rest, held
 
 

@@ -63,8 +63,10 @@ def _percentile(values: list[float], q: float) -> float:
 
 def _frozen_manifests(args):
     """--frozen if given, else every data/eval/*.frozen.json in the working directory and in the
-    project folders around the inputs (the schema, preds, data, training files), so a run from
-    another directory is guarded too. Says so when nothing is found."""
+    project around each input (the schema, preds, data, training files): the nearest folder
+    above the input that has data/eval, never above the project root (pyproject.toml, .git), so
+    a run from another directory is guarded and an unrelated project is not. A manifest that is
+    not readable is skipped with a warning. Says so when nothing is found."""
     from .frozen import DEFAULT_DIR, discover
 
     explicit = getattr(args, "frozen", None)
@@ -74,16 +76,27 @@ def _frozen_manifests(args):
     for attr in ("schema", "preds", "data", "train", "dev", "corrections", "synthetic", "held_out"):
         value = getattr(args, attr, None)
         for item in value if isinstance(value, list) else [value] if isinstance(value, str) else []:
-            roots += [parent / DEFAULT_DIR for parent in list(Path(item).resolve().parents)[:4]]
+            for parent in list(Path(item).resolve().parents)[:5]:
+                if (parent / DEFAULT_DIR).is_dir():
+                    roots.append(parent / DEFAULT_DIR)
+                    break
+                if any((parent / m).exists() for m in ("pyproject.toml", ".git", "setup.py")):
+                    break  # the project root, and it has no frozen eval
     found, seen = [], set()
     for root in roots:
         for m in discover(None, root):
-            if m.resolve() not in seen:
-                seen.add(m.resolve())
-                found.append(m)
+            if m.resolve() in seen:
+                continue
+            seen.add(m.resolve())
+            try:
+                json.loads(m.read_text(encoding="utf-8"))
+            except (OSError, ValueError) as e:
+                print(f"warning: skipping unreadable manifest {m}: {e}", file=sys.stderr)
+                continue
+            found.append(m)
     if not found:
         print(f"warning: no frozen eval manifest found ({DEFAULT_DIR}/*.frozen.json here or near the inputs); "
-              "nothing guards this step against eval rows - pass --frozen", file=sys.stderr)
+              "the frozen-eval guard is off for this step - pass --frozen", file=sys.stderr)
     return found
 
 
@@ -165,7 +178,11 @@ def cmd_export_enums(args) -> int:
         problem = check_generated(_schema(args), args.out)
         print(problem or f"{args.out} matches {args.schema}")
         return 1 if problem else 0
-    write(args.schema, args.out)
+    try:
+        write(args.schema, args.out)
+    except ValueError as e:
+        print(f"refused: {e}", file=sys.stderr)
+        return 2
     print(f"wrote {args.out}")
     return 0
 
@@ -543,21 +560,16 @@ def _train_inputs(args):
 
 
 def cmd_train_gliner(args) -> int:
-    from .train_gliner import check_task_names, train
+    from .train_gliner import PreviousRunError, train
 
     schema, tr, dev = _train_inputs(args)
-    try:
-        check_task_names(schema)
-    except ValueError as e:
-        print(f"refused: {e}", file=sys.stderr)
-        return 2
     try:
         path = train(tr, dev, schema, args.out, base=args.base, epochs=args.epochs,
                      batch_size=args.batch_size, encoder_lr=args.encoder_lr, task_lr=args.task_lr,
                      use_lora=args.lora, augment=args.augment, lora_r=args.lora_r, seed=args.seed,
                      loss=args.loss, overwrite=args.overwrite)
-    except FileExistsError as e:
-        print(f"refused: {e} (--overwrite clears the old run)", file=sys.stderr)
+    except PreviousRunError as e:
+        print(f"refused: {e} (--overwrite replaces it once the new run has finished)", file=sys.stderr)
         return 2
     print(f"model -> {path}  (evaluate with: s1gate eval --backend gliner --model {path} ...)")
     return 0
@@ -911,7 +923,7 @@ def build_parser() -> argparse.ArgumentParser:
             p.add_argument("--loss", default="softmax", choices=["softmax", "bce"],
                            help="softmax: cross-entropy over each question's options; bce: gliner2's own")
             p.add_argument("--overwrite", action="store_true",
-                           help="delete an earlier run's checkpoints in --out first (else training refuses)")
+                           help="replace an earlier run in --out once this one has finished (else training refuses)")
         else:
             p.add_argument("--base", default="Qwen/Qwen3-0.6B")
             p.add_argument("--lr", type=float, default=2e-4)

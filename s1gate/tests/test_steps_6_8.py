@@ -436,3 +436,20 @@ def test_promote_holds_the_candidate_to_the_deployed_target():
     # thresholds fitted for a looser target do not lower the bar
     ok, notes = promote(rep(0.2, 0.95, 0.9737, 0.97, 5), rep(0.3, 0.6, 1.0, 0.99, 0))
     assert not ok and any("deployed target 0.99" in n for n in notes)
+
+
+def test_promote_without_a_contract_and_with_thresholds_in_one_report_only():
+    def rep(nll, at=None):
+        q = {"question": "row_action", "nll": nll}
+        if at:
+            q["at_threshold"] = at
+        return {"questions": [q]}
+    # no target anywhere and the current model auto-accepts nothing: there is no contract to break
+    ok, notes = promote(rep(0.2, {"coverage": 0.5, "accuracy": 1.0, "target": None, "auto_errors": 0}),
+                        rep(0.3, {"coverage": 0.0, "accuracy": None, "target": None, "auto_errors": 0}))
+    assert ok and any("accuracy not compared" in n for n in notes)
+    # only the candidate has thresholds: its auto-accepted rows must still meet its own target
+    bad = rep(0.45, {"tau": 0.3, "target": 0.99, "coverage": 0.9, "accuracy": 0.8, "auto_errors": 36})
+    assert not promote(bad, rep(0.5))[0]
+    good = rep(0.45, {"tau": 0.9, "target": 0.99, "coverage": 0.5, "accuracy": 0.995, "auto_errors": 1})
+    assert promote(good, rep(0.5))[0]

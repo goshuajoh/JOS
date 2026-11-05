@@ -263,7 +263,8 @@ def test_notes_in_the_customer_field_are_judged_against_the_master_name():
     ("2.31-2.40 USD", "invalid"), ("2.31 2.40 USD", "invalid"), ("2.31 or 2.40 USD", "invalid"),
     ("approx 2.31 USD", "invalid"), ("~2.31 USD", "invalid"), ("ca. 2.31 EUR", "invalid"),
     ("R$10,50", "formatted"), ("US$2.31", "formatted"), ("CA$2.31", "formatted"), ("5 220,00 HUF", "formatted"),
-    ("12 345,67 CZK", "formatted"), ("2.31 USD (net 30)", "unknown"),
+    ("12 345,67 CZK", "formatted"), ("2.31 USD (net 30)", "invalid"), ("Rs. 105-00", "formatted"),
+    ("2.31 USD or 2.40 USD", "invalid"), ("$2.31/$2.40", "invalid"),
 ])
 def test_price_reader_final_round(raw, status):
     assert pos.read_price(raw)[1] == status
@@ -295,3 +296,55 @@ def test_procgen_rename_scenarios_meet_their_definitions():
             (_, _), (b, _) = built  # row b is an abbreviation, never a typo or a suffix change
             assert g.split_suffix(b.customer)[0] != g.split_suffix(b.m_customer)[0]
             assert len(b.customer) < len(b.m_customer) or b.customer.isupper() or any(w.isupper() for w in b.customer.split())
+
+
+_S, _G, _N, _NV, _T = pos.SUBTOTAL, pos.GRAND, pos.NOTE, pos.NOTE_IN_VALUE, pos.TRUNCATED
+
+
+@pytest.mark.parametrize("pattern,value,master,marker", [
+    (_S, "Total Power Solutions Ltd Total", "Total Power Solutions Ltd", True),   # added beyond the name
+    (_S, "Total: Total Power Solutions Ltd", "Total Power Solutions Ltd", True),
+    (_S, "Calidad Total Total", "Calidad Total", True),
+    (_S, "Acme Elektronik Toplam", "Toplam Enerji A.S.", True),                   # lookup matched the word
+    (_S, "Total Acme Controls Ltd", "Total Power Solutions Ltd", True),
+    (_S, "Total", "Total Power Solutions Ltd", True),                            # nothing but the marker
+    (_S, "Seguridad Total", "Seguridad Total S.A.", False),                      # suffix dropped: the name
+    (_S, "Total Power Systems", "Total Power Solutions Ltd", False),
+    (_G, "Total-General Contracting", "Total General Contracting LLC", False),
+    (_N, "Note: credit to follow", "Note AB", True),
+    (_N, "--- Fine elenco ---", "unknown", True),
+    (_N, "Note AB", "Note AB", False),
+    (_NV, "Check Point Systems Inc", "Checkpoint Systems, Inc.", False),         # format-only variant
+    (_NV, "TBC Corporation", "TBC Corp", False),
+    (_NV, "TBC Corp (TBC)", "TBC Corp", True),
+    (_NV, "Check Point Software Ltd. (check)", "Check Point Software Ltd.", True),
+    (_NV, "Acme Controls Ltd ??", "Acme Controls Ltd", True),
+    (_T, "Acme Contr…", "Acme Controls Ltd", True),
+    (_T, "Foo...", "Foo...", False),
+])
+def test_new_marker_reads_the_row_not_the_word(pattern, value, master, marker):
+    assert pos.new_marker(pattern, value, master) is marker
+
+
+def test_failed_lookup_sales_line_with_a_note_word_in_the_name_is_still_a_sales_line():
+    text = _named("TBC Corp").replace("master: customer=TBC Corp; spq=250; moq=500", "master: customer=unknown; spq=?; moq=?")
+    assert _violations(text, labels("no_op", "no", "1"))
+    assert not _violations(text, labels("ask_human", "yes", "3"))
+
+
+def test_procgen_says_when_a_scenario_falls_short():
+    import json
+    pools = json.loads(POOLS.read_text())
+    for region in pools.values():  # single-word names only: no sister company, no abbreviation
+        region["customers"] = [{"name": "Sakuragawa K.K.", "country": "JP"}, {"name": "Mirae Inc.", "country": "KR"}]
+    path = POOLS.parent / "_short_pools.json"
+    try:
+        path.write_text(json.dumps(pools))
+        logs = []
+        pos_gen.generate(str(path), str(ROOT / "configs/pools/parts.yaml"), str(ROOT / "configs/synth.pos.yaml"),
+                         str(ROOT / "configs/pools/regions.yaml"), n_per_scenario=4, pairs_per_type=2, seed=1,
+                         log=logs.append)
+    finally:
+        path.unlink(missing_ok=True)
+    assert any(m.startswith("procgen: scenario VU1: 0 of") for m in logs)  # weighted quota, none built
+    assert any(m.startswith("procgen: pair H06: 0 of") for m in logs)

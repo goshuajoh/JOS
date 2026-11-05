@@ -735,6 +735,8 @@ class Generator:
                     self.texts.add(rec.text)
                     out.append(rec)
                     got += 1
+            if 0 < n and got < n and tries >= n * 5:
+                log(f"procgen: scenario {sid}: {got} of {n} rows (the pools or parts rarely fit it)")
         return out
 
     def pairs(self, counts: dict[str, int], log=print) -> list[Record]:
@@ -759,6 +761,8 @@ class Generator:
                     self.texts |= {a.text, b.text}
                     out += [a, b]
                     got += 1
+            if 0 < n and got < n and tries >= n * 5:
+                log(f"procgen: pair {pid}: {got} of {n} pairs (the pools or parts rarely fit it)")
         return out
 
 

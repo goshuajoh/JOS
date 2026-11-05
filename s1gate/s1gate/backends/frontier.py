@@ -58,20 +58,20 @@ def _confidence(value) -> float:
     """A stated confidence in [0, 1]; 0.5 when there is none usable.
 
     No stated number counts as a coin flip, so it never clears an escalation floor by default:
-    a missing value, true/false, text that is not a number, NaN and infinity all give 0.5. A
-    number above 1 (up to 100) is read as a percentage.
+    a missing value, true/false, text that is not a number, NaN, infinity and any number outside
+    [0, 100] give 0.5. A number above 1 (up to 100) is read as a percentage.
     """
     if value is None or isinstance(value, bool):
         return 0.5
     try:
         conf = float(value)
-    except (TypeError, ValueError):
+    except (TypeError, ValueError, OverflowError):
         return 0.5
     if not math.isfinite(conf):
         return 0.5
     if 1 < conf <= 100:
         conf /= 100
-    return conf
+    return conf if 0 <= conf <= 1 else 0.5  # 150, -3, 1e300: not a probability
 
 
 def parse_answer(raw: str, schema: DecisionSchema) -> Probs:

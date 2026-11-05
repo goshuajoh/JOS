@@ -24,11 +24,13 @@ What training does, and how it is made to fit a fixed-schema gate:
 * Checkpoints. Every epoch is saved; the one returned (`selected/`) has the lowest dev NLL
   of the probabilities the gliner backend actually produces - select on NLL, not accuracy.
   With LoRA, each adapter checkpoint is merged into the base weights (`*-merged/`) first, so
-  the backend can load what is selected. The output folder must not hold an earlier run
-  (`overwrite=True` / `--overwrite` clears that run's folders first), so an old checkpoint
-  can never be selected.
-* Question names must not be prefixes of one another ("risk" and "risk_level"): gliner2 finds
-  a task's gold by prefix, so such a pair would train on the wrong labels.
+  the backend can load what is selected. A run trains in `<out>/.s1gate-staging` and replaces
+  the folder's previous run only once it has finished, so an old checkpoint can never be
+  selected and a failed retrain (no network for the base model, say) leaves the old run in
+  place. A folder that holds an earlier run is refused unless `overwrite=True` / `--overwrite`.
+* gliner2's trainer finds a classification's gold by the first task whose name is a prefix of
+  the task ("risk" before "risk_level" would hand risk's gold to risk_level). Rows therefore
+  list a question before any question whose name is a prefix of its own.
 """
 from __future__ import annotations
 
@@ -47,24 +49,29 @@ from .schema import DecisionSchema
 _KNOWN_LOSS_SOURCE = {"f5dab62d38d57d73"}
 
 
-def check_task_names(schema: DecisionSchema) -> None:
-    """gliner2 matches a classification's gold by task-name prefix: refuse names that collide."""
-    names = schema.names
-    clash = [(a, b) for a in names for b in names if a != b and b.startswith(a)]
-    if clash:
-        raise ValueError("question names must not be prefixes of one another for GLiNER training "
-                         f"(gliner2 matches tasks by prefix): {', '.join(f'{a}/{b}' for a, b in clash)}")
+def task_order(questions: list) -> list:
+    """Schema order, except that a question comes before any question whose name prefixes its own.
+
+    gliner2's training loader gives each task the gold of the first task in the row whose name
+    is a prefix of it; with this order that is always the task itself. Unchanged when no name
+    prefixes another.
+    """
+    out: list = []
+    for q in questions:
+        at = next((i for i, p in enumerate(out) if q.name.startswith(p.name)), len(out))
+        out.insert(at, q)
+    return out
 
 
 def to_gliner_rows(records: list[Record], schema: DecisionSchema, use_prompts: bool = True,
                    augment: int = 1, seed: int = 0) -> list[dict]:
-    check_task_names(schema)
     rng = random.Random(seed)
+    order = task_order(schema.questions)
     rows = []
     for _ in range(augment):
         for r in records:
             cls = []
-            for q in schema.questions:
+            for q in order:
                 gold = r.labels.get(q.name)
                 if gold is None:
                     continue
@@ -241,13 +248,30 @@ def select_on_dev_nll(candidates: list[Path], dev_records: list[Record], schema:
     return best, scores
 
 
+STAGING = ".s1gate-staging"
+_RUN_FILES = {"final", "best", "selected", "selection.json", "logs", "training_config.json",
+              "gliner_train.jsonl", "gliner_dev.jsonl"}
+
+
+class PreviousRunError(FileExistsError):
+    """The output folder already holds a training run."""
+
+
 def run_artifacts(out: Path) -> list[Path]:
-    """What an earlier train() left in `out`: checkpoints, merged copies, selection."""
+    """What an earlier train() left in `out` (checkpoints, merged copies, selection, gliner2's
+    logs and caches); nothing else in the folder."""
     if not out.is_dir():
         return []
-    names = {"final", "best", "selected", "selection.json"}
     return sorted(p for p in out.iterdir()
-                  if p.name in names or p.name.startswith("checkpoint-") or p.name.endswith("-merged"))
+                  if p.name in _RUN_FILES or p.name.startswith(("checkpoint-", "gliner_dev.jsonl."))
+                  or p.name.endswith("-merged"))
+
+
+def _remove(p: Path) -> None:
+    if p.is_dir() and not p.is_symlink():
+        shutil.rmtree(p)
+    elif p.exists() or p.is_symlink():
+        p.unlink()
 
 
 def train(train_records: list[Record], dev_records: list[Record] | None, schema: DecisionSchema,
@@ -265,26 +289,26 @@ def train(train_records: list[Record], dev_records: list[Record] | None, schema:
     out = Path(out_dir)
     old = run_artifacts(out)
     if old and not overwrite:
-        raise FileExistsError(f"{out} already holds a training run ({', '.join(p.name for p in old[:6])}"
-                              f"{', ...' if len(old) > 6 else ''}); use a fresh output folder or overwrite")
-    for p in old:  # only this module's own run folders and files, nothing else in `out`
-        if p.is_dir():
-            shutil.rmtree(p)
-        else:
-            p.unlink()
+        raise PreviousRunError(f"{out} already holds a training run ({', '.join(p.name for p in old[:6])}"
+                               f"{', ...' if len(old) > 6 else ''}); use a fresh output folder or overwrite")
     rows = to_gliner_rows(train_records, schema, use_prompts, augment, seed=seed)
-    write_rows(rows, out / "gliner_train.jsonl")  # for inspection; training reads `rows` reshuffled
-    dev_path = None
-    if dev_records:
-        dev_path = out / "gliner_dev.jsonl"
-        write_rows(to_gliner_rows(dev_records, schema, use_prompts, 1, seed=seed + 1), dev_path)
+    dev_rows = to_gliner_rows(dev_records, schema, use_prompts, 1, seed=seed + 1) if dev_records else None
+    model = AutoExtractor.from_pretrained(base)  # fails before anything in `out` is touched
 
-    model = AutoExtractor.from_pretrained(base)
+    stage = out / STAGING  # the run is built here and replaces the old one only when complete
+    _remove(stage)         # a crashed earlier attempt
+    stage.mkdir(parents=True)
+    write_rows(rows, stage / "gliner_train.jsonl")  # for inspection; training reads `rows` reshuffled
+    dev_path = None
+    if dev_rows:
+        dev_path = stage / "gliner_dev.jsonl"
+        write_rows(dev_rows, dev_path)
+
     model.processor.sampling_config = fixed_schema_sampling()
     patched = softmax_cls_loss_patch(model) if loss == "softmax" else False
     log(f"classification loss: {'softmax cross-entropy over options' if patched else 'gliner2 per-option BCE'}")
     config = TrainingConfig(
-        output_dir=str(out),
+        output_dir=str(stage),
         num_epochs=epochs,
         batch_size=batch_size,
         encoder_lr=encoder_lr,
@@ -302,16 +326,23 @@ def train(train_records: list[Record], dev_records: list[Record] | None, schema:
     )
     ExtractorTrainer(model, config).train(train_data=shuffled_dataset(rows, seed=seed),
                                           eval_data=str(dev_path) if dev_path else None)
-    candidates = sorted(p for p in out.iterdir() if p.is_dir() and
+    candidates = sorted(p for p in stage.iterdir() if p.is_dir() and
                         (p.name.startswith("checkpoint-epoch-") or p.name == "final"))
     if use_lora:
         candidates = [merge_lora_checkpoint(c, base) for c in candidates]
-    if not dev_records:
-        return str(next(c for c in candidates if c.name.startswith("final")))
-    best, scores = select_on_dev_nll(candidates, dev_records, schema, log)
-    selected = out / "selected"
-    if selected.exists():
-        shutil.rmtree(selected)
-    shutil.copytree(best, selected)
-    (out / "selection.json").write_text(json.dumps({"selected": best.name, "dev_nll": scores}, indent=1))
-    return str(selected)
+    if dev_records:
+        best, scores = select_on_dev_nll(candidates, dev_records, schema, log)
+        shutil.copytree(best, stage / "selected")
+        (stage / "selection.json").write_text(json.dumps(
+            {"selected": best.name, "dev_nll": {Path(k).name: v for k, v in scores.items()}}, indent=1))
+        result = "selected"
+    else:
+        result = next(c for c in candidates if c.name.startswith("final")).name
+
+    for p in run_artifacts(out):  # the finished run replaces the previous one
+        _remove(p)
+    for p in sorted(stage.iterdir()):
+        _remove(out / p.name)
+        p.rename(out / p.name)
+    stage.rmdir()
+    return str(out / result)

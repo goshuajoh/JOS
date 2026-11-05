@@ -177,32 +177,53 @@ def test_gliner_backend_reads_gliner2_softmax_so_confident_outputs_stay_apart(ti
         assert max(abs(base[q.name][o] - shifted[q.name][o]) for o in q.labels) < 1e-4
 
 
-def test_gliner_training_refuses_an_old_run_and_prefix_task_names(tiny_gliner, tmp_path):
+def test_gliner_training_refuses_an_old_run_and_replaces_it_only_when_done(tiny_gliner, tmp_path):
     import json
 
-    from s1gate.train_gliner import check_task_names, train
+    from s1gate.train_gliner import PreviousRunError, train
 
     s = DecisionSchema.load(SCHEMA)
     rows = read_jsonl(EVAL)
     out = tmp_path / "run"
-    train(rows[:8], rows[8:12], s, str(out), base=tiny_gliner, epochs=2, batch_size=8, log=lambda *_: None)
-    with pytest.raises(FileExistsError):
-        train(rows[:8], rows[8:12], s, str(out), base=tiny_gliner, epochs=1, batch_size=8, log=lambda *_: None)
+    quiet = dict(batch_size=8, log=lambda *_: None)
+    train(rows[:8], rows[8:12], s, str(out), base=tiny_gliner, epochs=2, **quiet)
+    first = (out / "selected" / "model.safetensors").read_bytes()
+    with pytest.raises(PreviousRunError):
+        train(rows[:8], rows[8:12], s, str(out), base=tiny_gliner, epochs=1, **quiet)
+    with pytest.raises(Exception):  # a retrain that fails (no such base model) leaves the old run in place
+        train(rows[:8], rows[8:12], s, str(out), base=str(tmp_path / "missing"), epochs=1, overwrite=True, **quiet)
+    assert (out / "selected" / "model.safetensors").read_bytes() == first
     (out / "notes.txt").write_text("mine")
-    train(rows[:8], rows[8:12], s, str(out), base=tiny_gliner, epochs=1, batch_size=8, overwrite=True,
-          log=lambda *_: None)
+    train(rows[:8], rows[8:12], s, str(out), base=tiny_gliner, epochs=1, overwrite=True, **quiet)
     sel = json.loads((out / "selection.json").read_text())
-    assert set(sel["dev_nll"]) <= {str(out / "checkpoint-epoch-1"), str(out / "final")}  # nothing from run 1
-    assert (out / "notes.txt").read_text() == "mine"  # only run folders are cleared
-    bad = s.model_copy(update={"questions": [s.questions[0], s.questions[0].model_copy(update={"name": "row_action_2"})]})
-    with pytest.raises(ValueError, match="prefixes"):
-        check_task_names(bad)
+    assert set(sel["dev_nll"]) <= {"checkpoint-epoch-1", "final"}  # nothing left from the first run
+    assert not (out / "checkpoint-epoch-2").exists() and not (out / ".s1gate-staging").exists()
+    assert (out / "notes.txt").read_text() == "mine"  # only run folders are replaced
+
+
+def test_gliner_rows_list_a_task_before_its_prefix(tmp_path):
+    pytest.importorskip("gliner2")
+    from s1gate.train_gliner import task_order, to_gliner_rows
+
+    s = DecisionSchema.load(SCHEMA)
+    q0 = s.questions[0]
+    clash = s.model_copy(update={"questions": [q0.model_copy(update={"name": "risk"}),
+                                               q0.model_copy(update={"name": "risk_level"})]})
+    assert [q.name for q in task_order(clash.questions)] == ["risk_level", "risk"]
+    assert [q.name for q in task_order(s.questions)] == s.names  # no clash: schema order
+    rec = read_jsonl(EVAL)[0].model_copy(update={"labels": {"risk": "commit", "risk_level": "normalize"}})
+    tasks = to_gliner_rows([rec], clash)[0]["output"]["classifications"]
+    assert [t["task"] for t in tasks] == ["risk_level", "risk"]
+    # gliner2's training loader now hands each task its own gold
+    first = {t: next(c for c in tasks if t.startswith(c["task"]))["true_label"] for t in ("risk: x", "risk_level: x")}
+    assert first == {"risk: x": ["commit"], "risk_level: x": ["normalize"]}
 
 
 def test_frontier_confidence_edge_cases():
     from s1gate.backends.frontier import parse_answer
     s = DecisionSchema.load(SCHEMA)
-    for conf, expect_floor in (("true", False), ("Infinity", False), ('"high"', False), ("90", True), ("0.2", False)):
+    for conf, expect_floor in (("true", False), ("Infinity", False), ('"high"', False), ("90", True), ("0.2", False),
+                               ("150", False), ("-3", False), ("1e300", False), ("1" + "0" * 400, False)):
         raw = '{"row_action": {"option": "commit", "confidence": %s}, "needs_human": {"option": "no", "confidence": %s}}' % (conf, conf)
         p = parse_answer(raw, s)
         for q in ("row_action", "needs_human"):

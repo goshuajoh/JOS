@@ -117,3 +117,28 @@ def test_export_enums_survives_long_backslash_tokens_and_spaces_in_paths(tmp_pat
     assert main(["export-enums", "--schema", str(src), "--out", str(out), "--check"]) == 0
     out.write_text(out.read_text() + "# edited\n")
     assert main(["export-enums", "--schema", str(src), "--out", str(out), "--check"]) == 1
+
+
+def test_export_enums_refuses_names_that_would_not_import(tmp_path):
+    import shlex
+
+    import yaml
+    for name, options, why in (("row_action", {"no-op": "skip", "no_op": "also skip", "commit": "write"}, "both become"),
+                               ("class", {"a": "x", "b": "y"}, "keyword"),
+                               ("model_config", {"a": "x", "b": "y"}, "pydantic")):
+        src = tmp_path / f"{name}.yaml"
+        src.write_text(yaml.safe_dump({"name": "g", "version": 1,
+                                       "questions": [{"name": name, "prompt": "?", "options": options}]}))
+        out = tmp_path / f"{name}.py"
+        assert main(["export-enums", "--schema", str(src), "--out", str(out)]) == 2 and not out.exists()
+        with pytest.raises(ValueError, match=why):
+            render(DecisionSchema.load(src))
+    # the regenerate command in the header is quoted, so it works for paths with spaces
+    src = tmp_path / "My Schemas" / "s.yaml"
+    src.parent.mkdir()
+    src.write_text(SCHEMA.read_text())
+    out = tmp_path / "gen out" / "m.py"
+    assert main(["export-enums", "--schema", str(src), "--out", str(out)]) == 0
+    line = next(x.strip() for x in out.read_text().splitlines() if x.strip().startswith("s1gate export-enums"))
+    argv = shlex.split(line)[1:]
+    assert argv[argv.index("--schema") + 1] == src.as_posix() and argv[argv.index("--out") + 1] == out.as_posix()

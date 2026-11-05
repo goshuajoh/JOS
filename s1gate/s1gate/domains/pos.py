@@ -220,6 +220,12 @@ def read_price(raw: str) -> tuple[float | None, str]:
         return None, "invalid"  # two prices, or a question inside the value
     if re.search(r"(^|[^\w])-\s*\d", t) or _ACCOUNTING_NEGATIVE.fullmatch(t):
         return None, "impossible"  # negative: -2.31, \u22122.31, (2.31) USD, ($2.31)
+    paise = re.fullmatch(r"(?i)\s*(rs\.?|inr\.?|\u20b9)\s*(\d[\d,]*)-(\d{2})\s*", t)
+    if paise:  # rupee-paise notation: Rs. 105-00 is 105.00 INR
+        whole = paise.group(2).replace(",", "")
+        if whole.isdigit():
+            v = int(whole) + int(paise.group(3)) / 100
+            return (v, "formatted") if v > 0 else (v, "impossible")
     if re.search(r"\d\s*(?:[-\u2013\u2014~]|\bor\b|\bto\b|\bbis\b|\boder\b|\bou\b)\s*\d"
                  r"|\d[.,]\d+\s+\d+[.,]\d|\b(approx|approximately|circa|about|around|estimated|est)\b\.?"
                  r"|\bca\.|[~\u2248]", t, re.IGNORECASE):
@@ -227,6 +233,8 @@ def read_price(raw: str) -> tuple[float | None, str]:
     # split a symbol from the number ($2.31, 2,31€) but keep letter-prefixed ones whole (US$, R$, S$)
     t = re.sub(r"(?<![A-Za-z])([^\w\s.,'-])(?=\d)|(?<=\d)([^\w\s.,'-])", lambda m: f" {m.group(0)} ", t)
     t = re.sub(r"(?i)\b(us|r|s|ca|c|a|au|hk|nt|nz|mx)\$(?=\d)", lambda m: f"{m.group(0)} ", t)
+    if len(re.findall(r"\d[\d.,' ]*\d|\d", t)) > 1:
+        return None, "invalid"  # two numbers: '2.31 USD or 2.40 USD', '$2.31/$2.40', '2.31 USD, 2.40 USD'
     num_m = re.search(r"\d[\d.,' ]*\d|\d", t)
     num = re.sub(r"[ ']", "", num_m.group(0))
     rest = (t[:num_m.start()] + " " + t[num_m.end():]).strip()
@@ -401,23 +409,62 @@ def seen_list(raw: str) -> list[str]:
     return [x.strip() for x in s.split(",") if x.strip()]
 
 
-def new_marker(pattern: re.Pattern, value: str, master: str) -> bool:
-    """`value` carries a match of `pattern` that is not part of the master customer name.
+# words that say nothing about which company a name means (legal forms, filler)
+_NAME_FILLER = {"ltd", "limited", "inc", "incorporated", "corp", "corporation", "company", "llc", "llp",
+                "plc", "gmbh", "sas", "sarl", "srl", "spa", "pvt", "pte", "bhd", "sdn", "jsc", "ooo", "sapi",
+                "the", "and", "und", "group", "holding", "holdings", "intl", "international"}
 
-    A marker word inside the real name ('Total Power Solutions', 'Seguridad Total', 'Check Point
-    Software', 'TBC Corp') is the name, not a subtotal or a note: read the row, not the word. The
-    same word added to the name ('Acme Ltd Total', 'Acme Ltd ??') still counts, and so does a value
-    that is nothing but the marker, or any marker when there is no master name to compare with.
+
+def _fold(s: str) -> str:
+    return re.sub(r"[\s\-_]+", " ", _strip_accents(s.lower())).strip()
+
+
+def _marker_key(raw: str) -> str:
+    raw = raw.strip()
+    if re.search(r"[^\W_]", raw):
+        return _fold(raw).strip(" -:")  # 'Sub-Total', 'sub total' and 'subtotal:' alike
+    return unicodedata.normalize("NFKC", raw)  # punctuation stays as it is: '---', '??', '...'
+
+
+def _count(marker: str, text: str) -> int:
+    if not re.search(r"[^\W_]", marker):
+        return unicodedata.normalize("NFKC", text.lower()).count(marker)
+    return len(re.findall(r"(?<![^\W_])" + re.escape(marker) + r"(?![^\W_])", _fold(text)))
+
+
+def _name_words(s: str) -> set[str]:
+    return {w for w in re.split(r"[\W_]+", _fold(s)) if len(w) > 2 and w not in _NAME_FILLER}
+
+
+def new_marker(pattern: re.Pattern, value: str, master: str) -> bool:
+    """`value` carries a match of `pattern` that the master customer name does not explain.
+
+    Read the row, not the word: a marker word inside the real name ('Total Power Solutions',
+    'Seguridad Total', 'Check Point Software', 'TBC Corp') is the name, not a subtotal or a note.
+    It still counts as a marker when
+      * the value is nothing but the marker ('Total', 'Subtotal:'), or there is no master name;
+      * it occurs more often than in the master name ('Acme Ltd Total', 'TBC Corp (TBC)',
+        'Total Power Solutions Ltd Total'); for a name with the master's very letters (a case,
+        spacing or punctuation variant) only an added '??' or '...' can be new;
+      * the master name holds it but the value shares no other distinctive word with that name
+        ('Note: credit to follow' when the lookup matched 'Note AB', 'Total Acme Controls Ltd'
+        when it matched 'Total Power Solutions Ltd').
     """
-    found = {m.group(0).strip(" -:").lower() for m in pattern.finditer(value)}
+    found = {_marker_key(m.group(0)) for m in pattern.finditer(value)} - {""}
     if not found:
         return False
-    if not pattern.sub("", value).strip(" -:.,;"):
+    if not re.search(r"[^\W_]", pattern.sub(" ", value)):
         return True
     master = master.strip()
     if not master or master.lower() in ("unknown", "?"):
         return True
-    return bool(found - {m.group(0).strip(" -:").lower() for m in pattern.finditer(master)})
+    if name_key(value) == name_key(master):
+        return any(_count(f, value) > _count(f, master) for f in found if not re.search(r"[^\W_]", f))
+    if any(_count(f, value) > _count(f, master) for f in found):
+        return True
+    marker_words = {w for f in found for w in re.split(r"[\W_]+", f) if w}
+    own, theirs = _name_words(value) - marker_words, _name_words(master) - marker_words
+    return bool(own) and not (own & theirs)
 
 
 def nonsales_kind(rec: PosRecord, catalogue: set[str] | None = None) -> str | None:
@@ -543,9 +590,10 @@ def facts(text: str, catalogue: set[str] | None = None) -> Facts:
             pack_ok = qty % spq == 0 and qty >= moq
     # the reported side decides whether this is a sales line (rule 2 comes before rule 3): a failed
     # lookup on an otherwise complete line is a sales line with a lookup problem (ask_human)
+    customer_only = ("master lookup failed", "note inside customer", "customer truncated")
     sales_evidence = (pa in ("canonical", "formatted") and qs in ("canonical", "formatted")
                       and bool(ref) and not FILLER.match(ref)
-                      and (not lookup_failed or defects == ["master lookup failed"]))
+                      and (not lookup_failed or all(d.startswith(customer_only) for d in defects)))
 
     return Facts(rec.ok, restricted, nonsales_kind(rec, catalogue), lookup_failed, defects, ref_seen,
                  pack_ok, qty, nonc, customer, rec.problems, unread, sales_evidence)

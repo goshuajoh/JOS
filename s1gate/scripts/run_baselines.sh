@@ -38,8 +38,10 @@ s1gate compare --reports "${REPORTS[@]}" --target 0.97 --target-q row_action=0.9
 
 # reliability plots for the best zero-shot model, calibrated on these dev predictions
 best=${BEST:-gliner}
-if [ -f "$OUT/$best.preds.jsonl" ]; then
+if [[ " ${REPORTS[*]} " == *" $OUT/$best.json "* ]]; then  # only if $best ran in this run
   s1gate calibrate --schema "$S" --preds "$OUT/$best.preds.jsonl" --out "$OUT/$best.calibration.json"
   s1gate report --schema "$S" --preds "$OUT/$best.preds.jsonl" --calibration "$OUT/$best.calibration.json" \
       --title "zero-shot $best on $(basename "$DATA")" --out "$OUT/$best.report.html"
+else
+  echo "$best did not run in this run: no calibration or reliability report (set BEST=<a backend that ran>)"
 fi

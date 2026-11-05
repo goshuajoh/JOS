@@ -104,7 +104,12 @@ def test_split_keeps_identical_texts_on_one_side():
     big += [Record(id=f"n{i}", text=f"note page {i}", labels={"row_action": "no_op"}) for i in range(20)]
     for seed in range(200):
         _, held = split(big, 0.3, seed=seed, stratify_on="row_action")
-        assert abs(len(held) - 9) <= 5  # within half the unit of the quota (k=9, unit of 10)
+        assert len(held) == 9  # single rows fill the quota (k=9); the unit of 10 never fits
+        _, held = split(big[:10] + big[10:14], 0.5, seed=seed, stratify_on="row_action")
+        assert len(held) in (4, 10)  # k=7: the 4 singles, or the unit when that is closer
+    only_big = [Record(id=f"u{j}-{i}", text=f"header {j}", labels={"row_action": "no_op"}) for j in range(3) for i in range(10)]
+    _, held = split(only_big, 0.3, seed=1, stratify_on="row_action")
+    assert len(held) == 10  # nothing fits k=9, so one unit, the closest count
     # with no repeated texts the split is the plain stratified shuffle it always was
     singles = rows[6:]
     rest, held = split(singles, 0.25, seed=3, stratify_on="row_action")
