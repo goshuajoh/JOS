@@ -1,0 +1,75 @@
+{"id": "b20802f2157", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "unit_price empty"}
+{"id": "bf7f673da05", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "dropped 'San. ve Tic.' from legal name; clear rename"}
+{"id": "b1ce3a2d5f5", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "qty 48.5 fractional"}
+{"id": "b21e588fe94", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "Indian-grouped qty 100000 passes; part missing hyphens"}
+{"id": "bea3b239236", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "period 2026-2, qty 7,500; ref KCT-55120-A not in seen (similar only)"}
+{"id": "bfd7d7ec8a6", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "qty 1,20,000 = 120000 passes; part missing hyphen"}
+{"id": "bb1a3741c7e", "row_action": "vendor_rename", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "shares only 'Yildirim' with master; uncertain link"}
+{"id": "ba123e9ffe7", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "period 2025-9, qty 2.000 = 2000; similar seen refs only"}
+{"id": "bfba4f562a6", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "period empty"}
+{"id": "b01d7a5686e", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "dropped generic word 'Technology'; clear rename"}
+{"id": "b3dc4db98fa", "row_action": "vendor_rename", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "shares only place word 'Saskatoon'; uncertain link"}
+{"id": "b0e5b207688", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "period empty"}
+{"id": "b93714f9a39", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "qty 8,000.50 fractional"}
+{"id": "b041fa8d400", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "unit_price empty"}
+{"id": "b6c360b9ac6", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "qty 28.000 = 28000 passes; similar seen refs only"}
+{"id": "bf56156b8f8", "row_action": "vendor_rename", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "shares only 'Xunjie' with master; uncertain link"}
+{"id": "bd4d94b1b1a", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "qty 2,5 fractional"}
+{"id": "bec3de9d596", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "legal suffix Ltd. Sti. -> Limited Sirketi; clear rename"}
+{"id": "ba028747209", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "period 2026-6, qty 6.500 = 6500; similar seen refs only"}
+{"id": "b93bf2ccac9", "row_action": "vendor_rename", "needs_human": "yes", "severity": "3", "confidence": "medium", "note": "completely different name for matched customer (possible parent/acquirer) -> uncertain rename per 2.6"}
+{"id": "b4d01c70c0a", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "legal suffix Inc. -> Incorporated; clear rename"}
+{"id": "b4e2495dc71", "row_action": "vendor_rename", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "different name, shares only 'Microgrid' with master; uncertain link"}
+{"id": "bc108d29765", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "qty 50,000 = 50000 passes; similar seen refs only"}
+{"id": "be8b253840d", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "legal suffix Inc. dropped; clear rename"}
+{"id": "b36b73dbf2a", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "legal form S.A.P.I. de C.V. -> S.A. de C.V.; clear rename (period/qty format too)"}
+{"id": "b5fa6a60fc7", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "qty 5.5 fractional"}
+{"id": "bee9624695a", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "abbreviation SZ/Tech for Shenzhen/Technology; clear rename"}
+{"id": "bc2f85cea6d", "row_action": "vendor_rename", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "completely different customer name vs master; uncertain link"}
+{"id": "bded2514141", "row_action": "no_op", "needs_human": "no", "severity": "3", "confidence": "high", "note": "ref 'Ara toplam' = Turkish subtotal, no part/price"}
+{"id": "ba36d3c9ce7", "row_action": "no_op", "needs_human": "no", "severity": "3", "confidence": "high", "note": "part 'Subtotal cliente' = customer subtotal"}
+{"id": "b7c0b1bb885", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "qty 4.5 fractional"}
+{"id": "bb563b11f4c", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "qty 4.5 fractional"}
+{"id": "b37bb167075", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "qty 1.5 fractional"}
+{"id": "bff2f607e6e", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "ref empty on a sales line"}
+{"id": "b797dd157f3", "row_action": "no_op", "needs_human": "no", "severity": "3", "confidence": "high", "note": "customer 'Total <name>', part/price/ref empty = customer subtotal"}
+{"id": "b78ff9a2f93", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "qty 0.9 fractional"}
+{"id": "b2a03ce0580", "row_action": "no_op", "needs_human": "no", "severity": "3", "confidence": "high", "note": "ref '小計' = Japanese subtotal, no part/price"}
+{"id": "b6ae006928f", "row_action": "no_op", "needs_human": "no", "severity": "3", "confidence": "high", "note": "customer 'Tarpine suma:' = Lithuanian subtotal, no part/price/ref"}
+{"id": "b21415e1d9c", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "period 2026-3, qty 4,000 = 4000; similar seen refs only"}
+{"id": "b91577c7d57", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "qty 48,000 = 48000 passes"}
+{"id": "b1a93ff90b4", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "legal suffix Inc. -> Ltee; clear rename"}
+{"id": "b494e434d67", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "qty 35.000 = 35000 passes; part missing hyphen; similar seen refs only"}
+{"id": "b47029ef1bc", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "customer empty"}
+{"id": "b5e3b4c0c2d", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "country empty"}
+{"id": "b73158fa03d", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "country empty"}
+{"id": "bc0ea728c4a", "row_action": "no_op", "needs_human": "no", "severity": "3", "confidence": "high", "note": "customer ends with '소계' = Korean subtotal, no part/price/ref"}
+{"id": "b39ec4b52a4", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "qty 6.25 fractional"}
+{"id": "b9ec29d8c49", "row_action": "vendor_rename", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "shares only 'Erciyes' with master ('Grubu' = group); uncertain link"}
+{"id": "b0c3538bcbf", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "qty 20,5 fractional"}
+{"id": "b6cf9cfd773", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "qty 45,000 = 45000 passes; part missing hyphens"}
+{"id": "b557ef9375d", "row_action": "no_op", "needs_human": "no", "severity": "3", "confidence": "high", "note": "part '小計' = Japanese subtotal, no price/ref"}
+{"id": "b0897adc874", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "qty empty"}
+{"id": "be21f779777", "row_action": "vendor_rename", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "different name, only 'Forestal(es)' shared; uncertain link"}
+{"id": "b9261d85ded", "row_action": "vendor_rename", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "only 'Tenfold' shared with 'Tenfold3 Devices'; uncertain link"}
+{"id": "b24e35fc13b", "row_action": "no_op", "needs_human": "no", "severity": "3", "confidence": "high", "note": "customer '<name> Toplam' = Turkish customer total, no part/price/ref"}
+{"id": "ba91037e383", "row_action": "no_op", "needs_human": "no", "severity": "3", "confidence": "high", "note": "customer 'TOTAL CLIENTE <name>' = customer subtotal"}
+{"id": "b6eb3c63c63", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "qty 15.5 fractional"}
+{"id": "bb5255e994e", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "unit_price empty"}
+{"id": "b321a7844a2", "row_action": "vendor_rename", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "distinctive word 'Cuauhtemoc' gone, only generic words shared; uncertain link"}
+{"id": "b646c054670", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "abbreviation 'Sist.' for 'Sistemleri'; clear rename"}
+{"id": "bb8a1929824", "row_action": "no_op", "needs_human": "no", "severity": "3", "confidence": "high", "note": "customer 'Subtotal <name>', no part/price/ref = customer subtotal"}
+{"id": "b4e368abb70", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "period 2026-8, qty 8,000 = 8000; similar seen refs only"}
+{"id": "b7ba9470d4d", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "legal suffix A.S. -> Anonim Sirketi; clear rename"}
+{"id": "bf8cc2d1623", "row_action": "no_op", "needs_human": "no", "severity": "3", "confidence": "medium", "note": "ref=SUBTOTAL with no price = part subtotal for one customer; real part and master hit make it a near miss to ask_human"}
+{"id": "bbfb9414a3e", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "qty 6,5 fractional"}
+{"id": "ba42478e75e", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "ref empty on a sales line"}
+{"id": "b5e0339345d", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "abbreviation 'Dev.' for 'Devices'; clear rename (part spacing too)"}
+{"id": "bf05a69bd77", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "qty 2,4 fractional"}
+{"id": "b228a47134a", "row_action": "no_op", "needs_human": "no", "severity": "3", "confidence": "high", "note": "customer 'TOTAL - <name>', no part/price/ref = customer subtotal"}
+{"id": "b983ab9bce0", "row_action": "vendor_rename", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "shares only place name 'Tsuen Wan', 'Holdings' = possible parent; uncertain link"}
+{"id": "bdbeb558e2f", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "typo Vayuvegha vs Vayuvega; clear rename"}
+{"id": "b784bad4567", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "period empty"}
+{"id": "b6d55d98c95", "row_action": "normalize", "needs_human": "no", "severity": "1", "confidence": "high", "note": "qty 75,000 = 75000 passes"}
+{"id": "b938b8da49f", "row_action": "vendor_rename", "needs_human": "no", "severity": "2", "confidence": "high", "note": "transposed letters Devcies vs Devices; clear rename"}
+{"id": "b10e61418db", "row_action": "ask_human", "needs_human": "yes", "severity": "3", "confidence": "high", "note": "qty 40.50 fractional"}

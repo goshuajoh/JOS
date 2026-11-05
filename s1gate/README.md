@@ -134,7 +134,7 @@ is approved for the data class.
 
 ## What was and was not tested
 
-* **Tested here.** About 150 unit, CLI and data tests (`pytest -q`). They cover:
+* **Tested here.** About 160 unit, CLI and data tests (`pytest -q`). They cover:
   * the schema and enums, records, and dedupe/decontamination (checked against brute force)
   * metrics, temperature and vector calibration, and thresholds with rules. A property test checks
     that the coverage and accuracy in `thresholds.json` are exactly what the `Gate` does.
@@ -144,8 +144,10 @@ is approved for the data class.
   * the shipped data: it is rule-clean, the eval file is frozen and untouched, and no eval or
     dev rows or held-out companies appear in training
 * **Smoke-tested on toy models.** The Qwen backend and LoRA training ran end to end on a tiny
-  random Qwen3. All training rows pass gliner2 2.1.0's own loader, with option order re-drawn on
-  every read.
+  random Qwen3. Route A ran end to end on a tiny random GLiNER2, both full fine-tuning and LoRA:
+  softmax loss patch, per-epoch checkpoints, LoRA merge, dev-NLL selection, then loading
+  `selected/` in the backend. All training rows pass gliner2 2.1.0's own loader, with option
+  order re-drawn on every read.
 * **Reviewed.** Independent review agents went over the rule checker, generator, calibration,
   thresholds, CLI and loop code. Every defect they found is fixed and has a regression test.
 * **Not run here.** GLiNER2.5-Decide and real Qwen3 checkpoints. Hugging Face was not reachable
